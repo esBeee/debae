@@ -41,15 +41,22 @@ RSpec.describe User, type: :model do
     end
   end
 
-  # Test the utilities for the associated objects.
-  describe "associated objects" do
+  # Test that the utilities for the associated objects are defined.
+  describe "association utilities" do
     # Make sure there's a getter for the user's questionings.
-    describe "method :questionings" do
+    describe "#questionings" do
       let(:questioning) { FactoryGirl.build_stubbed(:questioning) }
 
       it "returns all associated questionings" do
+        # Add questioning to the user's questionings.
+        # This implicitly tests the existence of a setter.
         @user.questionings << questioning
-        expect(@user.questionings).to include(questioning) 
+
+        # Now test that the getter delivers the questioning.
+        expect(@user.questionings).to include(questioning)
+
+        # Make sure only this one link was delivered.
+        expect(@user.questionings.size).to eq 1
       end
     end
   end
