@@ -1,14 +1,15 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  
   # Using factory girl to build a user. That way it is ensured,
   # that factory girl returns a valid user object.
   before { @user = FactoryGirl.build(:user) }
 
   subject { @user }
 
-  # Test that the user is valid.
+  # Test that the user is valid at this point. Otherwise
+  # the tests below lose integrity because the object might be
+  # invalid for the wrong reason.
   it { should be_valid }
 
   # Test the implemented model validations.
@@ -36,6 +37,19 @@ RSpec.describe User, type: :model do
       context "when email is #{valid_email} (valid)" do
         before { @user.email = valid_email }
         it { should be_valid }
+      end
+    end
+  end
+
+  # Test the utilities for the associated objects.
+  describe "associated objects" do
+    # Make sure there's a getter for the user's questionings.
+    describe "method :questionings" do
+      let(:questioning) { FactoryGirl.build_stubbed(:questioning) }
+
+      it "returns all associated questionings" do
+        @user.questionings << questioning
+        expect(@user.questionings).to include(questioning) 
       end
     end
   end
