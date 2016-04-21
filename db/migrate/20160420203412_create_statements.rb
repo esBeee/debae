@@ -1,6 +1,6 @@
-class CreateQuestionings < ActiveRecord::Migration[5.0]
+class CreateStatements < ActiveRecord::Migration[5.0]
   def change
-    create_table :questionings do |t|
+    create_table :statements do |t|
       t.references :user, foreign_key: true
       t.string :body, null: false, limit: 260
 

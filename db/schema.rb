@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(version: 20160420222659) do
   enable_extension "plpgsql"
 
   create_table "argumental_questioning_links", force: :cascade do |t|
-    t.integer  "questioning_id"
+    t.integer  "statement_id"
     t.integer  "argument_id"
     t.boolean  "is_pro_argument", null: false
     t.datetime "created_at",      null: false
@@ -25,16 +25,16 @@ ActiveRecord::Schema.define(version: 20160420222659) do
   end
 
   add_index "argumental_questioning_links", ["argument_id"], name: "index_argumental_questioning_links_on_argument_id", using: :btree
-  add_index "argumental_questioning_links", ["questioning_id"], name: "index_argumental_questioning_links_on_questioning_id", using: :btree
+  add_index "argumental_questioning_links", ["statement_id"], name: "index_argumental_questioning_links_on_statement_id", using: :btree
 
-  create_table "questionings", force: :cascade do |t|
+  create_table "statements", force: :cascade do |t|
     t.integer  "user_id"
     t.string   "body",       limit: 260, null: false
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
   end
 
-  add_index "questionings", ["user_id"], name: "index_questionings_on_user_id", using: :btree
+  add_index "statements", ["user_id"], name: "index_statements_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -63,6 +63,6 @@ ActiveRecord::Schema.define(version: 20160420222659) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   add_index "users", ["unlock_token"], name: "index_users_on_unlock_token", unique: true, using: :btree
 
-  add_foreign_key "argumental_questioning_links", "questionings"
-  add_foreign_key "questionings", "users"
+  add_foreign_key "argumental_questioning_links", "statements"
+  add_foreign_key "statements", "users"
 end

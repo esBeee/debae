@@ -9,5 +9,5 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable,
          :confirmable, :lockable, :timeoutable
 
-  has_many :questionings
+  has_many :statements
 end
