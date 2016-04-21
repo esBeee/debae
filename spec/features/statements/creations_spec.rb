@@ -5,9 +5,30 @@ RSpec.shared_examples "A successful statement creation" do
     expect(statement).not_to be nil
     expect(statement.user).to eq user
   end
+end
 
-  it "redirects to the new statement's page" do
-    expect(page.current_path).to eq statement_path(statement)
+# Here, the direction parameter should be either
+#           pro       or       contra 
+RSpec.shared_examples "A successful argument creation" do |direction|
+  it_behaves_like "A successful statement creation"
+
+  it "redirects to the supported statement's page" do
+    expect(page.current_path).to eq statement_path(statement_to_support)
+  end
+
+  it "creates a link to the statement to be backed" do
+    expect(statement_to_support.send(direction + "_arguments")).to include(statement)
+  end
+end
+
+RSpec.shared_examples "A failed statement creation" do
+  it "doesn't creates a new statement for the logged in user" do
+    expect(user.statements.count).to eq 0
+  end
+
+  it "displays errors" do
+    pending "This test should be completed as soon as a strategy of displaying errors has been implemented"
+    expect(page).to have_css(".errors")
   end
 end
 
@@ -17,62 +38,134 @@ RSpec.feature "StatementCreations", type: :feature, session_helpers: true do
   # Create new statement body with timestamp to ensure this test doesn't succeeds because
   # there's already a statement with that body in the database.
   let(:new_statement_body) { "This and that is right. I know it! #{Time.now.to_i}" }
+  let(:statement_to_support) { FactoryGirl.create(:statement) }
 
-  # Navigate to the page. Necessary for all cases.
+  # Sign in the user. Necessary for all cases.
   before do
     # Creations are only allowed for signed in users. So
     # signing in before.
     sign_in user
+  end
 
-    visit new_statement_path
+  def fill_form_and_submit body
+    # Fill in my statement
+    fill_in I18n.t("statements.new.body"), with: body
+
+    # Submit
+    click_button I18n.t("statements.new.submit")
   end
 
   context "when statement is valid" do
-    before do
-      # Fill in my statement
-      fill_in I18n.t("statements.new.body"), with: new_statement_body
+    context "when craeting as a top-level-statement" do
+      before do
+        visit new_statement_path
+        fill_form_and_submit(new_statement_body)
+      end
 
-      # Submit
-      click_button I18n.t("statements.new.submit")
+      it_behaves_like "A successful statement creation"
+
+      it "redirects to the new statement's page" do
+        expect(page.current_path).to eq statement_path(statement)
+      end
     end
 
-    it_behaves_like "A successful statement creation"
+    context "when creating as a pro argument" do
+      before do
+        # The creation as a pro argument should be possible by
+        # adding the query parameter 'pro' whose value is
+        # the id of the statement to back.
+        visit new_statement_path(pro: statement_to_support.id)
+        fill_form_and_submit(new_statement_body)
+      end
+
+      it_behaves_like "A successful argument creation", "pro"
+    end
+
+    context "when creating as a contra argument" do
+      before do
+        # The creation as a contra argument should be possible by
+        # adding the query parameter 'contra' whose value is
+        # the id of the statement to back.
+        visit new_statement_path(contra: statement_to_support.id)
+        fill_form_and_submit(new_statement_body)
+      end
+
+      it_behaves_like "A successful argument creation", "contra"
+    end
   end
 
   context "when statement is invalid" do
     # Choose an invalid statement body for this test.
     let(:invalid_statement_body) { " " }
 
-    before do
-      # Fill in my statement
-      fill_in I18n.t("statements.new.body"), with: invalid_statement_body
-
-      # Submit
-      click_button I18n.t("statements.new.submit")
-    end
-
-    it "doesn't creates a new statement for the logged in user" do
-      expect(user.statements.count).to eq 0
-    end
-
-    it "displays errors" do
-      pending "This test should be completed as soon as a strategy of displaying errors has been implemented"
-      expect(page).to have_css(".errors")
-    end
-
-    # Test that after the creation failed, I don't have to do
-    # anything else but correct the invalid field to finally create
-    # the statement.
-    describe "correcting the input data" do
+    context "when craeting as a top-level-statement" do
       before do
-        # Fill in my statement
-        fill_in I18n.t("statements.new.body"), with: new_statement_body
-
-        # Submit
-        click_button I18n.t("statements.new.submit")
+        visit new_statement_path
+        fill_form_and_submit(invalid_statement_body)
       end
 
-      it_behaves_like "A successful statement creation"
+      it_behaves_like "A failed statement creation"
+
+      # Test that after the creation failed, I don't have to do
+      # anything else but correct the invalid field to finally create
+      # the statement.
+      describe "correcting the input data" do
+        before do
+          fill_form_and_submit(new_statement_body)
+        end
+
+        it_behaves_like "A successful statement creation"
+
+        it "redirects to the new statement's page" do
+          expect(page.current_path).to eq statement_path(statement)
+        end
+      end
+    end
+
+    context "when creating as a pro argument" do
+      before do
+        # The creation as a pro argument should be possible by
+        # adding the query parameter 'pro' whose value is
+        # the id of the statement to back.
+        visit new_statement_path(pro: statement_to_support.id)
+        fill_form_and_submit(invalid_statement_body)
+      end
+
+      it_behaves_like "A failed statement creation"
+
+      # Test that after the creation failed, I don't have to do
+      # anything else but correct the invalid field to finally create
+      # the statement.
+      describe "correcting the input data" do
+        before do
+          fill_form_and_submit(new_statement_body)
+        end
+
+        it_behaves_like "A successful argument creation", "pro"
+      end
+    end
+
+    context "when creating as a contra argument" do
+      before do
+        # The creation as a contra argument should be possible by
+        # adding the query parameter 'contra' whose value is
+        # the id of the statement to back.
+        visit new_statement_path(contra: statement_to_support.id)
+        fill_form_and_submit(invalid_statement_body)
+      end
+
+      it_behaves_like "A failed statement creation"
+
+      # Test that after the creation failed, I don't have to do
+      # anything else but correct the invalid field to finally create
+      # the statement.
+      describe "correcting the input data" do
+        before do
+          fill_form_and_submit(new_statement_body)
+        end
+
+        it_behaves_like "A successful argument creation", "contra"
+      end
     end
   end
 end

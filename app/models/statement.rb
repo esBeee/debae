@@ -10,6 +10,9 @@ class Statement < ApplicationRecord
   # Has many links to arguments (which are also objects of type Statement).
   # Is only used inside this class to help define has_many :arguments.
   has_many :links_to_arguments, class_name: "LinkToArgument"
+  # Has many links to statements.
+  # Is only used inside this class to help define the scope :top_level.
+  has_many :links_to_statements, class_name: "LinkToArgument", foreign_key: "argument_id"
   # Has many links to PRO arguments.
   # Is only used inside this class to help define has_many :pro_arguments.
   has_many :links_to_pro_arguments, -> { where(is_pro_argument: true) }, class_name: "LinkToArgument"
@@ -39,6 +42,6 @@ class Statement < ApplicationRecord
   # In the future, a 'popularity score' value should be determined using creation date AND
   # total number of votes. Then simply order descending by this score.
   scope :top_level, -> {
-    includes(:links_to_arguments).where(link_to_arguments: {statement_id: nil}).order(created_at: :desc)
+    includes(:links_to_statements).where(link_to_arguments: {argument_id: nil}).order(created_at: :desc)
   }
 end

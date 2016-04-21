@@ -1,15 +1,37 @@
 require 'rails_helper'
 
-# Specs in this file have access to a helper object that includes
-# the StatementsHelper. For example:
-#
-# describe StatementsHelper do
-#   describe "string concat" do
-#     it "concats two strings with spaces" do
-#       expect(helper.concat_strings("this","that")).to eq("this that")
-#     end
-#   end
-# end
 RSpec.describe StatementsHelper, type: :helper do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe "#argument_hash" do
+    let(:statement_to_support_id) { 3 }
+
+    context "when called with both arguments nil" do
+      it "returns nil" do
+        expect(helper.argument_hash(nil, nil)).to eq nil
+      end
+    end
+
+    context "when called with both arguments not nil" do
+      it "returns nil" do
+        expect(helper.argument_hash(1, 1)).to eq nil
+      end
+    end
+
+    # When called with the frist argument, it is assumed that the first
+    # argument can be interpreted as the id of the statement this
+    # statement should support as a pro argument.
+    context "when called with only the first argument" do
+      it "returns a hash containing all necessary information" do
+        expect(helper.argument_hash(statement_to_support_id, nil)).to eq ([statement_to_support_id, true])
+      end
+    end
+
+    # When called with the second argument, it is assumed that the second
+    # argument can be interpreted as the id of the statement this
+    # statement should support as a contra argument.
+    context "when called with only the second argument" do
+      it "returns a hash containing all necessary information" do
+        expect(helper.argument_hash(nil, statement_to_support_id)).to eq ([statement_to_support_id, false])
+      end
+    end
+  end
 end

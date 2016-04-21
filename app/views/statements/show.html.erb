@@ -2,8 +2,10 @@
 
 <div class="arguments pro">
   <%= render @statement.pro_arguments %>
+  <%= link_to t(".links.new_pro_argument", default: "New pro argument"), new_statement_path(pro: @statement.id) %>
 </div>
 
 <div class="arguments contra">
   <%= render @statement.contra_arguments %>
+  <%= link_to t(".links.new_contra_argument", default: "New contra argument"), new_statement_path(contra: @statement.id) %>
 </div>

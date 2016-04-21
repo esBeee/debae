@@ -33,3 +33,7 @@ de:
     new:
       body: "Dein Statement"
       submit: "Submit"
+    show:
+      links:
+        new_contra_argument: "Neues Kontra-Argument"
+        new_pro_argument: "Neues Pro-Argument"

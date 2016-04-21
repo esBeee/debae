@@ -18,6 +18,14 @@ RSpec.feature "StatementShowVisitings", type: :feature do
 
     before { visit statement_path(statement) }
 
+    it "displays link to create a new contra argument" do
+      expect(page).to have_link(I18n.t("statements.show.links.new_contra_argument"), href: new_statement_path(contra: statement.id))
+    end
+
+    it "displays link to create a new pro argument" do
+      expect(page).to have_link(I18n.t("statements.show.links.new_pro_argument"), href: new_statement_path(pro: statement.id))
+    end
+
     describe "pro arguments section" do
       let(:container_css) { ".arguments.pro" }
 

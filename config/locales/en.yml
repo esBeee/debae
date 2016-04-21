@@ -33,3 +33,7 @@ en:
     new:
       body: "Your statement"
       submit: "Submit"
+    show:
+      links:
+        new_contra_argument: "New contra argument"
+        new_pro_argument: "New pro argument"

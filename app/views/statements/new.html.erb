@@ -1,4 +1,8 @@
 <%= form_for @statement do |f| %>
+  <% argument_for, is_pro_argument = argument_hash(params[:pro], params[:contra]) %>
+  <%= hidden_field :argument, :argument_for, value: argument_for %>
+  <%= hidden_field :argument, :is_pro_argument, value: is_pro_argument %>
+
   <%= f.label :body, t(".body", default: "Statement") %>:
   <%= f.text_field :body %><br />
 

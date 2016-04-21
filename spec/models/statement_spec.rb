@@ -177,7 +177,7 @@ RSpec.describe Statement, type: :model do
   describe "scopes" do
     describe "#top_level" do
       it "doesn't include a statement that is an argument for another statement" do
-        statement_is_argument = FactoryGirl.create(:link_to_argument).statement
+        statement_is_argument = FactoryGirl.create(:link_to_argument).argument
         expect(Statement.top_level).not_to include(statement_is_argument)
       end
 
