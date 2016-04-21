@@ -34,5 +34,14 @@ RSpec.describe Vote, type: :model do
         it { should_not be_valid }
       end
     end
+
+    describe "when a statement-user-pair" do
+      context "already exists" do
+        before do
+          FactoryGirl.create(:vote, statement: @vote.statement, user: @vote.user)
+        end
+        it { should_not be_valid }
+      end
+    end
   end
 end

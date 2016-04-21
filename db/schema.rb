@@ -71,6 +71,7 @@ ActiveRecord::Schema.define(version: 20160421025728) do
     t.datetime "updated_at",   null: false
   end
 
+  add_index "votes", ["statement_id", "user_id"], name: "index_votes_on_statement_id_and_user_id", unique: true, using: :btree
   add_index "votes", ["statement_id"], name: "index_votes_on_statement_id", using: :btree
 
   add_foreign_key "link_to_arguments", "statements"

@@ -5,10 +5,3 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-# s1 = FactoryGirl.create(:statement)
-# s2 = FactoryGirl.create(:statement)
-
-# FactoryGirl.create(:link_to_argument, statement: s1, argument: s2)
-# a = FactoryGirl.build(:link_to_argument, statement: s1, argument: s2)
-
-# a.save

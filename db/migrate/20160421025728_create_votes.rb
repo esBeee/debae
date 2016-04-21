@@ -9,5 +9,9 @@ class CreateVotes < ActiveRecord::Migration[5.0]
 
       t.timestamps
     end
+
+    # Add an index to both statement_id and user_id, for the purpose
+    # of making sure a statement_id-user_id-pair is uniqe.
+    add_index :votes, [:statement_id, :user_id], unique: true
   end
 end
