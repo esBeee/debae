@@ -170,4 +170,31 @@ RSpec.describe Statement, type: :model do
       end
     end
   end
+
+  # Test that the expected scopes exist. A scope in this context
+  # can also be a regular method whose task it is, to
+  # deliver a subset of statements
+  describe "scopes" do
+    describe "#top_level" do
+      it "doesn't include a statement that is an argument for another statement" do
+        statement_is_argument = FactoryGirl.create(:link_to_argument).statement
+        expect(Statement.top_level).not_to include(statement_is_argument)
+      end
+
+      it "includes a statement that is not an argument for another statement" do
+        statement_is_not_argument = FactoryGirl.create(:statement)
+        expect(Statement.top_level).to include(statement_is_not_argument)
+      end
+
+      it "orders the statements - newest first" do
+        oldest_statement = FactoryGirl.create(:statement, created_at: Time.now - 2.hour)
+        newest_statement = FactoryGirl.create(:statement)
+        middle_old_statement = FactoryGirl.create(:statement, created_at: Time.now - 1.hour)
+        
+        expect(Statement.top_level[0]).to eq(newest_statement)
+        expect(Statement.top_level[1]).to eq(middle_old_statement)
+        expect(Statement.top_level[2]).to eq(oldest_statement)
+      end
+    end
+  end
 end

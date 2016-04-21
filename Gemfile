@@ -33,6 +33,10 @@ gem 'jbuilder', '~> 2.0'
 # Use devise for user authentication
 gem 'devise', '~> 4.0'
 
+# Use the will_paginate gem for pagination. Provides the #page method
+# used in controllers for pagination
+gem 'will_paginate', '~> 3.1'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'

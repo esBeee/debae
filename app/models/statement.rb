@@ -27,6 +27,18 @@ class Statement < ApplicationRecord
   # Has many contra votes.
   has_many :contra_votes, -> { where(is_pro_vote: false) }, class_name: "Vote"
 
-  # Validations
   validates :body, presence: true, length: { in: 2..260 }
+
+  # The method/scope #top_level should return a collection of statements ordered by
+  # importance, which is currently only determined by the creation date - the
+  # newer the more important a statement is.
+  # This method should change its behaviour as soon as the user is allowed to create new
+  # statements while initialize them with already existing statements. Until then
+  # it grants a better overview to just display statements that aren't argument for another statement.
+  #
+  # In the future, a 'popularity score' value should be determined using creation date AND
+  # total number of votes. Then simply order descending by this score.
+  scope :top_level, -> {
+    includes(:links_to_arguments).where(link_to_arguments: {statement_id: nil}).order(created_at: :desc)
+  }
 end
