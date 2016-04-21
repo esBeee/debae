@@ -9,5 +9,5 @@ Rails.application.routes.draw do
   # Let devise take care of the routes for the user resource.
   devise_for :users
 
-  resources :statements, only: [:index, :show]
+  resources :statements, only: [:index, :show, :new, :create]
 end

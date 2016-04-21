@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature "IndexVisitings", type: :feature do
+RSpec.feature "StatementIndexVisitings", type: :feature do
   let(:statements_per_page) { WillPaginate.per_page }
 
   describe "lists statements" do

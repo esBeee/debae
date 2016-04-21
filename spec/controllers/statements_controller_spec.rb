@@ -39,4 +39,50 @@ RSpec.describe StatementsController, type: :controller do
       end
     end
   end
+
+  describe "GET #new" do
+    context "when a user is signed in" do
+      let(:user) { FactoryGirl.create(:user) }
+
+      before do
+        sign_in user
+        get :new
+      end
+
+      it "returns http success" do
+        expect(response).to have_http_status(:success)
+      end
+    end
+
+    context "when no user is signed in" do
+      before { get :new }
+
+      it "redirects to sign-in page if no user is logged in" do
+        expect(response).to redirect_to(new_user_session_path)
+      end
+    end
+  end
+
+  describe "POST #create" do
+    context "when a user is signed in" do
+      let(:user) { FactoryGirl.create(:user) }
+
+      before do
+        sign_in user
+        post :create, params: {statement: {body: ""}}
+      end
+
+      it "returns http success" do
+        expect(response).to have_http_status(:success)
+      end
+    end
+
+    context "when no user is signed in" do
+      before { post :create }
+      
+      it "redirects to sign-in page if no user is logged in" do
+        expect(response).to redirect_to(new_user_session_path)
+      end
+    end
+  end
 end

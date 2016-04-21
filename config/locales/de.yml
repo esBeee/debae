@@ -28,3 +28,8 @@ de:
   will_paginate:
     next_label: "Nächste Seite"
     previous_label: "Vorherige Seite"
+
+  statements:
+    new:
+      body: "Dein Statement"
+      submit: "Submit"

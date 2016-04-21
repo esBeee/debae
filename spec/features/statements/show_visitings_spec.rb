@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature "ShowVisitings", type: :feature do
+RSpec.feature "StatementShowVisitings", type: :feature do
   let(:statement) { FactoryGirl.create(:statement) }
 
   it "displays the statement body as headline" do
