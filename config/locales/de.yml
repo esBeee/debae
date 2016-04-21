@@ -37,3 +37,6 @@ de:
       links:
         new_contra_argument: "Neues Kontra-Argument"
         new_pro_argument: "Neues Pro-Argument"
+    index:
+      links:
+        new_statement: "Füge ein Statement hinzu"
