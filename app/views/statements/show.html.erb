@@ -1,2 +1,9 @@
-<h1>Statements#show</h1>
-<p>Find me in app/views/statements/show.html.erb</p>
+<h1><%= @statement.body %></h1>
+
+<div class="arguments pro">
+  <%= render @statement.pro_arguments %>
+</div>
+
+<div class="arguments contra">
+  <%= render @statement.contra_arguments %>
+</div>
