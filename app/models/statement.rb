@@ -1,7 +1,9 @@
-# The Statement class describes an interrogation someone is interested in, like
+# The Statement class describes a statement that is being discuessed, like
 # "What politician X has done was wrong!". Now other users are able to add pro and contra
-# arguments. The clou: those arguments are an instance of class Statement themselves. So also those
+# arguments. The clou: those arguments are an instance of class Statement themselves, so also those
 # arguments can be subject of a debate.
+# Also users are able to up- or downvote this statement. Which is to say a user
+# agrees or disagrees with the statement.
 class Statement < ApplicationRecord
   belongs_to :user
 
