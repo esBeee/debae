@@ -1,0 +1,27 @@
+# Translations for ActiveRecord model names and its attributes.
+# Learn more at http://guides.rubyonrails.org/i18n.html#translations-for-active-record-models
+#
+# Also includes additional error messages (for custom validations). You can have a look at the included ActiveModel
+# error messages at https://github.com/rails/rails/blob/master/activemodel/lib/active_model/locale/en.yml.
+
+en:
+  activerecord:
+    models:
+      statement:
+        one: "Statement"
+        other: "Statements"
+      link_to_argument:
+        one: "Link to argument"
+        other: "Links to argument"
+      user:
+        one: "User"
+        other: "Users"
+      vote:
+        one: "Vote"
+        other: "Votes"
+    attributes:
+      statement:
+        body: "body"
+    errors:
+      messages:
+        statement_eq_argument: "can't be its own argument"

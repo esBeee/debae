@@ -46,7 +46,13 @@ RSpec.describe LinkToArgument, type: :model do
 
     describe "when a statement equals its argument" do
       before { @link.argument = @link.statement }
+
       it { should_not be_valid }
+
+      it "should generate a translated error message" do
+        @link.valid? # #valid? generates error messages if errors exist
+        expect(@link.errors.full_messages.first).to include(I18n.t("activerecord.errors.messages.statement_eq_argument"))
+      end
     end
   end
 end

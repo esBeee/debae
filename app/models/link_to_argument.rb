@@ -20,7 +20,7 @@ class LinkToArgument < ApplicationRecord
   def statement_differs_from_argument
     # If statement is not nil and equals the argument, add an error.
     if statement && statement == argument
-      errors.add(:statement, "can't be its own argument.")
+      errors.add(:statement, I18n.t("activerecord.errors.messages.statement_eq_argument", default: "can't be its own argument"))
     end
   end
 end
