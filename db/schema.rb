@@ -24,7 +24,6 @@ ActiveRecord::Schema.define(version: 20160421025728) do
     t.datetime "updated_at",      null: false
   end
 
-  add_index "argumental_questioning_links", ["argument_id"], name: "index_argumental_questioning_links_on_argument_id", using: :btree
   add_index "argumental_questioning_links", ["statement_id"], name: "index_argumental_questioning_links_on_statement_id", using: :btree
 
   create_table "statements", force: :cascade do |t|

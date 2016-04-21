@@ -7,7 +7,5 @@ class CreateArgumentalQuestioningLinks < ActiveRecord::Migration[5.0]
 
       t.timestamps
     end
-
-    add_index :argumental_questioning_links, :argument_id
   end
 end
