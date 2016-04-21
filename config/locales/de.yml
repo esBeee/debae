@@ -23,3 +23,8 @@
 # https://github.com/rails/rails/blob/master/activesupport/lib/active_support/locale/en.yml
 
 de:
+  # Translations for the pagination links created
+  # by gem will_paginate.
+  will_paginate:
+    next_label: "Nächste Seite"
+    previous_label: "Vorherige Seite"
