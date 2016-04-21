@@ -1,6 +1,6 @@
-class CreateArgumentalQuestioningLinks < ActiveRecord::Migration[5.0]
+class CreateLinkToArguments < ActiveRecord::Migration[5.0]
   def change
-    create_table :argumental_questioning_links do |t|
+    create_table :link_to_arguments do |t|
       t.references :statement, foreign_key: true
       t.integer :argument_id
       t.boolean :is_pro_argument, null: false

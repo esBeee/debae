@@ -56,35 +56,35 @@ RSpec.describe Statement, type: :model do
 
   # Test that the utilities for the associated objects are defined.
   describe "association utilities" do
-    # Make sure there's a getter for the statement's argumental_questioning_links.
-    describe "#argumental_questioning_links" do
-      let(:argumental_questioning_link) do
-        FactoryGirl.build_stubbed(:argumental_questioning_link, statement: @statement)
+    # Make sure there's a getter for the statement's links_to_arguments.
+    describe "#links_to_arguments" do
+      let(:link_to_argument) do
+        FactoryGirl.build_stubbed(:link_to_argument, statement: @statement)
       end
 
-      it "returns all associated argumental statement links" do
-        # Add argumental_questioning_link to the statement's argumental_questioning_links.
+      it "returns all associated links to arguments" do
+        # Add link_to_argument to the statement's links_to_arguments.
         # This implicitly tests the existence of a setter.
-        @statement.argumental_questioning_links << argumental_questioning_link
+        @statement.links_to_arguments << link_to_argument
 
-        # Now test that the getter delivers the argumental_questioning_link.
-        expect(@statement.argumental_questioning_links).to include argumental_questioning_link
+        # Now test that the getter delivers the link_to_argument.
+        expect(@statement.links_to_arguments).to include link_to_argument
 
         # Make sure only this one link was delivered.
-        expect(@statement.argumental_questioning_links.size).to eq 1
+        expect(@statement.links_to_arguments.size).to eq 1
       end
     end
 
     # Make sure there's a getter for the statement's arguments.
     describe "#arguments" do
       let(:argument) { FactoryGirl.create(:statement) }
-      let!(:argumental_questioning_link) do
-        FactoryGirl.create(:argumental_questioning_link, statement: @statement, argument: argument)
+      let!(:link_to_argument) do
+        FactoryGirl.create(:link_to_argument, statement: @statement, argument: argument)
       end
 
       it "returns all associated arguments" do
-        # Add argumental_questioning_link to the statement's argumental_questioning_links.
-        @statement.argumental_questioning_links << argumental_questioning_link
+        # Add link_to_argument to the statement's links_to_arguments.
+        @statement.links_to_arguments << link_to_argument
 
         # Now test that the getter delivers the argument.
         expect(@statement.arguments).to include argument
@@ -97,10 +97,10 @@ RSpec.describe Statement, type: :model do
     # Test that the pro_arguments getter is defined correctly.
     describe "#pro_arguments" do
       let!(:pro_argument) do
-        FactoryGirl.create(:argumental_questioning_link, is_pro_argument: true, statement: @statement).argument
+        FactoryGirl.create(:link_to_argument, is_pro_argument: true, statement: @statement).argument
       end
       let!(:contra_argument) do
-        FactoryGirl.create(:argumental_questioning_link, is_pro_argument: false, statement: @statement).argument
+        FactoryGirl.create(:link_to_argument, is_pro_argument: false, statement: @statement).argument
       end
 
       it "returns all pro arguments" do
@@ -116,10 +116,10 @@ RSpec.describe Statement, type: :model do
     # Test that the contra_arguments getter is defined correctly.
     describe "#contra_arguments" do
       let!(:pro_argument) do
-        FactoryGirl.create(:argumental_questioning_link, is_pro_argument: true, statement: @statement).argument
+        FactoryGirl.create(:link_to_argument, is_pro_argument: true, statement: @statement).argument
       end
       let!(:contra_argument) do
-        FactoryGirl.create(:argumental_questioning_link, is_pro_argument: false, statement: @statement).argument
+        FactoryGirl.create(:link_to_argument, is_pro_argument: false, statement: @statement).argument
       end
 
       it "returns all contra arguments" do

@@ -7,19 +7,19 @@ class Statement < ApplicationRecord
 
   # Has many links to arguments (which are also objects of type Statement).
   # Is only used inside this class to help define has_many :arguments.
-  has_many :argumental_questioning_links
+  has_many :links_to_arguments, class_name: "LinkToArgument"
   # Has many links to PRO arguments.
   # Is only used inside this class to help define has_many :pro_arguments.
-  has_many :pro_argumental_questioning_links, -> { where(is_pro_argument: true) }, class_name: "ArgumentalQuestioningLink"
+  has_many :links_to_pro_arguments, -> { where(is_pro_argument: true) }, class_name: "LinkToArgument"
   # Has many links to CONTRA arguments.
   # Is only used inside this class to help define has_many :contra_arguments.
-  has_many :contra_argumental_questioning_links, -> { where(is_pro_argument: false) }, class_name: "ArgumentalQuestioningLink"
+  has_many :links_to_contra_arguments, -> { where(is_pro_argument: false) }, class_name: "LinkToArgument"
   # Has many arguments (also objects of type Statement).
-  has_many :arguments, through: :argumental_questioning_links
+  has_many :arguments, through: :links_to_arguments
   # Has many pro arguments.
-  has_many :pro_arguments, through: :pro_argumental_questioning_links, source: :argument
+  has_many :pro_arguments, through: :links_to_pro_arguments, source: :argument
   # Has many contra arguments.
-  has_many :contra_arguments, through: :contra_argumental_questioning_links, source: :argument
+  has_many :contra_arguments, through: :links_to_contra_arguments, source: :argument
   # Has many pro votes.
   has_many :pro_votes, -> { where(is_pro_vote: true) }, class_name: "Vote"
   # Has many contra votes.

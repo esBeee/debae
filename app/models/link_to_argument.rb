@@ -5,7 +5,7 @@
 # Additionally it contains the information whether the agrument is
 # a pro argument for that interrogation or a contra argument. (The
 # attribute of type boolean, that holds that information, is :is_pro_argument)
-class ArgumentalQuestioningLink < ApplicationRecord
+class LinkToArgument < ApplicationRecord
   belongs_to :statement
   belongs_to :argument, class_name: "Statement" # In this app, arguments are statements themselves
 

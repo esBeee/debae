@@ -1,9 +1,9 @@
 require 'rails_helper'
 
-RSpec.describe ArgumentalQuestioningLink, type: :model do
+RSpec.describe LinkToArgument, type: :model do
   # Using factory girl to build the link between the two statements.
   # That way it is ensured, that factory girl returns a valid link object.
-  before { @link = FactoryGirl.build(:argumental_questioning_link) }
+  before { @link = FactoryGirl.build(:link_to_argument) }
 
   subject { @link }
 

@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 20160421025728) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "argumental_questioning_links", force: :cascade do |t|
+  create_table "link_to_arguments", force: :cascade do |t|
     t.integer  "statement_id"
     t.integer  "argument_id"
     t.boolean  "is_pro_argument", null: false
@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(version: 20160421025728) do
     t.datetime "updated_at",      null: false
   end
 
-  add_index "argumental_questioning_links", ["statement_id"], name: "index_argumental_questioning_links_on_statement_id", using: :btree
+  add_index "link_to_arguments", ["statement_id"], name: "index_link_to_arguments_on_statement_id", using: :btree
 
   create_table "statements", force: :cascade do |t|
     t.integer  "user_id"
@@ -72,7 +72,7 @@ ActiveRecord::Schema.define(version: 20160421025728) do
 
   add_index "votes", ["statement_id"], name: "index_votes_on_statement_id", using: :btree
 
-  add_foreign_key "argumental_questioning_links", "statements"
+  add_foreign_key "link_to_arguments", "statements"
   add_foreign_key "statements", "users"
   add_foreign_key "votes", "statements"
   add_foreign_key "votes", "users"
