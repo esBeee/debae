@@ -7,5 +7,9 @@ class CreateLinkToArguments < ActiveRecord::Migration[5.0]
 
       t.timestamps
     end
+
+    # Add an index to both statement_id and argument_id, for the purpose
+    # of making sure a statement_id-argument_id-pair is uniqe.
+    add_index :link_to_arguments, [:statement_id, :argument_id], unique: true
   end
 end

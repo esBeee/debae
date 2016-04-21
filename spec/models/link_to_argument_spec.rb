@@ -34,5 +34,19 @@ RSpec.describe LinkToArgument, type: :model do
         it { should_not be_valid }
       end
     end
+
+    describe "when a statement-argument-pair" do
+      context "already exists" do
+        before do
+          FactoryGirl.create(:link_to_argument, statement: @link.statement, argument: @link.argument)
+        end
+        it { should_not be_valid }
+      end
+    end
+
+    describe "when a statement equals its argument" do
+      before { @link.argument = @link.statement }
+      it { should_not be_valid }
+    end
   end
 end
