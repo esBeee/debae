@@ -29,9 +29,9 @@ ActiveRecord::Schema.define(version: 20160420222659) do
 
   create_table "questionings", force: :cascade do |t|
     t.integer  "user_id"
-    t.text     "body",       null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "body",       limit: 260, null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   add_index "questionings", ["user_id"], name: "index_questionings_on_user_id", using: :btree
