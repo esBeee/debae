@@ -104,7 +104,7 @@ RSpec.describe Statement, type: :model do
       end
 
       it "returns all pro arguments" do
-        # Test that the scope delivers the pro argument.
+        # Test that the getter delivers the pro argument.
         expect(@statement.pro_arguments).to include pro_argument
 
         # Make sure only this one argument was delivered. (Implies that
@@ -123,12 +123,50 @@ RSpec.describe Statement, type: :model do
       end
 
       it "returns all contra arguments" do
-        # Test that the scope delivers the pro argument.
+        # Test that the getter delivers the contra argument.
         expect(@statement.contra_arguments).to include contra_argument
 
         # Make sure only this one argument was delivered. (Implies that
         # the pro argument wasn't)
         expect(@statement.contra_arguments.size).to eq 1
+      end
+    end
+
+    # Test that the pro_votes getter is defined correctly.
+    describe "#pro_votes" do
+      let!(:pro_vote) do
+        FactoryGirl.create(:vote, is_pro_vote: true, statement: @statement)
+      end
+      let!(:contra_vote) do
+        FactoryGirl.create(:vote, is_pro_vote: false, statement: @statement)
+      end
+
+      it "returns all pro votes" do
+        # Test that the getter delivers the pro vote.
+        expect(@statement.pro_votes).to include pro_vote
+
+        # Make sure only this one vote was delivered. (Implies that
+        # the contra vote wasn't)
+        expect(@statement.pro_votes.size).to eq 1
+      end
+    end
+
+    # Test that the contra_votes getter is defined correctly.
+    describe "#contra_votes" do
+      let!(:pro_vote) do
+        FactoryGirl.create(:vote, is_pro_vote: true, statement: @statement)
+      end
+      let!(:contra_vote) do
+        FactoryGirl.create(:vote, is_pro_vote: false, statement: @statement)
+      end
+
+      it "returns all contra votes" do
+        # Test that the getter delivers the contra vote.
+        expect(@statement.contra_votes).to include contra_vote
+
+        # Make sure only this one vote was delivered. (Implies that
+        # the pro vote wasn't)
+        expect(@statement.contra_votes.size).to eq 1
       end
     end
   end

@@ -17,6 +17,10 @@ class Statement < ApplicationRecord
   has_many :pro_arguments, through: :pro_argumental_questioning_links, source: :argument
   # Has many contra arguments.
   has_many :contra_arguments, through: :contra_argumental_questioning_links, source: :argument
+  # Has many pro votes.
+  has_many :pro_votes, -> { where(is_pro_vote: true) }, class_name: "Vote"
+  # Has many contra votes.
+  has_many :contra_votes, -> { where(is_pro_vote: false) }, class_name: "Vote"
 
   # Validations
   validates :body, presence: true, length: { in: 2..260 }
