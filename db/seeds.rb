@@ -17,6 +17,8 @@ puts "User #{email} with password 'foobar12' now exists."
 # FactoryGirl.create_list(:statement, 45)
 # puts "45 top level statements created."
 
-FactoryGirl.create(:statement, user: user, body: "Als BRD Waffen an Saudi-Arabien zu verkaufen ist unmoralisch.")
+FactoryGirl.create(:statement, user: user, body: "Als Bundesrepublik Deutschland Waffen nach Saudi-Arabien zu exportieren ist unmoralisch.")
 FactoryGirl.create(:statement, user: user, body: "Merkels Entscheidung, die Ermächtigung für Ermittlungen gegen " +
   "Jan Böhmermann nach §103 zu erteilen war falsch.")
+FactoryGirl.create(:statement, user: user, body: "Ohne gezielte Maßnahmen, wird die Schere zwischen Arm und Reich in westlichen Ländern " +
+  "unaufhörlich auseinanderdriften.")
