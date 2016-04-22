@@ -1,0 +1,10 @@
+<% submit_value = is_pro_vote ? t("votes.buttons.vote_up", default: "Agree") : t("votes.buttons.vote_down", default: "Disagree") %>
+
+<% if disabled.nil? %>
+  <%= form_tag votes_path(statement_id: statement.id) do %>
+    <%= hidden_field_tag "vote[is_pro_vote]", is_pro_vote %>
+    <%= submit_tag submit_value %>
+  <% end %>
+<% else %>
+  <div><%= submit_value %></div>
+<% end %>

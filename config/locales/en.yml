@@ -29,6 +29,11 @@ en:
     next_label: "Next"
     previous_label: "Back"
 
+  votes:
+    buttons:
+      vote_up: "Agree"
+      vote_down: "Disagree"
+
   statements:
     new:
       body: "Your statement"

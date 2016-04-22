@@ -59,5 +59,22 @@ RSpec.describe User, type: :model do
         expect(@user.statements.size).to eq 1
       end
     end
+
+    # Make sure there's a getter for the user's votes.
+    describe "#votes" do
+      let(:vote) { FactoryGirl.build_stubbed(:vote) }
+
+      it "returns all associated statements" do
+        # Add vote to the user's votes.
+        # This implicitly tests the existence of a setter.
+        @user.votes << vote
+
+        # Now test that the getter delivers the vote.
+        expect(@user.votes).to include(vote)
+
+        # Make sure only this one vote was delivered.
+        expect(@user.votes.size).to eq 1
+      end
+    end
   end
 end

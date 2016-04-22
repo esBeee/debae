@@ -40,19 +40,20 @@ RSpec.feature "StatementCreations", type: :feature, session_helpers: true do
   let(:new_statement_body) { "This and that is right. I know it! #{Time.now.to_i}" }
   let(:statement_to_support) { FactoryGirl.create(:statement) }
 
-  # Sign in the user. Necessary for all cases.
-  before do
-    # Creations are only allowed for signed in users. So
-    # signing in before.
-    sign_in user
-  end
-
+  # A helper to fill in the form and submit it.
   def fill_form_and_submit body
     # Fill in my statement
     fill_in I18n.t("statements.new.body"), with: body
 
     # Submit
     click_button I18n.t("statements.new.submit")
+  end
+
+  # Sign in the user. Necessary for all cases.
+  before do
+    # Creations are only allowed for signed in users. So
+    # signing in before.
+    sign_in user
   end
 
   context "when statement is valid" do

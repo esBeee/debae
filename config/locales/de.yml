@@ -29,6 +29,11 @@ de:
     next_label: "Nächste Seite"
     previous_label: "Vorherige Seite"
 
+  votes:
+    buttons:
+      vote_up: "Zustimmen"
+      vote_down: "Ablehnen"
+
   statements:
     new:
       body: "Dein Statement"

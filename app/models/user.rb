@@ -10,4 +10,5 @@ class User < ApplicationRecord
          :confirmable, :lockable, :timeoutable
 
   has_many :statements
+  has_many :votes
 end
