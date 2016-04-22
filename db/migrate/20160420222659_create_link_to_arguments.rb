@@ -11,5 +11,11 @@ class CreateLinkToArguments < ActiveRecord::Migration[5.0]
     # Add an index to both statement_id and argument_id, for the purpose
     # of making sure a statement_id-argument_id-pair is uniqe.
     add_index :link_to_arguments, [:statement_id, :argument_id], unique: true
+
+    # Add an index for argument_id
+    add_index :link_to_arguments, :argument_id
+
+    # Add a foreign key for column argument_id
+    add_foreign_key :link_to_arguments, :statements, column: :argument_id
   end
 end

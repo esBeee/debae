@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 20160421025728) do
     t.datetime "updated_at",      null: false
   end
 
+  add_index "link_to_arguments", ["argument_id"], name: "index_link_to_arguments_on_argument_id", using: :btree
   add_index "link_to_arguments", ["statement_id", "argument_id"], name: "index_link_to_arguments_on_statement_id_and_argument_id", unique: true, using: :btree
   add_index "link_to_arguments", ["statement_id"], name: "index_link_to_arguments_on_statement_id", using: :btree
 
@@ -73,8 +74,10 @@ ActiveRecord::Schema.define(version: 20160421025728) do
 
   add_index "votes", ["statement_id", "user_id"], name: "index_votes_on_statement_id_and_user_id", unique: true, using: :btree
   add_index "votes", ["statement_id"], name: "index_votes_on_statement_id", using: :btree
+  add_index "votes", ["user_id"], name: "index_votes_on_user_id", using: :btree
 
   add_foreign_key "link_to_arguments", "statements"
+  add_foreign_key "link_to_arguments", "statements", column: "argument_id"
   add_foreign_key "statements", "users"
   add_foreign_key "votes", "statements"
   add_foreign_key "votes", "users"
