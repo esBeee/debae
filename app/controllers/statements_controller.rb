@@ -57,8 +57,8 @@ class StatementsController < ApplicationController
   #
   # {
   #   argument: {
-  #     argument_for: 532,               # the ID of the statement to be backed
-  #     is_pro_argument: true   # A boolean that states whether this is a pro or a contra argument.
+  #     argument_for: "532",               # the ID of the statement to be backed
+  #     is_pro_argument: "true"   # A boolean that states whether this is a pro or a contra argument.
   #   }
   # }
   def create_link_to_argument statement_id
@@ -67,11 +67,13 @@ class StatementsController < ApplicationController
     # Return if argument parameter is not present.
     return nil unless params[:argument] && params[:argument].class == ActionController::Parameters
 
-    argument_for = argument_params["argument_for"]
-    is_pro_argument = argument_params["is_pro_argument"]
+    # These parameters can potentially contain unsafe strings and are handed to the db, so let's
+    # make sure they are nothing more than integers or booleans, respectively.
+    argument_for = argument_params[:argument_for].to_i
+    is_pro_argument = ["true", :true].include?(argument_params[:is_pro_argument])
 
     # Validate information, do nothing if invalid.
-    if argument_for.class == String && Statement.find_by(id: argument_for) && !is_pro_argument.nil? && !statement_id.nil?
+    if Statement.find_by(id: argument_for) && !statement_id.nil?
       unless LinkToArgument.create(statement_id: argument_for, argument_id: statement_id, is_pro_argument: is_pro_argument)
         # TODO error handling
       end
