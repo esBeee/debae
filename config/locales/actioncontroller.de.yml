@@ -1,0 +1,7 @@
+# Translations used in the controllers.
+
+de:
+  actioncontroller:
+    errors:
+      not_found: "Dokument nicht gefunden"
+      unauthorized: "Zugang verweigert"

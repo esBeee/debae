@@ -8,4 +8,12 @@ RSpec.describe "Vote routes", type: :routing do
       statement_id: "1"
     )
   end
+
+  it "routes DELETE vote_path(:id) to the votes controller's destroy action" do
+    expect(delete(vote_path(id: 1))).to route_to(
+      controller: "votes",
+      action: "destroy",
+      id: "1"
+    )
+  end
 end

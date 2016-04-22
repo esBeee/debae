@@ -10,5 +10,5 @@
   <%= link_to t(".links.new_contra_argument", default: "New contra argument"), new_statement_path(contra: @statement.id) %>
 </div>
 
-<%= render 'vote_button', statement: @statement, is_pro_vote: true, disabled: has_voted?(true, current_user, @statement) %>
-<%= render 'vote_button', statement: @statement, is_pro_vote: false, disabled: has_voted?(false, current_user, @statement) %>
+<%= render 'vote_button', statement: @statement, is_pro_vote: true, existing_vote: has_voted?(true, current_user, @statement) %>
+<%= render 'vote_button', statement: @statement, is_pro_vote: false, existing_vote: has_voted?(false, current_user, @statement) %>

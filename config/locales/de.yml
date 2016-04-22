@@ -33,6 +33,8 @@ de:
     buttons:
       vote_up: "Zustimmen"
       vote_down: "Ablehnen"
+      destroy_up_vote: "Zustimmung zurückziehen"
+      destroy_down_vote: "Ablehnung zurückziehen"
 
   statements:
     new:

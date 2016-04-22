@@ -3,9 +3,43 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
-  # If the requested resource is not found, this method gets called.
-  # It renders a 404 page and stops execution immediately.
+
+  private
+  # If a requested resource is not found, this method gets called.
+  # It redirects to root path and informs in a flash message.
   def not_found
-    raise ActionController::RoutingError.new("Not Found")
+    flash[:error] = I18n.t("actioncontroller.errors.not_found", default: "Resource could not be found")
+    redirect_to :root
+  end
+
+  # Verifies that a resource is owned by the currently signed-in
+  # user. Returns true in this case.
+  # If the verification fails, it returns false and redirects to
+  # root path.
+  def authenticate_owner! resource
+    authorized = true
+
+    # Check if all required resources are defined and if so, check if
+    # the owner of the resource equals the signed-in-user.
+    # If not all resources are defined, the cause would most likely
+    # be an internal flaw.
+    if user_signed_in? && !resource.nil?
+      unless current_user == resource.user
+        authorized = false
+      end
+    else
+      # TODO: proper error handling
+      authorized = false
+    end
+
+    # Redirect to root if not authorized.
+    unless authorized
+      flash[:error] = I18n.t("actioncontroller.errors.unauthorized",
+        default: "You are not authorized to direct this action")
+      redirect_to :root
+    end
+
+    # Return authorized for the calling method to deal with.
+    authorized
   end
 end

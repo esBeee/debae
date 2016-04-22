@@ -26,13 +26,15 @@ en:
   # Translations for the pagination links created
   # by gem will_paginate.
   will_paginate:
-    next_label: "Next"
-    previous_label: "Back"
+    next_label: "Next page"
+    previous_label: "Previous page"
 
   votes:
     buttons:
       vote_up: "Agree"
       vote_down: "Disagree"
+      destroy_up_vote: "Withdraw agreement"
+      destroy_down_vote: "Withdraw disagreement"
 
   statements:
     new:

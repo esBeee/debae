@@ -3,8 +3,11 @@ class VotesController < ApplicationController
 
   # POST /statements/:statement_id/vote
   def create
-    # Get the statement from the DB. Throw 404 if it doesn't exist.
-    statement = Statement.find_by(id: params[:statement_id]) || not_found
+    # Get the statement from the DB.
+    statement = Statement.find_by(id: params[:statement_id])
+
+    # Return here if the statement could not be found.
+    return not_found unless statement
 
     # The user, whose existence is verified at this point by a before_action,
     # might already have voted for this statement. Looking that up.
@@ -19,6 +22,23 @@ class VotesController < ApplicationController
     end
 
     redirect_to statement
+  end
+
+  # DELETE /votes/:id
+  def destroy
+    # Get the vote from the DB.
+    vote = Vote.find_by(id: params[:id])
+
+    # Return here if the vote could not be found.
+    return not_found unless vote
+
+    # Make sure the current user is owner of the vote.
+    return unless authenticate_owner!(vote)
+
+    # Destroy the vote.
+    vote.destroy
+
+    redirect_to vote.statement
   end
 
 

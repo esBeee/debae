@@ -11,7 +11,7 @@ user = User.find_by(email: email)
 if user.nil?
   user = FactoryGirl.create(:user, email: email)
 end
-puts "User #{email} with password #{user.password} now exists."
+puts "User #{email} with password 'foobar12' now exists."
 
 # Create statements
 # FactoryGirl.create_list(:statement, 45)

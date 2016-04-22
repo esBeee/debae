@@ -20,7 +20,7 @@ RSpec.shared_examples "A successful vote" do |up_or_down|
   end
 end
 
-RSpec.feature "Votings", type: :feature, session_helpers: true do
+RSpec.feature "VoteVotings", type: :feature, session_helpers: true do
   let(:user) { FactoryGirl.create(:user) }
   let(:statement) { FactoryGirl.create(:statement) }
 

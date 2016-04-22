@@ -7,6 +7,7 @@ require 'spec_helper'
 require 'rspec/rails'
 # Add additional requires below this line. Rails is not loaded until this point!
 require 'support/session_helpers'
+require 'support/shared_examples/controllers'
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are
@@ -62,4 +63,7 @@ RSpec.configure do |config|
 
   # Provide user authentication helpers for all specs with "session_helpers: true".
   config.include SessionHelpers, session_helpers: true
+
+  # Provide shared examples for controller specs.
+  config.include SharedExamples::Controllers, type: :controller
 end

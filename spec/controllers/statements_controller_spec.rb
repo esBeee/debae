@@ -2,41 +2,31 @@ require 'rails_helper'
 
 RSpec.describe StatementsController, type: :controller do
   describe "GET #index" do
-    it "returns http success" do
-      get :index
-      expect(response).to have_http_status(:success)
-    end
+    before { get :index }
+    include_examples "Successful request"
   end
 
   describe "GET #show" do
     context "when the requested statement exists" do
       let(:statement) { FactoryGirl.create(:statement) }
 
-      it "returns http success" do
-        get :show, params: { id: statement.id }
-        expect(response).to have_http_status(:success)
-      end
+      before { get :show, params: { id: statement.id } }
+
+      include_examples "Successful request"
     end
 
     context "when the requested statement doesn't exist" do
       let(:statement) { FactoryGirl.create(:statement) }
 
-      it "raises a routing error" do
+      before do
         # Make sure the statement doesn't exist anymore
         # before requesting.
         statement.destroy
 
-        error_thrown = false
-
-        # Request
-        begin
-          get :show, params: { id: statement.id }
-        rescue ActionController::RoutingError => e
-          error_thrown = true
-        end
-
-        expect(error_thrown).to be true
+        get :show, params: { id: statement.id }
       end
+
+      include_examples "Resource not found"
     end
   end
 
@@ -49,17 +39,12 @@ RSpec.describe StatementsController, type: :controller do
         get :new
       end
 
-      it "returns http success" do
-        expect(response).to have_http_status(:success)
-      end
+      include_examples "Successful request"
     end
 
     context "when no user is signed in" do
       before { get :new }
-
-      it "redirects to sign-in page if no user is logged in" do
-        expect(response).to redirect_to(new_user_session_path)
-      end
+      include_examples "Not signed in"
     end
   end
 
@@ -72,17 +57,12 @@ RSpec.describe StatementsController, type: :controller do
         post :create, params: {statement: {body: ""}}
       end
 
-      it "returns http success" do
-        expect(response).to have_http_status(:success)
-      end
+      include_examples "Successful request"
     end
 
     context "when no user is signed in" do
       before { post :create }
-      
-      it "redirects to sign-in page if no user is logged in" do
-        expect(response).to redirect_to(new_user_session_path)
-      end
+      include_examples "Not signed in"
     end
   end
 end
