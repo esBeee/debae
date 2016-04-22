@@ -13,7 +13,7 @@ module VotesHelper
   # Returns the vote, if one exists, nil else.
   def has_voted? has_pro_voted, user, statement
     unless user && statement
-      # TODO: proper debugging
+      Kazus.log :fatal, "Unexpected condition.", has_pro_voted, user, statement
       return
     end
     

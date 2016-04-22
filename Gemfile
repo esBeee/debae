@@ -37,6 +37,9 @@ gem 'devise', '~> 4.0'
 # used in controllers for pagination
 gem 'will_paginate', '~> 3.1'
 
+# Use Kazus for a convenient logging method
+gem "kazus", :path => "../_gems/kazus"
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'

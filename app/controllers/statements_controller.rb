@@ -74,8 +74,8 @@ class StatementsController < ApplicationController
 
     # Validate information, do nothing if invalid.
     if Statement.find_by(id: argument_for) && !statement_id.nil?
-      unless LinkToArgument.create(statement_id: argument_for, argument_id: statement_id, is_pro_argument: is_pro_argument)
-        # TODO error handling
+      unless (link=LinkToArgument.create(statement_id: argument_for, argument_id: statement_id, is_pro_argument: is_pro_argument))
+        Kazus.log :fatal, "Link between argument and statement could not be saveed unexpectedly.", link
       end
       argument_for
     else

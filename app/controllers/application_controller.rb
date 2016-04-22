@@ -28,7 +28,7 @@ class ApplicationController < ActionController::Base
         authorized = false
       end
     else
-      # TODO: proper error handling
+      Kazus.log :fatal, "[2jioj4jafod] Unexpected condition.", user_signed_in?, resource
       authorized = false
     end
 

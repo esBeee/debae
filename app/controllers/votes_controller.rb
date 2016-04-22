@@ -18,7 +18,7 @@ class VotesController < ApplicationController
 
     # Currently, a vote can only be invalid for internal reasons.
     unless new_vote.update(vote_params)
-      # TODO: proper debugging
+      Kazus.log :fatal, "A Vote that is supposed to be created couldn't be saved.", new_vote, vote_params
     end
 
     redirect_to statement

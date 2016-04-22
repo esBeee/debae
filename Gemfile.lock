@@ -1,3 +1,8 @@
+PATH
+  remote: ../_gems/kazus
+  specs:
+    kazus (0.1.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -210,6 +215,7 @@ DEPENDENCIES
   factory_girl_rails (~> 4.7)
   jbuilder (~> 2.0)
   jquery-rails
+  kazus!
   listen (~> 3.0.5)
   pg (~> 0.18)
   puma
