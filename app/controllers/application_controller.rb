@@ -42,4 +42,10 @@ class ApplicationController < ActionController::Base
     # Return authorized for the calling method to deal with.
     authorized
   end
+
+  # Until a better solution is found, trigger an update of all
+  # statements scores in after_actions of certain controller actions.
+  def demand_statements_score_update
+    RecalculateStatementScoresJob.perform_later
+  end
 end

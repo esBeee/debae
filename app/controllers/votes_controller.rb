@@ -1,5 +1,6 @@
 class VotesController < ApplicationController
   before_action :authenticate_user!
+  after_action :demand_statements_score_update, only: [:create, :destroy]
 
   # POST /statements/:statement_id/vote
   def create

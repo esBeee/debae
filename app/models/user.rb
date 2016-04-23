@@ -11,4 +11,10 @@ class User < ApplicationRecord
 
   has_many :statements
   has_many :votes
+
+  # Overriding the devise default to make it use ActiveJob as
+  # read here: https://github.com/plataformatec/devise#activejob-integration
+  def send_devise_notification notification, *args
+    devise_mailer.send(notification, self, *args).deliver_later
+  end
 end
