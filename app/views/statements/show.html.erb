@@ -1,4 +1,4 @@
-<h1><%= @statement.body %></h1>
+<h1><%= @statement.body %></h1><%= t(".score_label") + " " + score(@statement.score) %>
 
 <div class="arguments pro">
   <%= render @statement.pro_arguments %>

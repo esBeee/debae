@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe "statements/show.html.erb", type: :view do
-  let(:statement) { FactoryGirl.build_stubbed(:statement) }
+  let(:statement) { FactoryGirl.build_stubbed(:statement, score: 0.351) }
 
   before do
     assign(:statement, statement)
@@ -18,5 +18,9 @@ RSpec.describe "statements/show.html.erb", type: :view do
 
   it "displays container for contra arguments" do
     expect(rendered).to have_css(".arguments.contra")
+  end
+
+  it "displays the statements score" do
+    expect(rendered).to have_content("35 %")
   end
 end

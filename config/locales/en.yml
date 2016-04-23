@@ -49,4 +49,4 @@ en:
         new_statement: "Add a new statement"
     score:
       not_available: "N/A"
-      unit: " %"
+      unit: "%"
