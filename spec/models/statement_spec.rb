@@ -196,11 +196,30 @@ RSpec.describe Statement, type: :model do
         expect(@statement.contra_votes.size).to eq 1
       end
     end
+
+    # #statements should return the statements this statement is an argument
+    # for.
+    describe "#statements" do
+      let!(:statement) do
+        FactoryGirl.create(:link_to_argument, argument: @statement).statement
+      end
+      let!(:argument) do
+        FactoryGirl.create(:link_to_argument, statement: @statement).argument
+      end
+
+      it "returns all statements votes" do
+        # Test that the getter delivers the statement.
+        expect(@statement.statements).to include statement
+
+        # Make sure only this one statement was delivered.
+        expect(@statement.statements.size).to eq 1
+      end
+    end
   end
 
   # Test that the expected scopes exist. A scope in this context
   # can also be a regular method whose task it is, to
-  # deliver a subset of statements
+  # deliver a subset of statements.
   describe "scopes" do
     describe "#top_level" do
       it "doesn't include a statement that is an argument for another statement" do
@@ -221,6 +240,26 @@ RSpec.describe Statement, type: :model do
         expect(Statement.top_level[0]).to eq(newest_statement)
         expect(Statement.top_level[1]).to eq(middle_old_statement)
         expect(Statement.top_level[2]).to eq(oldest_statement)
+      end
+    end
+
+    describe "#ground_level" do
+      let!(:ground_level_statement) { FactoryGirl.create(:statement) }
+      let!(:top_level_statement) { FactoryGirl.create(:statement) }
+      let!(:mid_level_statement) { FactoryGirl.create(:statement) }
+
+      # Make sure that the statements defined above are really on the level
+      # their name indicates.
+      before do
+        FactoryGirl.create(:link_to_argument, statement: top_level_statement, argument: mid_level_statement)
+        FactoryGirl.create(:link_to_argument, statement: mid_level_statement, argument: ground_level_statement)
+      end
+
+      it "returns all ground-level-statements" do
+        expect(Statement.ground_level).to include(ground_level_statement)
+
+        # Make sure no other statement gets delivered
+        expect(Statement.ground_level.count).to eq 1
       end
     end
   end

@@ -6,12 +6,12 @@
 # agrees or disagrees with the statement.
 class Statement < ApplicationRecord
   belongs_to :user
-
   # Has many links to arguments (which are also objects of type Statement).
   # Is only used inside this class to help define has_many :arguments.
   has_many :links_to_arguments, class_name: "LinkToArgument"
   # Has many links to statements.
-  # Is only used inside this class to help define the scope :top_level.
+  # Is only used inside this class to help define the scope :top_level, and the has_many
+  # relation :statements.
   has_many :links_to_statements, class_name: "LinkToArgument", foreign_key: "argument_id"
   # Has many links to PRO arguments.
   # Is only used inside this class to help define has_many :pro_arguments.
@@ -29,12 +29,8 @@ class Statement < ApplicationRecord
   has_many :pro_votes, -> { where(is_pro_vote: true) }, class_name: "Vote"
   # Has many contra votes.
   has_many :contra_votes, -> { where(is_pro_vote: false) }, class_name: "Vote"
-
-
-  validates :body, presence: true, length: { in: 2..260 }
-
-  # Validate score the be within [0..1]. Also allow nil to indicate insufficient information.
-  validates :score, numericality: { greater_than_or_equal_to: 0, less_than_or_equal_to: 1 }, allow_nil: true
+  # Has many statements. In this context, statements are all statements this statement is an argument for.
+  has_many :statements, through: :links_to_statements
 
   # The method/scope #top_level should return a collection of statements ordered by
   # importance, which is currently only determined by the creation date - the
@@ -48,4 +44,13 @@ class Statement < ApplicationRecord
   scope :top_level, -> {
     includes(:links_to_statements).where(link_to_arguments: {argument_id: nil}).order(created_at: :desc)
   }
+
+  # Returns all statements that have no arguments.
+  scope :ground_level, -> {
+    includes(:links_to_arguments).where(link_to_arguments: {statement_id: nil})
+  }
+
+  validates :body, presence: true, length: { in: 2..260 }
+  # Validate score the be within [0..1]. Also allow nil to indicate insufficient information.
+  validates :score, numericality: { greater_than_or_equal_to: 0, less_than_or_equal_to: 1 }, allow_nil: true
 end
