@@ -52,6 +52,33 @@ RSpec.describe Statement, type: :model do
         it { should_not be_valid }
       end
     end
+
+    describe "when score" do
+      context "is less than 0" do
+        before { @statement.score = -0.000000000001 }
+        it { should_not be_valid }
+      end
+
+      context "equals 0" do
+        before { @statement.score = 0 }
+        it { should be_valid }
+      end
+
+      context "is greater than 1" do
+        before { @statement.score = 1.00000000001 }
+        it { should_not be_valid }
+      end
+
+      context "equals 1" do
+        before { @statement.score = 1 }
+        it { should be_valid }
+      end
+
+      context "equals nil" do
+        before { @statement.score = nil }
+        it { should be_valid }
+      end
+    end
   end
 
   # Test that the utilities for the associated objects are defined.

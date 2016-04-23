@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(version: 20160421025728) do
   create_table "statements", force: :cascade do |t|
     t.integer  "user_id"
     t.string   "body",       limit: 260, null: false
+    t.decimal  "score"
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
   end

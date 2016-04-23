@@ -30,7 +30,11 @@ class Statement < ApplicationRecord
   # Has many contra votes.
   has_many :contra_votes, -> { where(is_pro_vote: false) }, class_name: "Vote"
 
+
   validates :body, presence: true, length: { in: 2..260 }
+
+  # Validate score the be within [0..1]. Also allow nil to indicate insufficient information.
+  validates :score, numericality: { greater_than_or_equal_to: 0, less_than_or_equal_to: 1 }, allow_nil: true
 
   # The method/scope #top_level should return a collection of statements ordered by
   # importance, which is currently only determined by the creation date - the
