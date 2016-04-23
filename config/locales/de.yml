@@ -47,3 +47,6 @@ de:
     index:
       links:
         new_statement: "Füge ein Statement hinzu"
+    score:
+      not_available: "N/A"
+      unit: " %"

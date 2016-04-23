@@ -34,4 +34,18 @@ RSpec.describe StatementsHelper, type: :helper do
       end
     end
   end
+
+  describe "#score" do
+    context "when called with nil" do
+      it "returns a not available string" do
+        expect(helper.score(nil)).to eq I18n.t("statements.score.not_available")
+      end
+    end
+
+    context "when called with a decimal" do
+      it "returns a formatted score string with a rounded decimal" do
+        expect(helper.score(0.223)).to eq "22 " + I18n.t("statements.score.unit")
+      end
+    end
+  end
 end

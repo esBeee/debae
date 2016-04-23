@@ -35,4 +35,12 @@ module StatementsHelper
 
     return [statement_to_be_supported, is_pro_argument]
   end
+
+  # Returns a rounded decimal in a formatted percent string
+  def score decimal
+    return t("statements.score.not_available", default: "N/A") if decimal.nil?
+
+    rounded = (decimal * 100).round
+    return "#{rounded} " + t("statements.score.unit", default: "%")
+  end
 end
