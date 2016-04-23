@@ -10,10 +10,10 @@ RSpec.feature "StatementShowVisitings", type: :feature do
 
   describe "arguments" do
     let!(:pro_arguments) do
-      FactoryGirl.create_list(:link_to_argument, 2, :pro, statement: statement).map { |link| link.argument }
+      FactoryGirl.create_list(:statement_argument_link, 2, :pro, statement: statement).map { |link| link.argument }
     end
     let!(:contra_arguments) do
-      FactoryGirl.create_list(:link_to_argument, 2, :contra, statement: statement).map { |link| link.argument }
+      FactoryGirl.create_list(:statement_argument_link, 2, :contra, statement: statement).map { |link| link.argument }
     end
 
     before { visit statement_path(statement) }

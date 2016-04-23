@@ -1,9 +1,9 @@
 require 'rails_helper'
 
-RSpec.describe LinkToArgument, type: :model do
+RSpec.describe StatementArgumentLink, type: :model do
   # Using factory girl to build the link between the two statements.
   # That way it is ensured, that factory girl returns a valid link object.
-  before { @link = FactoryGirl.build(:link_to_argument) }
+  before { @link = FactoryGirl.build(:statement_argument_link) }
 
   subject { @link }
 
@@ -38,7 +38,7 @@ RSpec.describe LinkToArgument, type: :model do
     describe "when a statement-argument-pair" do
       context "already exists" do
         before do
-          FactoryGirl.create(:link_to_argument, statement: @link.statement, argument: @link.argument)
+          FactoryGirl.create(:statement_argument_link, statement: @link.statement, argument: @link.argument)
         end
         it { should_not be_valid }
       end

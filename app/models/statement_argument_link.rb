@@ -5,7 +5,7 @@
 # Additionally it contains the information whether the argument is
 # a pro argument for that statement or a contra argument. (The
 # attribute of type boolean, that holds that information, is :is_pro_argument)
-class LinkToArgument < ApplicationRecord
+class StatementArgumentLink < ApplicationRecord
   belongs_to :statement
   belongs_to :argument, class_name: "Statement" # In this app, arguments are statements themselves
 

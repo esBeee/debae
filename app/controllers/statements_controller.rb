@@ -25,9 +25,9 @@ class StatementsController < ApplicationController
     @statement = current_user.statements.build(statement_params)
 
     if @statement.save
-      # Create a LinkToArgument if params hold the respective
+      # Create a StatementArgumentLink if params hold the respective
       # information.
-      backed_statement_id = create_link_to_argument(@statement.id)
+      backed_statement_id = create_statement_argument_link(@statement.id)
 
       if backed_statement_id
         redirect_to statement_path(backed_statement_id)
@@ -48,7 +48,7 @@ class StatementsController < ApplicationController
 
   # If the argument parameter is present and holds the information that
   # this statement is supposed to be interpreted as a pro- or contra-argument
-  # for antoher statement, this method creates the respective LinkToArgument
+  # for antoher statement, this method creates the respective StatementArgumentLink
   # object. It is assumed to be called after the statement was saved successfully.
   # Returns the id found in argument_for on success, it can be redirected to this
   # statement.
@@ -61,7 +61,7 @@ class StatementsController < ApplicationController
   #     is_pro_argument: "true"   # A boolean that states whether this is a pro or a contra argument.
   #   }
   # }
-  def create_link_to_argument statement_id
+  def create_statement_argument_link statement_id
     argument_params = params[:argument]
 
     # Return if argument parameter is not present.
@@ -74,7 +74,7 @@ class StatementsController < ApplicationController
 
     # Validate information, do nothing if invalid.
     if Statement.find_by(id: argument_for) && !statement_id.nil?
-      unless (link=LinkToArgument.create(statement_id: argument_for, argument_id: statement_id, is_pro_argument: is_pro_argument))
+      unless (link=StatementArgumentLink.create(statement_id: argument_for, argument_id: statement_id, is_pro_argument: is_pro_argument))
         Kazus.log :fatal, "Link between argument and statement could not be saveed unexpectedly.", link
       end
       argument_for

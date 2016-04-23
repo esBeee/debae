@@ -85,17 +85,17 @@ RSpec.describe Statement, type: :model do
   describe "association utilities" do
     # Make sure there's a getter for the statement's links_to_arguments.
     describe "#links_to_arguments" do
-      let(:link_to_argument) do
-        FactoryGirl.build_stubbed(:link_to_argument, statement: @statement)
+      let(:statement_argument_link) do
+        FactoryGirl.build_stubbed(:statement_argument_link, statement: @statement)
       end
 
       it "returns all associated links to arguments" do
-        # Add link_to_argument to the statement's links_to_arguments.
+        # Add statement_argument_link to the statement's links_to_arguments.
         # This implicitly tests the existence of a setter.
-        @statement.links_to_arguments << link_to_argument
+        @statement.links_to_arguments << statement_argument_link
 
-        # Now test that the getter delivers the link_to_argument.
-        expect(@statement.links_to_arguments).to include link_to_argument
+        # Now test that the getter delivers the statement_argument_link.
+        expect(@statement.links_to_arguments).to include statement_argument_link
 
         # Make sure only this one link was delivered.
         expect(@statement.links_to_arguments.size).to eq 1
@@ -105,13 +105,13 @@ RSpec.describe Statement, type: :model do
     # Make sure there's a getter for the statement's arguments.
     describe "#arguments" do
       let(:argument) { FactoryGirl.create(:statement) }
-      let!(:link_to_argument) do
-        FactoryGirl.create(:link_to_argument, statement: @statement, argument: argument)
+      let!(:statement_argument_link) do
+        FactoryGirl.create(:statement_argument_link, statement: @statement, argument: argument)
       end
 
       it "returns all associated arguments" do
-        # Add link_to_argument to the statement's links_to_arguments.
-        @statement.links_to_arguments << link_to_argument
+        # Add statement_argument_link to the statement's links_to_arguments.
+        @statement.links_to_arguments << statement_argument_link
 
         # Now test that the getter delivers the argument.
         expect(@statement.arguments).to include argument
@@ -124,10 +124,10 @@ RSpec.describe Statement, type: :model do
     # Test that the pro_arguments getter is defined correctly.
     describe "#pro_arguments" do
       let!(:pro_argument) do
-        FactoryGirl.create(:link_to_argument, is_pro_argument: true, statement: @statement).argument
+        FactoryGirl.create(:statement_argument_link, is_pro_argument: true, statement: @statement).argument
       end
       let!(:contra_argument) do
-        FactoryGirl.create(:link_to_argument, is_pro_argument: false, statement: @statement).argument
+        FactoryGirl.create(:statement_argument_link, is_pro_argument: false, statement: @statement).argument
       end
 
       it "returns all pro arguments" do
@@ -143,10 +143,10 @@ RSpec.describe Statement, type: :model do
     # Test that the contra_arguments getter is defined correctly.
     describe "#contra_arguments" do
       let!(:pro_argument) do
-        FactoryGirl.create(:link_to_argument, is_pro_argument: true, statement: @statement).argument
+        FactoryGirl.create(:statement_argument_link, is_pro_argument: true, statement: @statement).argument
       end
       let!(:contra_argument) do
-        FactoryGirl.create(:link_to_argument, is_pro_argument: false, statement: @statement).argument
+        FactoryGirl.create(:statement_argument_link, is_pro_argument: false, statement: @statement).argument
       end
 
       it "returns all contra arguments" do
@@ -201,10 +201,10 @@ RSpec.describe Statement, type: :model do
     # for.
     describe "#statements" do
       let!(:statement) do
-        FactoryGirl.create(:link_to_argument, argument: @statement).statement
+        FactoryGirl.create(:statement_argument_link, argument: @statement).statement
       end
       let!(:argument) do
-        FactoryGirl.create(:link_to_argument, statement: @statement).argument
+        FactoryGirl.create(:statement_argument_link, statement: @statement).argument
       end
 
       it "returns all statements votes" do
@@ -223,7 +223,7 @@ RSpec.describe Statement, type: :model do
   describe "scopes" do
     describe "#top_level" do
       it "doesn't include a statement that is an argument for another statement" do
-        statement_is_argument = FactoryGirl.create(:link_to_argument).argument
+        statement_is_argument = FactoryGirl.create(:statement_argument_link).argument
         expect(Statement.top_level).not_to include(statement_is_argument)
       end
 
@@ -251,8 +251,8 @@ RSpec.describe Statement, type: :model do
       # Make sure that the statements defined above are really on the level
       # their name indicates.
       before do
-        FactoryGirl.create(:link_to_argument, statement: top_level_statement, argument: mid_level_statement)
-        FactoryGirl.create(:link_to_argument, statement: mid_level_statement, argument: ground_level_statement)
+        FactoryGirl.create(:statement_argument_link, statement: top_level_statement, argument: mid_level_statement)
+        FactoryGirl.create(:statement_argument_link, statement: mid_level_statement, argument: ground_level_statement)
       end
 
       it "returns all ground-level-statements" do

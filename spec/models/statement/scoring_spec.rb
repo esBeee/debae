@@ -31,25 +31,25 @@ RSpec.describe Statement::Scoring, type: :model do
     context "when only arguments exist" do
       it "returns some number if a pro argument with a score of 1.0 exists" do
         argument = FactoryGirl.create(:statement, score: 1.0)
-        FactoryGirl.create(:link_to_argument, :pro, statement: statement, argument: argument)
+        FactoryGirl.create(:statement_argument_link, :pro, statement: statement, argument: argument)
         expect(Statement::Scoring.calculate_score(statement)).to eq 0.8354035060960472
       end
 
       it "returns 1 - x, where x is the score for the pro argument if a contra argument with a score of 1.0 exists" do
         argument = FactoryGirl.create(:statement, score: 1.0)
-        FactoryGirl.create(:link_to_argument, :contra, statement: statement, argument: argument)
+        FactoryGirl.create(:statement_argument_link, :contra, statement: statement, argument: argument)
         expect(Statement::Scoring.calculate_score(statement)).to eq 1 - 0.8354035060960472
       end
 
       it "returns some number if two pro arguments and one contra argument exist" do
         argument = FactoryGirl.create(:statement, score: 0.8)
-        FactoryGirl.create(:link_to_argument, :pro, statement: statement, argument: argument)
+        FactoryGirl.create(:statement_argument_link, :pro, statement: statement, argument: argument)
 
         argument = FactoryGirl.create(:statement, score: 0.8)
-        FactoryGirl.create(:link_to_argument, :pro, statement: statement, argument: argument)
+        FactoryGirl.create(:statement_argument_link, :pro, statement: statement, argument: argument)
 
         argument = FactoryGirl.create(:statement, score: 0.9)
-        FactoryGirl.create(:link_to_argument, :contra, statement: statement, argument: argument)
+        FactoryGirl.create(:statement_argument_link, :contra, statement: statement, argument: argument)
 
         expect(Statement::Scoring.calculate_score(statement)).to eq 0.557663582872025
       end
@@ -61,13 +61,13 @@ RSpec.describe Statement::Scoring, type: :model do
         12.times { FactoryGirl.create(:vote, :down, statement: statement) }
 
         argument = FactoryGirl.create(:statement, score: 0.8)
-        FactoryGirl.create(:link_to_argument, :pro, statement: statement, argument: argument)
+        FactoryGirl.create(:statement_argument_link, :pro, statement: statement, argument: argument)
 
         argument = FactoryGirl.create(:statement, score: 0.5)
-        FactoryGirl.create(:link_to_argument, :pro, statement: statement, argument: argument)
+        FactoryGirl.create(:statement_argument_link, :pro, statement: statement, argument: argument)
 
         argument = FactoryGirl.create(:statement, score: 0.9)
-        FactoryGirl.create(:link_to_argument, :contra, statement: statement, argument: argument)
+        FactoryGirl.create(:statement_argument_link, :contra, statement: statement, argument: argument)
 
         expect(Statement::Scoring.calculate_score(statement)).to eq 0.5884684682399424
       end
@@ -100,23 +100,23 @@ RSpec.describe Statement::Scoring, type: :model do
       #   /     [s_2] <______/
       # [a] ___/                   [s_5]
       #
-      let!(:link) { FactoryGirl.create(:link_to_argument) }
+      let!(:link) { FactoryGirl.create(:statement_argument_link) }
       let!(:s) { link.statement }
       let!(:a) { link.argument }
 
-      let!(:link_3) { FactoryGirl.create(:link_to_argument, statement: s) }
+      let!(:link_3) { FactoryGirl.create(:statement_argument_link, statement: s) }
 
       let!(:s_2) { link_3.argument }
 
-      let!(:link_2) { FactoryGirl.create(:link_to_argument, statement: s_2, argument: a) }
+      let!(:link_2) { FactoryGirl.create(:statement_argument_link, statement: s_2, argument: a) }
 
-      let!(:s_4) { FactoryGirl.create(:link_to_argument, argument: s_2).statement }
+      let!(:s_4) { FactoryGirl.create(:statement_argument_link, argument: s_2).statement }
 
       let!(:s_5) { FactoryGirl.create(:statement) }
 
       let!(:s_i) { FactoryGirl.create(:statement) }
-      let!(:link_4) { FactoryGirl.create(:link_to_argument, statement: s_i, argument: s_4) }
-      let!(:link_5) { FactoryGirl.create(:link_to_argument, statement: s_2, argument: s_i) }
+      let!(:link_4) { FactoryGirl.create(:statement_argument_link, statement: s_i, argument: s_4) }
+      let!(:link_5) { FactoryGirl.create(:statement_argument_link, statement: s_2, argument: s_i) }
 
       # Also, give the only ground statement a few votes. That should lead to every argument
       # except s_5 having a score.

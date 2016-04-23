@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 20160421025728) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "link_to_arguments", force: :cascade do |t|
+  create_table "statement_argument_links", force: :cascade do |t|
     t.integer  "statement_id"
     t.integer  "argument_id"
     t.boolean  "is_pro_argument", null: false
@@ -24,9 +24,9 @@ ActiveRecord::Schema.define(version: 20160421025728) do
     t.datetime "updated_at",      null: false
   end
 
-  add_index "link_to_arguments", ["argument_id"], name: "index_link_to_arguments_on_argument_id", using: :btree
-  add_index "link_to_arguments", ["statement_id", "argument_id"], name: "index_link_to_arguments_on_statement_id_and_argument_id", unique: true, using: :btree
-  add_index "link_to_arguments", ["statement_id"], name: "index_link_to_arguments_on_statement_id", using: :btree
+  add_index "statement_argument_links", ["argument_id"], name: "index_statement_argument_links_on_argument_id", using: :btree
+  add_index "statement_argument_links", ["statement_id", "argument_id"], name: "index_statement_argument_links_on_statement_id_and_argument_id", unique: true, using: :btree
+  add_index "statement_argument_links", ["statement_id"], name: "index_statement_argument_links_on_statement_id", using: :btree
 
   create_table "statements", force: :cascade do |t|
     t.integer  "user_id"
@@ -77,8 +77,8 @@ ActiveRecord::Schema.define(version: 20160421025728) do
   add_index "votes", ["statement_id"], name: "index_votes_on_statement_id", using: :btree
   add_index "votes", ["user_id"], name: "index_votes_on_user_id", using: :btree
 
-  add_foreign_key "link_to_arguments", "statements"
-  add_foreign_key "link_to_arguments", "statements", column: "argument_id"
+  add_foreign_key "statement_argument_links", "statements"
+  add_foreign_key "statement_argument_links", "statements", column: "argument_id"
   add_foreign_key "statements", "users"
   add_foreign_key "votes", "statements"
   add_foreign_key "votes", "users"

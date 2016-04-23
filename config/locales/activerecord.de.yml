@@ -10,9 +10,9 @@ de:
       statement:
         one: "Statement"
         other: "Statements"
-      link_to_argument:
-        one: "Link to argument"
-        other: "Links to argument"
+      statement_argument_link:
+        one: "Statement-Argument-Link"
+        other: "Statement-Argument-Links"
       user:
         one: "Benutzer"
         other: "Benutzer"

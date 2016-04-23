@@ -1,5 +1,5 @@
 FactoryGirl.define do
-  factory :link_to_argument do
+  factory :statement_argument_link do
     statement
     association :argument, factory: :statement
     is_pro_argument false

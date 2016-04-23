@@ -8,17 +8,17 @@ class Statement < ApplicationRecord
   belongs_to :user
   # Has many links to arguments (which are also objects of type Statement).
   # Is only used inside this class to help define has_many :arguments.
-  has_many :links_to_arguments, class_name: "LinkToArgument"
+  has_many :links_to_arguments, class_name: "StatementArgumentLink"
   # Has many links to statements.
   # Is only used inside this class to help define the scope :top_level, and the has_many
   # relation :statements.
-  has_many :links_to_statements, class_name: "LinkToArgument", foreign_key: "argument_id"
+  has_many :links_to_statements, class_name: "StatementArgumentLink", foreign_key: "argument_id"
   # Has many links to PRO arguments.
   # Is only used inside this class to help define has_many :pro_arguments.
-  has_many :links_to_pro_arguments, -> { where(is_pro_argument: true) }, class_name: "LinkToArgument"
+  has_many :links_to_pro_arguments, -> { where(is_pro_argument: true) }, class_name: "StatementArgumentLink"
   # Has many links to CONTRA arguments.
   # Is only used inside this class to help define has_many :contra_arguments.
-  has_many :links_to_contra_arguments, -> { where(is_pro_argument: false) }, class_name: "LinkToArgument"
+  has_many :links_to_contra_arguments, -> { where(is_pro_argument: false) }, class_name: "StatementArgumentLink"
   # Has many arguments (also objects of type Statement).
   has_many :arguments, through: :links_to_arguments
   # Has many pro arguments.
@@ -42,12 +42,12 @@ class Statement < ApplicationRecord
   # In the future, a 'popularity score' value should be determined using creation date AND
   # total number of votes. Then simply order descending by this score.
   scope :top_level, -> {
-    includes(:links_to_statements).where(link_to_arguments: {argument_id: nil}).order(created_at: :desc)
+    includes(:links_to_statements).where(statement_argument_links: {argument_id: nil}).order(created_at: :desc)
   }
 
   # Returns all statements that have no arguments.
   scope :ground_level, -> {
-    includes(:links_to_arguments).where(link_to_arguments: {statement_id: nil})
+    includes(:links_to_arguments).where(statement_argument_links: {statement_id: nil})
   }
 
   validates :body, presence: true, length: { in: 2..260 }
