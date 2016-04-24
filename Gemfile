@@ -38,7 +38,7 @@ gem 'devise', '~> 4.0'
 gem 'will_paginate', '~> 3.1'
 
 # Use Kazus for a convenient logging method
-gem "kazus", :path => "../_gems/kazus"
+gem 'kazus', git: 'git://github.com/esBeee/kazus.git'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

@@ -1,5 +1,6 @@
-PATH
-  remote: ../_gems/kazus
+GIT
+  remote: git://github.com/esBeee/kazus.git
+  revision: 4cc732f16ac16ec5506cea9a84871aedf08ae502
   specs:
     kazus (0.1.0)
 
