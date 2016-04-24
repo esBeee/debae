@@ -40,6 +40,9 @@ gem 'will_paginate', '~> 3.1'
 # Use Kazus for a convenient logging method
 gem 'kazus', git: 'git://github.com/esBeee/kazus.git'
 
+# Add some basic translations
+gem 'rails-i18n', '~> 5.0.0.beta3'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'

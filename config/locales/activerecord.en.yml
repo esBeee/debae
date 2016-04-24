@@ -6,22 +6,6 @@
 
 en:
   activerecord:
-    models:
-      statement:
-        one: "Statement"
-        other: "Statements"
-      statement_argument_link:
-        one: "Statement-Argument-Link"
-        other: "Statement-Argument-Links"
-      user:
-        one: "User"
-        other: "Users"
-      vote:
-        one: "Vote"
-        other: "Votes"
-    attributes:
-      statement:
-        body: "body"
     errors:
       messages:
         statement_eq_argument: "can't be its own argument"

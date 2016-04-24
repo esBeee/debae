@@ -6,22 +6,6 @@
 
 de:
   activerecord:
-    models:
-      statement:
-        one: "Statement"
-        other: "Statements"
-      statement_argument_link:
-        one: "Statement-Argument-Link"
-        other: "Statement-Argument-Links"
-      user:
-        one: "Benutzer"
-        other: "Benutzer"
-      vote:
-        one: "Stimme"
-        other: "Stimmen"
-    attributes:
-      statement:
-        body: "Inhalt"
     errors:
       messages:
         statement_eq_argument: "kann nicht mit sich selbst argumentiert werden"
