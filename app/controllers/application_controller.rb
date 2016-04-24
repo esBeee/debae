@@ -46,6 +46,6 @@ class ApplicationController < ActionController::Base
   # Until a better solution is found, trigger an update of all
   # statements scores in after_actions of certain controller actions.
   def demand_statements_score_update
-    RecalculateStatementScoresJob.perform_later
+    RecalculateStatementScoresJob.perform_now
   end
 end
