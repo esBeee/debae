@@ -12,6 +12,7 @@ class StatementArgumentLink < ApplicationRecord
   validates_uniqueness_of :statement, scope: :argument # Make sure a statement-argument-pair is unique
   validates :is_pro_argument, inclusion: { in: [true, false] } # Make sure it's a boolean
   validate :statement_differs_from_argument # Ensure the statement doesn't equal the argument
+  validate :no_simple_loop # Ensure that the statement is not declared as argument for the argument (2-statement-loop)
 
 
   private
@@ -21,6 +22,14 @@ class StatementArgumentLink < ApplicationRecord
     # If statement is not nil and equals the argument, add an error.
     if statement && statement == argument
       errors.add(:statement, I18n.t("activerecord.errors.messages.statement_eq_argument", default: "can't be its own argument"))
+    end
+  end
+
+  # Adds an error if the statement is declared as argument for the argument (2-statement-loop)
+  def no_simple_loop
+    if self.class.find_by(statement: argument, argument: statement)
+      errors.add(:statement, I18n.t("activerecord.errors.messages.statement_is_argument_for_argument",
+        default: "is already declared as argument for this argument."))
     end
   end
 end

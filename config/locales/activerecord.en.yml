@@ -25,3 +25,4 @@ en:
     errors:
       messages:
         statement_eq_argument: "can't be its own argument"
+        statement_is_argument_for_argument: "is already declared as argument for the argument"

@@ -54,5 +54,19 @@ RSpec.describe StatementArgumentLink, type: :model do
         expect(@link.errors.full_messages.first).to include(I18n.t("activerecord.errors.messages.statement_eq_argument"))
       end
     end
+
+    describe "when statement is already declared as argument for the argument (2-statement-loop)" do
+      before { FactoryGirl.create(:statement_argument_link, statement: @link.argument, argument: @link.statement) }
+
+      it "is not valid" do
+        expect(@link).not_to be_valid
+      end
+
+      it "adds an error message" do
+        @link.valid?
+        expect(@link.errors.full_messages).to eq ["Statement " + 
+          I18n.t("activerecord.errors.messages.statement_is_argument_for_argument")]
+      end
+    end
   end
 end

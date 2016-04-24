@@ -25,3 +25,4 @@ de:
     errors:
       messages:
         statement_eq_argument: "kann nicht mit sich selbst argumentiert werden"
+        statement_is_argument_for_argument: "ist bereits als Argument für das Argument deklariert"
