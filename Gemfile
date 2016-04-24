@@ -46,9 +46,6 @@ gem 'kazus', git: 'git://github.com/esBeee/kazus.git'
 # Add some basic translations
 gem 'rails-i18n', '~> 5.0.0.beta3'
 
-# Heroku dependency
-gem 'rails_12factor', '~> 0.0.3'
-
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
@@ -72,6 +69,11 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+end
+
+group :production do
+  # Heroku dependency
+  gem 'rails_12factor', '~> 0.0.3'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
