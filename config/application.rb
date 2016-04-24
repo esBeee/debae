@@ -21,5 +21,8 @@ module Debae
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
+
+    # Configure default url for mailers
+    config.action_mailer.default_url_options = { protocol: "https", host: "debae.herokuapp.com" }
   end
 end
