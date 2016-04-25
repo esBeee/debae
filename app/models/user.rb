@@ -11,6 +11,7 @@ class User < ApplicationRecord
 
   has_many :statements
   has_many :votes
+  has_many :comments
 
   # Overriding the devise default to make it use ActiveJob as
   # read here: https://github.com/plataformatec/devise#activejob-integration

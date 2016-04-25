@@ -43,7 +43,7 @@ RSpec.describe User, type: :model do
 
   # Test that the utilities for the associated objects are defined.
   describe "association utilities" do
-    # Make sure there's a getter for the user's statements.
+    # Make sure there's a getter/setter for the user's statements.
     describe "#statements" do
       let(:statement) { FactoryGirl.build_stubbed(:statement) }
 
@@ -60,7 +60,7 @@ RSpec.describe User, type: :model do
       end
     end
 
-    # Make sure there's a getter for the user's votes.
+    # Make sure there's a getter/setter for the user's votes.
     describe "#votes" do
       let(:vote) { FactoryGirl.build_stubbed(:vote) }
 
@@ -74,6 +74,23 @@ RSpec.describe User, type: :model do
 
         # Make sure only this one vote was delivered.
         expect(@user.votes.size).to eq 1
+      end
+    end
+
+    # Make sure there's a getter/setter for the user's comments.
+    describe "#comments" do
+      let(:comment) { FactoryGirl.build_stubbed(:comment) }
+
+      it "returns all associated statements" do
+        # Add comment to the user's comments.
+        # This implicitly tests the existence of a setter.
+        @user.comments << comment
+
+        # Now test that the getter delivers the comment.
+        expect(@user.comments).to include(comment)
+
+        # Make sure only this one comment was delivered.
+        expect(@user.comments.size).to eq 1
       end
     end
   end

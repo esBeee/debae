@@ -21,13 +21,8 @@ RSpec.describe Comment, type: :model do
         it { should_not be_valid }
       end
 
-      context "is too short (1 character)" do
+      context "is just long enough (1 character)" do
         before { @comment.body = "A" }
-        it { should_not be_valid }
-      end
-
-      context "is long enough (2 characters)" do
-        before { @comment.body = "AA" }
         it { should be_valid }
       end
 

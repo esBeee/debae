@@ -11,6 +11,7 @@ Rails.application.routes.draw do
 
   resources :statements, only: [:index, :show, :new, :create]
   resources :votes, only: [:destroy]
+  resources :comments, only: [:create]
 
   post '/statements/:statement_id/vote', to: 'votes#create', as: 'votes'
 end
