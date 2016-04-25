@@ -24,6 +24,10 @@ Things you may want to cover:
 
 ## TODOs
 
+### Logging on heroku
+
+It appears, that even with `log_level` set to `:warn` in `production.rb` and with the ENV variable `LOG_LEVEL` set to `WARN`, it still logs everything.
+
 ### Job queueing
 
 Right now, no job queueing adapter is installed. Instructing jobs to be performed later leads to
@@ -33,6 +37,8 @@ ActiveRecord::ConnectionTimeoutError (could not obtain a connection from the poo
 ```
 
 after a couple clicks.
+
+Both, defined jobs and emails sent by devise should be delayed.
 
 ### Refactor 'Score circle'
 
