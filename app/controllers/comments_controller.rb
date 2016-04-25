@@ -4,7 +4,7 @@ class CommentsController < ApplicationController
 
   # POST /comments
   def create
-    comment = current_user.comments.create(comment_params)
+    comment = current_user.comments.build(comment_params)
 
     # Comment can only be invalid if the body is blank
     # or exceeds 9999 characters. Either case will be

@@ -10,8 +10,6 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :statements, only: [:index, :show, :new, :create]
-  resources :votes, only: [:destroy]
+  resources :votes, only: [:create, :destroy]
   resources :comments, only: [:create]
-
-  post '/statements/:statement_id/vote', to: 'votes#create', as: 'votes'
 end

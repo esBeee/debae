@@ -1,0 +1,8 @@
+<% submit_value = is_pro_vote ? t("votes.buttons.vote_up", default: "Agree") : t("votes.buttons.vote_down", default: "Disagree") %>
+
+<%= form_for Vote.new(voteable: voteable, is_pro_vote: is_pro_vote) do |f| %>
+  <%= f.hidden_field :voteable_id %>
+  <%= f.hidden_field :voteable_type %>
+  <%= f.hidden_field :is_pro_vote %>
+  <%= submit_tag submit_value %>
+<% end %>

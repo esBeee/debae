@@ -4,25 +4,24 @@ class VotesController < ApplicationController
 
   # POST /statements/:statement_id/vote
   def create
-    # Get the statement from the DB.
-    statement = Statement.find_by(id: params[:statement_id])
-
-    # Return here if the statement could not be found.
-    return not_found unless statement
+    vote = current_user.votes.build(vote_params)
 
     # The user, whose existence is verified at this point by a before_action,
     # might already have voted for this statement. Looking that up.
-    new_vote = current_user.votes.find_by(voteable: statement)
+    existing_vote = current_user.votes.find_by(voteable: vote.voteable)
 
-    # Build a new vote for the current user if none exists yet.
-    new_vote = current_user.votes.build(voteable: statement) unless new_vote
+    # If already a vote for this user-voteable-pair exists,
+    # update that instead of (trying) creating a new one.
+    vote = existing_vote || vote
+
+    vote.assign_attributes(vote_params)
 
     # Currently, a vote can only be invalid for internal reasons.
-    unless new_vote.update(vote_params)
-      Kazus.log :fatal, "A Vote that is supposed to be created couldn't be saved.", new_vote, vote_params
+    unless vote.save
+      Kazus.log :fatal, "A Vote that is supposed to be created couldn't be saved.", vote, vote_params
     end
 
-    redirect_to statement
+    redirect_to vote.voteable
   end
 
   # DELETE /votes/:id
@@ -46,6 +45,6 @@ class VotesController < ApplicationController
   private
 
   def vote_params
-    params.require(:vote).permit(:is_pro_vote)
+    params.require(:vote).permit(:voteable_id, :voteable_type, :is_pro_vote)
   end
 end

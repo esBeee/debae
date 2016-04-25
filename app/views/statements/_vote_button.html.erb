@@ -1,12 +1,7 @@
 <% if existing_vote.nil? %>
-  <% submit_value = is_pro_vote ? t("votes.buttons.vote_up", default: "Agree") : t("votes.buttons.vote_down", default: "Disagree") %>
-  <%= form_tag votes_path(statement_id: statement.id) do %>
-    <%= hidden_field_tag "vote[is_pro_vote]", is_pro_vote %>
-    <%= submit_tag submit_value %>
-  <% end %>
+  <%# Render the create/update vote button if the user hasn't voted yet. %>
+  <%= render 'votes/create_or_update_button', voteable: statement, is_pro_vote: is_pro_vote %>
 <% else %>
-  <% submit_value = is_pro_vote ? t("votes.buttons.destroy_up_vote", default: "Withdraw agreement") : t("votes.buttons.destroy_down_vote", default: "Withdraw disagreement") %>
-  <%= form_tag vote_path(existing_vote), method: :delete do %>
-    <%= submit_tag submit_value %>
-  <% end %>
+  <%# Render the destroy vote button if the user has already voted. %>
+  <%= render 'votes/destroy_button', vote: existing_vote, is_pro_vote: is_pro_vote %>
 <% end %>

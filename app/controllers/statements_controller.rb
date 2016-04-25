@@ -1,6 +1,5 @@
 class StatementsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create]
-  after_action :demand_statements_score_update, only: [:create]
 
   # GET /statements or GET /
   def index

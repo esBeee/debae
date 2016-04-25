@@ -4,33 +4,21 @@ RSpec.describe VotesController, type: :controller do
 
   describe "POST #create" do
     let(:user) { FactoryGirl.create(:user) }
-    let(:statement) { FactoryGirl.create(:statement) }
+    let(:voteable) { FactoryGirl.create(:statement) }
 
-    def valid_request statement_id = "1"
-      post :create, params: {statement_id: statement_id, vote: {is_pro_vote: true}}
+    def valid_request
+      post :create, params: {vote: {is_pro_vote: true, voteable_id: voteable.id, voteable_type: voteable.class.to_s}}
     end
 
     context "when a user is signed in" do
       before { sign_in user }
 
-      context "when statement exists" do
-        before { valid_request statement.id }
+      context "when voteable is valid" do
+        before { valid_request }
 
-        it "redirects to the page of the statement" do
-          expect(response).to redirect_to(statement)
+        it "redirects to the page of the voteable" do
+          expect(response).to redirect_to(voteable)
         end
-      end
-
-      context "when statement doesn't exist" do
-        before do
-          # Make sure the statement doesn't exist anymore
-          # before requesting.
-          statement.destroy
-
-          valid_request statement.id
-        end
-
-        include_examples "Resource not found"
       end
     end
 
