@@ -1,0 +1,17 @@
+<header id="header-container">
+  <div class="logo-container logo">
+    <%= link_to "debae", root_path %>
+  </div>
+  <div class="links-container">
+    <div class="links-left">
+    </div>
+    <ul class="links-right">
+      <% unless user_signed_in? %>
+        <li><%= link_to t("layouts.header.links.sign_in", default: "Sign in"), new_user_session_path %></li>
+        <li><%= link_to t("layouts.header.links.sign_up", default: "Sign up"), new_user_registration_path %></li>
+      <% else %>
+        <li><%= link_to t("layouts.header.links.sign_out", default: "Sign out"), destroy_user_session_path, method: :delete %></li>
+      <% end %>
+    </ul>
+  </div>
+</header>

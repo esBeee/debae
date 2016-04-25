@@ -23,4 +23,12 @@ RSpec.describe "statements/show.html.erb", type: :view do
   it "displays the statements score" do
     expect(rendered).to have_content("35 %")
   end
+
+  it "displays headline for pro arguments" do
+    expect(rendered).to have_content(I18n.t("statements.show.headlines.pro_arguments"))
+  end
+
+  it "displays headline for contra arguments" do
+    expect(rendered).to have_content(I18n.t("statements.show.headlines.contra_arguments"))
+  end
 end

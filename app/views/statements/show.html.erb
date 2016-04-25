@@ -1,14 +1,22 @@
-<h1><%= @statement.body %></h1><%= t(".score_label") + " " + score(@statement.score) %>
-
-<div class="arguments pro">
-  <%= render @statement.pro_arguments %>
-  <%= link_to t(".links.new_pro_argument", default: "New pro argument"), new_statement_path(pro: @statement.id) %>
-</div>
-
-<div class="arguments contra">
-  <%= render @statement.contra_arguments %>
-  <%= link_to t(".links.new_contra_argument", default: "New contra argument"), new_statement_path(contra: @statement.id) %>
-</div>
+<h1><%= @statement.body %></h1>
 
 <%= render 'vote_button', statement: @statement, is_pro_vote: true, existing_vote: has_voted?(true, current_user, @statement) %>
 <%= render 'vote_button', statement: @statement, is_pro_vote: false, existing_vote: has_voted?(false, current_user, @statement) %>
+
+<%= render 'score_circle', id: @statement.id, score: @statement.score %>
+
+<article class="arguments-container">
+  <ul class="arguments pro">
+    <h3><%= t(".headlines.pro_arguments", default: "Pro arguments") %></h3>
+    <li><%= render @statement.pro_arguments %></li>
+    <li><%= link_to t(".links.new_pro_argument", default: "New pro argument"), new_statement_path(pro: @statement.id) %></li>
+  </ul>
+
+  <ul class="arguments contra">
+    <h3><%= t(".headlines.contra_arguments", default: "Contra arguments") %></h3>
+    <li><%= render @statement.contra_arguments %></li>
+    <li><%= link_to t(".links.new_contra_argument", default: "New contra argument"), new_statement_path(contra: @statement.id) %></li>
+  </ul>
+</article>
+
+<p>Merkels Entscheidung, die Ermächtigung für Ermittlungen gegen Jan Böhmermann nach §103 zu erteilen war falsch. One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin. He lay on his armour-like back, and if he lifted his head a little he could see his brown belly, slightly <i>domed and divided by arches</i> into stiff sections. The bedding was hardly able to cover it and seemed ready to slide off any moment. His many legs, pitifully thin compared with the size of the rest of him, waved about helplessly as he looked. One morning, when Gregor Samsa woke from troubled dreams, he found <b>himself transformed in his bed</b> into a horrible vermin. He lay on his armour-like back, and if he lifted his head a little he could see his brown belly, slightly domed and divided by arches into stiff sections. The bedding was hardly able to cover it and <span class="special">seemed ready to slide</span> off any moment. His many legs, pitifully thin compared with the size of the rest of him, waved about helplessly as he looked.</p>

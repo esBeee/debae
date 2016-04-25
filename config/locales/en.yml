@@ -29,6 +29,13 @@ en:
     next_label: "Next page"
     previous_label: "Previous page"
 
+  layouts:
+    header:
+      links:
+        sign_in: "Sign in"
+        sign_up: "Sign up"
+        sign_out: "Sign out"
+
   votes:
     buttons:
       vote_up: "Agree"
@@ -44,6 +51,10 @@ en:
       links:
         new_contra_argument: "New contra argument"
         new_pro_argument: "New pro argument"
+      score_label: "Score"
+      headlines:
+        pro_arguments: "Pro arguments"
+        contra_arguments: "Contra arguments"
     index:
       links:
         new_statement: "Add a new statement"

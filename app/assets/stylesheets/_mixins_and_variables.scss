@@ -1,0 +1,6 @@
+@mixin flex($direction) {
+  display: flex;
+  flex-direction: $direction;
+}
+
+$content-max-width: 1000px;

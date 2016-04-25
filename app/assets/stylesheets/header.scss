@@ -1,0 +1,43 @@
+@import "./_mixins_and_variables";
+
+#header-container {
+  text-align: left;
+  height: 70px;
+  // width: 100%;
+  // padding: 0px 20px;
+
+  @include flex(row);
+
+  margin-bottom: 30px;
+
+  .links-container {
+    flex: 1;
+    @include flex(row);
+    // justify-content: center;
+    align-items: center;
+
+    .links-left {
+      flex: 1;
+    }
+
+    .links-right {
+      min-width: 150px;
+      @include flex(row);
+      justify-content: flex-end;
+      // background-color: red;
+    }
+
+    li {
+      padding: 0px 10px;
+    }
+  }
+
+  .logo-container {
+    // background-color: blue;
+    padding: 0px 4px;
+
+    @include flex(column);
+
+    justify-content: center;
+  }
+}

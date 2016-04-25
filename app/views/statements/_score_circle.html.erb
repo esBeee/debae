@@ -1,0 +1,50 @@
+<% class_name = "score-circle-container-#{id}" %>
+
+<div class="score-circle-container <%= class_name %>">
+  <%= t(".score_label", default: "Score") + " " + score(score) %><%# In case JS is not supported. Gets removed if it is. %>
+</div>
+
+<script type="text/javascript">
+  // The CSS path to the container
+  var containerCSSPath = '.<%= class_name %>';
+
+  // Clean the containers inner html, to remove the non-JS version and in case
+  // there's already a circle loaded (happens when using the swipe-back function
+  // in chrome)
+  $(containerCSSPath).html('');
+
+  var targetScore = parseFloat('<%= score %>');
+  var redHEX = '#FF0022';
+  var greenHEX = '#00FF33';
+
+  // Select an appropriate color for the given score from a gradient
+  // from red to green. (0 is red, 100 is green, 50 is yellow,...)
+  var gradient = tinygradient(redHEX, greenHEX);
+  var color = targetScore || targetScore === 0 ? gradient.hsv(101)[parseInt(targetScore * 100)].toHexString() : '#aaa';
+
+  var bar = new ProgressBar.Circle(containerCSSPath, {
+    color: color,
+    strokeWidth: 10,
+    trailWidth: 3,
+    easing: 'easeOut',
+    duration: 1400,
+    // fill: "#B3B3B3",
+    text: {
+      autoStyleContainer: true,
+      value: '<%= score(score) %>'
+    },
+    from: { width: 1 },
+    to: { width: 7 },
+    // Set default step function for all animate calls
+    step: function(state, circle) {
+      circle.path.setAttribute('stroke-width', state.width);
+      var value = Math.round(circle.value() * 100);
+        circle.setText(value.toString() + " %");
+    }
+  });
+
+  // Start animation if a score is available
+  if (targetScore) {
+    bar.animate(targetScore);
+  }
+</script>

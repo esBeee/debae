@@ -1,0 +1,19 @@
+// This file contains styling for the basic layout.
+@import "./_mixins_and_variables";
+
+body {
+  text-align: center;
+  margin: 0;
+  @include flex(row);
+  justify-content: center;
+}
+
+// The container that limits the content to the left and right
+#main-container {
+  // background-color: yellow;
+  flex: 1;
+
+  max-width: $content-max-width;
+  // display: inline-block;
+  padding: 0px 10px;
+}

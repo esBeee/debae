@@ -48,4 +48,10 @@ class ApplicationController < ActionController::Base
   def demand_statements_score_update
     RecalculateStatementScoresJob.perform_now
   end
+
+  # Overriding a devise method that gets called after a user has signed out
+  # and should return the path, the user gets redirected now.
+  def after_sign_out_path_for resource_or_scope
+    :back
+  end
 end

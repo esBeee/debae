@@ -96,7 +96,7 @@ class Statement::Scoring
     # if not enough information is available.
     def argument_score statement
       # Return nil if no arguments exist.
-      return nil if statement.arguments.size == 0
+      return nil if statement.arguments.where.not(score: 0).size == 0
 
       # The formula to weight the scores of the arguments written in SQL.
       # Low scored arguments, like arguments with a score between 0 up to 0.5

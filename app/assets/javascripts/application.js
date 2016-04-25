@@ -13,4 +13,5 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+//= require vendor/ProgressBar.min.js
 //= require_tree .

@@ -53,6 +53,18 @@ RSpec.describe Statement::Scoring, type: :model do
 
         expect(Statement::Scoring.calculate_score(statement)).to eq 0.557663582872025
       end
+
+      it "returns nil if a contra argument with a score of 0.0 exists" do
+        argument = FactoryGirl.create(:statement, score: 0.0)
+        FactoryGirl.create(:statement_argument_link, :contra, statement: statement, argument: argument)
+        expect(Statement::Scoring.calculate_score(statement)).to eq nil
+      end
+
+      it "returns nil if a pro argument with a score of 0.0 exists" do
+        argument = FactoryGirl.create(:statement, score: 0.0)
+        FactoryGirl.create(:statement_argument_link, :pro, statement: statement, argument: argument)
+        expect(Statement::Scoring.calculate_score(statement)).to eq nil
+      end
     end
 
     context "when both, votes and arguments exist" do

@@ -1,3 +1,30 @@
-// Place all the styles related to the Statements controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+@import "./_mixins_and_variables";
+
+// Includes the 2 columns for pro and contra arguments on show-statement-pages.
+.arguments-container {
+  // background-color: red;
+  // @include flex(row);
+
+
+  .arguments {
+    // background-color: blue;
+    // flex: 1;
+    // min-width: 200px;
+    max-width: $content-max-width / 2 - 42px;
+    display: inline-block;
+    vertical-align: top;
+    padding: 0;
+    margin: 20px;
+
+    li {
+      // background-color: yellow;
+      padding: 0px;
+      margin: 10px 0px;
+    }
+
+    .argument {
+      // background-color: yellow;
+      margin: 10px 0;
+    }
+  }
+}
