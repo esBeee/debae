@@ -15,7 +15,7 @@ class CreateStatementArgumentLinks < ActiveRecord::Migration[5.0]
     # Add an index for argument_id
     add_index :statement_argument_links, :argument_id
 
-    # Add a foreign key for column argument_id
+    # Add a foreign key constraint for column argument_id
     add_foreign_key :statement_argument_links, :statements, column: :argument_id
   end
 end

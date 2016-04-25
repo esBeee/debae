@@ -11,10 +11,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160421025728) do
+ActiveRecord::Schema.define(version: 20160425152856) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "comments", force: :cascade do |t|
+    t.text     "body",               null: false
+    t.string   "commentable_type"
+    t.integer  "commentable_id"
+    t.integer  "user_id"
+    t.integer  "related_comment_id"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+  end
+
+  add_index "comments", ["commentable_type", "commentable_id"], name: "index_comments_on_commentable_type_and_commentable_id", using: :btree
+  add_index "comments", ["related_comment_id"], name: "index_comments_on_related_comment_id", using: :btree
+  add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
 
   create_table "statement_argument_links", force: :cascade do |t|
     t.integer  "statement_id"
@@ -77,6 +91,8 @@ ActiveRecord::Schema.define(version: 20160421025728) do
   add_index "votes", ["statement_id"], name: "index_votes_on_statement_id", using: :btree
   add_index "votes", ["user_id"], name: "index_votes_on_user_id", using: :btree
 
+  add_foreign_key "comments", "comments", column: "related_comment_id"
+  add_foreign_key "comments", "users"
   add_foreign_key "statement_argument_links", "statements"
   add_foreign_key "statement_argument_links", "statements", column: "argument_id"
   add_foreign_key "statements", "users"
