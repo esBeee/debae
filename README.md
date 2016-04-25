@@ -52,6 +52,10 @@ Redirect to the last visited resource-related page or root.
 
 Let's say, I'm on a public page other than root. If I sign out, I stay on that page, and that's good. But if I sign in right after, I get redirected to root. The method `ApplicationController#after_sign_out_path_for` has been overwritten and that might be important here.
 
+### Handle validation errors in comments#create
+
+Right now, it only logs an info message if a comment failed to save. But currently there's no reason for a comment to be invalid, expect it's blank or it length exceeds 99999 characters. Low priority.
+
 ## Conventions
 
 Don't use :scope in translations. Always write the path in the first argument of a translation. For example
