@@ -66,4 +66,21 @@ RSpec.feature "StatementShowVisitings", type: :feature do
       end
     end
   end
+
+  describe "comments" do
+    context "when comments for this statement exist" do
+      it "displays all comments" do
+        # Note! For the test it is important that the comments have pairwise distinct
+        # bodies. This is achieved by the sequential definition of the body attribute
+        # in the comment factory.
+        comments = FactoryGirl.create_list(:comment, 30, commentable: statement)
+
+        visit statement_path(statement)
+
+        comments.each do |comment|
+          expect(page).to have_content(comment.body)
+        end
+      end
+    end
+  end
 end

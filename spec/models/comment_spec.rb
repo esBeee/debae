@@ -51,4 +51,22 @@ RSpec.describe Comment, type: :model do
       end
     end
   end
+
+  # Test that the expected scopes exist. A scope in this context
+  # can also be a regular method whose task it is, to
+  # deliver a subset of comments.
+  describe "scopes" do
+    # Orders the collection by newest
+    describe "#newest" do
+      let!(:statement) { FactoryGirl.create(:statement) }
+      let!(:newest_comment) { FactoryGirl.create(:comment, commentable: statement) }
+      let!(:oldest_comment) { FactoryGirl.create(:comment, commentable: statement, created_at: Time.now - 3.days) }
+      let!(:middle_old_comment) { FactoryGirl.create(:comment, commentable: statement, created_at: Time.now - 1.day) }
+
+      it "returns all of the statement's comments ordered by newest first" do
+        expect(statement.comments.newest[0]).to eq newest_comment
+        expect(statement.comments.newest[1]).to eq middle_old_comment
+      end
+    end
+  end
 end

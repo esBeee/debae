@@ -207,12 +207,30 @@ RSpec.describe Statement, type: :model do
         FactoryGirl.create(:statement_argument_link, statement: @statement).argument
       end
 
-      it "returns all statements votes" do
+      it "returns all of the statement's votes" do
         # Test that the getter delivers the statement.
         expect(@statement.statements).to include statement
 
         # Make sure only this one statement was delivered.
         expect(@statement.statements.size).to eq 1
+      end
+    end
+
+    # #comments should return the comments of this statement.
+    describe "#comments" do
+      let!(:foreign_comment) { FactoryGirl.create(:comment) } # Test that this comment is not delievered
+      let(:comment) { FactoryGirl.build_stubbed(:comment) }
+
+      it "returns all of the statement's comments" do
+        # Add a comment to the statements comments. This implicitly
+        # tests that a setter is available.
+        @statement.comments << comment
+
+        # Test that the getter delivers the statement.
+        expect(@statement.comments).to include comment
+
+        # Make sure only this one statement was delivered.
+        expect(@statement.comments.size).to eq 1
       end
     end
   end
@@ -260,6 +278,18 @@ RSpec.describe Statement, type: :model do
 
         # Make sure no other statement gets delivered
         expect(Statement.ground_level.count).to eq 1
+      end
+    end
+
+    describe "#newest_comments" do
+      let!(:statement) { FactoryGirl.create(:statement) }
+      let!(:newest_comment) { FactoryGirl.create(:comment, commentable: statement) }
+      let!(:oldest_comment) { FactoryGirl.create(:comment, commentable: statement, created_at: Time.now - 3.days) }
+      let!(:middle_old_comment) { FactoryGirl.create(:comment, commentable: statement, created_at: Time.now - 1.day) }
+
+      it "returns all of the statement's comments ordered by newest first" do
+        expect(statement.newest_comments[0]).to eq newest_comment
+        expect(statement.newest_comments[1]).to eq middle_old_comment
       end
     end
   end

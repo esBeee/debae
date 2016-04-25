@@ -31,6 +31,8 @@ class Statement < ApplicationRecord
   has_many :contra_votes, -> { where(is_pro_vote: false) }, class_name: "Vote", as: :voteable
   # Has many statements. In this context, statements are all statements this statement is an argument for.
   has_many :statements, through: :links_to_statements
+  # Has many comments.
+  has_many :comments, as: :commentable
 
   # The method/scope #top_level should return a collection of statements ordered by
   # importance, which is currently only determined by the creation date - the
@@ -53,4 +55,11 @@ class Statement < ApplicationRecord
   validates :body, presence: true, length: { in: 2..260 }
   # Validate score the be within [0..1]. Also allow nil to indicate insufficient information.
   validates :score, numericality: { greater_than_or_equal_to: 0, less_than_or_equal_to: 1 }, allow_nil: true
+
+
+  # Simply returns the statement's comments ordered by
+  # newest first.
+  def newest_comments
+    comments.newest
+  end
 end

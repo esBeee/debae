@@ -4,4 +4,7 @@ class Comment < ApplicationRecord
   belongs_to :user
 
   validates :body, presence: true, length: { in: 1..9999 }
+
+  # Simply orders the collection by newest first.
+  scope :newest, -> { order(created_at: :desc) }
 end

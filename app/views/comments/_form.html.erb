@@ -1,8 +1,12 @@
-<%= form_for Comment.new(commentable: commentable) do |f| %>
-  <%= f.hidden_field :commentable_id %>
-  <%= f.hidden_field :commentable_type %>
+<% if user_signed_in? %>
+  <%= form_for Comment.new(commentable: commentable) do |f| %>
+    <%= f.hidden_field :commentable_id %>
+    <%= f.hidden_field :commentable_type %>
 
-  <%= f.text_field :body, placeholder: t("comments.placeholders.body", default: "Post a comment") %><br />
+    <%= f.text_field :body, placeholder: t("comments.placeholders.body", default: "Post a comment"), required: true %><br />
 
-  <%= f.submit t("comments.buttons.submit", default: "Submit") %>
+    <%= f.submit t("comments.buttons.submit", default: "Submit") %>
+  <% end %>
+<% else %>
+  <%= t("comments.sign_in_to_comment_html", link_to_sign_in: link_to(t("comments.links.sign_in", default: "Sign in"), new_user_session_path), default: "%{link_to_sign_in} to write comments") %>
 <% end %>

@@ -67,3 +67,7 @@ en:
       body: "Add a comment"
     buttons:
       submit: "Submit"
+    links:
+      sign_in: "Sign in"
+    # link_to_sign_in is a html link with the text you find under comments.links.sign_in
+    sign_in_to_comment_html: "%{link_to_sign_in} to comment this statement!"
