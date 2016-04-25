@@ -1,60 +1,107 @@
 require 'rails_helper'
 
 RSpec.shared_examples "A successful vote" do |up_or_down|
-  it "redirects back to the page of the voted statement" do
-    expect(page.current_path).to eq statement_path(statement)
+  it "redirects back to the page of the voted voteable" do
+    id = voteable.class == Statement ? voteable : voteable.statement
+    expect(page.current_path).to eq statement_path(id)
   end
 
-  it "creates an #{up_or_down}-vote for this statement-user-pair" do
-    expect(Vote.where(voteable: statement, user: user, is_pro_vote: up_or_down == "up").count).to eq 1
+  it "creates an #{up_or_down}-vote for this voteable-user-pair" do
+    expect(Vote.where(voteable: voteable, user: user, is_pro_vote: up_or_down == "up").count).to eq 1
   end
 
-  it "removes all other eventually existing votes for this statement-user-pair" do
-    # Test this by checking that there is only one vote for this statement-user-pair:
+  it "removes all other eventually existing votes for this voteable-user-pair" do
+    # Test this by checking that there is only one vote for this voteable-user-pair:
     # the just created one.
-    expect(Vote.where(voteable: statement, user: user).count).to eq 1
+    expect(Vote.where(voteable: voteable, user: user).count).to eq 1
   end
+end
+
+RSpec.shared_examples "A successful vote for a statement" do |up_or_down|
+  it_behaves_like "A successful vote", up_or_down
 
   it "disables the #{up_or_down}-vote-button" do
-    expect(page).not_to have_button I18n.t("votes.buttons.vote_#{up_or_down}")
+    expect(page).not_to have_button I18n.t("statements.show.buttons.vote_#{up_or_down}")
+  end
+end
+
+RSpec.shared_examples "A successful vote for an argument" do |up_or_down|
+  it_behaves_like "A successful vote", up_or_down
+
+  it "disables the #{up_or_down}-vote-button" do
+    expect(page).not_to have_button I18n.t("statement_argument_links.buttons.vote_#{up_or_down}")
   end
 end
 
 RSpec.feature "VoteCreations", type: :feature, session_helpers: true do
   let(:user) { FactoryGirl.create(:user) }
-  let(:statement) { FactoryGirl.create(:statement) }
-
+  
   # Sign in the user and navigate to the page of the
   # statement. Necessary for all cases.
   before do
     # Creations are only allowed for signed in users. So
     # signing in before.
     sign_in user
-
-    visit statement_path(statement)
   end
 
-  describe "clicking the up-vote-button" do
-    before { click_button I18n.t("votes.buttons.vote_up") }
+  context "voting for a statement" do
+    let(:voteable) { FactoryGirl.create(:statement) }
 
-    it_behaves_like "A successful vote", "up"
+    before { visit statement_path(voteable) }
 
-    describe "when clicking the down-vote-button afterwards" do
-      before { click_button I18n.t("votes.buttons.vote_down") }
+    describe "clicking the up-vote-button" do
+      before { click_button I18n.t("statements.show.buttons.vote_up") }
 
-      it_behaves_like "A successful vote", "down"
+      it_behaves_like "A successful vote for a statement", "up"
+
+      describe "when clicking the down-vote-button afterwards" do
+        before { click_button I18n.t("statements.show.buttons.vote_down") }
+
+        it_behaves_like "A successful vote for a statement", "down"
+      end
+    end
+
+    describe "clicking the down-vote-button" do
+      before { click_button I18n.t("statements.show.buttons.vote_down") }
+
+      it_behaves_like "A successful vote for a statement", "down"
+
+      describe "when clicking the up-vote-button afterwards" do
+        before { click_button I18n.t("statements.show.buttons.vote_up") }
+
+        it_behaves_like "A successful vote for a statement", "up"
+      end
     end
   end
 
-  describe "clicking the down-vote-button" do
-    before { click_button I18n.t("votes.buttons.vote_down") }
+  context "voting for an argument (or statement-argument-link, to be exact)" do
+    let(:voteable) { FactoryGirl.create(:statement_argument_link) }
+    let(:statement) { voteable.statement }
 
-    it_behaves_like "A successful vote", "down"
+    before { visit statement_path(statement) }
 
-    describe "when clicking the up-vote-button afterwards" do
-      before { click_button I18n.t("votes.buttons.vote_up") }
+    describe "clicking the up-vote-button" do
+      before { click_button I18n.t("statement_argument_links.buttons.vote_up") }
 
-      it_behaves_like "A successful vote", "up"
+      it_behaves_like "A successful vote for an argument", "up"
+
+      describe "when clicking the down-vote-button afterwards" do
+        before { click_button I18n.t("statement_argument_links.buttons.vote_down") }
+
+        it_behaves_like "A successful vote for an argument", "down"
+      end
+    end
+
+    describe "clicking the down-vote-button" do
+      before { click_button I18n.t("statement_argument_links.buttons.vote_down") }
+
+      it_behaves_like "A successful vote for an argument", "down"
+
+      describe "when clicking the up-vote-button afterwards" do
+        before { click_button I18n.t("statement_argument_links.buttons.vote_up") }
+
+        it_behaves_like "A successful vote for an argument", "up"
+      end
     end
   end
 end

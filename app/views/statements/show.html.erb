@@ -8,13 +8,13 @@
 <article class="arguments-container">
   <ul class="arguments pro">
     <h3><%= t(".headlines.pro_arguments", default: "Pro arguments") %></h3>
-    <li><%= render @statement.pro_arguments %></li>
+    <li><%= render 'statement_argument_links/list', statement_argument_links: @statement.links_to_pro_arguments %></li>
     <li><%= link_to t(".links.new_pro_argument", default: "New pro argument"), new_statement_path(pro: @statement.id) %></li>
   </ul>
 
   <ul class="arguments contra">
     <h3><%= t(".headlines.contra_arguments", default: "Contra arguments") %></h3>
-    <li><%= render @statement.contra_arguments %></li>
+    <li><%= render 'statement_argument_links/list', statement_argument_links: @statement.links_to_contra_arguments %></li>
     <li><%= link_to t(".links.new_contra_argument", default: "New contra argument"), new_statement_path(contra: @statement.id) %></li>
   </ul>
 </article>

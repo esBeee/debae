@@ -36,12 +36,12 @@ de:
         sign_up: "Registrieren"
         sign_out: "Ausloggen"
 
-  votes:
+  statement_argument_links:
     buttons:
-      vote_up: "Zustimmen"
-      vote_down: "Ablehnen"
-      destroy_up_vote: "Zustimmung zurückziehen"
-      destroy_down_vote: "Ablehnung zurückziehen"
+      vote_up: "Höher gewichten"
+      vote_down: "Niedriger gewichten"
+      destroy_upvote: "Gewichtung zurückziehen"
+      destroy_downvote: "Gewichtung zurückziehen"
 
   statements:
     new:
@@ -55,6 +55,11 @@ de:
       headlines:
         pro_arguments: "Pro-Argumente"
         contra_arguments: "Kontra-Argumente"
+      buttons:
+        vote_up: "Zustimmen"
+        vote_down: "Ablehnen"
+        destroy_upvote: "Zustimmung zurückziehen"
+        destroy_downvote: "Ablehnung zurückziehen"
     index:
       links:
         new_statement: "Füge ein Statement hinzu"

@@ -1,5 +1,3 @@
-<% submit_value = is_pro_vote ? t("votes.buttons.destroy_up_vote", default: "Withdraw agreement") : t("votes.buttons.destroy_down_vote", default: "Withdraw disagreement") %>
-
 <%= form_for vote, method: :delete do %>
   <%= submit_tag submit_value %>
 <% end %>

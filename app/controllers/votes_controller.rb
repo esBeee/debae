@@ -21,7 +21,7 @@ class VotesController < ApplicationController
       Kazus.log :fatal, "A Vote that is supposed to be created couldn't be saved.", vote, vote_params
     end
 
-    redirect_to vote.voteable
+    redirect_to statement_from(vote.voteable)
   end
 
   # DELETE /votes/:id
@@ -38,7 +38,7 @@ class VotesController < ApplicationController
     # Destroy the vote.
     vote.destroy
 
-    redirect_to vote.voteable
+    redirect_to statement_from(vote.voteable)
   end
 
 
@@ -46,5 +46,11 @@ class VotesController < ApplicationController
 
   def vote_params
     params.require(:vote).permit(:voteable_id, :voteable_type, :is_pro_vote)
+  end
+
+  # Returns voteable if voteable is a Statement or the to the 
+  # argument associated statement.
+  def statement_from voteable
+    voteable.class == Statement ? voteable : voteable.statement
   end
 end
