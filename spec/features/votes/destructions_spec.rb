@@ -12,7 +12,7 @@ end
 
 RSpec.feature "VoteDestructions", type: :feature, session_helpers: true do
   let(:user) { vote.user }
-  let(:statement) { vote.statement }
+  let(:statement) { vote.voteable }
 
   # Sign in the user and navigate to the page of the
   # statement. Necessary for all cases.

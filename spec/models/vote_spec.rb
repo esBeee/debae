@@ -28,17 +28,17 @@ RSpec.describe Vote, type: :model do
       end
     end
 
-    describe "when statement" do
+    describe "when voteable" do
       context "is not associated" do
-        before { @vote.statement = nil }
+        before { @vote.voteable = nil }
         it { should_not be_valid }
       end
     end
 
-    describe "when a statement-user-pair" do
+    describe "when a voteable-user-pair" do
       context "already exists" do
         before do
-          FactoryGirl.create(:vote, statement: @vote.statement, user: @vote.user)
+          FactoryGirl.create(:vote, voteable: @vote.voteable, user: @vote.user)
         end
         it { should_not be_valid }
       end

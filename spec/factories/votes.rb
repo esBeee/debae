@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :vote do
     user
-    statement
+    association :voteable, factory: :statement
     is_pro_vote true
 
     trait :up do

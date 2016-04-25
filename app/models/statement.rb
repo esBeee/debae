@@ -26,9 +26,9 @@ class Statement < ApplicationRecord
   # Has many contra arguments.
   has_many :contra_arguments, through: :links_to_contra_arguments, source: :argument
   # Has many pro votes.
-  has_many :pro_votes, -> { where(is_pro_vote: true) }, class_name: "Vote"
+  has_many :pro_votes, -> { where(is_pro_vote: true) }, class_name: "Vote", as: :voteable
   # Has many contra votes.
-  has_many :contra_votes, -> { where(is_pro_vote: false) }, class_name: "Vote"
+  has_many :contra_votes, -> { where(is_pro_vote: false) }, class_name: "Vote", as: :voteable
   # Has many statements. In this context, statements are all statements this statement is an argument for.
   has_many :statements, through: :links_to_statements
 

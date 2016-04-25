@@ -12,18 +12,18 @@ RSpec.describe Statement::Scoring, type: :model do
 
     context "when only votes exist" do
       it "returns 1 if only up-votes exist" do
-        FactoryGirl.create(:vote, :up, statement: statement)
+        FactoryGirl.create(:vote, :up, voteable: statement)
         expect(Statement::Scoring.calculate_score(statement)).to eq 1
       end
 
       it "returns 0 if only down-votes exist" do
-        FactoryGirl.create(:vote, :down, statement: statement)
+        FactoryGirl.create(:vote, :down, voteable: statement)
         expect(Statement::Scoring.calculate_score(statement)).to eq 0
       end
 
       it "returns 0.5 if an equally amount of down- and up-votes exist" do
-        FactoryGirl.create(:vote, :down, statement: statement)
-        FactoryGirl.create(:vote, :up, statement: statement)
+        FactoryGirl.create(:vote, :down, voteable: statement)
+        FactoryGirl.create(:vote, :up, voteable: statement)
         expect(Statement::Scoring.calculate_score(statement)).to eq 0.5
       end
     end
@@ -69,8 +69,8 @@ RSpec.describe Statement::Scoring, type: :model do
 
     context "when both, votes and arguments exist" do
       it "returns some number" do
-        43.times { FactoryGirl.create(:vote, :up, statement: statement) }
-        12.times { FactoryGirl.create(:vote, :down, statement: statement) }
+        43.times { FactoryGirl.create(:vote, :up, voteable: statement) }
+        12.times { FactoryGirl.create(:vote, :down, voteable: statement) }
 
         argument = FactoryGirl.create(:statement, score: 0.8)
         FactoryGirl.create(:statement_argument_link, :pro, statement: statement, argument: argument)
@@ -95,7 +95,7 @@ RSpec.describe Statement::Scoring, type: :model do
 
     context "when one statements exist" do
       let!(:statement) { FactoryGirl.create(:statement) }
-      let!(:vote) { FactoryGirl.create(:vote, :up, statement: statement) } # one vote should be enough for the score not to be nil
+      let!(:vote) { FactoryGirl.create(:vote, :up, voteable: statement) } # one vote should be enough for the score not to be nil
 
       before { Statement::Scoring.update_scores() }
 
@@ -133,7 +133,7 @@ RSpec.describe Statement::Scoring, type: :model do
       # Also, give the only ground statement a few votes. That should lead to every argument
       # except s_5 having a score.
       before do
-        FactoryGirl.create_list(:vote, 12, :up, statement: a)
+        FactoryGirl.create_list(:vote, 12, :up, voteable: a)
       end
 
       it "should fill in the score for all statements if sufficient information is available" do

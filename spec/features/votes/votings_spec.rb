@@ -6,13 +6,13 @@ RSpec.shared_examples "A successful vote" do |up_or_down|
   end
 
   it "creates an #{up_or_down}-vote for this statement-user-pair" do
-    expect(Vote.where(statement: statement, user: user, is_pro_vote: up_or_down == "up").count).to eq 1
+    expect(Vote.where(voteable: statement, user: user, is_pro_vote: up_or_down == "up").count).to eq 1
   end
 
   it "removes all other eventually existing votes for this statement-user-pair" do
     # Test this by checking that there is only one vote for this statement-user-pair:
     # the just created one.
-    expect(Vote.where(statement: statement, user: user).count).to eq 1
+    expect(Vote.where(voteable: statement, user: user).count).to eq 1
   end
 
   it "disables the #{up_or_down}-vote-button" do

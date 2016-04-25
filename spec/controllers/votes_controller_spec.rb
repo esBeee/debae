@@ -53,7 +53,7 @@ RSpec.describe VotesController, type: :controller do
 
       context "when user is owner of the vote" do
         let(:vote) { FactoryGirl.create(:vote, user: user) } # A vote by the signed in user
-        let(:statement) { vote.statement }
+        let(:statement) { vote.voteable }
 
         before { valid_request vote.id }
 

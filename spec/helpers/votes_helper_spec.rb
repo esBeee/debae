@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe VotesHelper, type: :helper do
   describe "#has_voted?" do
     let(:user) { vote.user }
-    let(:statement) { vote.statement }
+    let(:statement) { vote.voteable }
 
     context "when user has voted a statement up" do
       let(:vote) { FactoryGirl.create(:vote, :up) }

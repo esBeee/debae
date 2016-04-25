@@ -12,10 +12,10 @@ class VotesController < ApplicationController
 
     # The user, whose existence is verified at this point by a before_action,
     # might already have voted for this statement. Looking that up.
-    new_vote = current_user.votes.find_by(statement: statement)
+    new_vote = current_user.votes.find_by(voteable: statement)
 
     # Build a new vote for the current user if none exists yet.
-    new_vote = current_user.votes.build(statement: statement) unless new_vote
+    new_vote = current_user.votes.build(voteable: statement) unless new_vote
 
     # Currently, a vote can only be invalid for internal reasons.
     unless new_vote.update(vote_params)
@@ -39,7 +39,7 @@ class VotesController < ApplicationController
     # Destroy the vote.
     vote.destroy
 
-    redirect_to vote.statement
+    redirect_to vote.voteable
   end
 
 

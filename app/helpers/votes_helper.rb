@@ -17,6 +17,6 @@ module VotesHelper
       return
     end
     
-    user.votes.find_by(is_pro_vote: has_pro_voted, statement: statement)
+    user.votes.find_by(is_pro_vote: has_pro_voted, voteable: statement)
   end
 end

@@ -79,20 +79,20 @@ ActiveRecord::Schema.define(version: 20160425152856) do
 
   create_table "votes", force: :cascade do |t|
     t.integer  "user_id"
-    t.integer  "statement_id"
-    t.boolean  "is_pro_vote",  null: false
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.string   "voteable_type"
+    t.integer  "voteable_id"
+    t.boolean  "is_pro_vote",   null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
-  add_index "votes", ["statement_id", "user_id"], name: "index_votes_on_statement_id_and_user_id", unique: true, using: :btree
-  add_index "votes", ["statement_id"], name: "index_votes_on_statement_id", using: :btree
+  add_index "votes", ["user_id", "voteable_id", "voteable_type"], name: "index_votes_on_user_id_and_voteable_id_and_voteable_type", unique: true, using: :btree
   add_index "votes", ["user_id"], name: "index_votes_on_user_id", using: :btree
+  add_index "votes", ["voteable_type", "voteable_id"], name: "index_votes_on_voteable_type_and_voteable_id", using: :btree
 
   add_foreign_key "comments", "users"
   add_foreign_key "statement_argument_links", "statements"
   add_foreign_key "statement_argument_links", "statements", column: "argument_id"
   add_foreign_key "statements", "users"
-  add_foreign_key "votes", "statements"
   add_foreign_key "votes", "users"
 end
