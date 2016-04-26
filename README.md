@@ -56,6 +56,18 @@ Let's say, I'm on a public page other than root. If I sign out, I stay on that p
 
 Right now, it only logs an info message if a comment failed to save. But currently there's no reason for a comment to be invalid, expect it's blank or it length exceeds 99999 characters. Low priority.
 
+* Allow to attach an existing statement as an argument
+
+* Remember which statements were not created to back another statement as an argument
+
+* OAuth
+
+* account management pages
+
+* Install back-button
+
+* Include the information about up- and downvoted arguments in the score-formula
+
 ## Conventions
 
 Don't use :scope in translations. Always write the path in the first argument of a translation. For example

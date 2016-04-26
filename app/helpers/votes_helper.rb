@@ -12,9 +12,14 @@ module VotesHelper
   #
   # Returns the vote, if one exists, nil else.
   def has_voted? has_pro_voted, user, voteable
-    unless user && voteable
+    # If no user is signed in, just return nil.
+    return nil if user.nil?
+
+    # Couldn't imagine why the voteable would be nil here. But there's not much
+    # we can do if it is. Log the incident and return nil.
+    unless voteable
       Kazus.log :fatal, "[2kml4btj2] Unexpected condition.", has_pro_voted, user, voteable
-      return
+      return nil
     end
     
     user.votes.find_by(is_pro_vote: has_pro_voted, voteable: voteable)
