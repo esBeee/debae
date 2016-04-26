@@ -31,7 +31,7 @@ class Statement::Scoring
 
       # Log the duration
       duration = Time.now - strt # in seconds
-      log_level = duration > 1 ? :warn : :info
+      log_level = duration > 0.5 ? :warn : :info
 
       # 540 seconds are 9 minutes. Currently, I plan on running this function every 
       # 10 minutes in the background. So...

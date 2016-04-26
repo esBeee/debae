@@ -75,4 +75,4 @@ de:
     links:
       sign_in: "Logg' dich ein"
     # link_to_sign_in is a html link with the text you find under comments.links.sign_in
-    sign_in_to_comment_html: "%{link_to_sign_in} um dieses Statement zu kommentieren!"
+    sign_in_to_comment_html: "%{link_to_sign_in}, um dieses Statement zu kommentieren!"
