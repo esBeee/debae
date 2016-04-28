@@ -96,6 +96,8 @@ I18n.t("something.there.and.there", default: "There")
 
 * Devise model with corresponding attributes.
 
+* Attribute `email`: The users primary email address. Required, if a user signs up with email, but might be nil, if the user used OAuth.
+
 * Attribute `name`: The users name. May be a full name or a username or whatever, but can't be blank. Limited to 70 characters on database level. Can't be nil (on database level).
 
 * Attribute `avatar`: This is a virtual attribute, dependent on four database columns (`avatar_file_name`, `avatar_content_type`, `avatar_file_size`, `avatar_updated_at`). They are managed by the gem paperclip. Read the [docs](https://github.com/thoughtbot/paperclip) for usage information. It stores 4 sizes of each uploaded image: `:thumb`, `:square`, `:medium` and `:original`. They can be used in views like `image_tag @user.avatar.url(:original)`.

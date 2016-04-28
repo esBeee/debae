@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   root "statements#index"
 
   # Let devise take care of the routes for the user resource.
-  devise_for :users, controllers: { registrations: 'users/registrations' }
+  devise_for :users, controllers: { registrations: "users/registrations", omniauth_callbacks: "users/omniauth_callbacks" }
 
   resources :statements, only: [:index, :show, :new, :create]
   resources :votes, only: [:create, :destroy]
