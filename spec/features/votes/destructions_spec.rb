@@ -55,6 +55,11 @@ RSpec.feature "VoteDestructions", type: :feature, session_helpers: true do
   context "when voteable is an argument (statement-argument-link, to be exact)" do
     let(:voteable) { FactoryGirl.create(:statement_argument_link) }
 
+    def destroy_vote_button_css up_or_down
+      title = I18n.t("statement_argument_links.buttons.destroy_#{up_or_down}vote")
+      "button[title='#{title}']"
+    end
+
     context "when an up-vote exists" do
       let!(:vote) { FactoryGirl.create(:vote, :up, voteable: voteable) } # Make sure vote was created before tests start with '!'
 
@@ -62,7 +67,7 @@ RSpec.feature "VoteDestructions", type: :feature, session_helpers: true do
         visit statement_path(voteable.statement)
 
         # Click destroy button
-        click_button I18n.t("statement_argument_links.buttons.destroy_upvote")
+        find(destroy_vote_button_css("up")).click
       end
 
       it_behaves_like "A successful destruction"
@@ -75,7 +80,7 @@ RSpec.feature "VoteDestructions", type: :feature, session_helpers: true do
         visit statement_path(voteable.statement)
 
         # Click destroy button
-        click_button I18n.t("statement_argument_links.buttons.destroy_downvote")
+        find(destroy_vote_button_css("down")).click
       end
 
       it_behaves_like "A successful destruction"

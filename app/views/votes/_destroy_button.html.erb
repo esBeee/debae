@@ -1,5 +1,14 @@
+<% 
+  button_attributes = {
+    type: "submit",
+    class: "btn #{options[:css_class]}"
+  }
+
+  button_attributes[:title] = options[:title] if options[:title]
+%>
+
 <%= form_for vote, method: :delete do %>
-  <%= button_tag(type: "submit", class: "btn #{css_class}") do %>
+  <%= button_tag(button_attributes) do %>
     <%= submit_value %>
   <% end %>
 <% end %>
