@@ -43,7 +43,7 @@ gem 'devise', '~> 4.0'
 gem 'will_paginate', '~> 3.1'
 
 # Use Kazus for a convenient logging method
-gem 'kazus', path: "../_gems/kazus"#, git: 'git://github.com/esBeee/kazus.git'
+gem 'kazus', git: 'git://github.com/esBeee/kazus.git' # , path: "../_gems/kazus"
 
 # Add some basic translations
 gem 'rails-i18n', '~> 5.0.0.beta3'

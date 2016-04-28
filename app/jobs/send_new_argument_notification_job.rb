@@ -1,3 +1,6 @@
+# #perform gets called after a new argument was created. The class is responsible for checking
+# if the owner of the backed statement should receive a notification email and if, sends the
+# email.
 class SendNewArgumentNotificationJob < ApplicationJob
   queue_as :default
 

@@ -1,3 +1,4 @@
+# Recalculates the scores of ALL exisiting statements.
 class RecalculateStatementScoresJob < ApplicationJob
   queue_as :default
 
