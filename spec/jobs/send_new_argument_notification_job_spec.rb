@@ -1,9 +1,11 @@
 require 'rails_helper'
 
-RSpec.describe RecalculateStatementScoresJob, type: :job do
+RSpec.describe SendNewArgumentNotificationJob, type: :job do
   include ActiveJob::TestHelper
 
-  subject(:job) { described_class.perform_later() }
+  let(:link) { FactoryGirl.create(:statement_argument_link) }
+
+  subject(:job) { described_class.perform_later(link) }
 
   it "queues the job" do
     pending "Get this test to work when a queueing back-end is available"
@@ -15,7 +17,7 @@ RSpec.describe RecalculateStatementScoresJob, type: :job do
   end
 
   it "executes perform" do
-    expect(Statement::Scoring).to receive(:update_scores)
+    expect(StatementMailer).to receive(:new_argument_email)
     perform_enqueued_jobs { job }
   end
 

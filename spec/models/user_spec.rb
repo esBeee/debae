@@ -101,6 +101,12 @@ RSpec.describe User, type: :model do
     end
   end
 
+  describe "default values" do
+    it "defaults email_if_new_argument to true" do
+      expect(User.new.email_if_new_argument).to eq true
+    end
+  end
+
   # Test that the utilities for the associated objects are defined.
   describe "association utilities" do
     # Make sure there's a getter/setter for the user's statements.

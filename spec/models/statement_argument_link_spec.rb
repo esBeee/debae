@@ -76,10 +76,26 @@ RSpec.describe StatementArgumentLink, type: :model do
         let(:statement) { FactoryGirl.create(:statement) }
         let(:argument) { FactoryGirl.create(:statement) }
         let(:link) { FactoryGirl.build(:statement_argument_link, statement: statement, argument: argument) }
+        let(:receiver) { statement.user }
+
+        before do
+          # Make sure the receiver's setting allow to send an email by default.
+          receiver.email_if_new_argument = true
+          receiver.save!
+        end
 
         it "sends an email to the creator of the backed statement" do
           link.save!
-          expect(only_email_to).to eq [statement.user.email]
+          expect(only_email_to).to eq [receiver.email]
+        end
+
+        it "doesn't send an email if the creator of the backed statement doesn't want one" do
+          # Set the user's settings so he doesn't want an email.
+          receiver.email_if_new_argument = false
+          receiver.save!
+
+          link.save!
+          expect(deliveries.count).to eq 0
         end
 
         it "doesn't send an email if the creator of the argument equals the creator of the statement" do

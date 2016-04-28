@@ -96,20 +96,22 @@ I18n.t("something.there.and.there", default: "There")
 
 ## Models
 
-### Statements
+### User
 
-* Belongs to a `User`
-
-* Attribute `body`: Limited to 260 characters on database level. Can't be nil (on database level).
-
-* Attribute `score`: Holds a decimal number within (including) 0 and 1 that represents the strength of the `Statement`
-
-* Attribute `top_level`: A boolean remembering whether the statement was created as an argument for another statement (false) or not (true). Defaults to false.
-
-### Users
-
-* Devise model with corresponding attributes
+* Devise model with corresponding attributes.
 
 * Attribute `name`: The users name. May be a full name or a username or whatever, but can't be blank. Limited to 70 characters on database level. Can't be nil (on database level).
 
 * Attribute `avatar_url`: A url to the users avatar. Limited to 1000 characters on database level. May be nil.
+
+* Attribute `email_if_new_argument`: A boolean that is true if the user wants to receive email notifications each time a new argument was added to one of his statements, or false otherwise. Defaults to true.
+
+### Statement
+
+* Belongs to a `User`.
+
+* Attribute `body`: Limited to 260 characters on database level. Can't be nil (on database level).
+
+* Attribute `score`: Holds a decimal number within (including) 0 and 1, that represents the strength of the `Statement`.
+
+* Attribute `top_level`: A boolean remembering whether the statement was created as an argument for another statement (false) or not (true). Defaults to false.
