@@ -27,7 +27,7 @@ RSpec.feature "UserRegistrations", type: :feature do
     fill_in I18n.t("users.registrations.labels.email"), with: values[:email] || user[:email]
     fill_in I18n.t("users.registrations.labels.password"), with: values[:password] || user[:password]
     fill_in I18n.t("users.registrations.labels.password_confirmation"), with: values[:password_confirmation] || user[:password]
-    fill_in I18n.t("users.registrations.labels.name"), with: values[:name] || user[:name]
+    fill_in I18n.t("users.editings.labels.name"), with: values[:name] || user[:name]
   end
 
   context "with valid data" do

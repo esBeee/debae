@@ -23,6 +23,10 @@
 # https://github.com/rails/rails/blob/master/activesupport/lib/active_support/locale/en.yml
 
 de:
+  # Globally used links
+  links:
+    back: "Zurück"
+
   # Translations for the pagination links created
   # by gem will_paginate.
   will_paginate:
@@ -84,7 +88,26 @@ de:
         email: "Email"
         password: "Passwort"
         password_confirmation: "Wiederhole dein gewünschtes Passwort"
-        name: "Dein Name (wir bevorzugen deinen vollen Namen, aber du hast die freie Wahl)"
       buttons:
         submit: "Registrierung abschicken"
       minimum_password_length: "Mindestens %{minimum_password_length} Zeichen oder mehr"
+    editings:
+      labels:
+        email: "Email"
+        password: "Passwort"
+        password_confirmation: "Wiederhole dein gewünschtes Passwort"
+        name: "Dein Name"
+        current_password: "Aktuelles Passwort"
+        email_if_new_argument: "Informiere mich per Email über neue Argumente zu den von mir veröffentlichten Statements"
+      buttons:
+        submit: "Einstellungen speichern"
+        destroy_account: "Lösche meinen Account"
+      flashes:
+        edit_success: "Dein Eingaben wurden erfolgreich gespeichert"
+      minimum_password_length: "Mindestens %{minimum_password_length} Zeichen oder mehr"
+      may_leave_blank: "lasse das Feld einfach leer, falls du dein Passwort jetzt nicht ändern willst"
+      current_password_required: "dein aktuelles Passwort ist zum Schutz deines Accounts erforderlich, um Änderungen vorzunehmen"
+      cancel_account_header: "Account löschen"
+      why_delete_account: "Nicht zufrieden?"
+      confirm_delete_account: "Bist du sicher, dass du deinen Account entfernen möchtest? Deine gespeicherten Daten und Einstellungen werden in diesem Fall vollständig und unwiderruflich gelöscht. Deine beigetragenen Statements bleiben erhalten, werden jedoch anonymisiert."
+      about_name_attribute: "wir bevorzugen deinen vollen Namen, aber du hast die freie Wahl"
