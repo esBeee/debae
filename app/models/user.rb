@@ -105,7 +105,9 @@ class User < ApplicationRecord
     user
   end
 
-  def avatar_from_url url
+  # Takes a URL to an avatar image an returns a the image in a format
+  # paperclip can use to upload the image regularly.
+  def self.avatar_from_url url
     URI.parse(url)
   end
 end
