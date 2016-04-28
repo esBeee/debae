@@ -36,6 +36,6 @@ class StatementArgumentLink < ApplicationRecord
 
   # Sends an email to the owner of the statement unless he created the argument himself
   def inform_statement_owner_about_new_argument
-    StatementMailer.new_argument_email(self).deliver_now unless statement.user == argument.user
+    StatementMailer.new_argument_email(self).deliver_now unless statement.user_id == argument.user_id
   end
 end
