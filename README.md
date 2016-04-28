@@ -70,8 +70,6 @@ Right now, it only logs an info message if a comment failed to save. But current
 
 * Reflect the information about up- and downvoted arguments in the score-formula
 
-* Allow users to upload an avatar
-
 ## Conventions
 
 Don't use :scope in translations. Always write the path in the first argument of a translation. For example
