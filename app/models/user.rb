@@ -91,11 +91,12 @@ class User < ApplicationRecord
       user_attributes[:email] = email if email
       user_attributes[:name] = info[:name] if info[:name]
 
-      # If a url to an avatar is given, use it.
-      user.avatar = avatar_from_url(info[:image]) unless info[:image].blank?
-
       # Create the new user.
       user = User.new(user_attributes)
+
+      # If a url to an avatar is given, use it.
+      user.avatar = avatar_from_url(info[:image]) unless info[:image].blank?
+      
       unless user.save
         Kazus.log :warn, "User instance created by OAuth data is invalid", user: user
         user.save(validate: false)
