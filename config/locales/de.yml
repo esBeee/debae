@@ -60,6 +60,7 @@ de:
         vote_down: "Ablehnen"
         destroy_upvote: "Zustimmung zurückziehen"
         destroy_downvote: "Ablehnung zurückziehen"
+      stated_at: "Ausgesagt am %{date}"
     index:
       links:
         new_statement: "Füge ein Statement hinzu"

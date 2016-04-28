@@ -2,5 +2,7 @@
   <%= f.hidden_field :voteable_id %>
   <%= f.hidden_field :voteable_type %>
   <%= f.hidden_field :is_pro_vote %>
-  <%= submit_tag submit_value %>
+  <%= button_tag(type: "submit", class: "btn #{css_class}") do %>
+    <%= submit_value %>
+  <% end %>
 <% end %>

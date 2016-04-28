@@ -1,5 +1,7 @@
 @import "./_mixins_and_variables";
 
+$light_gray: #FAFAFA;
+
 // Includes the 2 columns for pro and contra arguments on show-statement-pages.
 .arguments-container {
   // background-color: red;
@@ -10,11 +12,14 @@
     // background-color: blue;
     // flex: 1;
     // min-width: 200px;
-    max-width: $content-max-width / 2 - 42px;
+    max-width: $content-max-width / 2 - 70px;
     display: inline-block;
     vertical-align: top;
-    padding: 0;
-    margin: 20px;
+    padding: 10px;
+    margin: 15px;
+    border-radius: 5px;
+    border: 1px solid #D6D6D6;
+    background-color: $light_gray;
 
     li {
       // background-color: yellow;
@@ -23,8 +28,106 @@
     }
 
     .argument {
-      // background-color: yellow;
+      border-radius: 5px;
+      border: 1px solid #D6D6D6;
+      background-color: white;
       margin: 10px 0;
+      padding: 5px 0px;
+      position: relative;
+      @include flex(row);
+      // justify-content: center;
+      align-items: center;
+
+      .actions {
+        width: 40px;
+        // background-color: red;
+
+        & > * {
+          margin: 5px 0px;
+        }
+      }
+
+      .statement-small {
+        flex: 1;
+        // background-color: blue;
+
+        .author {
+          @include flex(row);
+          align-items: center;
+          // background-color: red;
+          // padding: 3px 5px;
+
+          .avatar {
+            padding: 3px 5px;
+            img {
+              $image_side_length: 50px;
+              height: $image_side_length;
+              width: $image_side_length;
+              border-radius: $image_side_length / 2;
+            }
+          }
+
+          .name {
+            padding: 3px 5px;
+          }
+        }
+      }
+    }
+
+    &.pro {
+      // background-color: lighten($green, 48%);
+      border: 1px solid lighten($green, 40%);
+    }
+
+    &.contra {
+      // background-color: lighten($red, 49%);
+      border: 1px solid lighten($red, 43%);
+    }
+  }
+}
+
+.statement-head {
+  // background-color: blue;
+
+  @include flex(row);
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+
+  & > * {
+    margin: 0px 10px;
+  }
+}
+
+.statement-headline {
+  margin-bottom: 0;
+}
+
+.statement-author {
+  @include flex(row);
+  align-items: center;
+  justify-content: flex-end;
+
+
+  .body {
+    @include flex(row);
+    align-items: center;
+
+    font-size: 12px;
+    background-color: lighten($blue, 0%);
+    padding-top: 3px;
+    // border: 1px solid #D6D6D6;
+    border-radius: 2px;
+
+    img {
+      $image_side_length: 20px;
+      height: $image_side_length;
+      width: $image_side_length;
+      border-radius: $image_side_length / 2;
+    }
+
+    & > * {
+      margin: 0px 2px;
     }
   }
 }

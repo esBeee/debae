@@ -1,7 +1,17 @@
 <% argument = statement_argument_link.argument %>
 
 <div class="argument">
-  <%= render 'statement_argument_links/vote_button', link: statement_argument_link, is_pro_vote: true, existing_vote: has_voted?(true, current_user, statement_argument_link) %>
-  <%= render 'statement_argument_links/vote_button', link: statement_argument_link, is_pro_vote: false, existing_vote: has_voted?(false, current_user, statement_argument_link) %>
-  <%= link_to argument.body, statement_path(argument) %>
+  <% unless statement_argument_link.is_pro_argument %>
+    <%= render 'statement_argument_links/body', statement: argument %>
+  <% end %>
+  
+  <div class="actions">
+    <%= render 'statement_argument_links/vote_button', link: statement_argument_link, is_pro_vote: true, existing_vote: has_voted?(true, current_user, statement_argument_link) %>
+    <span><%= 5 %></span>
+    <%= render 'statement_argument_links/vote_button', link: statement_argument_link, is_pro_vote: false, existing_vote: has_voted?(false, current_user, statement_argument_link) %>
+  </div>
+
+  <% if statement_argument_link.is_pro_argument %>
+    <%= render 'statement_argument_links/body', statement: argument %>
+  <% end %>
 </div>

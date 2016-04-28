@@ -1,23 +1,51 @@
-<h1><%= @statement.body %></h1>
+<h1 class="statement-headline"><%= @statement.body %></h1>
 
-<%= render 'vote_button', statement: @statement, is_pro_vote: true, existing_vote: has_voted?(true, current_user, @statement) %>
-<%= render 'vote_button', statement: @statement, is_pro_vote: false, existing_vote: has_voted?(false, current_user, @statement) %>
+<section class="statement-author">
+  <div class="body">
+    <div class="avatar">
+      <%= image_tag("http://www.lovemarks.com/wp-content/uploads/avatars-uploaded/avatar-1001382-square.jpg?m=1447747942") %>
+    </div>
+    <div class="name">
+      <%= "Annika Nika" %>
+      <span class="secondary">
+        <%= t(".stated_at", default: "Stated at %{date}", date: l(@statement.created_at)) %>
+      </span>
+    </div>
+  </div>
+</section>
 
-<%= render 'score_circle', id: @statement.id, score: @statement.score %>
+<section class="statement-head">
+  <%= render 'vote_button', statement: @statement, is_pro_vote: true, existing_vote: has_voted?(true, current_user, @statement) %>
+  <%= render 'score_circle', id: @statement.id, score: @statement.score %>
+  <%= render 'vote_button', statement: @statement, is_pro_vote: false, existing_vote: has_voted?(false, current_user, @statement) %>
+</section>
 
-<article class="arguments-container">
+
+<section class="arguments-container">
   <ul class="arguments pro">
     <h3><%= t(".headlines.pro_arguments", default: "Pro arguments") %></h3>
     <li><%= render 'statement_argument_links/list', statement_argument_links: @statement.links_to_pro_arguments %></li>
-    <li><%= link_to t(".links.new_pro_argument", default: "New pro argument"), new_statement_path(pro: @statement.id) %></li>
+    <li>
+      <%= link_to new_statement_path(pro: @statement.id) do %>
+        <%= fa_icon("plus-square") %>
+        <%= t(".links.new_pro_argument", default: "New pro argument") %>
+      <% end %>
+    </li>
   </ul>
 
   <ul class="arguments contra">
     <h3><%= t(".headlines.contra_arguments", default: "Contra arguments") %></h3>
     <li><%= render 'statement_argument_links/list', statement_argument_links: @statement.links_to_contra_arguments %></li>
-    <li><%= link_to t(".links.new_contra_argument", default: "New contra argument"), new_statement_path(contra: @statement.id) %></li>
+    <li>
+      <%= link_to new_statement_path(contra: @statement.id) do %>
+        <%= fa_icon("plus-square") %>
+        <%= t(".links.new_contra_argument", default: "New contra argument") %>
+      <% end %>
+    </li>
   </ul>
-</article>
+</section>
 
-<%= render 'comments/form', commentable: @statement %>
-<%= render 'comments/list', comments: @statement.newest_comments %>
+<section>
+  <%= render 'comments/form', commentable: @statement %>
+  <%= render 'comments/list', comments: @statement.newest_comments %>
+</section>

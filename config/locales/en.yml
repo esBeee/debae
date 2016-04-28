@@ -55,6 +55,7 @@ en:
       headlines:
         pro_arguments: "Pro arguments"
         contra_arguments: "Contra arguments"
+      stated_at: "Stated at %{date}"
     index:
       links:
         new_statement: "Add a new statement"
