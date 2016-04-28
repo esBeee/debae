@@ -1,6 +1,6 @@
 <h2>Edit <%= resource_name.to_s.humanize %></h2>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), multipart: true, html: { method: :put }) do |f| %>
   <%= devise_error_messages! %>
 
   <div class="field">
@@ -15,6 +15,16 @@
   <div class="field">
     <%= f.label :name, t("users.editings.labels.name", default: "Name") %> <i>(<%= t("users.editings.about_name_attribute", default: "we prefer your real name, but you are free to choose whatever you want") %>)</i><br />
     <%= f.text_field :name %>
+  </div>
+
+  <div>
+    Current avatar:
+    <%= image_tag resource.avatar.url(:thumb) %><br>
+  </div>
+
+  <div class="field">
+    <%= f.label :avatar %>
+    <%= f.file_field :avatar %>
   </div>
 
   <div class="field">

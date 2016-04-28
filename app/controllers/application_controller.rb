@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
   # Permit additional attributes for user registrations and account updates.
   # This follows the isntructions of the devise gem readme.
   def configure_permitted_parameters
-    added_attrs = [:name, :email_if_new_argument]
+    added_attrs = [:name, :email_if_new_argument, :avatar]
     devise_parameter_sanitizer.permit :sign_up, keys: added_attrs
     devise_parameter_sanitizer.permit :account_update, keys: added_attrs
   end

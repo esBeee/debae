@@ -22,6 +22,12 @@ Things you may want to cover:
 
 * Deployment instructions
 
+## Dependencies
+
+### ImageMagick
+
+File upload is handeled by the [Paperclip](https://github.com/thoughtbot/paperclip) gem, which depends on [ImageMagick](http://www.imagemagick.org/script/index.php). If you're on a mac, simply run `brew install imagemagick`.
+
 ## TODOs
 
 ### Logging on heroku
@@ -94,7 +100,7 @@ I18n.t("something.there.and.there", default: "There")
 
 * Attribute `name`: The users name. May be a full name or a username or whatever, but can't be blank. Limited to 70 characters on database level. Can't be nil (on database level).
 
-* Attribute `avatar_url`: A url to the users avatar. Limited to 1000 characters on database level. May be nil.
+* Attribute `avatar`: This is a virtual attribute, dependent on four database columns (`avatar_file_name`, `avatar_content_type`, `avatar_file_size`, `avatar_updated_at`). They are managed by the gem paperclip. Read the [docs](https://github.com/thoughtbot/paperclip) for usage information. It stores 4 sizes of each uploaded image: `:thumb`, `:square`, `:medium` and `:original`. They can be used in views like `image_tag @user.avatar.url(:original)`.
 
 * Attribute `email_if_new_argument`: A boolean that is true if the user wants to receive email notifications each time a new argument was added to one of his statements, or false otherwise. Defaults to true.
 

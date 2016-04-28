@@ -66,39 +66,6 @@ RSpec.describe User, type: :model do
         it { should be_valid }
       end
     end
-
-    describe "when avatar_url" do
-      context "is nil" do
-        before { @user.avatar_url = nil }
-        it { should be_valid }
-      end
-
-      context "is too long (1001 characters)" do
-        before { @user.avatar_url = "a" * 1001 }
-        it { should_not be_valid }
-      end
-
-      context "is just short enough (1000 characters)" do
-        before { @user.avatar_url = "http://google.com/" + "a" * (1000 - 18) }
-        it { should be_valid }
-      end
-
-      %w(htt://google.com ttp://google.com hp://google.com http//google.com 
-        http:/google.com http:// http://google http:// google.).each do |invalid_url|
-          context "is #{invalid_url} (an invalid url)" do
-            before { @user.avatar_url = invalid_url }
-            it { should_not be_valid }
-          end
-      end
-
-      %w(http://google.com https://google.com https://de.amazon.sl/afinJN/jngkQjnjkgn/jnkfwf?locale=se 
-        http://www.google.museum).each do |valid_url|
-          context "is #{valid_url} (a valid url)" do
-            before { @user.avatar_url = valid_url }
-            it { should be_valid }
-          end
-      end
-    end
   end
 
   describe "default values" do

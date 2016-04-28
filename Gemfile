@@ -48,6 +48,14 @@ gem 'kazus', git: 'git://github.com/esBeee/kazus.git' # , path: "../_gems/kazus"
 # Add some basic translations
 gem 'rails-i18n', '~> 5.0.0.beta3'
 
+# The paperclip gem manages user avatars.
+# Using a version from git because of some error messages I received
+# while I didn't.
+gem 'paperclip', git: 'https://github.com/thoughtbot/paperclip', ref: '523bd46c768226893f23889079a7aa9c73b57d68'
+
+# Helper to store user avatars on S3
+gem 'aws-sdk', '~> 2.2', '>= 2.2.37'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
