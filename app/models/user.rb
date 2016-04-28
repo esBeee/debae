@@ -91,6 +91,9 @@ class User < ApplicationRecord
       user_attributes[:email] = email if email
       user_attributes[:name] = info[:name] if info[:name]
 
+      # If a url to an avatar is given, use it.
+      user.avatar = avatar_from_url(info[:image]) unless info[:image].blank?
+
       # Create the new user.
       user = User.new(user_attributes)
       unless user.save
@@ -100,5 +103,9 @@ class User < ApplicationRecord
     end
 
     user
+  end
+
+  def avatar_from_url url
+    URI.parse(url)
   end
 end
