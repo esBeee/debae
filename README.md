@@ -56,21 +56,15 @@ Let's say, I'm on a public page other than root. If I sign out, I stay on that p
 
 Right now, it only logs an info message if a comment failed to save. But currently there's no reason for a comment to be invalid, expect it's blank or it length exceeds 99999 characters. Low priority.
 
+* Store a comment to be created in session in case the user's session turns out to be expired. In this case, after sign in, the comment can be prefilled and be created then.
+
 * Allow to attach an existing statement as an argument
 
 * OAuth
 
-* account management pages
-
-* Install back-button
-
-* Include the information about up- and downvoted arguments in the score-formula
-
-* Allow users to choose a name
+* Reflect the information about up- and downvoted arguments in the score-formula
 
 * Allow users to upload an avatar
-
-* Allow users to update his settings
 
 ## Conventions
 
