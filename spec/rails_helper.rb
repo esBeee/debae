@@ -7,6 +7,7 @@ require 'spec_helper'
 require 'rspec/rails'
 # Add additional requires below this line. Rails is not loaded until this point!
 require 'support/session_helpers'
+require 'support/mailer_helpers'
 require 'support/shared_examples/controllers'
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
@@ -64,6 +65,14 @@ RSpec.configure do |config|
   # Provide user authentication helpers for all specs with "session_helpers: true".
   config.include SessionHelpers, session_helpers: true
 
+  # Provide mailer helpers for all specs with "mailer_helpers: true".
+  config.include MailerHelpers, mailer_helpers: true
+
   # Provide shared examples for controller specs.
   config.include SharedExamples::Controllers, type: :controller
+
+  config.before(:example, mailer_helpers: true) do
+    # reset delivered emails
+    reset_email
+  end
 end

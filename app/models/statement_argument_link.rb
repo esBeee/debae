@@ -14,6 +14,7 @@ class StatementArgumentLink < ApplicationRecord
   validate :statement_differs_from_argument # Ensure the statement doesn't equal the argument
   validate :no_simple_loop # Ensure that the statement is not declared as argument for the argument (2-statement-loop)
 
+  after_create :inform_statement_owner_about_new_argument
 
   private
 
@@ -31,5 +32,10 @@ class StatementArgumentLink < ApplicationRecord
       errors.add(:statement, I18n.t("activerecord.errors.messages.statement_is_argument_for_argument",
         default: "is already declared as argument for this argument."))
     end
+  end
+
+  # Sends an email to the owner of the statement unless he created the argument himself
+  def inform_statement_owner_about_new_argument
+    StatementMailer.new_argument_email(self).deliver_now unless statement.user == argument.user
   end
 end

@@ -1,0 +1,12 @@
+<div>
+  <%= t("mailers.statements.new_argument_email.headline.html", default: "There's a new argument regarding your statement %{statement}", statement: link_to(@statement.body, statement_url(@statement))) %>.
+</div>
+<div>
+  <%= t("mailers.statements.new_argument_email.new_#{@pro_or_con}_argument", default: "New #{@pro_or_con} argument") %>:
+</div>
+<div>
+  <h3><%= @argument.body %></h3>
+</div>
+<div>
+  <%= t("mailers.statements.new_argument_email.links.go_to.html", default: "Go to %{statement}", statement: link_to(t("mailers.statements.new_argument_email.links.your_statement", default: "your statement"), statement_url(@statement))) %>.
+</div>

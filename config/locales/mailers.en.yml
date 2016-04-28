@@ -1,0 +1,17 @@
+# Translations used in the mailers
+
+en:
+  mailers:
+    statements:
+      new_argument_email:
+        subject: "There's a new argument for one of your statements!"
+        headline:
+          html: "There's a new argument regarding your statement %{statement}"
+          text: "There's a new argument regarding your statement %{statement}"
+        new_pro_argument: "New pro argument"
+        new_contra_argument: "New contra argument"
+        links:
+          your_statement: "your statement"
+          go_to:
+            html: "Go to %{statement}" # The above translation for links.statement will get inserted as a link here
+            text: "Go to your statement"

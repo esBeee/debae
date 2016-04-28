@@ -69,4 +69,41 @@ RSpec.describe StatementArgumentLink, type: :model do
       end
     end
   end
+
+  describe "callbacks" do
+    describe "on create" do
+      describe "new-argument-email", mailer_helpers: true do
+        let(:statement) { FactoryGirl.create(:statement) }
+        let(:argument) { FactoryGirl.create(:statement) }
+        let(:link) { FactoryGirl.build(:statement_argument_link, statement: statement, argument: argument) }
+
+        it "sends an email to the creator of the backed statement" do
+          link.save!
+          expect(only_email_to).to eq [statement.user.email]
+        end
+
+        it "doesn't send an email if the creator of the argument equals the creator of the statement" do
+          # Make sure the argument belongs to the user of the statement
+          argument.user_id = statement.user_id
+          argument.save!
+
+          link.save!
+          expect(deliveries.count).to eq 0
+        end
+
+        it "doesn't send an email on update" do
+          link.save!
+
+          # Reset emails
+          reset_email
+
+          # Update the link
+          link.created_at = Time.now
+          link.save!
+
+          expect(deliveries.count).to eq 0
+        end
+      end
+    end
+  end
 end

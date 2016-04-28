@@ -1,0 +1,6 @@
+<%= t("mailers.statements.new_argument_email.headline.text", default: "There's a new argument regarding your statement %{statement}", statement: "\"#{@statement.body}\"") %>.
+
+<%= t("mailers.statements.new_argument_email.new_#{@pro_or_con}_argument", default: "New #{@pro_or_con} argument") %>:
+<%= @argument.body %>
+
+<%= t("mailers.statements.new_argument_email.links.go_to.text", default: "Go to your statement") %>: <%= statement_url(@statement) %>
