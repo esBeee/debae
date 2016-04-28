@@ -16,7 +16,7 @@ RSpec.shared_examples "A successful user editing" do |insensitive_attributes_onl
   end
 
   it "stays on the settings page" do
-    expect(page.current_path).to eq root_path
+    expect(page.current_path).to eq edit_user_registration_path
   end
 
   it "displays flash success message" do

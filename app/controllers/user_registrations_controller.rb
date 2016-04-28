@@ -14,4 +14,8 @@ class UserRegistrationsController < Devise::RegistrationsController
       resource.update_with_password(params)
     end
   end
+
+  def after_update_path_for resource
+    edit_user_registration_path
+  end
 end
