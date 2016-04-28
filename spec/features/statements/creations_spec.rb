@@ -57,7 +57,7 @@ RSpec.feature "StatementCreations", type: :feature, session_helpers: true do
   end
 
   context "when statement is valid" do
-    context "when craeting as a top-level-statement" do
+    context "when creating as a top-level-statement" do
       before do
         visit new_statement_path
         fill_form_and_submit(new_statement_body)
@@ -67,6 +67,10 @@ RSpec.feature "StatementCreations", type: :feature, session_helpers: true do
 
       it "redirects to the new statement's page" do
         expect(page.current_path).to eq statement_path(statement)
+      end
+
+      it "sets the statement's :top_level attribute to true" do
+        expect(statement.top_level).to eq true
       end
     end
 
@@ -80,6 +84,10 @@ RSpec.feature "StatementCreations", type: :feature, session_helpers: true do
       end
 
       it_behaves_like "A successful argument creation", "pro"
+
+      it "sets the statement's :top_level attribute to false" do
+        expect(statement.top_level).to eq false
+      end
     end
 
     context "when creating as a contra argument" do
@@ -92,6 +100,10 @@ RSpec.feature "StatementCreations", type: :feature, session_helpers: true do
       end
 
       it_behaves_like "A successful argument creation", "contra"
+
+      it "sets the statement's :top_level attribute to false" do
+        expect(statement.top_level).to eq false
+      end
     end
   end
 
@@ -99,7 +111,7 @@ RSpec.feature "StatementCreations", type: :feature, session_helpers: true do
     # Choose an invalid statement body for this test.
     let(:invalid_statement_body) { " " }
 
-    context "when craeting as a top-level-statement" do
+    context "when creating as a top-level-statement" do
       before do
         visit new_statement_path
         fill_form_and_submit(invalid_statement_body)
@@ -119,6 +131,10 @@ RSpec.feature "StatementCreations", type: :feature, session_helpers: true do
 
         it "redirects to the new statement's page" do
           expect(page.current_path).to eq statement_path(statement)
+        end
+
+        it "sets the statement's :top_level attribute to true" do
+          expect(statement.top_level).to eq true
         end
       end
     end
@@ -143,6 +159,10 @@ RSpec.feature "StatementCreations", type: :feature, session_helpers: true do
         end
 
         it_behaves_like "A successful argument creation", "pro"
+
+        it "sets the statement's :top_level attribute to false" do
+          expect(statement.top_level).to eq false
+        end
       end
     end
 
@@ -166,6 +186,10 @@ RSpec.feature "StatementCreations", type: :feature, session_helpers: true do
         end
 
         it_behaves_like "A successful argument creation", "contra"
+
+        it "sets the statement's :top_level attribute to false" do
+          expect(statement.top_level).to eq false
+        end
       end
     end
   end

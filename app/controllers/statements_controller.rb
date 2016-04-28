@@ -32,6 +32,10 @@ class StatementsController < ApplicationController
       if backed_statement_id
         redirect_to statement_path(backed_statement_id)
       else
+        # Set the statement's :top_level attribute true if this statement is not an argument.
+        unless @statement.update(top_level: true)
+          Kazus.log :fatal, "Statement's :top_level attribute should have been set true but failed to update.", statement: @statement
+        end
         redirect_to @statement
       end
     else

@@ -68,6 +68,8 @@ Right now, it only logs an info message if a comment failed to save. But current
 
 * Include the information about up- and downvoted arguments in the score-formula
 
+* Send Email to creator if there's a new argument for his statement
+
 ## Conventions
 
 Don't use :scope in translations. Always write the path in the first argument of a translation. For example
@@ -87,3 +89,15 @@ Also always hand default messages to translations:
 ```ruby
 I18n.t("something.there.and.there", default: "There")
 ```
+
+## Models
+
+### Statements
+
+* Belongs to a `User`
+
+* Attribute `body`: limited to 260 characters on database level
+
+* Attribute `score`: Holds a decimal number within (including) 0 and 1 that represents the strength of the `Statement`
+
+* Attribute `top_level`: A boolean remembering whether the statement was created as an argument for another statement (false) or not (true). Defaults to false.
