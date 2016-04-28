@@ -66,8 +66,6 @@ Right now, it only logs an info message if a comment failed to save. But current
 
 * Include the information about up- and downvoted arguments in the score-formula
 
-* Send Email to creator if there's a new argument for his statement
-
 * Allow users to choose a name
 
 * Allow users to upload an avatar

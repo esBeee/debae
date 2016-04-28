@@ -3,6 +3,21 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
+  # Call a function that permits additional attributes for user registrations and account
+  # updates, in case this is a devise controller.
+  before_action :configure_permitted_parameters, if: :devise_controller?
+
+
+  protected
+
+  # Permit additional attributes for user registrations and account updates.
+  # This follows the isntructions of the devise gem readme.
+  def configure_permitted_parameters
+    added_attrs = [:name]
+    devise_parameter_sanitizer.permit :sign_up, keys: added_attrs
+    devise_parameter_sanitizer.permit :account_update, keys: added_attrs
+  end
+
 
   private
   # If a requested resource is not found, this method gets called.

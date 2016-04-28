@@ -4,25 +4,30 @@
   <%= devise_error_messages! %>
 
   <div class="field">
-    <%= f.label :email %><br />
+    <%= f.label :email, t("users.registrations.labels.email", default: "Email") %><br />
     <%= f.email_field :email, autofocus: true %>
   </div>
 
   <div class="field">
-    <%= f.label :password %>
+    <%= f.label :name, t("users.registrations.labels.name", default: "Name") %><br />
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password, t("users.registrations.labels.password", default: "Password") %>
     <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <em>(<%= t("users.registrations.minimum_password_length", default: "%{minimum_password_length} characters minimum", minimum_password_length: @minimum_password_length) %>)</em>
     <% end %><br />
     <%= f.password_field :password, autocomplete: "off" %>
   </div>
 
   <div class="field">
-    <%= f.label :password_confirmation %><br />
+    <%= f.label :password_confirmation, t("users.registrations.labels.password_confirmation", default: "Password confirmation") %><br />
     <%= f.password_field :password_confirmation, autocomplete: "off" %>
   </div>
 
   <div class="actions">
-    <%= f.submit "Sign up" %>
+    <%= f.submit t("users.registrations.buttons.submit", default: "Sign up") %>
   </div>
 <% end %>
 

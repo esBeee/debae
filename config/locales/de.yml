@@ -77,3 +77,14 @@ de:
       sign_in: "Logg' dich ein"
     # link_to_sign_in is a html link with the text you find under comments.links.sign_in
     sign_in_to_comment_html: "%{link_to_sign_in}, um dieses Statement zu kommentieren!"
+
+  users:
+    registrations:
+      labels:
+        email: "Email"
+        password: "Passwort"
+        password_confirmation: "Wiederhole dein gewünschtes Passwort"
+        name: "Dein Name (wir bevorzugen deinen vollen Namen, aber du hast die freie Wahl)"
+      buttons:
+        submit: "Registrierung abschicken"
+      minimum_password_length: "Mindestens %{minimum_password_length} Zeichen oder mehr"
