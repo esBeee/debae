@@ -1,5 +1,5 @@
 # Overrides devise's registration controller for some individualizations.
-class UserRegistrationsController < Devise::RegistrationsController
+class Users::RegistrationsController < Devise::RegistrationsController
 
 
   protected
