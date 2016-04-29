@@ -7,6 +7,9 @@ class StatementMailer < ApplicationMailer
     @pro_or_con = statement_argument_link.is_pro_argument ? "pro" : "contra"
     receiver = statement_argument_link.statement.user
 
+    # Return if no email address to send the mail to is present.
+    return if receiver.email.nil?
+
     mail to: receiver.email,
       subject: I18n.t("mailers.statements.new_argument_email.subject",
         default: "There's a new argument for one of your statements!")
