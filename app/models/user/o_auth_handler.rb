@@ -35,8 +35,7 @@ class User::OAuthHandler
     # If no user was found, try to use the email address to match the user
     # to an existing account, if an email address exists.
     # Note: It's important that email is NOT NIL for this approach.
-    user = User.find_by(email: email) if user.nil? && !email.blank?
-    if user
+    if user.nil? && !email.blank? && (user=User.find_by(email: email))
       # If the user was matched by email, make sure provider and uid get saved
       # for this user and fill up other information.
       user_attributes = {}
