@@ -24,7 +24,7 @@ class User::OAuthHandler
     # throwing an exception.
     if info.nil?
       Kazus.log :warn, "The info hash on an incoming OAuth request is not present", auth_hash: auth
-      auth = {} # Make sure that no error gets thrown.
+      info = {} # Make sure that no error gets thrown.
     end
 
     email = info[:email] # might be nil
@@ -34,15 +34,22 @@ class User::OAuthHandler
 
     # If no user was found, try to use the email address to match the user
     # to an existing account, if an email address exists.
+    # Note: It's important that email is NOT NIL for this approach.
     user = User.find_by(email: email) if user.nil? && !email.blank?
     if user
       # If the user was matched by email, make sure provider and uid get saved
-      # for this user.
-      if user.provider.blank? || user.uid.blank?
-        unless user.update(provider: provider, uid: uid)
-          Kazus.log :warn, "[2k4l5mlqf] User invalid", user: user, auth_hash: auth
-          user.save(validate: false)
-        end
+      # for this user and fill up other information.
+      user_attributes = {}
+      user_attributes[:provider] = provider if user.provider.blank?
+      user_attributes[:uid] = uid if user.uid.blank?
+      if (urls=info[:urls])
+        user_attributes[:link_to_facebook] = urls[:Facebook] if urls[:Facebook] && user.link_to_facebook.blank?
+        user_attributes[:link_to_twitter] = urls[:Twitter] if urls[:Twitter] && user.link_to_twitter.blank?
+      end
+      
+      unless user.update(user_attributes)
+        Kazus.log :warn, "[2k4l5mlqf] User invalid", user: user, auth_hash: auth
+        user.save(validate: false)
       end
     end
 
