@@ -48,7 +48,7 @@ Both, defined jobs and emails sent by devise should be delayed.
 
 ### Refactor 'Score circle'
 
-Currently it makes use of 3 (!) libraries that lay in `assets/javascripts/vendor` (ProgressBar.js, TinyColor.js, TinyGradient.js). Maybe theses dependencies can be reduced.
+Currently it makes use of 3 (!) libraries that lay in `assets/javascripts/vendor` (ProgressBar.js, TinyColor.js, TinyGradient.js). Maybe these dependencies can be reduced.
 
 ### Redirect after sign in
 
@@ -65,8 +65,6 @@ Right now, it only logs an info message if a comment failed to save. But current
 * Store a comment to be created in session in case the user's session turns out to be expired. In this case, after sign in, the comment can be prefilled and be created then.
 
 * Allow to attach an existing statement as an argument
-
-* OAuth
 
 * Reflect the information about up- and downvoted arguments in the score-formula
 
