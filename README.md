@@ -62,6 +62,12 @@ Let's say, I'm on a public page other than root. If I sign out, I stay on that p
 
 Right now, it only logs an info message if a comment failed to save. But currently there's no reason for a comment to be invalid, expect it's blank or it length exceeds 99999 characters. Low priority.
 
+### OAuth
+
+If a user has signed in with facebook, then signs in with google (but both accounts with the same email address), the google uid is not saved. This might be changed by storing the user's uid and provider in a hash that takes several providers and uids.
+
+### Various
+
 * Store a comment to be created in session in case the user's session turns out to be expired. In this case, after sign in, the comment can be prefilled and be created then.
 
 * Allow to attach an existing statement as an argument
