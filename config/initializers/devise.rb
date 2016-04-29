@@ -248,7 +248,8 @@ Devise.setup do |config|
   config.omniauth :twitter, ENV["TWITTER_API_KEY"], ENV["TWITTER_API_SECRET"],
     image_size: "original", secure_image_url: true
   # google_oauth2 also requires the content of initializers/ominauth.rb being set.
-  config.omniauth :google_oauth2, ENV["GOOGLE_CLIENT_KEY"], ENV["GOOGLE_CLIENT_SECRET"]
+  config.omniauth :gplus, ENV["GOOGLE_CLIENT_KEY"], ENV["GOOGLE_CLIENT_SECRET"],
+    scope: 'userinfo.email, userinfo.profile'
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
