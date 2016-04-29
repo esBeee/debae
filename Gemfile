@@ -44,6 +44,9 @@ gem 'omniauth-facebook', '~> 3.0'
 # Provide OAuth with twitter
 gem 'omniauth-twitter', '~> 1.2', '>= 1.2.1'
 
+# Provide OAuth with google
+gem 'omniauth-google-oauth2', '~> 0.3.1'
+
 # Use the will_paginate gem for pagination. Provides the #page method
 # used in controllers for pagination
 gem 'will_paginate', '~> 3.1'
