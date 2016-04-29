@@ -5,7 +5,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     Kazus.log :info, "facebook OAuth callback called", auth_hash: request.env["omniauth.auth"]
 
     # Get a user object from the available OAuth data.
-    @user = User.from_omniauth(request.env["omniauth.auth"])
+    @user = User::OAuthHandler.from_omniauth(request.env["omniauth.auth"])
 
     # I expect the above method :from_omniauth to always return a
     # persisted user. Keeping the 'else' just in case.

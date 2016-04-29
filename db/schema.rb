@@ -79,9 +79,9 @@ ActiveRecord::Schema.define(version: 20160429094413) do
     t.datetime "avatar_updated_at"
     t.string   "provider"
     t.string   "uid"
-    t.string   "link_to_facebook",       limit: 100
-    t.string   "link_to_twitter",        limit: 100
-    t.string   "link_to_google_plus",    limit: 100
+    t.string   "link_to_facebook",       limit: 500
+    t.string   "link_to_twitter",        limit: 500
+    t.string   "link_to_google_plus",    limit: 500
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
