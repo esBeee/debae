@@ -25,6 +25,8 @@ class User < ApplicationRecord
   }
 
   validates :name, presence: true, length: { in: 2..70 }
+  validates :link_to_facebook, :link_to_google_plus, :link_to_twitter, allow_nil: true, length: { maximum: 1000 }, format: { with:
+    /\A(http|https):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,63}(:[0-9]{1,5})?(\/.*)?\z/ix , message: "is not a valid url" }
   # Validate the attached image (provided by the gem paperclip) is image/jpg, image/png, etc
   validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
 
@@ -96,7 +98,7 @@ class User < ApplicationRecord
 
       # If a url to an avatar is given, use it.
       user.avatar = avatar_from_url(info[:image]) unless info[:image].blank?
-      
+
       unless user.save
         Kazus.log :warn, "User instance created by OAuth data is invalid", user: user
         user.save(validate: false)

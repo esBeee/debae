@@ -104,6 +104,8 @@ I18n.t("something.there.and.there", default: "There")
 
 * Attribute `email_if_new_argument`: A boolean that is true if the user wants to receive email notifications each time a new argument was added to one of his statements, or false otherwise. Defaults to true.
 
+* Attributes `link_to_facebook`, `link_to_twitter`, `link_to_google_plus`: A string (limited to 100 characters on database level) containing the link to the user's social network page.
+
 ### Statement
 
 * Belongs to a `User`.

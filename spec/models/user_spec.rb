@@ -66,6 +66,105 @@ RSpec.describe User, type: :model do
         it { should be_valid }
       end
     end
+
+    describe "when link_to_facebook" do
+      context "is nil" do
+        before { @user.link_to_facebook = nil }
+        it { should be_valid }
+      end
+
+      context "is too long (101 characters)" do
+        before { @user.link_to_facebook = "a" * 101 }
+        it { should_not be_valid }
+      end
+
+      context "is just short enough (100 characters)" do
+        before { @user.link_to_facebook = "http://google.com/" + "a" * (100 - 18) }
+        it { should be_valid }
+      end
+
+      %w(htt://google.com ttp://google.com hp://google.com http//google.com 
+        http:/google.com http:// http://google http:// google.).each do |invalid_url|
+          context "is #{invalid_url} (an invalid url)" do
+            before { @user.link_to_facebook = invalid_url }
+            it { should_not be_valid }
+          end
+      end
+
+      %w(http://google.com https://google.com https://de.amazon.sl/afinJN/jngkQjnjkgn/jnkfwf?locale=se 
+        http://www.google.museum).each do |valid_url|
+          context "is #{valid_url} (a valid url)" do
+            before { @user.link_to_facebook = valid_url }
+            it { should be_valid }
+          end
+      end
+    end
+
+    describe "when link_to_google_plus" do
+      context "is nil" do
+        before { @user.link_to_google_plus = nil }
+        it { should be_valid }
+      end
+
+      context "is too long (101 characters)" do
+        before { @user.link_to_google_plus = "a" * 101 }
+        it { should_not be_valid }
+      end
+
+      context "is just short enough (100 characters)" do
+        before { @user.link_to_google_plus = "http://google.com/" + "a" * (100 - 18) }
+        it { should be_valid }
+      end
+
+      %w(htt://google.com ttp://google.com hp://google.com http//google.com 
+        http:/google.com http:// http://google http:// google.).each do |invalid_url|
+          context "is #{invalid_url} (an invalid url)" do
+            before { @user.link_to_google_plus = invalid_url }
+            it { should_not be_valid }
+          end
+      end
+
+      %w(http://google.com https://google.com https://de.amazon.sl/afinJN/jngkQjnjkgn/jnkfwf?locale=se 
+        http://www.google.museum).each do |valid_url|
+          context "is #{valid_url} (a valid url)" do
+            before { @user.link_to_google_plus = valid_url }
+            it { should be_valid }
+          end
+      end
+    end
+
+    describe "when link_to_twitter" do
+      context "is nil" do
+        before { @user.link_to_twitter = nil }
+        it { should be_valid }
+      end
+
+      context "is too long (101 characters)" do
+        before { @user.link_to_twitter = "a" * 101 }
+        it { should_not be_valid }
+      end
+
+      context "is just short enough (100 characters)" do
+        before { @user.link_to_twitter = "http://google.com/" + "a" * (100 - 18) }
+        it { should be_valid }
+      end
+
+      %w(htt://google.com ttp://google.com hp://google.com http//google.com 
+        http:/google.com http:// http://google http:// google.).each do |invalid_url|
+          context "is #{invalid_url} (an invalid url)" do
+            before { @user.link_to_twitter = invalid_url }
+            it { should_not be_valid }
+          end
+      end
+
+      %w(http://google.com https://google.com https://de.amazon.sl/afinJN/jngkQjnjkgn/jnkfwf?locale=se 
+        http://www.google.museum).each do |valid_url|
+          context "is #{valid_url} (a valid url)" do
+            before { @user.link_to_twitter = valid_url }
+            it { should be_valid }
+          end
+      end
+    end
   end
 
   describe "default values" do

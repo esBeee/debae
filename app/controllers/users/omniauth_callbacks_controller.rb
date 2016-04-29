@@ -1,4 +1,6 @@
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
+  # After a OAuth request, this function gets called with the auth information
+  # in request.env["omniauth.auth"].
   def facebook
     Kazus.log :info, "facebook OAuth callback called", auth_hash: request.env["omniauth.auth"]
 
