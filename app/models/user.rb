@@ -8,7 +8,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
          :confirmable, :lockable, :omniauthable,
-         omniauth_providers: [:facebook, :twitter, :gplus]
+         omniauth_providers: [:facebook, :twitter, :google_oauth2]
 
   has_many :statements
   has_many :votes

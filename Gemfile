@@ -5,7 +5,7 @@ source 'https://rubygems.org'
 ruby "2.3.0"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '>= 5.0.0.beta3', '< 5.1'
+gem 'rails', '>= 5.0.0.beta4', '< 5.1'
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 0.18'
 # Use Puma as the app server
@@ -45,7 +45,8 @@ gem 'omniauth-facebook', '~> 3.0'
 gem 'omniauth-twitter', '~> 1.2', '>= 1.2.1'
 
 # Provide OAuth with google
-gem 'omniauth-gplus', '~> 2.0', '>= 2.0.1'
+# gem 'omniauth-gplus', '~> 2.0', '>= 2.0.1'
+gem 'omniauth-google-oauth2', '~> 0.3.1'
 
 # Use the will_paginate gem for pagination. Provides the #page method
 # used in controllers for pagination
