@@ -70,6 +70,47 @@ RSpec.describe StatementArgumentLink, type: :model do
     end
   end
 
+  # Test that the utilities for the associated objects are defined.
+  describe "association utilities" do
+    # Test that the pro_votes getter is defined correctly.
+    describe "#pro_votes" do
+      let!(:pro_vote) do
+        FactoryGirl.create(:vote, :up, voteable: @link)
+      end
+      let!(:contra_vote) do
+        FactoryGirl.create(:vote, :down, voteable: @link)
+      end
+
+      it "returns all pro votes" do
+        # Test that the getter delivers the pro vote.
+        expect(@link.pro_votes).to include pro_vote
+
+        # Make sure only this one vote was delivered. (Implies that
+        # the contra vote wasn't)
+        expect(@link.pro_votes.size).to eq 1
+      end
+    end
+
+    # Test that the contra_votes getter is defined correctly.
+    describe "#contra_votes" do
+      let!(:pro_vote) do
+        FactoryGirl.create(:vote, :up, voteable: @link)
+      end
+      let!(:contra_vote) do
+        FactoryGirl.create(:vote, :down, voteable: @link)
+      end
+
+      it "returns all contra votes" do
+        # Test that the getter delivers the contra vote.
+        expect(@link.contra_votes).to include contra_vote
+
+        # Make sure only this one vote was delivered. (Implies that
+        # the pro vote wasn't)
+        expect(@link.contra_votes.size).to eq 1
+      end
+    end
+  end
+
   describe "callbacks" do
     describe "on create" do
       describe "new-argument-email", mailer_helpers: true do

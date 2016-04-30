@@ -9,6 +9,11 @@ class StatementArgumentLink < ApplicationRecord
   belongs_to :statement
   belongs_to :argument, class_name: "Statement" # In this app, arguments are statements themselves
 
+  # Has many pro votes.
+  has_many :pro_votes, -> { where(is_pro_vote: true) }, class_name: "Vote", as: :voteable
+  # Has many contra votes.
+  has_many :contra_votes, -> { where(is_pro_vote: false) }, class_name: "Vote", as: :voteable
+
   validates_uniqueness_of :statement, scope: :argument # Make sure a statement-argument-pair is unique
   validates :is_pro_argument, inclusion: { in: [true, false] } # Make sure it's a boolean
   validate :statement_differs_from_argument # Ensure the statement doesn't equal the argument
