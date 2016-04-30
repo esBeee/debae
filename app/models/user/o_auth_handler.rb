@@ -44,6 +44,7 @@ class User::OAuthHandler
       if (urls=info[:urls])
         user_attributes[:link_to_facebook] = urls[:Facebook] if urls[:Facebook] && user.link_to_facebook.blank?
         user_attributes[:link_to_twitter] = urls[:Twitter] if urls[:Twitter] && user.link_to_twitter.blank?
+        user_attributes[:link_to_google_plus] = urls[:Google] if urls[:Google] && user.link_to_google_plus.blank?
         user_attributes[:link_to_google_plus] = urls["Google+"] if urls["Google+"] && user.link_to_google_plus.blank?
       end
       
@@ -65,6 +66,7 @@ class User::OAuthHandler
       if (urls=info[:urls])
         user_attributes[:link_to_facebook] = urls[:Facebook] if urls[:Facebook]
         user_attributes[:link_to_twitter] = urls[:Twitter] if urls[:Twitter]
+        user_attributes[:link_to_google_plus] = urls[:Google] if urls[:Google]
         user_attributes[:link_to_google_plus] = urls["Google+"] if urls["Google+"]
       end
 
