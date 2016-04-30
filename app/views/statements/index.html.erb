@@ -1,3 +1,17 @@
-<%= render @statements %>
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>
+        Statement
+      </th>
+      <th>
+        Score
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= render @statements %>
+  </tbody>
+</table>
+
 <%= will_paginate @statements %>
-<%= link_to t(".links.new_statement"), new_statement_path %>

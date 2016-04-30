@@ -1,0 +1,39 @@
+@import "./_mixins_and_variables";
+
+.statement-argument-link {
+  @include flex(row);
+  align-items: center;
+
+  margin: 10px 0;
+
+  .actions {
+    @include flex(column);
+    align-items: center;
+
+    
+    width: 40px;
+  }
+
+  .body {
+    flex: 1;
+
+    position: relative; // Required to make the whole div a link. Learn more at .link-expander
+
+    padding: 5px;
+
+    // background-color: blue;
+  }
+
+  .score {
+    @include flex(column);
+    align-items: center;
+    justify-content: center;
+
+    // background-color: red;
+    // width: 80px;
+
+    .amount {
+      font-size: 20px;
+    }
+  }
+}

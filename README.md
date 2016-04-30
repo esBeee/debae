@@ -112,7 +112,7 @@ I18n.t("something.there.and.there", default: "There")
 
 ### Statement
 
-* Belongs to a `User`.
+* Belongs to a `User`. Might be nil if the user has deleted his account.
 
 * Attribute `body`: Limited to 260 characters on database level. Can't be nil (on database level).
 

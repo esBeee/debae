@@ -32,7 +32,7 @@ en:
   layouts:
     header:
       links:
-        sign_in: "Sign in"
+        sign_in: "Sign in with %{auth_type}"
         sign_up: "Sign up"
         sign_out: "Sign out"
 

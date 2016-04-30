@@ -62,4 +62,10 @@ class Statement < ApplicationRecord
   def newest_comments
     comments.newest
   end
+
+  # Returns this statement's user or a mock, if
+  # the user doesn't exist anymore.
+  def user_or_mock
+    self.user || User.new(name: "Deleted user")
+  end
 end

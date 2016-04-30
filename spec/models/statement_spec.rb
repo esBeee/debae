@@ -162,10 +162,10 @@ RSpec.describe Statement, type: :model do
     # Test that the pro_votes getter is defined correctly.
     describe "#pro_votes" do
       let!(:pro_vote) do
-        FactoryGirl.create(:vote, is_pro_vote: true, voteable: @statement)
+        FactoryGirl.create(:vote, :up, voteable: @statement)
       end
       let!(:contra_vote) do
-        FactoryGirl.create(:vote, is_pro_vote: false, voteable: @statement)
+        FactoryGirl.create(:vote, :down, voteable: @statement)
       end
 
       it "returns all pro votes" do
@@ -181,10 +181,10 @@ RSpec.describe Statement, type: :model do
     # Test that the contra_votes getter is defined correctly.
     describe "#contra_votes" do
       let!(:pro_vote) do
-        FactoryGirl.create(:vote, is_pro_vote: true, voteable: @statement)
+        FactoryGirl.create(:vote, :up, voteable: @statement)
       end
       let!(:contra_vote) do
-        FactoryGirl.create(:vote, is_pro_vote: false, voteable: @statement)
+        FactoryGirl.create(:vote, :down, voteable: @statement)
       end
 
       it "returns all contra votes" do

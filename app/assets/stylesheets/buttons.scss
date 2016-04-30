@@ -1,68 +1,68 @@
-@import "./_mixins_and_variables";
+// @import "./_mixins_and_variables";
 
-.btn {
-  // background-color: $blue;
-  // border: 0;
-  // font-size: 20px;
+// .btn {
+//   // background-color: $blue;
+//   // border: 0;
+//   // font-size: 20px;
 
-  &.vote {
-    background-color: Transparent;
-    border: 0;
-    font-size: 30px;
-    color: black;
+//   &.vote {
+//     background-color: Transparent;
+//     border: 0;
+//     font-size: 30px;
+//     color: black;
 
-    &.pressed {
-      $pressed_color: #CCCCCC;
-      color: $pressed_color;
+//     &.pressed {
+//       $pressed_color: #CCCCCC;
+//       color: $pressed_color;
 
-      &:hover {
-        color: darken($pressed_color, 30%);
-      }
-    }
+//       &:hover {
+//         color: darken($pressed_color, 30%);
+//       }
+//     }
 
-    &:hover {
-      color: lighten(#384347, 30%);
-    }
-  }
+//     &:hover {
+//       color: lighten(#384347, 30%);
+//     }
+//   }
 
-  &.aggreement-vote {
-    width: 130px;
-    height: 40px;
-    // background-color: yellow;
-    @include flex(row);
-    justify-content: center;
-    align-items: center;
+//   &.aggreement-vote {
+//     width: 130px;
+//     height: 40px;
+//     // background-color: yellow;
+//     @include flex(row);
+//     justify-content: center;
+//     align-items: center;
 
-    // font-weight: bold;
+//     // font-weight: bold;
 
-    i {
-      font-size: 20px;
-    }
+//     i {
+//       font-size: 20px;
+//     }
 
-    &.aggree {
-      // background-color: $green;
+//     &.aggree {
+//       // background-color: $green;
 
-      i {
-        color: $green;
-      }
+//       i {
+//         color: $green;
+//       }
 
-      &.pressed {
-        background-color: $anth;
-        border: none;
-      }
-    }
+//       &.pressed {
+//         background-color: $anth;
+//         border: none;
+//       }
+//     }
 
-    &.disaggree {
-      // background-color: ;
+//     &.disaggree {
+//       // background-color: ;
 
-      i {
-        color: $red;
-      }
+//       i {
+//         color: $red;
+//       }
 
-      &.pressed {
-        background-color: $anth;
-        border: none;
-      }
-    }
-  }
-}
+//       &.pressed {
+//         background-color: $anth;
+//         border: none;
+//       }
+//     }
+//   }
+// }

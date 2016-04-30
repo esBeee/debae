@@ -43,4 +43,16 @@ module StatementsHelper
     rounded = (decimal * 100).round
     return "#{rounded} " + t("statements.score.unit", default: "%")
   end
+
+  # Decides how big a headline will be depending on the length
+  # of the given string. Returns the <hi>-tag as symbol (e.g. :h1)
+  def headline_tag string
+    str_length = string.length
+
+    if str_length < 40
+      :h1
+    else
+      :h2
+    end 
+  end
 end

@@ -1,59 +1,35 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<h1><%= t("users.editings.headlines.edit_account") %></h1>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), multipart: true, html: { method: :put }) do |f| %>
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= devise_error_messages! %>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :email, t("users.editings.labels.email", default: "Email") %><br />
-    <%= f.email_field :email, autofocus: true %>
+    <%= f.email_field :email, autofocus: true, class: "form-control" %>
   </div>
 
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
     <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :name, t("users.editings.labels.name", default: "Name") %> <i>(<%= t("users.editings.about_name_attribute", default: "we prefer your real name, but you are free to choose whatever you want") %>)</i><br />
-    <%= f.text_field :name %>
-  </div>
-
-  <div>
-    Current avatar:
-    <%= image_tag resource.avatar.url(:thumb) %><br>
-  </div>
-
-  <div class="field">
-    <%= f.label :avatar %>
-    <%= f.file_field :avatar %>
-  </div>
-
-  <div class="field">
+  <div class="form-group">
     <%= f.label :password, t("users.editings.labels.password", default: "Password") %> <i>(<%= t("users.editings.may_leave_blank", default: "leave blank if you don't want to change it") %>)</i><br />
-    <%= f.password_field :password, autocomplete: "off" %>
+    <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :password_confirmation, t("users.editings.labels.password_confirmation", default: "Password confirmation") %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
+    <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control" %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :current_password, t("users.editings.labels.current_password", default: "Current password") %> <i>(<%= t("users.editings.current_password_required", default: "we need your current password to confirm your changes") %>)</i><br />
-    <%= f.password_field :current_password, autocomplete: "off" %>
+    <%= f.password_field :current_password, autocomplete: "off", class: "form-control" %>
   </div>
 
-  <div class="field">
-    <%= f.label :email_if_new_argument, t("users.editings.labels.email_if_new_argument", default: "Inform me about new arguments for my submitted statements") %><br />
-    <%= f.check_box :email_if_new_argument %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit t("users.editings.buttons.submit", default: "Save") %>
-  </div>
+  <%= f.submit t("users.editings.buttons.submit", default: "Save"), class: "btn btn-default" %>
 <% end %>
 
 <h3><%= t("users.editings.cancel_account_header", default: "Cancel my account") %></h3>
 
-<p><%= t("users.editings.why_delete_account", default: "Unhappy?") %> <%= button_to t("users.editings.buttons.destroy_account", default: "Cancel my account"), registration_path(resource_name), data: { confirm: t("users.editings.confirm_delete_account", default: "Are you sure?") }, method: :delete %></p>
-
-<%= link_to t("links.back", default: "Back"), :back %>
+<p><%= t("users.editings.why_delete_account", default: "Unhappy?") %> <%= button_to t("users.editings.buttons.destroy_account", default: "Cancel my account"), registration_path(resource_name), data: { confirm: t("users.editings.confirm_delete_account", default: "Are you sure?") }, method: :delete, class: "btn btn-danger" %></p>

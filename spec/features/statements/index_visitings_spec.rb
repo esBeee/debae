@@ -103,9 +103,4 @@ RSpec.feature "StatementIndexVisitings", type: :feature do
       end
     end
   end
-
-  it "displays link to new-statement-page" do
-    visit statements_path
-    expect(page).to have_link(I18n.t("statements.index.links.new_statement"))
-  end
 end

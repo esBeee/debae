@@ -17,9 +17,14 @@ gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.1.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
-# gem 'therubyracer', platforms: :ruby
+# I only installed it because the bootstrap gem requires it.
+gem 'therubyracer', platforms: :ruby
+# I only installed it because the bootstrap gem requires it.
+gem 'less-rails', '~> 2.7', '>= 2.7.1'
+# Use twitter bootstrap for quick styling
+gem 'twitter-bootstrap-rails', '~> 3.2', '>= 3.2.2'
 # Use font awesome icons
-gem 'font-awesome-rails', '~> 4.6', '>= 4.6.1.0'
+gem 'font-awesome-rails'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'

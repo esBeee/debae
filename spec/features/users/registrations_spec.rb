@@ -13,6 +13,10 @@ RSpec.shared_examples "A successful user registration" do
   it "redirects to root path" do
     expect(page.current_path).to eq root_path
   end
+
+  it "displays flash message" do
+    expect(page).to have_content(I18n.t("devise.registrations.signed_up_but_unconfirmed"))
+  end
 end
 
 RSpec.feature "UserRegistrations", type: :feature do

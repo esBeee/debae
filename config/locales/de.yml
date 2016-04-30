@@ -36,9 +36,17 @@ de:
   layouts:
     header:
       links:
-        sign_in: "Einloggen"
+        sign_in: "Mit %{auth_type} anmelden"
         sign_up: "Registrieren"
         sign_out: "Ausloggen"
+        account_settings: "Einstellungen"
+        new_statement: "Statement abgeben"
+      dropdowns:
+        join: "Mitmachen"
+    edit_user_registration:
+      tabs:
+        profile: "Profil bearbeiten"
+        account: "Account bearbeiten"
 
   statement_argument_links:
     buttons:
@@ -46,6 +54,7 @@ de:
       vote_down: "Niedriger gewichten"
       destroy_upvote: "Gewichtung zurückziehen"
       destroy_downvote: "Gewichtung zurückziehen"
+    score_labeled_html: "%{score} Zustimmung"
 
   statements:
     new:
@@ -65,9 +74,6 @@ de:
         destroy_upvote: "Zustimmung zurückziehen"
         destroy_downvote: "Ablehnung zurückziehen"
       stated_at: "Ausgesagt am %{date}"
-    index:
-      links:
-        new_statement: "Füge ein Statement hinzu"
     score:
       not_available: "N/A"
       unit: "%"
@@ -91,6 +97,10 @@ de:
       buttons:
         submit: "Registrierung abschicken"
       minimum_password_length: "Mindestens %{minimum_password_length} Zeichen oder mehr"
+    sessions:
+      new:
+        headline: "Logge dich ein"
+        remember_me: "Remember me"
     editings:
       labels:
         email: "Email"
@@ -99,11 +109,15 @@ de:
         name: "Dein Name"
         current_password: "Aktuelles Passwort"
         email_if_new_argument: "Informiere mich per Email über neue Argumente zu den von mir veröffentlichten Statements"
+        avatar: "Dein Avatar"
       buttons:
         submit: "Einstellungen speichern"
         destroy_account: "Lösche meinen Account"
       flashes:
-        edit_success: "Dein Eingaben wurden erfolgreich gespeichert"
+        success: "Dein Eingaben wurden erfolgreich gespeichert"
+      headlines:
+        edit_profile: "Profil bearbeiten"
+        edit_account: "Account bearbeiten"
       minimum_password_length: "Mindestens %{minimum_password_length} Zeichen oder mehr"
       may_leave_blank: "lasse das Feld einfach leer, falls du dein Passwort jetzt nicht ändern willst"
       current_password_required: "dein aktuelles Passwort ist zum Schutz deines Accounts erforderlich, um Änderungen vorzunehmen"
@@ -111,3 +125,4 @@ de:
       why_delete_account: "Nicht zufrieden?"
       confirm_delete_account: "Bist du sicher, dass du deinen Account entfernen möchtest? Deine gespeicherten Daten und Einstellungen werden in diesem Fall vollständig und unwiderruflich gelöscht. Deine beigetragenen Statements bleiben erhalten, werden jedoch anonymisiert."
       about_name_attribute: "wir bevorzugen deinen vollen Namen, aber du hast die freie Wahl"
+      about_avatar: "Wähle ein Bild von dir aus, das du als Profilbild verwenden möchtest"

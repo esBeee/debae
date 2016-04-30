@@ -10,7 +10,7 @@ class StatementsController < ApplicationController
   def show
     # Query the requested statement and provide it in the view
     # or handle not found.
-    @statement = Statement.find_by(id: params[:id]) || not_found
+    @statement = Statement.includes(:user).includes(:comments).find_by(id: params[:id]) || not_found
   end
 
   # GET /statements/new

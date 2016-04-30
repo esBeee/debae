@@ -1,0 +1,3 @@
+<% if resource && resource.errors && resource.errors.full_messages && resource.errors.full_messages.any? %>
+  <%= resource.errors.full_messages.join(", ") %>
+<% end %>

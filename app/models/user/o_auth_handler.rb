@@ -4,8 +4,6 @@ class User::OAuthHandler
   # creates a new one if none is found.
   # => Always returns a persistent user object. But might be unconfirmed in some cases.
   def self.from_omniauth auth
-    Kazus.log "User.from_omniauth got called!", auth_hash: auth
-
     provider = auth[:provider]
     uid = auth[:uid]
 

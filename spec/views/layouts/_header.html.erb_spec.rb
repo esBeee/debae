@@ -7,10 +7,14 @@ RSpec.shared_examples "Basic header content" do
 end
 
 RSpec.describe "layouts/_header", type: :view do
-
   let(:user) {  FactoryGirl.create(:user) }
   let(:sign_out_link_xpath) { "//a[@href='#{destroy_user_session_path}'][@data-method='delete']" +
     "[text()='#{I18n.t("layouts.header.links.sign_out")}']" }
+
+  let(:sign_in_with_email) { I18n.t("layouts.header.links.sign_in", auth_type: "Email") }
+  let(:sign_in_with_facebook) { I18n.t("layouts.header.links.sign_in", auth_type: "Facebook") }
+  let(:sign_in_with_google) { I18n.t("layouts.header.links.sign_in", auth_type: "Google") }
+  let(:sign_in_with_twitter) { I18n.t("layouts.header.links.sign_in", auth_type: "Twitter") }
   
   context "when user is signed in" do
     before do
@@ -20,12 +24,20 @@ RSpec.describe "layouts/_header", type: :view do
 
     include_examples "Basic header content"
 
-    it "doesn't display link to sign in" do
-      expect(rendered).not_to have_link(I18n.t("layouts.header.links.sign_in"))
+    it "doesn't display link to sign in with email" do
+      expect(rendered).not_to have_link(sign_in_with_email)
     end
 
-    it "doesn't display link to sign up" do
-      expect(rendered).not_to have_link(I18n.t("layouts.header.links.sign_up"))
+    it "doesn't display link to sign in with facebook" do
+      expect(rendered).not_to have_link(sign_in_with_facebook)
+    end
+
+    it "doesn't display link to sign in with google" do
+      expect(rendered).not_to have_link(sign_in_with_google)
+    end
+
+    it "doesn't display link to sign in with twitter" do
+      expect(rendered).not_to have_link(sign_in_with_twitter)
     end
 
     it "displays link to sign out" do
@@ -38,12 +50,20 @@ RSpec.describe "layouts/_header", type: :view do
 
     include_examples "Basic header content"
 
-    it "displays link to sign in" do
-      expect(rendered).to have_link(I18n.t("layouts.header.links.sign_in"), href: new_user_session_path)
+    it "displays link to sign in with email" do
+      expect(rendered).to have_link(sign_in_with_email, href: new_user_session_path)
     end
 
-    it "displays link to sign up" do
-      expect(rendered).to have_link(I18n.t("layouts.header.links.sign_up"), href: new_user_registration_path)
+    it "displays link to sign in with facebook" do
+      expect(rendered).to have_link(sign_in_with_facebook, href: user_facebook_omniauth_authorize_path)
+    end
+
+    it "displays link to sign in with google" do
+      expect(rendered).to have_link(sign_in_with_google, href: user_google_oauth2_omniauth_authorize_path)
+    end
+
+    it "displays link to sign in with twitter" do
+      expect(rendered).to have_link(sign_in_with_twitter, href: user_twitter_omniauth_authorize_path)
     end
   end
 end

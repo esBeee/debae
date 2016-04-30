@@ -8,8 +8,8 @@ RSpec.describe "statements/show.html.erb", type: :view do
     render
   end
 
-  it "displays the statements body as <h1>" do
-    expect(rendered).to have_css("h1", text: statement.body)
+  it "displays the statement's body" do
+    expect(rendered).to have_content(statement.body)
   end
 
   it "displays container for pro arguments" do

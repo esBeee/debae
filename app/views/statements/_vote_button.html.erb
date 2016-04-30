@@ -7,7 +7,7 @@
       submit_value = (t("statements.show.buttons.vote_down", default: "Disagree") + "   " + fa_icon("thumbs-down")).html_safe
     end
   %>
-  <% css_class = is_pro_vote ? "btn aggreement-vote aggree" : "btn aggreement-vote disaggree" %>
+  <% css_class = is_pro_vote ? "btn btn-success" : "btn btn-danger" %>
   <%= render 'votes/create_or_update_button', voteable: statement, is_pro_vote: is_pro_vote, submit_value: submit_value, options: {css_class: css_class} %>
 <% else %>
   <%# Render the destroy vote button if the user has already voted. %>
@@ -18,6 +18,6 @@
       submit_value = (t("statements.show.buttons.destroy_downvote", default: "Withdraw disagreement") + "   " + fa_icon("thumbs-down")).html_safe
     end
   %>
-  <% css_class = is_pro_vote ? "btn aggreement-vote aggree pressed" : "btn aggreement-vote disaggree pressed" %>
+  <% css_class = is_pro_vote ? "btn btn-success pressed" : "btn btn-danger pressed" %>
   <%= render 'votes/destroy_button', vote: existing_vote, is_pro_vote: is_pro_vote, submit_value: submit_value, options: {css_class: css_class} %>
 <% end %>

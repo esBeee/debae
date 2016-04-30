@@ -1,3 +1,8 @@
-<div class="argument">
-  <%= link_to statement.body, statement_path(statement) %>
-</div>
+<tr>
+  <td>
+    <%= link_to statement.body, statement_path(statement) %>
+  </td>
+  <td>
+    <%= score(statement.score) %>
+  </td>
+</tr>

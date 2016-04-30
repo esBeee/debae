@@ -1,26 +1,25 @@
-<h2>Log in</h2>
+<h2><%= t("users.sessions.new.headline", default: "Sign in") %></h2>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :email, t(".email_label", default: "Email") %><br />
-    <%= f.email_field :email, autofocus: true %>
+    <%= f.email_field :email, autofocus: true, class: "form-control" %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :password, t(".password_label", default: "Password") %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
+    <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
   </div>
 
   <% if devise_mapping.rememberable? -%>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+    <div class="checkbox">
+      <label>
+        <%= f.check_box :remember_me %> <%= t("users.sessions.new.remember_me") %>
+      </label>
     </div>
   <% end -%>
 
-  <div class="actions">
-    <%= f.submit t(".submit_button_value", default: "Log in") %>
-  </div>
+  <%= f.submit t(".submit_button_value", default: "Log in"), class: "btn btn-default" %>
 <% end %>
 
 <%= render "devise/shared/links" %>

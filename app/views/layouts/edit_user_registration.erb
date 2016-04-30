@@ -1,0 +1,27 @@
+<% profile_tab_active = request.path == edit_user_profile_path %>
+<% account_tab_active = request.path == edit_user_registration_path %>
+
+<% content_for :content do %>
+  <%# The navigation %>
+  <div class="col-sm-4 col-xs-12">
+    <ul class="nav nav-pills nav-stacked">
+      <li role="presentation" class="<%= "active" if profile_tab_active %>">
+        <%= link_to t("layouts.edit_user_registration.tabs.profile"), edit_user_profile_path %>
+      </li>
+      <li role="presentation" class="<%= "active" if account_tab_active %>">
+        <%= link_to t("layouts.edit_user_registration.tabs.account"), edit_user_registration_path %>
+      </li>
+    </ul>
+  </div>
+
+  <%# The content tabs %>
+  <div class="col-sm-8 col-xs-12">
+    <div class="tab-content">
+      <div class="tab-pane fade in active">
+        <%= yield %>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+<%= render template: "layouts/application" %>

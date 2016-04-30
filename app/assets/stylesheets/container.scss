@@ -1,0 +1,7 @@
+@import "./_mixins_and_variables";
+
+.container {
+  &.main {
+    max-width: $content-max-width;
+  }
+}

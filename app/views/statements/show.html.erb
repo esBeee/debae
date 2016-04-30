@@ -1,53 +1,79 @@
-<%= link_to t("links.back", default: "Back"), :back %>
+<div class="row">
+  <%= link_to :back do %>
+    <%= fa_icon "backward" %> <%= t("links.back", default: "Back") %>
+  <% end %>
+</div>
 
-<h1 class="statement-headline"><%= @statement.body %></h1>
-
-<section class="statement-author">
-  <div class="body">
-    <div class="avatar">
-      <%= image_tag("http://www.lovemarks.com/wp-content/uploads/avatars-uploaded/avatar-1001382-square.jpg?m=1447747942") %>
+<div class="row">
+  <div class="jumbotron">
+    <div class="row">
+      <%= content_tag headline_tag(@statement.body), @statement.body %>
     </div>
-    <div class="name">
-      <%= "Annika Nika" %>
-      <span class="secondary">
-        <%= t(".stated_at", default: "Stated at %{date}", date: l(@statement.created_at)) %>
-      </span>
+    <div class="row">
+      <div class="col-xs-2">
+        <%= image_tag @statement.user_or_mock.avatar.url(:thumb), class: "img-circle avatar" %>
+      </div>
+      <div class="col-xs-10">
+        <%= @statement.user_or_mock.name %>
+        <span class="secondary">
+          <%= t(".stated_at", default: "Stated at %{date}", date: l(@statement.created_at)) %>
+        </span>
+      </div>
     </div>
   </div>
-</section>
+</div>
 
-<section class="statement-head">
-  <%= render 'vote_button', statement: @statement, is_pro_vote: true, existing_vote: has_voted?(true, current_user, @statement) %>
-  <%= render 'score_circle', id: @statement.id, score: @statement.score %>
-  <%= render 'vote_button', statement: @statement, is_pro_vote: false, existing_vote: has_voted?(false, current_user, @statement) %>
-</section>
+<div class="row statement-actions">
+  <div class="col-xs-12 col-sm-4">
+    <%= render 'vote_button', statement: @statement, is_pro_vote: false, existing_vote: has_voted?(false, current_user, @statement) %>
+  </div>
+  <div class="col-xs-12 col-sm-4">
+    <%= render 'score_circle', id: @statement.id, score: @statement.score %>
+  </div>
+  <div class="col-xs-12 col-sm-4">
+    <%= render 'vote_button', statement: @statement, is_pro_vote: true, existing_vote: has_voted?(true, current_user, @statement) %>
+  </div>
+</div>
 
-
-<section class="arguments-container">
-  <ul class="arguments pro">
-    <h3><%= t(".headlines.pro_arguments", default: "Pro arguments") %></h3>
-    <li><%= render 'statement_argument_links/list', statement_argument_links: @statement.links_to_pro_arguments %></li>
-    <li>
-      <%= link_to new_statement_path(pro: @statement.id) do %>
+<div class="row">
+  <div class="col-xs-12 col-sm-6 arguments pro">
+    <div class="row">
+      <h3><%= t(".headlines.pro_arguments", default: "Pro arguments") %></h3>
+    </div>
+    <ul class="row">
+      <%= render 'statement_argument_links/list', statement_argument_links: @statement.links_to_pro_arguments %>
+    </ul>
+    <div class="row">
+      <%= link_to new_statement_path(pro: @statement.id), class: "btn btn-default" do %>
         <%= fa_icon("plus-square") %>
         <%= t(".links.new_pro_argument", default: "New pro argument") %>
       <% end %>
-    </li>
-  </ul>
+    </div>
+  </div>
 
-  <ul class="arguments contra">
-    <h3><%= t(".headlines.contra_arguments", default: "Contra arguments") %></h3>
-    <li><%= render 'statement_argument_links/list', statement_argument_links: @statement.links_to_contra_arguments %></li>
-    <li>
-      <%= link_to new_statement_path(contra: @statement.id) do %>
+  <div class="col-xs-12 col-sm-6 arguments contra">
+    <div class="row">
+      <h3><%= t(".headlines.contra_arguments", default: "Contra arguments") %></h3>
+    </div>
+    <ul class="row">
+      <%= render 'statement_argument_links/list', statement_argument_links: @statement.links_to_contra_arguments %>
+    </ul>
+    <div class="row">
+      <%= link_to new_statement_path(contra: @statement.id), class: "btn btn-default" do %>
         <%= fa_icon("plus-square") %>
         <%= t(".links.new_contra_argument", default: "New contra argument") %>
       <% end %>
-    </li>
-  </ul>
-</section>
+    </div>
+  </div>
+</div>
 
-<section>
-  <%= render 'comments/form', commentable: @statement %>
-  <%= render 'comments/list', comments: @statement.newest_comments %>
-</section>
+<div class="row">
+  <div class="col-xs-8">
+    <div class="row">
+      <%= render 'comments/form', commentable: @statement %>
+    </div>
+    <div class="row">
+      <%= render 'comments/list', comments: @statement.newest_comments %>
+    </div>
+  </div>
+</div>
