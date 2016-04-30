@@ -250,7 +250,7 @@ Devise.setup do |config|
   # config.omniauth :gplus, ENV["GOOGLE_CLIENT_KEY"], ENV["GOOGLE_CLIENT_SECRET"],
   #   scope: 'userinfo.email, userinfo.profile'
   config.omniauth :google_oauth2, ENV["GOOGLE_CLIENT_KEY"], ENV["GOOGLE_CLIENT_SECRET"],
-    access_type: "online"
+    access_type: "online", scope: 'email, profile, userinfo.profile'
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
