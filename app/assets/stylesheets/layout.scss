@@ -1,10 +1,9 @@
-// This file contains styling for the basic layout.
 @import "./_mixins_and_variables";
 
 body {
   text-align: center;
   margin: 0;
-  // @include flex(row);
+  @include flex(row);
   justify-content: center;
 }
 

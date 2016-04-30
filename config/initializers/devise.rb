@@ -247,8 +247,6 @@ Devise.setup do |config|
     image_size: { width: 500, height: 500 }, secure_image_url: true
   config.omniauth :twitter, ENV["TWITTER_API_KEY"], ENV["TWITTER_API_SECRET"],
     image_size: "original", secure_image_url: true
-  # config.omniauth :gplus, ENV["GOOGLE_CLIENT_KEY"], ENV["GOOGLE_CLIENT_SECRET"],
-  #   scope: 'userinfo.email, userinfo.profile'
   config.omniauth :google_oauth2, ENV["GOOGLE_CLIENT_KEY"], ENV["GOOGLE_CLIENT_SECRET"],
     access_type: "online", scope: 'email, profile, userinfo.profile'
 
