@@ -30,10 +30,6 @@ File upload is handeled by the [Paperclip](https://github.com/thoughtbot/papercl
 
 ## TODOs
 
-### Logging on heroku
-
-It appears, that even with `log_level` set to `:warn` in `production.rb` and with the ENV variable `LOG_LEVEL` set to `WARN`, it still logs everything.
-
 ### Job queueing
 
 Right now, no job queueing adapter is installed. Instructing jobs to be performed later leads to
@@ -73,6 +69,8 @@ If a user has signed in with facebook, then signs in with google (but both accou
 * Allow to attach an existing statement as an argument
 
 * Reflect the information about up- and downvoted arguments in the score-formula
+
+* Allow searching the statement's bodys with autocomplete in a search field and in the new argument body input field
 
 ## Conventions
 

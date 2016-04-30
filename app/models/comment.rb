@@ -7,4 +7,11 @@ class Comment < ApplicationRecord
 
   # Simply orders the collection by newest first.
   scope :newest, -> { order(created_at: :desc) }
+
+
+  # Returns this statement's user or a mock, if
+  # the user doesn't exist anymore.
+  def user_or_mock
+    self.user || User.new(name: "Deleted user")
+  end
 end

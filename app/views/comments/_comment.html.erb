@@ -1,3 +1,10 @@
-<div class="comment">
-  <%= comment.body %> <%= l(comment.created_at) %>
+<div class="panel panel-default">
+  <div class="panel-body">
+    <%= comment.body %>
+  </div>
+  <div class="panel-footer">
+    <%= image_tag @statement.user_or_mock.avatar.url(:thumb), class: "img-circle avatar" %>
+    <%= comment.user_or_mock.name %>,
+    <%= l(comment.created_at) %>
+  </div>
 </div>

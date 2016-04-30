@@ -28,7 +28,7 @@ RSpec.feature "CommentCreations", type: :feature, session_helpers: true do
   describe "creating a valid comment" do
     before do
       fill_in I18n.t("comments.placeholders.body"), with: valid_body
-      click_button I18n.t("comments.buttons.submit")
+      click_button "comment-statement"
     end
 
     it_behaves_like "A successful comment creation", 1
@@ -36,7 +36,7 @@ RSpec.feature "CommentCreations", type: :feature, session_helpers: true do
     describe "when creating another comment afterwards" do
       before do
         fill_in I18n.t("comments.placeholders.body"), with: valid_body
-        click_button I18n.t("comments.buttons.submit")
+        click_button "comment-statement"
       end
 
       it_behaves_like "A successful comment creation", 2
@@ -44,14 +44,14 @@ RSpec.feature "CommentCreations", type: :feature, session_helpers: true do
   end
 
   describe "trying to submit an empty form" do
-    before { click_button I18n.t("comments.buttons.submit") }
+    before { click_button "comment-statement" }
 
     it_behaves_like "A successful comment creation", 0
 
     describe "when creating a valid comment afterwards" do
       before do
         fill_in I18n.t("comments.placeholders.body"), with: valid_body
-        click_button I18n.t("comments.buttons.submit")
+        click_button "comment-statement"
       end
 
       it_behaves_like "A successful comment creation", 1

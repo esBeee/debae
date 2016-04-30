@@ -1,0 +1,10 @@
+$height: 150px;
+
+textarea.comment {
+  height: $height;
+  resize: none;
+}
+
+.area-height {
+  height: $height;
+}

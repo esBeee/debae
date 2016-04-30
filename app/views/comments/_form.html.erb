@@ -3,10 +3,23 @@
     <%= f.hidden_field :commentable_id %>
     <%= f.hidden_field :commentable_type %>
 
-    <%= f.text_field :body, placeholder: t("comments.placeholders.body", default: "Post a comment"), required: true %><br />
+    <div class="input-group">
+      
+      <%= f.text_area :body, placeholder: t("comments.placeholders.body", default: "Post a comment"), required: true, class: "form-control comment" %><br />
+      <span class="input-group-btn">
+        <%= button_tag(type: "submit", class: "btn btn-default area-height", id: "comment-statement") do %>
+          <%= fa_icon("comment-o") %><br />
+          <%= t("comments.buttons.submit_html", default: "Submit") %>
+        <% end %>
+      </span>
+    </div>
 
-    <%= f.submit t("comments.buttons.submit", default: "Submit") %>
+    
   <% end %>
 <% else %>
-  <%= t("comments.sign_in_to_comment_html", link_to_sign_in: link_to(t("comments.links.sign_in", default: "Sign in"), new_user_session_path), default: "%{link_to_sign_in} to write comments") %>
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <%= t("comments.sign_in_to_comment_html", link_to_sign_in: link_to(t("comments.links.sign_in", default: "Sign in"), new_user_session_path), default: "%{link_to_sign_in} to write comments") %>
+    </div>
+  </div>
 <% end %>
