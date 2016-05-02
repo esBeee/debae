@@ -13,6 +13,8 @@ class CommentsController < ApplicationController
       Kazus.log(:info, "Tried to create a comment that is invalid", comment: comment, commentable: comment.commentable)
     end
 
+    flash[:success] = t("comments.successfully_created")
+
     redirect_to comment.commentable
   end
 

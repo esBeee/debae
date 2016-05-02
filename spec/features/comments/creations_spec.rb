@@ -8,6 +8,10 @@ RSpec.shared_examples "A successful comment creation" do |comment_count|
   it "creates a comment for this commentable-user-pair" do
     expect(Comment.where(commentable: statement, user: user, body: valid_body).count).to eq comment_count
   end
+
+  it "displays flash message" do
+    expect(page).to have_content(I18n.t("comments.successfully_created"))
+  end
 end
 
 RSpec.feature "CommentCreations", type: :feature, session_helpers: true do
