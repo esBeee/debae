@@ -30,6 +30,6 @@
   <%= f.submit t("users.editings.buttons.submit", default: "Save"), class: "btn btn-default" %>
 <% end %>
 
-<h3><%= t("users.editings.cancel_account_header", default: "Cancel my account") %></h3>
+<h3><%#= t("users.editings.cancel_account_header", default: "Cancel my account") %></h3>
 
-<p><%= t("users.editings.why_delete_account", default: "Unhappy?") %> <%= button_to t("users.editings.buttons.destroy_account", default: "Cancel my account"), registration_path(resource_name), data: { confirm: t("users.editings.confirm_delete_account", default: "Are you sure?") }, method: :delete, class: "btn btn-danger" %></p>
+<p><%#= t("users.editings.why_delete_account", default: "Unhappy?") %> <%#= button_to t("users.editings.buttons.destroy_account", default: "Cancel my account"), registration_path(resource_name), data: { confirm: t("users.editings.confirm_delete_account", default: "Are you sure?") }, method: :delete, class: "btn btn-danger" %></p>
