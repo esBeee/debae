@@ -23,10 +23,9 @@ ActiveRecord::Schema.define(version: 20160429094413) do
     t.integer  "user_id"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
+    t.index ["commentable_type", "commentable_id"], name: "index_comments_on_commentable_type_and_commentable_id", using: :btree
+    t.index ["user_id"], name: "index_comments_on_user_id", using: :btree
   end
-
-  add_index "comments", ["commentable_type", "commentable_id"], name: "index_comments_on_commentable_type_and_commentable_id", using: :btree
-  add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
 
   create_table "statement_argument_links", force: :cascade do |t|
     t.integer  "statement_id"
@@ -34,11 +33,10 @@ ActiveRecord::Schema.define(version: 20160429094413) do
     t.boolean  "is_pro_argument", null: false
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+    t.index ["argument_id"], name: "index_statement_argument_links_on_argument_id", using: :btree
+    t.index ["statement_id", "argument_id"], name: "index_statement_argument_links_on_statement_id_and_argument_id", unique: true, using: :btree
+    t.index ["statement_id"], name: "index_statement_argument_links_on_statement_id", using: :btree
   end
-
-  add_index "statement_argument_links", ["argument_id"], name: "index_statement_argument_links_on_argument_id", using: :btree
-  add_index "statement_argument_links", ["statement_id", "argument_id"], name: "index_statement_argument_links_on_statement_id_and_argument_id", unique: true, using: :btree
-  add_index "statement_argument_links", ["statement_id"], name: "index_statement_argument_links_on_statement_id", using: :btree
 
   create_table "statements", force: :cascade do |t|
     t.integer  "user_id"
@@ -47,9 +45,8 @@ ActiveRecord::Schema.define(version: 20160429094413) do
     t.datetime "created_at",                             null: false
     t.datetime "updated_at",                             null: false
     t.boolean  "top_level",              default: false, null: false
+    t.index ["user_id"], name: "index_statements_on_user_id", using: :btree
   end
-
-  add_index "statements", ["user_id"], name: "index_statements_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                              default: "",   null: false
@@ -82,13 +79,12 @@ ActiveRecord::Schema.define(version: 20160429094413) do
     t.string   "link_to_facebook",       limit: 500
     t.string   "link_to_twitter",        limit: 500
     t.string   "link_to_google_plus",    limit: 500
+    t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
+    t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
+    t.index ["provider", "uid"], name: "index_users_on_provider_and_uid", unique: true, using: :btree
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+    t.index ["unlock_token"], name: "index_users_on_unlock_token", unique: true, using: :btree
   end
-
-  add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
-  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
-  add_index "users", ["provider", "uid"], name: "index_users_on_provider_and_uid", unique: true, using: :btree
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
-  add_index "users", ["unlock_token"], name: "index_users_on_unlock_token", unique: true, using: :btree
 
   create_table "votes", force: :cascade do |t|
     t.integer  "user_id"
@@ -97,11 +93,10 @@ ActiveRecord::Schema.define(version: 20160429094413) do
     t.boolean  "is_pro_vote",   null: false
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+    t.index ["user_id", "voteable_id", "voteable_type"], name: "index_votes_on_user_id_and_voteable_id_and_voteable_type", unique: true, using: :btree
+    t.index ["user_id"], name: "index_votes_on_user_id", using: :btree
+    t.index ["voteable_type", "voteable_id"], name: "index_votes_on_voteable_type_and_voteable_id", using: :btree
   end
-
-  add_index "votes", ["user_id", "voteable_id", "voteable_type"], name: "index_votes_on_user_id_and_voteable_id_and_voteable_type", unique: true, using: :btree
-  add_index "votes", ["user_id"], name: "index_votes_on_user_id", using: :btree
-  add_index "votes", ["voteable_type", "voteable_id"], name: "index_votes_on_voteable_type_and_voteable_id", using: :btree
 
   add_foreign_key "comments", "users"
   add_foreign_key "statement_argument_links", "statements"

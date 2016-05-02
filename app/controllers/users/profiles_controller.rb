@@ -29,6 +29,6 @@ class Users::ProfilesController < ApplicationController
   private
 
   def profile_params
-    params.require(:user).permit(:name, :email_if_new_argument, :avatar)
+    params.require(:user).permit(:name, :email_if_new_argument, :avatar, :link_to_google_plus, :link_to_facebook, :link_to_twitter)
   end
 end

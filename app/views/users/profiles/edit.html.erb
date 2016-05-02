@@ -15,6 +15,21 @@
     <p class="help-block"><%= t("users.editings.about_avatar", default: "Choose an image of you to be used as your avatar") %></p>
   </div>
 
+  <div class="form-group">
+    <%= f.label :link_to_facebook, t("users.editings.labels.link_to_facebook", default: "Link to facebook") %><br />
+    <%= f.text_field :link_to_facebook, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :link_to_twitter, t("users.editings.labels.link_to_twitter", default: "Link to twitter") %><br />
+    <%= f.text_field :link_to_twitter, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :link_to_google_plus, t("users.editings.labels.link_to_google_plus", default: "Link to google+") %><br />
+    <%= f.text_field :link_to_google_plus, class: "form-control" %>
+  </div>
+
   <div class="checkbox">
     <label>
     <%= f.check_box :email_if_new_argument %> <%= t("users.editings.labels.email_if_new_argument", default: "Inform me about new arguments for my submitted statements") %>

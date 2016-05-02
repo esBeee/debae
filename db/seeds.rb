@@ -49,7 +49,3 @@ statement_0 = argument_statement(user, statement, :pro, "Für das Beleidigen von
 statement_1 = argument_statement(user, statement, :contra, "Eine Entscheidung gegen Ermittlungen hätte das Prinzip der Gewaltenteilung verletzt")
 statement_2 = argument_statement(user, statement, :pro, "Für das beleidigen von Erdogan sollte man nicht höher bestraft werden, " +
   "als für das Beleidigen anderer Personen")
-
-50.times do |i|
-statement = statement_foc(user, "This and that was wrong #{i}")
-end

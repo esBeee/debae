@@ -4,6 +4,9 @@ RSpec.shared_examples "A successful user profile editing" do
   it "should save the user's data" do
     user.reload # Make sure the attributes we compare are up-to-date.
     expect(user.name).to eq edited_user_attributes[:name]
+    expect(user.link_to_facebook).to eq edited_user_attributes[:link_to_facebook]
+    expect(user.link_to_twitter).to eq edited_user_attributes[:link_to_twitter]
+    expect(user.link_to_google_plus).to eq edited_user_attributes[:link_to_google_plus]
     expect(user.email_if_new_argument).to eq edited_user_attributes[:email_if_new_argument]
   end
 
@@ -17,8 +20,11 @@ RSpec.shared_examples "A successful user profile editing" do
 end
 
 RSpec.feature "UserProfileEditings", type: :feature, session_helpers: true do
-  let(:user) { FactoryGirl.create(:user, name: "Tom", email_if_new_argument: true) }
-  let(:edited_user_attributes) { FactoryGirl.attributes_for(:user, name: "Tommy", email_if_new_argument: false) }
+  let(:user) { FactoryGirl.create(:user, name: "Tom", email_if_new_argument: true, link_to_facebook: "https://www.facebook.com/old",
+    link_to_google_plus: "https://www.google.com/old", link_to_twitter: "https://www.twitter.com/old") }
+  let(:edited_user_attributes) { FactoryGirl.attributes_for(:user, name: "Tommy", email_if_new_argument: false,
+    link_to_facebook: "https://www.facebook.com/new", link_to_google_plus: "https://www.google.com/new",
+    link_to_twitter: "https://www.twitter.com/new") }
   
   before do
     # It's required that the user is signed in
@@ -30,6 +36,9 @@ RSpec.feature "UserProfileEditings", type: :feature, session_helpers: true do
   # Only updates fills in the attributes that don't require the current password.
   def fill_in_user_form values = {}
     fill_in I18n.t("users.editings.labels.name"), with: values[:name] || edited_user_attributes[:name]
+    fill_in I18n.t("users.editings.labels.link_to_facebook"), with: values[:link_to_facebook] || edited_user_attributes[:link_to_facebook]
+    fill_in I18n.t("users.editings.labels.link_to_google_plus"), with: values[:link_to_google_plus] || edited_user_attributes[:link_to_google_plus]
+    fill_in I18n.t("users.editings.labels.link_to_twitter"), with: values[:link_to_twitter] || edited_user_attributes[:link_to_twitter]
 
     if values[:email_if_new_argument] || edited_user_attributes[:email_if_new_argument]
       check(I18n.t("users.editings.labels.email_if_new_argument"))
