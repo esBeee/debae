@@ -109,11 +109,11 @@ RSpec.feature "StatementShowVisitings", type: :feature do
         visit statement_path(statement_1)
       end
 
-      it "brings the user back to the previously visited page" do
+      it "brings the user back to the root page" do
         click_link I18n.t("links.back")
 
         # It doesn't do anything.
-        expect(page.current_path).to eq statement_path(statement_1)
+        expect(page.current_path).to eq root_path
       end
     end
   end

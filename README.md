@@ -46,13 +46,9 @@ Both, defined jobs and emails sent by devise should be delayed.
 
 Currently it makes use of 3 (!) libraries that lay in `assets/javascripts/vendor` (ProgressBar.js, TinyColor.js, TinyGradient.js). Maybe these dependencies can be reduced.
 
-### Redirect after sign in
+### Refactor "last visited path" functionality
 
-Redirect to the last visited resource-related page or root.
-
-### Redirect after sign out
-
-Let's say, I'm on a public page other than root. If I sign out, I stay on that page, and that's good. But if I sign in right after, I get redirected to root. The method `ApplicationController#after_sign_out_path_for` has been overwritten and that might be important here.
+The related methods `store_path` and `forelast_visited_path` in application controller might better be refactored into a gem.
 
 ### Handle validation errors in comments#create
 
@@ -73,8 +69,6 @@ If a user has signed in with facebook, then signs in with google (but both accou
 * Allow searching the statement's bodys with autocomplete in a search field and in the new argument body input field
 
 * Internationalize a statement's body by turning it into a hash that takes the statement in various languages.
-
-* Store last 100 visited "main"-pages to use it for redirect after sign in and the "back" button on show-statement-page
 
 * Install Email status header (should display if an email address is unconfirmed or no email address exists yet)
 

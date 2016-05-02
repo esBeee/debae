@@ -5,7 +5,7 @@ RSpec.describe "statements/show.html.erb", type: :view do
 
   before do
     assign(:statement, statement)
-    render
+    render template: "statements/show", locals: { forelast_visited_path: "/" }
   end
 
   it "displays the statement's body" do

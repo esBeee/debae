@@ -3,9 +3,14 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
+  # Store current path in session to provide "back to last page" functionality
+  before_action :store_path
+
   # Call a function that permits additional attributes for user registrations and account
   # updates, in case this is a devise controller.
   before_action :configure_permitted_parameters, if: :devise_controller?
+
+  helper_method :forelast_visited_path
 
 
   protected
@@ -66,6 +71,52 @@ class ApplicationController < ActionController::Base
   # Overriding a devise method that gets called after a user has signed out
   # and should return the path, the user gets redirected now.
   def after_sign_out_path_for resource_or_scope
-    :back
+    forelast_visited_path
+  end
+
+  # Overriding a devise method that gets called after a user has signed in
+  # and should return the path, the user gets redirected now.
+  def after_sign_in_path_for resource
+    forelast_visited_path
+  end
+
+  # Store the current path in session to provide "back to last page" functionality.
+  def store_path
+    path = request.original_fullpath
+
+    if path.include?("back=1")
+      # If the "back" parameter is specified, it means that the "back"-button
+      # was used, so instead of adding the current path again, we're removing 
+      # the last path.
+      session[:last_paths].pop
+
+      redirect_to path.gsub(/(\?|&)back=1/, "")
+    elsif request.get? && (path=request.original_fullpath)
+      # Initialize last_paths as an empty array if nil
+      session[:last_paths] = [] if session[:last_paths].nil?
+
+      unless params[:back]
+        # Push the current path if it is not identical with the last path
+        session[:last_paths].push(path) unless session[:last_paths].last == path
+      end
+
+      # Drop the oldest path if the history is too large.
+      while session[:last_paths].count > 50
+        session[:last_paths] = session[:last_paths].drop(1)
+      end
+    end
+  end
+
+  # Returns the path the app should redirct to if the user presses the "back"-button.
+  def forelast_visited_path
+    return "/" if session[:last_paths].nil?
+    path = session[:last_paths][-2] || "/"
+
+    unless path.include?("back=1")
+      delimiter = path.include?("?") ? "&" : "?"
+      path += delimiter + "back=1"
+    end
+
+    path
   end
 end
