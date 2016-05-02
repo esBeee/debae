@@ -63,6 +63,7 @@ de:
       pro_argument_headline: "Neues Pro-Argument für"
       contra_argument_headline: "Neues Kontra-Argument für"
     show:
+      by: "Von %{username}"
       links:
         new_contra_argument: "Neues Kontra-Argument"
         new_pro_argument: "Neues Pro-Argument"
@@ -75,7 +76,11 @@ de:
         vote_down: "Ablehnen"
         destroy_upvote: "Zustimmung zurückziehen"
         destroy_downvote: "Ablehnung zurückziehen"
-      stated_at: "Ausgesagt am %{date}"
+      creator_attitudes:
+        agreeing: "Stimmt der Aussage zu"
+        disagreeing: "Stimmt der Aussage selbst NICHT zu"
+        undecided: "Hat sich noch nicht entschieden, ob sie/er der Aussage zustimmt oder nicht"
+        creator_destroyed: ""
     score:
       not_available: "N/A"
       unit: "%"

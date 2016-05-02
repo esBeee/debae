@@ -74,13 +74,11 @@ If a user has signed in with facebook, then signs in with google (but both accou
 
 * Internationalize a statement's body by turning it into a hash that takes the statement in various languages.
 
-* Store last 100 last visited "main"-pages to use it for redirect after sign in and the "back" button on show-statement-page
+* Store last 100 visited "main"-pages to use it for redirect after sign in and the "back" button on show-statement-page
 
 * Install Email status header (should display if an email address is unconfirmed or no email address exists yet)
 
 * Establish "Gegen-These"
-
-* Show whether a statement creator aggrees or disagrees with his statement
 
 ## Conventions
 

@@ -25,6 +25,8 @@ class Statement < ApplicationRecord
   has_many :pro_arguments, through: :links_to_pro_arguments, source: :argument
   # Has many contra arguments.
   has_many :contra_arguments, through: :links_to_contra_arguments, source: :argument
+  # Has many votes.
+  has_many :votes, as: :voteable
   # Has many pro votes.
   has_many :pro_votes, -> { where(is_pro_vote: true) }, class_name: "Vote", as: :voteable
   # Has many contra votes.

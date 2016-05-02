@@ -55,4 +55,22 @@ module StatementsHelper
       :h2
     end 
   end
+
+  # Returns a string representing whether the creator of the given statement
+  # agrees, disagrees or hasn't decided yet.
+  def creator_attitude statement
+    if statement.nil?
+      Kazus.log :error, "#creator_attitude called without statement"
+      return ""
+    end
+
+    creator = statement.user
+    return "creator_destroyed" if creator.nil?
+
+    if (vote=statement.votes.find_by(user: creator))
+      vote.is_pro_vote ? "agreeing" : "disagreeing"
+    else
+      "undecided"
+    end
+  end
 end

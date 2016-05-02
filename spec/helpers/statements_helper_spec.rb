@@ -48,4 +48,51 @@ RSpec.describe StatementsHelper, type: :helper do
       end
     end
   end
+
+  describe "#creator_attitude" do
+    context "when called with nil" do
+      it "returns a blank string" do
+        expect(helper.creator_attitude(nil)).to eq ""
+      end
+    end
+
+    context "when called with a statement" do
+      let(:statement) { FactoryGirl.create(:statement) }
+
+      context "when the statement's creator was destroyed" do
+        # before { statement.user.destroy }
+        it "returns an appropriate code" do
+          pending "A user can't be destroyed right now"
+          expect(helper.creator_attitude(statement)).to eq "creator_destroyed"
+        end
+      end
+
+      context "when the statement's creator exists" do
+        let(:user) { statement.user }
+
+        context "when the creator hasn't voted yet" do
+          it "returns an appropriate code" do
+            # Make sure a vote for another statement isn't interpreted here.
+            FactoryGirl.create(:vote, user: user, voteable: FactoryGirl.create(:statement))
+
+            expect(helper.creator_attitude(statement)).to eq "undecided"
+          end
+        end
+
+        context "when the creator has voted pro" do
+          before { FactoryGirl.create(:vote, :up, voteable: statement, user: user) }
+          it "returns an appropriate code" do
+            expect(helper.creator_attitude(statement)).to eq "agreeing"
+          end
+        end
+
+        context "when the creator has voted pro" do
+          before { FactoryGirl.create(:vote, :down, voteable: statement, user: user) }
+          it "returns an appropriate code" do
+            expect(helper.creator_attitude(statement)).to eq "disagreeing"
+          end
+        end
+      end
+    end
+  end
 end

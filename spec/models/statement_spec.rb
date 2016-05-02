@@ -159,6 +159,24 @@ RSpec.describe Statement, type: :model do
       end
     end
 
+    # Test that the votes getter is defined correctly.
+    describe "#votes" do
+      let!(:vote) do
+        FactoryGirl.create(:vote, voteable: @statement)
+      end
+      let!(:a_foreign_vote) do
+        FactoryGirl.create(:vote)
+      end
+
+      it "returns the statement's votes" do
+        # Test that the getter delivers the vote.
+        expect(@statement.votes).to include vote
+
+        # Make sure only this one vote was delivered.
+        expect(@statement.votes.size).to eq 1
+      end
+    end
+
     # Test that the pro_votes getter is defined correctly.
     describe "#pro_votes" do
       let!(:pro_vote) do

@@ -8,9 +8,10 @@
         <%= image_tag statement.user_or_mock.avatar.url(:thumb), class: "img-circle avatar" %>
       </div>
       <div class="col-xs-10">
-        <%= statement.user_or_mock.name %>
+        <%= t("statements.show.by", default: "By %{username}", username: statement.user_or_mock.name) %>.
+        <%= t("statements.show.creator_attitudes.#{creator_attitude(statement)}", default: "") %>.
         <span class="secondary">
-          <%= t(".stated_at", default: "Stated at %{date}", date: l(statement.created_at)) %>
+          <%= l(statement.created_at) %>
         </span>
       </div>
     </div>
