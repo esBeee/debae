@@ -1,0 +1,21 @@
+<%
+  if current_user
+    if current_user.email.blank?
+      no_email_message = t("users.reminders.email_missing_html", default: "You didn't state an email address yet. Do it %{link_to_account_settings}.", link_to_account_settings: link_to(t("users.reminders.link_to_account_settings", default: "here"), edit_user_registration_path))
+    end
+
+    unless current_user.unconfirmed_email.nil?
+      unconfirmed_message = t("users.reminders.email_unconfirmed_html", default: "Your email address %{email_address} is awaiting confirmation. %{resend_instructions_link}", email_address: current_user.unconfirmed_email)
+    end
+  end
+%>
+<% if no_email_message %>
+  <div class="topper">
+    <%= no_email_message %>
+  </div>
+<% end %>
+<% if unconfirmed_message %>
+  <div class="topper">
+    <%= unconfirmed_message %>
+  </div>
+<% end %>

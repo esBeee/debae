@@ -15,6 +15,8 @@
   </head>
 
   <body>
+    <%= render 'layouts/email_reminder' if user_signed_in? %>
+    
     <header>
       <%= render 'layouts/header' %>
     </header>

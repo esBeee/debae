@@ -70,7 +70,7 @@ If a user has signed in with facebook, then signs in with google (but both accou
 
 * Internationalize a statement's body by turning it into a hash that takes the statement in various languages.
 
-* Install Email status header (should display if an email address is unconfirmed or no email address exists yet)
+* In email status header: provide link to resend confirmation email.
 
 * Establish "Gegen-These"
 

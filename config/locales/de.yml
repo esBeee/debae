@@ -98,6 +98,10 @@ de:
     headline: "Kommentare"
 
   users:
+    reminders:
+      link_to_account_settings: "hier" # Gets inserted as link_to_account_settings into the translation below.
+      email_missing_html: "Du hast noch keine Email-Adresse angegeben. Hole das %{link_to_account_settings} nach, um das volle Angebot nutzen zu können."
+      email_unconfirmed_html: "Deine Email-Adresse '%{email_address}' wurde noch nicht von dir bestätigt."
     registrations:
       labels:
         email: "Email"
