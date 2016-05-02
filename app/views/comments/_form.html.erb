@@ -4,7 +4,6 @@
     <%= f.hidden_field :commentable_type %>
 
     <div class="input-group">
-      
       <%= f.text_area :body, placeholder: t("comments.placeholders.body", default: "Post a comment"), required: true, class: "form-control comment" %><br />
       <span class="input-group-btn">
         <%= button_tag(type: "submit", class: "btn btn-default area-height", id: "comment-statement") do %>
@@ -13,8 +12,6 @@
         <% end %>
       </span>
     </div>
-
-    
   <% end %>
 <% else %>
   <div class="panel panel-default">

@@ -1,6 +1,6 @@
 module StatementsHelper
-  # This function returns a hash to be passed to the create-statement-action
-  # via a hidden input field, to inform the action that this statement is to
+  # This function returns an array to be passed to the create-statement-action
+  # via hidden input fields, to inform the action that this statement is to
   # be interpreted as a pro or contra argument for another statement.
   # How to use:
   #

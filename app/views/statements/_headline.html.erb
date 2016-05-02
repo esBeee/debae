@@ -1,0 +1,18 @@
+<section class="row">
+  <div class="jumbotron">
+    <div class="row">
+      <%= content_tag headline_tag(statement.body), statement.body %>
+    </div>
+    <div class="row">
+      <div class="col-xs-2">
+        <%= image_tag statement.user_or_mock.avatar.url(:thumb), class: "img-circle avatar" %>
+      </div>
+      <div class="col-xs-10">
+        <%= statement.user_or_mock.name %>
+        <span class="secondary">
+          <%= t(".stated_at", default: "Stated at %{date}", date: l(statement.created_at)) %>
+        </span>
+      </div>
+    </div>
+  </div>
+</section>

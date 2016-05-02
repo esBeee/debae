@@ -46,7 +46,7 @@ RSpec.feature "StatementCreations", type: :feature, session_helpers: true do
     fill_in I18n.t("statements.new.body"), with: body
 
     # Submit
-    click_button I18n.t("statements.new.submit")
+    click_button "new-statement"
   end
 
   # Sign in the user. Necessary for all cases.

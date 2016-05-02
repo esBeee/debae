@@ -59,7 +59,9 @@ de:
   statements:
     new:
       body: "Dein Statement"
-      submit: "Submit"
+      submit_html: "Statement<br />äußern"
+      pro_argument_headline: "Neues Pro-Argument für"
+      contra_argument_headline: "Neues Kontra-Argument für"
     show:
       links:
         new_contra_argument: "Neues Kontra-Argument"
@@ -88,6 +90,7 @@ de:
       sign_in: "Logg' dich ein"
     # link_to_sign_in is a html link with the text you find under comments.links.sign_in
     sign_in_to_comment_html: "%{link_to_sign_in}, um dieses Statement zu kommentieren!"
+    headline: "Kommentare"
 
   users:
     registrations:

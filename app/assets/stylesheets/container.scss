@@ -5,3 +5,12 @@
     max-width: $content-max-width;
   }
 }
+
+section.row {
+  // background-color: red;
+  margin-bottom: 20px;
+
+  .jumbotron {
+    margin-bottom: 0;
+  }
+}

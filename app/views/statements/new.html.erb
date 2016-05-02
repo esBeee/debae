@@ -1,10 +1,27 @@
-<%= form_for @statement do |f| %>
-  <% argument_for, is_pro_argument = argument_hash(params[:pro], params[:contra]) %>
-  <%= hidden_field :argument, :argument_for, value: argument_for %>
-  <%= hidden_field :argument, :is_pro_argument, value: is_pro_argument %>
+<% argument_for, is_pro_argument = argument_hash(params[:pro], params[:contra]) %>
+<% statement_to_be_backed = argument_for ? Statement.find_by(id: argument_for) : nil %>
 
-  <%= f.label :body, t(".body", default: "Statement") %>:
-  <%= f.text_field :body %><br />
-
-  <%= f.submit t(".submit", default: "Submit") %>
+<% if statement_to_be_backed %>
+  <div class="row">
+    <h2><%= t(".#{is_pro_argument ? "pro" : "contra"}_argument_headline") %></h2>
+  </div>
+  <%= render 'headline', statement: statement_to_be_backed %>
 <% end %>
+
+<div class="row">
+  <%= form_for @statement do |f| %>
+    
+    <%= hidden_field :argument, :argument_for, value: argument_for %>
+    <%= hidden_field :argument, :is_pro_argument, value: is_pro_argument %>
+
+    <div class="input-group">
+      <%= f.text_area :body, placeholder: t(".body", default: "Your statement"), class: "form-control comment" %><br />
+      <span class="input-group-btn">
+        <%= button_tag(type: "submit", class: "btn btn-default area-height", id: "new-statement") do %>
+          <%= fa_icon("send-o") %><br />
+          <%= t(".submit_html", default: "Submit") %>
+        <% end %>
+      </span>
+    </div>
+  <% end %>
+</div>
