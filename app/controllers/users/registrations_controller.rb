@@ -1,6 +1,6 @@
 # Overrides devise's registration controller for some individualizations.
 class Users::RegistrationsController < Devise::RegistrationsController
-  layout 'edit_user_registration' # Use the layout specifically designed for this occasion.
+  layout 'edit_user_registration', only: :edit # Use the layout specifically designed for this occasion.
 
 
   protected

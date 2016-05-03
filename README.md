@@ -72,7 +72,7 @@ If a user has signed in with facebook, then signs in with google (but both accou
 
 * In email status header: provide link to resend confirmation email.
 
-* Establish "Gegen-These"
+* Establish counter thesis
 
 * Create public user profiles
 
@@ -81,6 +81,8 @@ If a user has signed in with facebook, then signs in with google (but both accou
 * Allow users to destroy their account
 
 * Refactor handling of statement's body attribute (Especially concerning its validation. Maybe create an extra class for that. [This](http://faxon.org/2015/02/03/edit-rails-activerecord-json-attributes-in-html-forms) might be inspiring.)
+
+* Allow to comment comments
 
 ## Conventions
 
