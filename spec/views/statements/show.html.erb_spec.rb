@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "statements/show.html.erb", type: :view do
+RSpec.describe "statements/show.html.erb", type: :view, statements_helper: true do
   let(:statement) { FactoryGirl.build_stubbed(:statement, score: 0.351) }
 
   before do
@@ -9,7 +9,7 @@ RSpec.describe "statements/show.html.erb", type: :view do
   end
 
   it "displays the statement's body" do
-    expect(rendered).to have_content(statement.body)
+    expect(rendered).to have_content(body(statement))
   end
 
   it "displays container for pro arguments" do

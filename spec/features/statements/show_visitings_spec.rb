@@ -1,11 +1,11 @@
 require 'rails_helper'
 
-RSpec.feature "StatementShowVisitings", type: :feature do
+RSpec.feature "StatementShowVisitings", type: :feature, statements_helper: true do
   let(:statement) { FactoryGirl.create(:statement) }
 
   it "displays the statement body as headline" do
     visit statement_path(statement)
-    expect(page).to have_content(statement.body)
+    expect(page).to have_content(body(statement))
   end
 
   describe "arguments" do
@@ -32,7 +32,7 @@ RSpec.feature "StatementShowVisitings", type: :feature do
       it "displays pro arguments" do
         within(:css, container_css) do
           pro_arguments.each do |statement|
-            expect(page).to have_content(statement.body)
+            expect(page).to have_content(body(statement))
           end
         end
       end
@@ -40,7 +40,7 @@ RSpec.feature "StatementShowVisitings", type: :feature do
       it "doesn't display contra arguments" do
         within(:css, container_css) do
           contra_arguments.each do |statement|
-            expect(page).not_to have_content(statement.body)
+            expect(page).not_to have_content(body(statement))
           end
         end
       end
@@ -52,7 +52,7 @@ RSpec.feature "StatementShowVisitings", type: :feature do
       it "displays contra arguments" do
         within(:css, container_css) do
           contra_arguments.each do |statement|
-            expect(page).to have_content(statement.body)
+            expect(page).to have_content(body(statement))
           end
         end
       end
@@ -60,7 +60,7 @@ RSpec.feature "StatementShowVisitings", type: :feature do
       it "doesn't display pro arguments" do
         within(:css, container_css) do
           pro_arguments.each do |statement|
-            expect(page).not_to have_content(statement.body)
+            expect(page).not_to have_content(body(statement))
           end
         end
       end
@@ -78,7 +78,7 @@ RSpec.feature "StatementShowVisitings", type: :feature do
         visit statement_path(statement)
 
         comments.each do |comment|
-          expect(page).to have_content(comment.body)
+          expect(page).to have_content(body(comment))
         end
       end
     end
@@ -95,7 +95,7 @@ RSpec.feature "StatementShowVisitings", type: :feature do
 
         # Since statement_2 is an argument for statement_1, a link
         # to statement_2 should exist on the page for statement_1.
-        click_link statement_2.body
+        click_link body(statement_2)
       end
 
       it "brings the user back to the previously visited page" do

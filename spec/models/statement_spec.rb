@@ -15,33 +15,59 @@ RSpec.describe Statement, type: :model do
   # Test the implemented model validations.
   describe "validations" do
     describe "when body" do
-      context "is nil" do
-        before { @statement.body = nil }
+      def a_body options = {}
+        body = {original_locale: :de, thesis: {de: "This and that!"}}.merge(options.except(:thesis))
+        body[:thesis].merge!(options[:thesis] || {})
+        body
+      end
+
+      context "is not a hash" do
+        before { @statement.body = "This and that!"}
         it { should_not be_valid }
       end
 
-      context "is blank" do
-        before { @statement.body = " " }
+      context "hasn't defined original locale" do
+        before { @statement.body = a_body({original_locale: " "}) }
         it { should_not be_valid }
       end
 
-      context "is too short (1 character)" do
-        before { @statement.body = "A" }
+      context "hasn't defined the thesis in the original locale" do
+        before { @statement.body = {original_locale: "de", thesis: {en: "This and that!"}} }
         it { should_not be_valid }
       end
 
-      context "is long enough (2 characters)" do
-        before { @statement.body = "AA" }
-        it { should be_valid }
-      end
-
-      context "is too long (261 characters)" do
-        before { @statement.body = "A" * 261 }
+      context "has defined anything but nil or a hash as counter_thesis" do
+        before { @statement.body = a_body(counter_thesis: "") }
         it { should_not be_valid }
       end
 
-      context "is just not too long (260 characters)" do
-        before { @statement.body = "A" * 260 }
+      context "has defined a counter_thesis that is too short (less than 2 characters)" do
+        before { @statement.body = a_body(counter_thesis: {en: "a"}) }
+        it { should_not be_valid }
+      end
+
+      context "has defined a counter_thesis that is too long (more than 260 characters)" do
+        before { @statement.body = a_body(counter_thesis: {en: "a" * 261}) }
+        it { should_not be_valid }
+      end
+
+      context "has defined a locale that is blank" do
+        before { @statement.body = a_body(counter_thesis: {" " => "This"}) }
+        it { should_not be_valid }
+      end
+
+      context "has defined a locale that is not part of all available locales" do
+        before { @statement.body = a_body(original_locale: :fr, thesis: {fr: "This, that..."}) }
+        it { should_not be_valid }
+      end
+
+      context "has defined a locale that is too long (more than 5 characters)" do
+        before { @statement.body = a_body(counter_thesis: {thiss: "This and that!"}) }
+        it { should_not be_valid }
+      end
+
+      context "is well-formatted" do
+        before { @statement.body = a_body }
         it { should be_valid }
       end
     end

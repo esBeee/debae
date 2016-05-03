@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature "StatementIndexVisitings", type: :feature do
+RSpec.feature "StatementIndexVisitings", type: :feature, statements_helper: true do
   let(:statements_per_page) { WillPaginate.per_page }
 
   describe "lists statements" do
@@ -20,13 +20,13 @@ RSpec.feature "StatementIndexVisitings", type: :feature do
 
       it "displays the newest statements" do
         first_page_statements.each do |statement|
-          expect(page).to have_content(statement.body)
+          expect(page).to have_content(body(statement))
         end
       end
 
       it "doesn't display the page 2 statements" do
         second_page_statements.each do |statement|
-          expect(page).not_to have_content(statement.body)
+          expect(page).not_to have_content(body(statement))
         end
       end
     end
@@ -36,13 +36,13 @@ RSpec.feature "StatementIndexVisitings", type: :feature do
 
       it "displays the newest statements" do
         first_page_statements.each do |statement|
-          expect(page).to have_content(statement.body)
+          expect(page).to have_content(body(statement))
         end
       end
 
       it "doesn't display the page 2 statements" do
         second_page_statements.each do |statement|
-          expect(page).not_to have_content(statement.body)
+          expect(page).not_to have_content(body(statement))
         end
       end
     end
@@ -52,13 +52,13 @@ RSpec.feature "StatementIndexVisitings", type: :feature do
 
       it "doesn't display the newest statements" do
         first_page_statements.each do |statement|
-          expect(page).not_to have_content(statement.body)
+          expect(page).not_to have_content(body(statement))
         end
       end
 
       it "displays the page 2 statements" do
         second_page_statements.each do |statement|
-          expect(page).to have_content(statement.body)
+          expect(page).to have_content(body(statement))
         end
       end
     end
@@ -71,7 +71,7 @@ RSpec.feature "StatementIndexVisitings", type: :feature do
 
     it "displays link to statements" do
       statements.each do |statement|
-        expect(page).to have_link(statement.body, href: statement_path(statement))
+        expect(page).to have_link(body(statement), href: statement_path(statement))
       end
     end
   end

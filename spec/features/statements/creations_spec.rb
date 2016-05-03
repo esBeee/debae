@@ -34,7 +34,7 @@ end
 
 RSpec.feature "StatementCreations", type: :feature, session_helpers: true do
   let(:user) { FactoryGirl.create(:user) }
-  let(:statement) { Statement.find_by(body: new_statement_body) }
+  let(:statement) { Statement.find_by("body -> 'thesis' ->> '#{I18n.locale}' = ?", new_statement_body) }
   # Create new statement body with timestamp to ensure this test doesn't succeeds because
   # there's already a statement with that body in the database.
   let(:new_statement_body) { "This and that is right. I know it! #{Time.now.to_i}" }

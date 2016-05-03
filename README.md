@@ -66,7 +66,7 @@ If a user has signed in with facebook, then signs in with google (but both accou
 
 * Reflect the information about up- and downvoted arguments in the score-formula
 
-* Allow searching the statement's bodys with autocomplete in a search field and in the new argument body input field
+* Allow searching the statement's bodys with autocomplete in a search field and in the new argument body input field. Note that this shouldn't be done without indexing the body attribute, which is of type `jsonb`. See [here](http://nandovieira.com/using-postgresql-and-jsonb-with-ruby-on-rails) or [here](https://blog.codeship.com/unleash-the-power-of-storing-json-in-postgres/)
 
 * Internationalize a statement's body by turning it into a hash that takes the statement in various languages.
 
@@ -74,7 +74,13 @@ If a user has signed in with facebook, then signs in with google (but both accou
 
 * Establish "Gegen-These"
 
-* Nutzer-Profile
+* Create public user profiles
+
+* Define and display user score
+
+* Allow users to destroy their account
+
+* Refactor handling of statement's body attribute (Especially concerning its validation. Maybe create an extra class for that. [This](http://faxon.org/2015/02/03/edit-rails-activerecord-json-attributes-in-html-forms) might be inspiring.)
 
 ## Conventions
 
@@ -116,7 +122,7 @@ I18n.t("something.there.and.there", default: "There")
 
 * Belongs to a `User`. Might be nil if the user has deleted his account.
 
-* Attribute `body`: Limited to 260 characters on database level. Can't be nil (on database level).
+* Attribute `body`: Is stored as JSON with the following structure `{thesis: {de: "Ja", en: "Yes"}, counter_thesis: {de: "Nein"}}`.
 
 * Attribute `score`: Holds a decimal number within (including) 0 and 1, that represents the strength of the `Statement`.
 

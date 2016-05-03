@@ -73,4 +73,32 @@ module StatementsHelper
       "undecided"
     end
   end
+
+  # Returns the thesis of a statement or the counter-thesis, if second
+  # argument is true, in the current locale.
+  def body statement, counter_thesis = false
+    th = counter_thesis ? "counter_thesis" : "thesis"
+
+    # This should never happen. Inform if it does anyway.
+    if statement.nil? || (bodies=statement.body[th]).nil?
+      Kazus.log :fatal, "Something went horribly wrong in #body", statement, I18n.locale, th
+      return "N/A"
+    end
+
+    # Try to get the body in the current locale.
+    bod = bodies[I18n.locale.to_s]
+
+    # If it doesn't exist in the current locale, take the original locale.
+    if bod.blank?
+      bod = bodies[statement.body["original_locale"]]
+    end
+
+    # Warn if body is still blank because that should never happen.
+    if bod.blank?
+      Kazus.log :error, "Only a blank string could be found for the statement's body", statement, I18n.locale, th
+      return bodies.values[0] || "N/A"
+    end
+
+    bod
+  end
 end

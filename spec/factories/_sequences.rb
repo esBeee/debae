@@ -4,6 +4,7 @@ FactoryGirl.define do
   end
 
   sequence :body do |n|
-    "For the #{n}th time - she did the right thing!"
+    locale = I18n.default_locale
+    {original_locale: locale, thesis: {locale => "For the #{n}th time - she did the right thing!"}}
   end
 end

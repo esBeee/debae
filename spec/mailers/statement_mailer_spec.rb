@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe StatementMailer, type: :mailer do
+RSpec.describe StatementMailer, type: :mailer, statements_helper: true do
   describe "New argument email" do
     let(:link) { FactoryGirl.build(:statement_argument_link) }
     let(:mail) { described_class.new_argument_email(link).deliver_now }
@@ -18,12 +18,12 @@ RSpec.describe StatementMailer, type: :mailer do
     end
 
     it "displays body of the new argument" do
-      expect(mail.body.encoded).to have_content(link.argument.body)
+      expect(mail.body.encoded).to have_content(body(link.argument))
     end
 
     it "displays link to statement" do
       statement = link.statement
-      expect(mail.body.encoded).to have_link(statement.body, href: statement_url(statement))
+      expect(mail.body.encoded).to have_link(body(statement), href: statement_url(statement))
     end
   end
 end

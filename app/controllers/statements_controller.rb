@@ -47,7 +47,7 @@ class StatementsController < ApplicationController
   private
 
   def statement_params
-    params.require(:statement).permit(:body)
+    params.require(:statement).permit(body: [:original_locale, thesis: I18n.available_locales])
   end
 
   # If the argument parameter is present and holds the information that

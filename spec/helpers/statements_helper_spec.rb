@@ -95,4 +95,151 @@ RSpec.describe StatementsHelper, type: :helper do
       end
     end
   end
+
+  describe "#body" do
+    let(:statement) { FactoryGirl.create(:statement) }
+    let(:thesis_de) { "Das ist so!" }
+    let(:thesis_en) { "It is so!" }
+
+    before(:context) { I18n.locale = :de }
+    after(:context) { I18n.locale = I18n.default_locale }
+
+    context "when called with a statement" do
+      context "when called without second argument" do
+        context "when statement has a body" do
+          context "when body exists in the current locale" do
+            before do
+              statement.body = {thesis: {de: thesis_de}}
+              statement.save! validate: false
+            end
+
+            it "returns the body in the current locale" do
+              expect(helper.body(statement)).to eq thesis_de
+            end
+          end
+
+          context "when body doesn't exist in the current locale" do
+            context "when original locale is set" do
+              context "when a body is found in that locale" do
+                before do
+                  statement.body = {original_locale: "en", thesis: {en: thesis_en}}
+                  statement.save! validate: false
+                end
+
+                it "returns the body in the original locale" do
+                  expect(helper.body(statement)).to eq thesis_en
+                end
+              end
+
+              context "when no body is found in that locale" do
+                before do
+                  statement.body = {original_locale: "en", thesis: {fr: thesis_en}}
+                  statement.save! validate: false
+                end
+
+                it "returns the first found body" do
+                  expect(helper.body(statement)).to eq thesis_en
+                end
+              end
+            end
+
+            context "when original locale is not set" do
+              context "when a body exists in any language" do
+                before do
+                  statement.body = {thesis: {en: thesis_en}}
+                  statement.save! validate: false
+                end
+
+                it "returns the first found body" do
+                  expect(helper.body(statement)).to eq thesis_en
+                end
+              end
+
+              context "when no body exists in any language" do
+                before do
+                  statement.body = {}
+                  statement.save! validate: false
+                end
+
+                it "returns a warning" do
+                  expect(helper.body(statement)).to eq "N/A"
+                end
+              end
+            end
+          end
+        end
+      end
+
+      context "when called with true as second argument" do
+        context "when statement has a body" do
+          context "when body exists in the current locale" do
+            before do
+              statement.body = {counter_thesis: {de: thesis_de}}
+              statement.save! validate: false
+            end
+
+            it "returns the body in the current locale" do
+              expect(helper.body(statement, true)).to eq thesis_de
+            end
+          end
+
+          context "when body doesn't exist in the current locale" do
+            context "when original locale is set" do
+              context "when a body is found in that locale" do
+                before do
+                  statement.body = {original_locale: "en", counter_thesis: {en: thesis_en}}
+                  statement.save! validate: false
+                end
+
+                it "returns the body in the original locale" do
+                  expect(helper.body(statement, true)).to eq thesis_en
+                end
+              end
+
+              context "when no body is found in that locale" do
+                before do
+                  statement.body = {original_locale: "en", counter_thesis: {fr: thesis_en}}
+                  statement.save! validate: false
+                end
+
+                it "returns the first found body" do
+                  expect(helper.body(statement, true)).to eq thesis_en
+                end
+              end
+            end
+
+            context "when original locale is not set" do
+              context "when a body exists in any language" do
+                before do
+                  statement.body = {counter_thesis: {en: thesis_en}}
+                  statement.save! validate: false
+                end
+
+                it "returns the first found body" do
+                  expect(helper.body(statement, true)).to eq thesis_en
+                end
+              end
+
+              context "when no body exists in any language" do
+                before do
+                  statement.body = {thesis: {de: thesis_de}}
+                  statement.save! validate: false
+                end
+
+                it "returns a warning" do
+                  expect(helper.body(statement, true)).to eq "N/A"
+                end
+              end
+            end
+          end
+        end
+      end
+    end
+
+    context "when called with nil" do
+      it "returns a warning" do
+        expect(helper.body(nil)).to eq "N/A"
+      end
+    end
+  end
 end

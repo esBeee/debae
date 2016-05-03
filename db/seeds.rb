@@ -16,12 +16,14 @@ def user_foc email
 end
 
 def statement_foc user, body
-  Statement.find_by(body: body) || FactoryGirl.create(:statement, user: user, body: body)
+  locale = "de"
+  Statement.find_by("body -> 'thesis' ->> '#{locale}' = ?", body) ||
+    FactoryGirl.create(:statement, user: user, body: {"original_locale" => locale, "thesis" => {locale => body}})
 end
 
 def argument_statement user, statement, pro_or_contra, body
   unless statement.arguments.find_by(body: body)
-    argument = FactoryGirl.create(:statement, user: user, body: body)
+    argument = statement_foc(user, body)
     FactoryGirl.create(:statement_argument_link, pro_or_contra, statement: statement, argument: argument)
   end
   argument

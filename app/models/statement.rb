@@ -54,7 +54,7 @@ class Statement < ApplicationRecord
     includes(:links_to_arguments).where(statement_argument_links: {statement_id: nil})
   }
 
-  validates :body, presence: true, length: { in: 2..260 }
+  validate :body_is_well_structured
   # Validate score the be within [0..1]. Also allow nil to indicate insufficient information.
   validates :score, numericality: { greater_than_or_equal_to: 0, less_than_or_equal_to: 1 }, allow_nil: true
 
@@ -69,5 +69,50 @@ class Statement < ApplicationRecord
   # the user doesn't exist anymore.
   def user_or_mock
     self.user || User.new(name: "Deleted user")
+  end
+
+
+  private
+
+  # Checks that the body has the right format and that at least the thesis
+  # in the original locale exists.
+  def body_is_well_structured
+    if body.class != Hash || body["thesis"].class != Hash || ![Hash, NilClass].include?(body["counter_thesis"].class)
+      errors.add(:body, "is mal-formatted.")
+      Kazus.log :error, "The body of a statement is invalid", self, body
+      return # If the format is invalid, the following validations might throw an error.
+    end
+
+    if body["original_locale"].blank?
+      errors.add(:body, "original locale can't be blank.")
+    end
+
+    unless I18n.available_locales.include?(body["original_locale"].to_sym)
+      errors.add(:body, "original locale must be one of #{I18n.available_locales.join(", ")}.")
+    end
+
+    if body["thesis"][body["original_locale"]].nil?
+      Kazus.log body["original_locale"], body["thesis"]
+      errors.add(:body, "needs to contain at least the thesis in the current locale.")
+    end
+
+    body["thesis"].each do |locale, thesis|
+      if thesis.blank? || thesis.length < 2 || thesis.length > 260 || !I18n.available_locales.include?(locale.to_sym)
+        errors.add(:body, "thesis in locale '#{locale}' must be between 2 and 260 characters long")
+      end
+    end
+
+    if body["counter_thesis"]
+      body["counter_thesis"].each do |locale, thesis|
+        Kazus.log locale
+        if thesis.blank? || thesis.length < 2 || thesis.length > 260 || !I18n.available_locales.include?(locale.to_sym)
+          errors.add(:body, "thesis in locale '#{locale}' must be between 2 and 260 characters long")
+        end
+      end
+    end
+
+    if errors.any?
+      Kazus.log :error, "The body of a statement is invalid", self
+    end
   end
 end

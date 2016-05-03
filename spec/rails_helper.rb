@@ -68,6 +68,10 @@ RSpec.configure do |config|
   # Provide mailer helpers for all specs with "mailer_helpers: true".
   config.include MailerHelpers, mailer_helpers: true
 
+  # Provide access to statements helper methods such as #body, that
+  # returns the body of a statement in the current locale.
+  config.include StatementsHelper, statements_helper: true
+
   # Provide shared examples for controller specs.
   config.include SharedExamples::Controllers, type: :controller
 
