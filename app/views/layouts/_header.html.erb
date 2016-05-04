@@ -17,12 +17,19 @@
         </ul>
       </li>
     <% else %>
-      <%= drop_down t("layouts.header.dropdowns.join", default: "Join") do %>
-        <%= menu_item t("layouts.header.links.sign_in", auth_type: "Email", default: "Sign in with %{auth_type}"), new_user_session_path %>
-        <%= menu_item t("layouts.header.links.sign_in", auth_type: "Facebook", default: "Sign in with %{auth_type}"), user_facebook_omniauth_authorize_path %>
-        <%= menu_item t("layouts.header.links.sign_in", auth_type: "Google", default: "Sign in with %{auth_type}"), user_google_oauth2_omniauth_authorize_path %>
-        <%= menu_item t("layouts.header.links.sign_in", auth_type: "Twitter", default: "Sign in with %{auth_type}"), user_twitter_omniauth_authorize_path %>
-      <% end %>
+      <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+          <%= t("layouts.header.dropdowns.join", default: "Join") %> <b class="caret"></b><br />
+          <%= fa_icon("envelope") + " " + fa_icon("facebook-square", class: "brand-related facebook") + " " + fa_icon("google", class: "brand-related google") + " " + fa_icon("twitter", class: "brand-related twitter") %>
+        </a>
+        <ul class="dropdown-menu">
+          <%= menu_item fa_icon("envelope") + " " + t("layouts.header.links.sign_in", auth_type: "Email", default: "Sign in with %{auth_type}"), new_user_session_path %>
+          <%= drop_down_divider %>
+          <%= menu_item fa_icon("facebook-square", class: "brand-related facebook") + " " + t("layouts.header.links.sign_in", auth_type: "Facebook", default: "Sign in with %{auth_type}"), user_facebook_omniauth_authorize_path %>
+          <%= menu_item fa_icon("google", class: "brand-related google") + " " + t("layouts.header.links.sign_in", auth_type: "Google", default: "Sign in with %{auth_type}"), user_google_oauth2_omniauth_authorize_path %>
+          <%= menu_item fa_icon("twitter", class: "brand-related twitter") + " " + t("layouts.header.links.sign_in", auth_type: "Twitter", default: "Sign in with %{auth_type}"), user_twitter_omniauth_authorize_path %>
+        </ul>
+      </li>
     <% end %>
   <% end %>
 <% end %>
