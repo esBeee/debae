@@ -1,17 +1,18 @@
-<table class="table table-hover">
-  <thead>
-    <tr>
-      <th>
-        Statement
-      </th>
-      <th>
-        Score
-      </th>
-    </tr>
-  </thead>
-  <tbody>
-    <%= render @statements %>
-  </tbody>
-</table>
+<section class="row">
+  <div class="jumbotron">
+    <h1>Debattiere, was dich beschäftigt.</h1>
+    <p>Bei debae kannst du sachliche Debatten anstoßen. Auch über kontroverse Themen. Aus welcher Kategorie deine Aussagen stammen, entscheidest du. Von Alltagsproblemen bis Politik ist alles erlaubt.</p>
+    <p>Jede Aussage erhält eine Wertung, die Anzeigt, wie stark die Argumente sind und wie viele Befürworter die Aussage hat.</p>
+    <p>Sieh' dir am besten einige Aussagen an, um zu verstehen, wie es funktioniert.</p>
+  </div>
+</section>
+
+<section class="row">
+  <h2>Aktuelle Statements</h2>
+</section>
+
+<section class="row">
+  <%= render @statements %>
+</section>
 
 <%= will_paginate @statements %>

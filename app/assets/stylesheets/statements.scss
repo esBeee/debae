@@ -1,4 +1,63 @@
-// @import "./_mixins_and_variables";
+@import "./_mixins_and_variables";
+
+.statement-summary-container {
+  padding: 10px;
+  // background-color: blue;
+
+  .panel {
+    margin: 0;
+  }
+
+  .content {
+    // @include flex(column);
+
+    & > *:not(:last-child) {
+      margin-bottom: 6px;
+    }
+
+    .author {
+      @include flex(row);
+      // justify-content: center;
+      align-items: center;
+      // color: #00FF44;
+
+      // border-bottom: 1px solid #DCE0DD;
+
+      .avatar {
+        margin-right: 10px;
+      }
+    }
+
+    .statement {
+      font-style: bold;
+    }
+
+    .score {
+      // background-color: yellow;
+      @include flex(row);
+      justify-content: flex-end;
+      color: #ADADAD;
+      font-size: 80%;
+      // flex: 1;
+    }
+  }
+
+  .statement-summary {
+    // background-color: white;
+    position: relative;
+    color: #4c574c;
+    padding: 10px;
+    border-radius: 3px;
+    border: 1px solid #DCE0DD;
+
+    // a:hover {
+    //   border: 1px solid #00FF44;
+    // }
+    // margin: 15px 0px;
+  }
+}
+
+
 
 .statement-actions {
   // position: relative;

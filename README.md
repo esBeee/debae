@@ -68,11 +68,7 @@ If a user has signed in with facebook, then signs in with google (but both accou
 
 * Allow searching the statement's bodys with autocomplete in a search field and in the new argument body input field. Note that this shouldn't be done without indexing the body attribute, which is of type `jsonb`. See [here](http://nandovieira.com/using-postgresql-and-jsonb-with-ruby-on-rails) or [here](https://blog.codeship.com/unleash-the-power-of-storing-json-in-postgres/)
 
-* Internationalize a statement's body by turning it into a hash that takes the statement in various languages.
-
 * In email status header: provide link to resend confirmation email.
-
-* Establish counter thesis
 
 * Create public user profiles
 
@@ -83,6 +79,8 @@ If a user has signed in with facebook, then signs in with google (but both accou
 * Refactor handling of statement's body attribute (Especially concerning its validation. Maybe create an extra class for that. [This](http://faxon.org/2015/02/03/edit-rails-activerecord-json-attributes-in-html-forms) might be inspiring.)
 
 * Allow to comment comments
+
+* Use the Statement's top_level attribute to show the most interesting statements
 
 ## Conventions
 
