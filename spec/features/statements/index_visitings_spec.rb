@@ -12,8 +12,8 @@ RSpec.feature "StatementIndexVisitings", type: :feature, statements_helper: true
     #
     # The bang is important to make sure all statements exist before
     # visiting the index page.
-    let!(:first_page_statements) { FactoryGirl.create_list(:statement, statements_per_page) }
-    let!(:second_page_statements) { FactoryGirl.create_list(:statement, statements_per_page, created_at: Time.now - 1.day) }
+    let!(:first_page_statements) { FactoryGirl.create_list(:statement, statements_per_page, :top_level) }
+    let!(:second_page_statements) { FactoryGirl.create_list(:statement, statements_per_page, :top_level, created_at: Time.now - 1.day) }
 
     context "when page 1 was chosen" do
       before { visit statements_path(page: 1) }
@@ -65,7 +65,7 @@ RSpec.feature "StatementIndexVisitings", type: :feature, statements_helper: true
   end
 
   describe "links to listed statements" do
-    let!(:statements) { FactoryGirl.create_list(:statement, 2) }
+    let!(:statements) { FactoryGirl.create_list(:statement, 2, :top_level) }
 
     before { visit statements_path }
 
@@ -83,7 +83,7 @@ RSpec.feature "StatementIndexVisitings", type: :feature, statements_helper: true
     let(:link_to_next_page) { I18n.t("will_paginate.next_label") }
 
     context "when more than one page of statements is available" do
-      let!(:statements) { FactoryGirl.create_list(:statement, statements_per_page + 1) }
+      let!(:statements) { FactoryGirl.create_list(:statement, statements_per_page + 1, :top_level) }
       let(:path_to_next_page) { "/?page=2" }
 
       before { visit statements_path }
@@ -94,7 +94,7 @@ RSpec.feature "StatementIndexVisitings", type: :feature, statements_helper: true
     end
 
     context "when not more than one page of statements is available" do
-      let!(:statements) { FactoryGirl.create_list(:statement, statements_per_page) }
+      let!(:statements) { FactoryGirl.create_list(:statement, statements_per_page, :top_level) }
 
       before { visit statements_path }
 

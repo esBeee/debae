@@ -80,6 +80,8 @@ Right now, it only logs an info message if a comment failed to save. But current
 
 * After failing to update the user account, the page doesn't display the appropriate layout anymore
 
+* Revise email templates
+
 ## Conventions
 
 Don't use :scope in translations. Always write the path in the first argument of a translation. For example

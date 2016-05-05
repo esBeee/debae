@@ -3,7 +3,7 @@ class StatementsController < ApplicationController
 
   # GET /statements or GET /
   def index
-    @statements = Statement.top_level.page(params[:page])
+    @statements = Statement.where(top_level: true).order(created_at: :desc).page(params[:page])
   end
 
   # GET /statements/:id
