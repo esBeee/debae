@@ -71,7 +71,7 @@ RSpec.feature "StatementIndexVisitings", type: :feature, statements_helper: true
 
     it "displays link to statements" do
       statements.each do |statement|
-        expect(page).to have_link(body(statement), href: statement_path(statement))
+        expect(page).to have_link("", href: statement_path(statement))
       end
     end
   end
