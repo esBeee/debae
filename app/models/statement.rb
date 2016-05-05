@@ -85,6 +85,7 @@ class Statement < ApplicationRecord
 
     if body["original_locale"].blank?
       errors.add(:body, "original locale can't be blank.")
+      return # If the original locale is blank, the following validations might throw an error.
     end
 
     unless I18n.available_locales.include?(body["original_locale"].to_sym)

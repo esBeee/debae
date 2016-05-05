@@ -62,6 +62,8 @@ Right now, it only logs an info message if a comment failed to save. But current
 
 * Reflect the information about up- and downvoted arguments in the score-formula
 
+* Make score formula dependent on the amount of votes, the information is based on
+
 * Allow searching the statement's bodys with autocomplete in a search field and in the new argument body input field. Note that this shouldn't be done without indexing the body attribute, which is of type `jsonb`. See [here](http://nandovieira.com/using-postgresql-and-jsonb-with-ruby-on-rails) or [here](https://blog.codeship.com/unleash-the-power-of-storing-json-in-postgres/)
 
 * In email status header: provide link to resend confirmation email.
