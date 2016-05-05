@@ -49,7 +49,7 @@ module StatementsHelper
   def headline_tag string
     str_length = string.length
 
-    if str_length < 40
+    if str_length < 50
       :h1
     else
       :h2
