@@ -27,7 +27,7 @@ RSpec.feature "StatementShowVisitings", type: :feature, statements_helper: true 
     end
 
     describe "pro arguments section" do
-      let(:container_css) { ".arguments.pro" }
+      let(:container_css) { ".arguments-container.pro" }
 
       it "displays pro arguments" do
         within(:css, container_css) do
@@ -47,7 +47,7 @@ RSpec.feature "StatementShowVisitings", type: :feature, statements_helper: true 
     end
 
     describe "contra arguments section" do
-      let(:container_css) { ".arguments.contra" }
+      let(:container_css) { ".arguments-container.contra" }
 
       it "displays contra arguments" do
         within(:css, container_css) do

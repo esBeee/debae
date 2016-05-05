@@ -1,19 +1,34 @@
 <section class="row">
-  <div class="jumbotron">
-    <div class="row">
-      <%= content_tag headline_tag(body(statement)), body(statement) %>
-    </div>
-    <div class="row">
-      <div class="col-xs-2">
-        <%= image_tag statement.user_or_mock.avatar.url(:thumb), class: "img-circle avatar" %>
+  <div class="jumbotron statement-header">
+    <div class="container">
+      <div class="row">
+        <%= content_tag headline_tag(body(statement)), body(statement) %>
       </div>
-      <div class="col-xs-10">
-        <%= t("statements.show.by", default: "By %{username}", username: statement.user_or_mock.name) %>.
-        <%= t("statements.show.creator_attitudes.#{creator_attitude(statement)}", default: "") %>.
-        <span class="secondary">
-          <%= l(statement.created_at) %>
-        </span>
+      <div class="row">
+        <div class="col-xs-2">
+          <%= image_tag statement.user_or_mock.avatar.url(:thumb), class: "img-circle avatar" %>
+        </div>
+        <div class="col-xs-10">
+          <%= t("statements.show.by", default: "By %{username}", username: statement.user_or_mock.name) %>.
+          <%= t("statements.show.creator_attitudes.#{creator_attitude(statement)}", default: "") %>.
+          <span class="secondary">
+            <%= l(statement.created_at) %>
+          </span>
+        </div>
       </div>
+    
+
+      <section class="row statement-actions">
+        <div class="left">
+          <%= render 'vote_button', statement: statement, is_pro_vote: false, existing_vote: has_voted?(false, current_user, statement) %>
+        </div>
+        <div class="middle">
+          <%= render 'score_circle', id: statement.id, score: statement.score %>
+        </div>
+        <div class="right">
+          <%= render 'vote_button', statement: statement, is_pro_vote: true, existing_vote: has_voted?(true, current_user, statement) %>
+        </div>
+      </section>
     </div>
   </div>
 </section>

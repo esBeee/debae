@@ -13,17 +13,13 @@ RSpec.describe "statements/show.html.erb", type: :view, statements_helper: true 
   end
 
   it "displays container for pro arguments" do
-    expect(rendered).to have_css(".arguments.pro")
+    expect(rendered).to have_css(".arguments-container.pro")
   end
 
   it "displays container for contra arguments" do
-    expect(rendered).to have_css(".arguments.contra")
+    expect(rendered).to have_css(".arguments-container.contra")
   end
-
-  it "displays the statements score" do
-    expect(rendered).to have_content("35 %")
-  end
-
+  
   it "displays headline for pro arguments" do
     expect(rendered).to have_content(I18n.t("statements.show.headlines.pro_arguments"))
   end

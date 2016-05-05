@@ -44,8 +44,41 @@
 
 
 .statement-actions {
-  // position: relative;
-  // top: -60px;
+  @include flex(row);
+  // background-color: red;
+  align-items: center;
+  justify-content: center;
+
+  .left {
+    flex: 1;
+    text-align: right;
+  }
+
+  .right {
+    flex: 1;
+  }
+
+  & > * {
+    margin: 0px 10px;
+  }
+}
+
+.arguments-container {
+  background-color: white;
+  border: 1px solid #DCE0DD;
+  border-radius: 5px;
+  padding: 20px;
+  text-align: center;
+
+  ul > * {
+    margin: 30px 0px;
+  }
+
+  margin-bottom: 10px;
+}
+
+.statement-header {
+  padding-bottom: 0px;
 }
 
 // $light_gray: #FAFAFA;
