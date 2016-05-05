@@ -65,7 +65,7 @@ de:
   statements:
     new:
       body: "Dein Statement"
-      submit_html: "Statement<br />äußern"
+      submit_html: "Statement<br />abgeben"
       pro_argument_headline: "Neues Pro-Argument für"
       contra_argument_headline: "Neues Kontra-Argument für"
     show:
