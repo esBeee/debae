@@ -54,10 +54,6 @@ The related methods `store_path` and `forelast_visited_path` in application cont
 
 Right now, it only logs an info message if a comment failed to save. But currently there's no reason for a comment to be invalid, expect it's blank or it length exceeds 99999 characters. Low priority.
 
-### OAuth
-
-If a user has signed in with facebook, then signs in with google (but both accounts with the same email address), the google uid is not saved. This might be changed by storing the user's uid and provider in a hash that takes several providers and uids.
-
 ### Various
 
 * Store a comment to be created in session in case the user's session turns out to be expired. In this case, after sign in, the comment can be prefilled and be created then.
@@ -81,6 +77,8 @@ If a user has signed in with facebook, then signs in with google (but both accou
 * Allow to comment comments
 
 * Use the Statement's top_level attribute to show the most interesting statements
+
+* After failing to update the user account, the page doesn't display the appropriate layout anymore
 
 ## Conventions
 

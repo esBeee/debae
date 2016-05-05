@@ -71,24 +71,45 @@ RSpec.feature "UserEditings", type: :feature, session_helpers: true do
       end
 
       context "when trying to change the email" do
-        before do
-          # Trying to change the user's password only.
-          fill_in I18n.t("users.editings.labels.email"), with: edited_user_attributes[:email]
+        context "when email address is not blank before" do
+          before do
+            # Trying to change the user's email only.
+            fill_in I18n.t("users.editings.labels.email"), with: edited_user_attributes[:email]
 
-          # Filling in an invalid password.
-          fill_in I18n.t("users.editings.labels.current_password"), with: user.password + "s"
+            # Filling in an invalid password.
+            fill_in I18n.t("users.editings.labels.current_password"), with: user.password + "s"
 
-          # Submit the form.
-          click_button I18n.t("users.editings.buttons.submit")
+            # Submit the form.
+            click_button I18n.t("users.editings.buttons.submit")
+          end
+
+          it "should not update the user's attributes" do
+            user.reload # Make sure the attributes we compare are up-to-date.
+            expect(user.unconfirmed_email).to eq nil
+          end
+
+          it "displays error message" do
+            expect(page).to have_content("Current password ist nicht gültig")
+          end
         end
 
-        it "should not update the user's attributes" do
-          user.reload # Make sure the attributes we compare are up-to-date.
-          expect(user.unconfirmed_email).to eq nil
-        end
+        context "when email address is blank before" do
+          before do
+            # Make sure the user's email is blank.
+            user.email = ""
+            user.save! validate: false
 
-        it "displays error message" do
-          expect(page).to have_content("Current password ist nicht gültig")
+            # Trying to change the user's email only.
+            fill_in I18n.t("users.editings.labels.email"), with: edited_user_attributes[:email]
+
+            # Submit the form.
+            click_button I18n.t("users.editings.buttons.submit")
+          end
+
+          it "should update the user's email" do
+            user.reload # Make sure the attributes we compare are up-to-date.
+            expect(user.unconfirmed_email).to eq edited_user_attributes[:email]
+          end
         end
       end
     end
