@@ -21,6 +21,8 @@
       <%= render 'layouts/header' %>
     </header>
 
+    <%= render 'layouts/sub_header' unless beginning_of_history? %>
+
     <div class="container main">
       <%# Display flash messages. %>
       <div class="row">

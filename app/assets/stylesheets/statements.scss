@@ -2,17 +2,12 @@
 
 .statement-summary-container {
   padding: 10px;
-  // background-color: blue;
-
-  .panel {
-    margin: 0;
-  }
 
   .content {
     // @include flex(column);
 
     & > *:not(:last-child) {
-      margin-bottom: 6px;
+      margin-bottom: 15px;
     }
 
     .author {
@@ -33,30 +28,19 @@
     }
 
     .score {
-      // background-color: yellow;
       @include flex(row);
       justify-content: flex-end;
-      color: #ADADAD;
-      font-size: 80%;
-      // flex: 1;
     }
   }
 
   .statement-summary {
-    // background-color: white;
     position: relative;
-    color: #4c574c;
-    padding: 10px;
-    border-radius: 3px;
-    border: 1px solid #DCE0DD;
-
-    // a:hover {
-    //   border: 1px solid #00FF44;
-    // }
-    // margin: 15px 0px;
   }
 }
 
+.index-headline {
+  text-align: center;
+}
 
 
 .statement-actions {

@@ -1,0 +1,16 @@
+@import "./_mixins_and_variables";
+
+$color: lighten($honey_dew, 48%);
+
+.sub-header {
+  background-color: #002729;
+  color: $color;
+  padding: 3px;
+  position: relative;
+  border-bottom: 1px solid #636363;
+  margin-bottom: 20px;
+
+  a {
+    color: $color;
+  }
+}

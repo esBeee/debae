@@ -83,38 +83,4 @@ RSpec.feature "StatementShowVisitings", type: :feature, statements_helper: true 
       end
     end
   end
-
-  describe "back button" do
-    let(:statement_argument_link) { FactoryGirl.create(:statement_argument_link) }
-    let(:statement_1) { statement_argument_link.statement }
-    let(:statement_2) { statement_argument_link.argument }
-
-    context "when the user has already visited two pages" do
-      before do
-        visit statement_path(statement_1)
-
-        # Since statement_2 is an argument for statement_1, a link
-        # to statement_2 should exist on the page for statement_1.
-        click_link body(statement_2)
-      end
-
-      it "brings the user back to the previously visited page" do
-        click_link I18n.t("links.back")
-        expect(page.current_path).to eq statement_path(statement_1)
-      end
-    end
-
-    context "when the user has visited only one page yet" do
-      before do
-        visit statement_path(statement_1)
-      end
-
-      it "brings the user back to the root page" do
-        click_link I18n.t("links.back")
-
-        # It doesn't do anything.
-        expect(page.current_path).to eq root_path
-      end
-    end
-  end
 end

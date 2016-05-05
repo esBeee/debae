@@ -48,7 +48,7 @@ Currently it makes use of 3 (!) libraries that lay in `assets/javascripts/vendor
 
 ### Refactor "last visited path" functionality
 
-The related methods `store_path` and `forelast_visited_path` in application controller might better be refactored into a gem.
+The related methods `store_path` and `forelast_visited_path` in application controller might better be refactored into a gem. Maybe it's also possible to get rid of the back=1 parameter by interpreting as back if the current path matches the forelast path of the array.
 
 ### Handle validation errors in comments#create
 

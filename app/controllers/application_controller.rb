@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
   # updates, in case this is a devise controller.
   before_action :configure_permitted_parameters, if: :devise_controller?
 
-  helper_method :forelast_visited_path
+  helper_method :forelast_visited_path, :beginning_of_history?
 
 
   protected
@@ -118,5 +118,11 @@ class ApplicationController < ActionController::Base
     end
 
     path
+  end
+
+  # Returns a boolean whether there's a path to go back
+  # to or this is the beginning of the history.
+  def beginning_of_history?
+    session[:last_paths].nil? || session[:last_paths].length < 2
   end
 end

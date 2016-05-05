@@ -26,6 +26,7 @@ de:
   # Globally used links
   links:
     back: "Zurück"
+    back_to: "Zurück zu '%{to}'"
 
   # Translations for the pagination links created
   # by gem will_paginate.
@@ -41,6 +42,7 @@ de:
         sign_out: "Ausloggen"
         account_settings: "Einstellungen"
         new_statement: "Statement abgeben"
+        about: "Über debae"
       dropdowns:
         join: "Mitmachen"
     edit_user_registration:
@@ -84,6 +86,8 @@ de:
     score:
       not_available: "N/A"
       unit: "%"
+    index:
+      headline: "Aktuell diskutierte Statements"
 
   comments:
     placeholders:
@@ -97,6 +101,10 @@ de:
     sign_in_to_comment_html: "%{link_to_sign_in}, um dieses Statement zu kommentieren!"
     headline: "Kommentare"
     successfully_created: "Dein Kommentar wurde erfolgreich erstellt!"
+
+  static_pages:
+    about:
+      headline: "Debattiere, was dich beschäftigt."
 
   users:
     reminders:

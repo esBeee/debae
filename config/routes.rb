@@ -20,4 +20,7 @@ Rails.application.routes.draw do
   # Updating a users profile has a separate controller action and, thus,
   # needs a separate route.
   put '/users/profile', to: 'users/profiles#update', as: :user_profile
+
+  # Routes for the static pages controller
+  get '/about', to: 'static_pages#about', as: :about
 end

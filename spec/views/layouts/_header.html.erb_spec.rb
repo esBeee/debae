@@ -19,7 +19,7 @@ RSpec.describe "layouts/_header", type: :view do
   context "when user is signed in" do
     before do
       sign_in user
-      render
+      render template: "layouts/_header", locals: { forelast_visited_path: "/" }
     end
 
     include_examples "Basic header content"
@@ -46,7 +46,7 @@ RSpec.describe "layouts/_header", type: :view do
   end
 
   context "when no user is signed in" do
-    before { render }
+    before { render template: "layouts/_header", locals: { forelast_visited_path: "/" } }
 
     include_examples "Basic header content"
 
