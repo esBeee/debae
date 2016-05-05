@@ -1,6 +1,6 @@
 # Overrides devise's registration controller for some individualizations.
 class Users::RegistrationsController < Devise::RegistrationsController
-  layout 'edit_user_registration', only: :edit # Use the layout specifically designed for this occasion.
+  layout :select_layout
 
 
   protected
@@ -26,5 +26,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # after a successful registration update.
   def after_update_path_for resource
     edit_user_registration_path
+  end
+
+  def select_layout
+    case params[:action]
+    when "edit", "update" then "edit_user_registration"
+    when "new", "create" then "authentication"
+    else "application"
+    end
   end
 end

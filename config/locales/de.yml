@@ -49,6 +49,10 @@ de:
       tabs:
         profile: "Profil bearbeiten"
         account: "Account bearbeiten"
+    authentication:
+      tabs:
+        sign_in: "Einloggen"
+        sign_up: "Registrieren"
 
   statement_argument_links:
     buttons:
@@ -107,18 +111,23 @@ de:
       headline: "Debattiere, was dich beschäftigt."
 
   users:
+    links:
+      forgot_password: "Passwort vergessen?"
+      resend_confirmation: "Keine Bestätigungs-Email erhalten?"
+      resend_unlock_instructions: "Anleitung zum Entsperren nicht erhalten?"
     reminders:
       link_to_account_settings: "hier" # Gets inserted as link_to_account_settings into the translation below.
       email_missing_html: "Du hast noch keine Email-Adresse angegeben. Hole das %{link_to_account_settings} nach, um das volle Angebot nutzen zu können."
       email_unconfirmed_html: "Deine Email-Adresse '%{email_address}' wurde noch nicht von dir bestätigt."
     registrations:
       labels:
-        email: "Email"
-        password: "Passwort"
-        password_confirmation: "Wiederhole dein gewünschtes Passwort"
+        email: "Deine Email-Adresse"
+        password: "Dein gewünschtes Passwort"
+        password_confirmation: "Wiederhole das gewünschte Passwort"
       buttons:
         submit: "Registrierung abschicken"
       minimum_password_length: "Mindestens %{minimum_password_length} Zeichen oder mehr"
+      headline: "Einen neuen Account anlegen"
     sessions:
       new:
         headline: "Logge dich ein"
