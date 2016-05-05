@@ -1,10 +1,42 @@
+@import "./_mixins_and_variables";
+
 .comment {
-  // background-color: blue;
-  // margin-top: 10px;
-  // margin-bottom: 0px;
+  .author {
+    @include flex(row);
+
+    .left {
+      // background-color: yellow;
+      flex: 1;
+    }
+
+    .right {
+      
+      @include flex(row);
+
+      // background-color: red;
+      align-items: flex-end;
+      justify-content: flex-end;
+    }
+  }
 }
 
 .comments-form-container {
   // background-color:red;
   margin-bottom: 20px;
+}
+
+.comments-container {
+  background-color: white;
+  border: 1px solid #DCE0DD;
+  border-radius: 5px;
+  padding: 30px;
+
+  & > *:not(:last-child) {
+    margin-bottom: 15px;
+  }
+
+  h1 {
+    margin-top: 0;
+    margin-bottom: 20px;
+  }
 }

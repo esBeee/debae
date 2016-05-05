@@ -2,9 +2,11 @@
   <div class="panel-body">
     <%= comment.body %>
   </div>
-  <div class="panel-footer">
-    <%= image_tag @statement.user_or_mock.avatar.url(:thumb), class: "img-circle avatar" %>
-    <%= comment.user_or_mock.name %>,
-    <%= l(comment.created_at) %>
+  <div class="panel-footer author">
+    <div class="left">
+      <%= image_tag @statement.user_or_mock.avatar.url(:thumb), class: "img-circle avatar" %>
+      <%= comment.user_or_mock.name %>
+    </div>
+    <div class="right secondary"><%= l(comment.created_at) %></div>
   </div>
 </div>
