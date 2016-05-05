@@ -14,6 +14,12 @@ class User < ApplicationRecord
   has_many :votes
   has_many :comments
 
+  # Allow access to uid's in the json attribute 'uids' via shortcuts.
+  #
+  # NOTE: Right now, they only work as getters. It would be good,
+  # if they would also work as setters. Especially for validations.
+  store_accessor :uids, :facebook, :google_oauth2, :twitter
+
   # This method (provided by the gem paperclip) associates the attribute ":avatar" with a file attachment.
   # Define here in what formats the avatars will be saved. You can display a format
   # in view like so: <%= image_tag resource.avatar.url(:original) %>.

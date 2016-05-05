@@ -165,6 +165,19 @@ RSpec.describe User, type: :model do
           end
       end
     end
+
+    describe "when uid" do
+      context "for facebook already exists" do
+        before do
+          usr = FactoryGirl.create(:user, uids: {facebook: "some_UID_483orji"})
+          @user.uids = {facebook: usr.facebook}
+        end
+        it "should not be valid" do
+          pending "This is validated on database level, but not in ActiveRecord"
+          expect(@user.valid?).to eq false
+        end
+      end
+    end
   end
 
   describe "default values" do

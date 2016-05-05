@@ -28,7 +28,7 @@ class User::OAuthHandler
     email = info[:email] # might be nil
 
     # First, try to find a potentially exisiting user by provider-uid-pair.
-    user = User.find_by(provider: provider, uid: uid)
+    user = User.find_by("uids ->> '#{provider}' = ?", uid)
 
     # If no user was found, try to use the email address to match the user
     # to an existing account, if an email address exists.
@@ -36,9 +36,12 @@ class User::OAuthHandler
     if user.nil? && !email.blank? && (user=User.find_by(email: email))
       # If the user was matched by email, make sure provider and uid get saved
       # for this user and fill up other information.
-      user_attributes = {}
-      user_attributes[:provider] = provider if user.provider.blank?
-      user_attributes[:uid] = uid if user.uid.blank?
+      old_uids = user.uids
+      old_uids = JSON.parse(old_uids) if old_uids.class == String
+      new_uids = old_uids.merge(provider => uid)
+
+      user_attributes = { uids: new_uids }
+
       if (urls=info[:urls])
         user_attributes[:link_to_facebook] = urls[:Facebook] if urls[:Facebook] && user.link_to_facebook.blank?
         user_attributes[:link_to_twitter] = urls[:Twitter] if urls[:Twitter] && user.link_to_twitter.blank?
@@ -57,7 +60,7 @@ class User::OAuthHandler
     # because it's not sure we have got an email anyway).
     if user.nil?
       # Collect all available user information.
-      user_attributes = { provider: provider, uid: uid, password: Devise.friendly_token[8,20], confirmed_at: Time.now }
+      user_attributes = { uids: {provider => uid}, password: Devise.friendly_token[8,20], confirmed_at: Time.now }
       user_attributes[:email] = email if email
       user_attributes[:name] = info[:name] if info[:name]
       if (urls=info[:urls])

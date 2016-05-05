@@ -74,14 +74,15 @@ ActiveRecord::Schema.define(version: 20160429094413) do
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
-    t.string   "provider"
-    t.string   "uid"
+    t.jsonb    "uids",                               default: "{}", null: false
     t.string   "link_to_facebook",       limit: 500
     t.string   "link_to_twitter",        limit: 500
     t.string   "link_to_google_plus",    limit: 500
+    t.index "((uids ->> 'facebook'::text))", name: "facebook_uid_index", unique: true, using: :btree
+    t.index "((uids ->> 'google_oauth2'::text))", name: "google_oauth2_uid_index", unique: true, using: :btree
+    t.index "((uids ->> 'twitter'::text))", name: "twitter_uid_index", unique: true, using: :btree
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
-    t.index ["provider", "uid"], name: "index_users_on_provider_and_uid", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
     t.index ["unlock_token"], name: "index_users_on_unlock_token", unique: true, using: :btree
   end
