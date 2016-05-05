@@ -14,16 +14,4 @@ nav.navbar {
   .dropdown-menu > .active > a, .dropdown-menu > .active > a:hover, .dropdown-menu > .active > a:focus {
     background-color: #4c574c;
   }
-
-  .fix {
-    height: 100px;
-    @include flex(column);
-    justify-content: center;
-  }
-}
-
-.navbar-header {
-  height: 100px;
-  @include flex(column);
-  justify-content: center;
 }

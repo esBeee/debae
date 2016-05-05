@@ -78,11 +78,9 @@ Right now, it only logs an info message if a comment failed to save. But current
 
 * Allow to comment comments
 
-* Use the Statement's top_level attribute to show the most interesting statements
-
-* After failing to update the user account, the page doesn't display the appropriate layout anymore
-
 * Revise email templates
+
+* After an error, the edit account layout doesn't mark the account tab as active.
 
 ## Conventions
 
