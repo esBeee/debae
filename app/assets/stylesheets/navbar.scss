@@ -1,3 +1,5 @@
+@import "./_mixins_and_variables";
+
 nav.navbar {
   background-color: rgba(132, 255, 0, 1);
   background: -webkit-linear-gradient(top, rgba(191, 255, 0, 1) 0%, rgba(132, 255, 0, 1) 100%);
@@ -12,4 +14,16 @@ nav.navbar {
   .dropdown-menu > .active > a, .dropdown-menu > .active > a:hover, .dropdown-menu > .active > a:focus {
     background-color: #4c574c;
   }
+
+  .fix {
+    height: 100px;
+    @include flex(column);
+    justify-content: center;
+  }
+}
+
+.navbar-header {
+  height: 100px;
+  @include flex(column);
+  justify-content: center;
 }
