@@ -3,11 +3,11 @@
 $color: lighten($honey_dew, 48%);
 
 .sub-header {
-  background-color: #002729;
-  color: $color;
+  background-color: rgba(black, .05);
+  color: black;
   padding: 3px;
   position: relative;
-  border-bottom: 1px solid #636363;
+  // border-bottom: 1px solid #636363;
 
   a {
     color: $color;
