@@ -8,3 +8,6 @@ Paperclip::Attachment.default_options[:path] = "/:class/:attachment/:id_partitio
 
 # Set the bucket region.
 Paperclip::Attachment.default_options[:s3_region] = "eu-central-1"
+
+# Create HTTPS links.
+Paperclip::Attachment.default_options[:s3_protocol] = "https"
