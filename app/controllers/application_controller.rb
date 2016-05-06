@@ -69,15 +69,15 @@ class ApplicationController < ActionController::Base
 
   # Overriding a devise method that gets called after a user has signed out
   # and should return the path, the user gets redirected now.
-  def after_sign_out_path_for resource_or_scope
-    forelast_visited_path
-  end
+  # def after_sign_out_path_for resource_or_scope
+  #   forelast_visited_path
+  # end
 
   # Overriding a devise method that gets called after a user has signed in
   # and should return the path, the user gets redirected now.
-  def after_sign_in_path_for resource
-    forelast_visited_path
-  end
+  # def after_sign_in_path_for resource
+  #   forelast_visited_path
+  # end
 
   # Store the current path in session to provide "back to last page" functionality.
   def store_path

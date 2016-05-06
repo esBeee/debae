@@ -248,7 +248,7 @@ Devise.setup do |config|
   config.omniauth :twitter, ENV["TWITTER_API_KEY"], ENV["TWITTER_API_SECRET"],
     image_size: "original", secure_image_url: true
   config.omniauth :google_oauth2, ENV["GOOGLE_CLIENT_KEY"], ENV["GOOGLE_CLIENT_SECRET"],
-    access_type: "online", scope: 'email, profile, userinfo.profile'
+    access_type: "online", scope: "email, profile, userinfo.profile"
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
