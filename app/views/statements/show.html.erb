@@ -2,29 +2,11 @@
 
 <section class="row">
   <div class="col-xs-12 col-sm-6">
-    <div class="arguments-container pro">
-      <h3><%= t(".headlines.pro_arguments", default: "Pro arguments") %></h3>
-      <ul>
-        <%= render 'statement_argument_links/list', statement_argument_links: @statement.links_to_pro_arguments %>
-      </ul>
-      <%= link_to new_statement_path(pro: @statement.id), class: "btn btn-success" do %>
-        <%= fa_icon("plus-square") %>
-        <%= t(".links.new_pro_argument", default: "New pro argument") %>
-      <% end %>
-    </div>
+    <%= render 'arguments_container', pro_or_contra: :pro %>
   </div>
 
   <div class="col-xs-12 col-sm-6">
-    <div class="arguments-container contra">
-      <h3><%= t(".headlines.contra_arguments", default: "Contra arguments") %></h3>
-      <ul>
-        <%= render 'statement_argument_links/list', statement_argument_links: @statement.links_to_contra_arguments %>
-      </ul>
-      <%= link_to new_statement_path(contra: @statement.id), class: "btn btn-danger" do %>
-        <%= fa_icon("plus-square") %>
-        <%= t(".links.new_contra_argument", default: "New contra argument") %>
-      <% end %>
-    </div>
+    <%= render 'arguments_container', pro_or_contra: :contra %>
   </div>
 </section>
 

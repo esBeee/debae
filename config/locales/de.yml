@@ -70,6 +70,8 @@ de:
       contra_argument_headline: "Neues Kontra-Argument für"
     show:
       by: "Von %{username}"
+      no_pro_arguments: "Bisher wurden keine Pro-Argumente angeführt."
+      no_contra_arguments: "Bisher wurden keine Kontra-Argumente angeführt."
       links:
         new_contra_argument: "Neues Kontra-Argument"
         new_pro_argument: "Neues Pro-Argument"
