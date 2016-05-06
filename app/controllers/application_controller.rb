@@ -14,7 +14,6 @@ class ApplicationController < ActionController::Base
 
 
   protected
-
   # Permit additional attributes for user registrationsso the user is
   # able to set his name on sign up.
   # This follows the isntructions of the devise gem readme.
