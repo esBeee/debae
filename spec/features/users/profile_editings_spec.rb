@@ -59,11 +59,9 @@ RSpec.feature "UserProfileEditings", type: :feature, session_helpers: true do
   end
 
   context "with invalid data" do
-    let(:invalid_name) { "" }
-
     before do
       # Fill in an invalid name.
-      fill_in_user_form(name: invalid_name)
+      fill_in_user_form(name: "")
 
       # Submit the form.
       click_button I18n.t("users.editings.buttons.submit")
