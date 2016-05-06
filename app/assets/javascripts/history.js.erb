@@ -15,15 +15,21 @@ addToHistory = function (name) {
     name: shortened(name)
   }
 
-  // If the user has visited this path before, interpret this
-  // as "go back to" by removing all paths he visited after
-  // he visited this path.
-  for (var i = statementHistory.length - 1; i >= 0; i--) {
-    if (statementHistory[i].path === entry.path) {
-      // Remove all entries made after the user lastly
-      // visited this current path.
-      statementHistory = statementHistory.slice(0, i);
-      break;
+  if (entry.path.match(/^(<%= Rails.application.routes.url_helpers.root_path.gsub("/", "\\/") %>|<%= Rails.application.routes.url_helpers.statements_path.gsub("/", "\\/") %>)(\?|$)/)) {
+    // If current path is either root path or the statements index (it's
+    // the same page right now), reset the history.
+    statementHistory = [];
+  } else {
+    // If the user has visited this path before, interpret this
+    // as "go back to" by removing all paths he visited after
+    // he visited this path.
+    for (var i = statementHistory.length - 1; i >= 0; i--) {
+      if (statementHistory[i].path === entry.path) {
+        // Remove all entries made after the user lastly
+        // visited this current path.
+        statementHistory = statementHistory.slice(0, i);
+        break;
+      }
     }
   }
 
