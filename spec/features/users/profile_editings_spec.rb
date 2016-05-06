@@ -24,7 +24,7 @@ RSpec.feature "UserProfileEditings", type: :feature, session_helpers: true do
     link_to_google_plus: "https://www.google.com/old", link_to_twitter: "https://www.twitter.com/old") }
   let(:edited_user_attributes) { FactoryGirl.attributes_for(:user, name: "Tommy", email_if_new_argument: false,
     link_to_facebook: "https://www.facebook.com/new", link_to_google_plus: "https://www.google.com/new",
-    link_to_twitter: "https://www.twitter.com/new") }
+    link_to_twitter: nil) }
   
   before do
     # It's required that the user is signed in
@@ -59,7 +59,7 @@ RSpec.feature "UserProfileEditings", type: :feature, session_helpers: true do
   end
 
   context "with invalid data" do
-    let(:invalid_name) { "T" }
+    let(:invalid_name) { "" }
 
     before do
       # Fill in an invalid name.
@@ -71,7 +71,7 @@ RSpec.feature "UserProfileEditings", type: :feature, session_helpers: true do
 
     it "should not update the user's attributes" do
       user.reload # Make sure the attributes we compare are up-to-date.
-      expect(user.name).not_to eq invalid_name
+      expect(user.name).to eq "Tom"
     end
 
     it "displays an error message" do

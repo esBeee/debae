@@ -17,7 +17,7 @@ class Users::ProfilesController < ApplicationController
     # our before action.
     @user = current_user
 
-    if @user.update(profile_params)
+    if @user.update(profile_params.merge(nilify_social_links_if_blank(profile_params)))
       flash[:success] = t("users.editings.flashes.success")
       redirect_to edit_user_profile_path
     else
@@ -30,5 +30,18 @@ class Users::ProfilesController < ApplicationController
 
   def profile_params
     params.require(:user).permit(:name, :email_if_new_argument, :avatar, :link_to_google_plus, :link_to_facebook, :link_to_twitter)
+  end
+
+  # Certain attributes can be deleted by letting the input field blank. Since blank fields
+  # are not included in the params, this function returns all fields that are not listed
+  # in params with value nil.
+  def nilify_social_links_if_blank profile_params
+    result = {}
+
+    [:name, :link_to_twitter, :link_to_facebook, :link_to_google_plus].each do |link|
+      result[link] = nil if profile_params[link].blank?
+    end
+
+    result
   end
 end
