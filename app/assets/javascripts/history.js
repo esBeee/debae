@@ -44,7 +44,7 @@ var shortened = function (name) {
 
 // Reads in current history from browser storage.
 var getHistory = function () {
-  var string = sessionStorage.statementHistory;
+  var string = localStorage.statementHistory;
 
   // Initialize history if necessary.
   if (!string || string == '""' || string === '[object Object]') return [];
@@ -55,7 +55,7 @@ var getHistory = function () {
 // Saves the given object as new history.
 var setHistory = function (statementHistory) {
   var string = JSON.stringify(statementHistory);
-  sessionStorage.statementHistory = string;
+  localStorage.statementHistory = string;
 }
 
 // Displays the entries of statementHistory on the page.
@@ -96,8 +96,8 @@ var historyHtml = function (historyArray) {
       break;
 
     result += '<div class="historical-link"># ' + '<a href="' + entry.path + 
-      '"><span class="link-expander"></span>' + entry.name + '</a></div>';
+      '"><span class="link-expander"></span>' + entry.name + '</a></div> > ';
   }
 
-  return result + '</div>';
+  return result.slice(0, -3) + '</div>';
 }
