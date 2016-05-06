@@ -35,5 +35,7 @@
       
       <%= content_for?(:content) ? yield(:content) : yield %>
     </div>
+
+    <%= render 'layouts/google_analytics_tracking_code' if Rails.env.production? %>
   </body>
 </html>
