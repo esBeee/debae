@@ -46,10 +46,6 @@ Both, defined jobs and emails sent by devise should be delayed.
 
 Currently it makes use of 3 (!) libraries that lay in `assets/javascripts/vendor` (ProgressBar.js, TinyColor.js, TinyGradient.js). Maybe these dependencies can be reduced.
 
-### Refactor "last visited path" functionality
-
-The related methods `store_path` and `forelast_visited_path` in application controller might better be refactored into a gem. Maybe it's also possible to get rid of the back=1 parameter by interpreting as back if the current path matches the forelast path of the array.
-
 ### Handle validation errors in comments#create
 
 Right now, it only logs an info message if a comment failed to save. But currently there's no reason for a comment to be invalid, expect it's blank or it length exceeds 99999 characters. Low priority.
@@ -79,10 +75,6 @@ Right now, it only logs an info message if a comment failed to save. But current
 * Allow to comment comments
 
 * Revise email templates
-
-* After an error, the edit account layout doesn't mark the account tab as active.
-
-* When internationalizing the app, note that the names for the links in the history are stored translated (See statements_controller to learn about history).
 
 ## Conventions
 
