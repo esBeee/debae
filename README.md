@@ -84,8 +84,6 @@ Right now, it only logs an info message if a comment failed to save. But current
 
 * Rethink "back" button mechanism. Maybe show a history of statement-bodies?
 
-* Make pressed buttons visual (on show-statement-page)
-
 ## Conventions
 
 Don't use :scope in translations. Always write the path in the first argument of a translation. For example

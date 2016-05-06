@@ -8,6 +8,13 @@
       <h2><%= t(".#{is_pro_argument ? "pro" : "contra"}_argument_headline") %></h2>
     </div>
     <%= render 'headline', statement: statement_to_be_backed %>
+  <% else %>
+    <div class="row">
+      Formuliere eine Aussage, die sich mit Pro- und Kontra-Argumenten diskutieren lässt.
+      <span class="secondary">
+        Willst du z.B. die Frage diskutieren, ob sich das Internet langfristig durchsetzen wird, könntest du formulieren <i>"Das Internet wird sich langfristig nicht durchsetzen."</i> Du hast später die Möglichkeit, auch deinen eigenen Aussagen zuzustimmen oder sie abzulehnen.
+      </span>
+    </div>
   <% end %>
 
   <div class="row">
