@@ -2,7 +2,7 @@ class StatementMailer < ApplicationMailer
   # The statemnets helpers are required inside the emails.
   add_template_helper(StatementsHelper)
 
-  default from: "no-reply@debae.de"
+  default from: "info@debae.io"
 
   def new_argument_email statement_argument_link
     @statement = statement_argument_link.statement

@@ -1,6 +1,6 @@
 # debae rails
 
-debae is a rails 5 (beta) app which allows users to debate given statements. It is deployed to [https://debae.herokuapp.com/](https://debae.herokuapp.com/).
+debae is a rails 5 (beta) app which allows users to debate given statements. It is deployed to [https://debae.io/](https://debae.io/).
 
 Ruby 2.3.0 is being used.
 
