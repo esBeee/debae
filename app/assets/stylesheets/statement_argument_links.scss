@@ -3,6 +3,7 @@
 .statement-argument-link {
   @include flex(row);
   align-items: center;
+  word-wrap: break-word;
   
   background-color: #fbfcfa;
   // border: 1px solid #DCE0DD;
