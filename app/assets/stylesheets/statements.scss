@@ -2,7 +2,6 @@
 
 .statement-summary-container {
   padding: 10px;
-  word-wrap: break-word;
 
   .content {
     // @include flex(column);
@@ -38,7 +37,6 @@
 .index-headline {
   text-align: center;
 }
-
 
 .statement-actions {
   @include flex(row);
