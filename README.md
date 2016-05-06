@@ -82,7 +82,7 @@ Right now, it only logs an info message if a comment failed to save. But current
 
 * After an error, the edit account layout doesn't mark the account tab as active.
 
-* Rethink "back" button mechanism. Maybe show a history of statement-bodies?
+* When internationalizing the app, note that the names for the links in the history are stored translated (See statements_controller to learn about history).
 
 ## Conventions
 

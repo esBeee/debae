@@ -2,7 +2,7 @@
 
 $color: lighten($honey_dew, 48%);
 
-.sub-header {
+.statement-history {
   @include flex(row);
   align-items: center;
 
@@ -10,10 +10,14 @@ $color: lighten($honey_dew, 48%);
   color: black;
   padding: 3px;
   position: relative;
-  // height: 40px;
-  // border-bottom: 1px solid #636363;
+  overflow-y: hidden;
+}
 
-  a {
-    color: $color;
-  }
+.historical-link {
+  position: relative;
+  white-space: nowrap;
+  margin: 0px 5px;
+  background-color: #fbfcfa;
+  padding: 10px 5px;
+  border-radius: 2px;
 }

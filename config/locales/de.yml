@@ -34,6 +34,12 @@ de:
     next_label: "Nächste Seite"
     previous_label: "Vorherige Seite"
 
+  history:
+    statements:
+      index:
+        one: "Statements"
+        other: "Statements Seite %{count}"
+
   layouts:
     header:
       links:
