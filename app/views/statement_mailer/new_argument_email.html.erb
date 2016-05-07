@@ -2,7 +2,7 @@
   <%= t("mailers.statements.new_argument_email.headline.html", default: "There's a new argument regarding your statement %{statement}", statement: link_to(body(@statement), statement_url(@statement))) %>.
 </div>
 <div>
-  <%= t("mailers.statements.new_argument_email.new_#{@pro_or_con}_argument", default: "New #{@pro_or_con} argument") %>:
+  <%= t("mailers.statements.new_argument_email.new_#{@pro_or_con}_argument_html", default: "New #{@pro_or_con} argument") %>:
 </div>
 <div>
   <h3><%= body(@argument) %></h3>

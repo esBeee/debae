@@ -8,10 +8,29 @@ de:
         headline:
           html: "Es gibt ein neues Argument zu deinem Statement %{statement}"
           text: "Es gibt ein neues Argument zu deinem Statement %{statement}"
-        new_pro_argument: "Neues Pro-Argument"
-        new_contra_argument: "Neues Kontra-Argument"
+        new_pro_argument_html: "Neues <u>Pro</u>-Argument"
+        new_contra_argument_html: "Neues <u>Kontra</u>-Argument"
         links:
           your_statement: "deinem Statement"
           go_to:
             html: "Gehe zu %{statement}" # The above translation for links.statement will get inserted as a link here
             text: "Gehe zu deinem Statement"
+    devise:
+      confirmation_instructions:
+        headline: "Hallo %{username}!"
+        body_html: "Diese Email-Adresse wurde für einen Account bei %{root_link} verwendet. Du kannst die Zugehörigkeit bestätigen, indem du auf untenstehenden Link klickst:"
+        confirmation_link: "Email-Adresse bestätigen"
+      password_change:
+        headline: "Hallo %{username}!"
+        body_html: "Wir wollen Dir hiermit kurz mitteilen, dass Dein Passwort für Deinen %{root_link} Account soeben geändert wurde."
+      reset_password_instructions:
+        headline: "Hallo %{username}!"
+        reset_link: "Passwort zurücksetzen"
+        body_html: "Jemand hat soeben einen Link angefordert, um das Passwort zu Deinem %{root_link} Account zu ändern."
+        might_ignore: "Falls du den Link nicht selbst angefordert hast, ignoriere diese Email einfach."
+        hint: "Dein Passwort bleibt unverändert, bis du auf obigen Link geklickt und ein neues Passwort erstellt hast."
+      unlock_instructions:
+        unlock_link: "Account entsperren"
+        headline: "Hallo %{username}!"
+        body_html: "Dein %{root_link} Account wurde aufgrund zu vieler fehlgeschlagener login Versuche gesperrt."
+        hint: "Klicke auf den untenstehenden Link, um Deinen Account wieder zu entsperren:"

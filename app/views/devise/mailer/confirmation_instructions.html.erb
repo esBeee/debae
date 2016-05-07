@@ -1,5 +1,5 @@
-<p>Welcome <%= @email %>!</p>
+<h2><%= t("mailers.devise.confirmation_instructions.headline", username: @email, default: "Hello %{username}!") %></h2>
 
-<p>You can confirm your account email through the link below:</p>
+<p><%= t("mailers.devise.confirmation_instructions.body_html", root_link: link_to("debae", root_url), default: "This email address was stated for an account on %{root_link}. You can confirm it by clicking the link below:") %></p>
 
-<p><%= link_to 'Confirm my account', confirmation_url(@resource, confirmation_token: @token) %></p>
+<p><%= link_to t("mailers.devise.confirmation_instructions.confirmation_link", default: "Confirm my account"), confirmation_url(@resource, confirmation_token: @token) %></p>

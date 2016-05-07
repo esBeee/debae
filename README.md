@@ -74,7 +74,9 @@ Right now, it only logs an info message if a comment failed to save. But current
 
 * Allow to comment comments
 
-* Revise email templates
+* Page title
+
+* Footer
 
 ## Conventions
 
