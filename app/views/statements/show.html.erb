@@ -1,3 +1,5 @@
+<% provide(:title, t(".title_html", body: body(@statement), default: "Discuss '%{body}'")) %>
+
 <%= render 'add_to_history', name: body(@statement) %>
 
 <%= render 'headline', statement: @statement %>

@@ -41,6 +41,7 @@ de:
         other: "Statements Seite %{count}"
 
   layouts:
+    title: "Diskutiere strukturiert und sachlich was dich beschäftigt"
     header:
       links:
         sign_in: "Mit %{auth_type} anmelden"
@@ -52,10 +53,12 @@ de:
       dropdowns:
         join: "Mitmachen"
     edit_user_registration:
+      title: "Einstellungen bearbeiten"
       tabs:
         profile: "Profil bearbeiten"
         account: "Account bearbeiten"
     authentication:
+      title: "Melde dich an"
       tabs:
         sign_in: "Einloggen"
         sign_up: "Registrieren"
@@ -70,11 +73,13 @@ de:
 
   statements:
     new:
+      title: "Gebe ein neues Statement ab"
       body: "Dein Statement"
       submit_html: "Statement<br />abgeben"
       pro_argument_headline: "Neues Pro-Argument für"
       contra_argument_headline: "Neues Kontra-Argument für"
     show:
+      title_html: "Diskutiere '%{body}'"
       by: "Von %{username}"
       no_pro_arguments: "Bisher wurden keine Pro-Argumente angeführt."
       no_contra_arguments: "Bisher wurden keine Kontra-Argumente angeführt."

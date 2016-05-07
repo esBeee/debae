@@ -1,3 +1,5 @@
+<% provide(:title, t("layouts.authentication.title", default: "Join")) %>
+
 <% sign_in_tab_active = request.path == new_user_session_path %>
 <% sign_up_tab_active = request.path == new_user_registration_path %>
 
