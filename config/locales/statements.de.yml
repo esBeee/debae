@@ -1,13 +1,16 @@
 de:  
   statements:
     new:
-      title: "Gebe ein neues Statement ab und stoße damit eine Debatte an"
+      title: "Gebe ein neues Statement ab und erfahre, wieviel Zustimmung du dafür erzielst"
+      description: "Hier kannst du ein neues Statement abgeben um eine Debatte darüber anzustoßen und um zu erfahren, wie viel Zustimmung deine Aussage erzielen wird."
       body: "Dein Statement"
       submit_html: "Statement<br />abgeben"
       pro_argument_headline: "Neues Pro-Argument für"
       contra_argument_headline: "Neues Kontra-Argument für"
     show:
-      title_html: "Öffentliche Debatte/Diskussion zu '%{body}'"
+      title_html: "Debatte/Diskussion zu '%{body}'"
+      description_html: "Auf dieser Seite wird das Statement '%{body}' debattiert bzw. diskutiert. Du kannst dich daran beteiligen, indem du Argumente oder Kommentare hinzufügst, oder indem du über das Statement abstimmst."
+      score_circle_title: "Dieses Statement erhält eine Bewertung von %{score}. Diese Bewertung basiert auf dem Ergebnis der Abstimmung und auf der Aussagekraft der Argumente."
       by: "Von %{username}"
       no_pro_arguments: "Bisher wurden keine Pro-Argumente angeführt."
       no_contra_arguments: "Bisher wurden keine Kontra-Argumente angeführt."

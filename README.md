@@ -78,6 +78,10 @@ Right now, it only logs an info message if a comment failed to save. But current
 
 * Check for security vulnerabilities [link 1](https://blog.codeship.com/preproduction-checklist-for-a-rails-app/) [link 2](http://brakemanscanner.org/docs/introduction/)
 
+* Use bootstrap tooltip to show titles of the score button and the vote buttons
+
+* Optimize bootstrap (load only CSS and scripts that is really needed)
+
 ## Conventions
 
 Don't use :scope in translations. Always write the path in the first argument of a translation. For example

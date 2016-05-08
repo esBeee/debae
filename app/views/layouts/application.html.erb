@@ -7,6 +7,7 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     
     <title><%= page_title(yield(:title)) %></title>
+    <meta name="description" content="<%= page_description(yield(:description)) %>">
     <%= csrf_meta_tags %>
     <%= action_cable_meta_tag %>
 

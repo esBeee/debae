@@ -1,4 +1,5 @@
 <% provide(:title, t("layouts.edit_user_registration.title", default: "Edit your settings")) %>
+<% provide(:description, t("layouts.edit_user_registration.description", default: "Edit your public profile, your account settings and your notification settings.")) %>
 
 <% profile_tab_active = request.path == edit_user_profile_path %>
 <% account_tab_active = request.path == edit_user_registration_path %>

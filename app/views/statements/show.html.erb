@@ -1,4 +1,5 @@
 <% provide(:title, t(".title_html", body: body(@statement), default: "Discuss '%{body}'")) %>
+<% provide(:description, t(".description_html", body: body(@statement), default: "On this page the statement '%{body}' is being discussed. You can join the debate by adding arguments or comments, or by voting the statement up (in agreement) or down (in disagreement).")) %>
 
 <%= render 'add_to_history', name: body(@statement) %>
 

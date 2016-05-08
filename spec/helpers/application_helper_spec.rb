@@ -21,4 +21,25 @@ RSpec.describe ApplicationHelper, type: :helper do
       end
     end
   end
+
+  describe "#page_description" do
+    context "when first argument is a blank string" do
+      it "returns the default description" do
+        expect(page_description(" ")).to eq I18n.t("layouts.description")
+      end
+    end
+
+    context "when first argument is nil" do
+      it "returns the default description" do
+        expect(page_description(nil)).to eq I18n.t("layouts.description")
+      end
+    end
+
+    context "when first argument is a valid description" do
+      let(:description) { "This page is about this and that." }
+      it "returns the given description" do
+        expect(page_description(description)).to eq description
+      end
+    end
+  end
 end

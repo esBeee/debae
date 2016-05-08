@@ -1,7 +1,7 @@
 <% class_name = "score-circle-container-#{id}" %>
 
-<div class="score-circle-container <%= class_name %>">
-  <%= t(".score_label", default: "Score") + " " + score(score) %><%# In case JS is not supported. Gets removed if it is. %>
+<div class="score-circle-container <%= class_name %>" title="<%= t("statements.show.score_circle_title", score: score(score), default: "This statement's score is %{score}") %>">
+  <%= t("statements.show.score_label", default: "Score") + " " + score(score) %><%# In case JS is not supported. Gets removed if it is. %>
 </div>
 
 <script type="text/javascript">

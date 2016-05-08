@@ -1,4 +1,5 @@
 <% provide(:title, t(".title", default: "Make a new statement")) %>
+<% provide(:description, t(".description", default: "")) %>
 
 <% argument_for, is_pro_argument = argument_hash(params[:pro], params[:contra]) %>
 <% statement_to_be_backed = argument_for ? Statement.find_by(id: argument_for) : nil %>

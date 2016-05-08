@@ -1,4 +1,6 @@
 <% provide(:title, t("layouts.authentication.title", default: "Join")) %>
+<% provide(:description, t("layouts.authentication.description", default: "Sign in/sign up with your email address or your account with facebook, twitter or google.")) %>
+
 
 <% sign_in_tab_active = request.path == new_user_session_path %>
 <% sign_up_tab_active = request.path == new_user_registration_path %>
