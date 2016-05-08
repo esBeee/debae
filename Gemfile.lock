@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/esBeee/kazus.git
-  revision: 1afa9cbe551f448a91ccd97124bc0fe1f491b3e5
+  revision: 004336783c2f30a5e3e23dfcd50363b877f61c50
   specs:
     kazus (0.1.0)
 

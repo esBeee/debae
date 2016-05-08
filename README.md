@@ -74,7 +74,7 @@ Right now, it only logs an info message if a comment failed to save. But current
 
 * Allow to comment comments
 
-* Footer
+* Validate length of new comments and statements live with JS
 
 ## Conventions
 

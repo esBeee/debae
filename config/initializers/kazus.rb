@@ -1,4 +1,4 @@
-Kazus.configuration do |config|
+Kazus.configure do |config|
+  # Configure any logger you want
   config.logger = Rails.logger
-  config.log_level = :info
 end
