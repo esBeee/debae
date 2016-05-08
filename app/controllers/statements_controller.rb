@@ -4,6 +4,11 @@ class StatementsController < ApplicationController
   # GET /statements or GET /
   def index
     @statements = Statement.where(top_level: true).order(created_at: :desc).page(params[:page])
+
+    Rails.logger.info "An info"
+    Rails.logger.warn "A warning"
+    Kazus.log :info, "An info"
+    Kazus.log :warn, "A warning"
   end
 
   # GET /statements/:id
