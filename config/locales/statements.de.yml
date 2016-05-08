@@ -1,13 +1,13 @@
 de:  
   statements:
     new:
-      title: "Gebe ein neues Statement ab und stoße damit eine Debatte an"
+      title: "Gebe ein neues Statement ab und erfahre, wieviel Zustimmung du dafür erzielst"
       body: "Dein Statement"
       submit_html: "Statement<br />abgeben"
       pro_argument_headline: "Neues Pro-Argument für"
       contra_argument_headline: "Neues Kontra-Argument für"
     show:
-      title_html: "Öffentliche Debatte/Diskussion zu '%{body}'"
+      title_html: "Debatte/Diskussion zu '%{body}'"
       by: "Von %{username}"
       no_pro_arguments: "Bisher wurden keine Pro-Argumente angeführt."
       no_contra_arguments: "Bisher wurden keine Kontra-Argumente angeführt."

@@ -41,7 +41,8 @@ de:
         other: "Statements Seite %{count}"
 
   layouts:
-    title: "Strukturierte und sachliche Debatten/Diskussionen und Abstimmungen zu den Themen Gesellschaft, Sport, Politik, Ethik, etc."
+    title: "Strukturierte und sachliche Debatten/Diskussionen und Abstimmungen zu den Themen Gesellschaft, Sport, Politik, Ethik, Kunst, etc."
+    description: "Auf debae kannst du dich an sachlichen Debatten und Diskussionen zu aktuellen Themen aus Gesellschaft, Sport, Politik, Ethik, Kunst, etc. beteiligen, oder auch selbst anstoßen, indem du ein Statement veröffentlichst. Über jedes deiner Statements, und auch über die, der anderen Nutzer, kann abgestimmt werden, wodurch sich, zusammen mit der Stärke der jeweiligen Argumente, eine Wertung ergit."
     header:
       links:
         sign_in: "Mit %{auth_type} anmelden"
