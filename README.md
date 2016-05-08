@@ -82,6 +82,10 @@ Right now, it only logs an info message if a comment failed to save. But current
 
 * Optimize bootstrap (load only CSS and scripts that is really needed)
 
+* Make statement URLs more readable. Maybe with [this](https://github.com/norman/friendly_id).
+
+* Dynamically generate sitemap.
+
 ## Conventions
 
 Don't use :scope in translations. Always write the path in the first argument of a translation. For example
