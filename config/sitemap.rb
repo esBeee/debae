@@ -77,10 +77,10 @@ SitemapGenerator::Sitemap.create do
       priority = 0
     end
 
-    priorities << priority
+    priorities << priority.to_s
 
     add statement_path(statement), lastmod: statement.updated_at, priority: priority
   end
 
-  Kazus.log :unknown, "Sitemap successfully refreshed (find me in config/sitemap.rb)", priorities: priorities
+  Kazus.log :info, "Sitemap successfully refreshed (find me in config/sitemap.rb)", priorities: priorities
 end
