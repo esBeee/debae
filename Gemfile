@@ -70,6 +70,14 @@ gem 'paperclip', git: 'https://github.com/thoughtbot/paperclip', ref: '523bd46c7
 # Helper to store user avatars on S3
 gem 'aws-sdk', '~> 2.2', '>= 2.2.37'
 
+# Using the sitemap generator gem to generate a new sitemap
+# according to the config in config/sitemap.rb
+gem 'sitemap_generator', '~> 5.1'
+
+# This gem is required by the sitemap generator to upload the generated
+# sitemap to S3.
+gem 'fog-aws', '~> 0.9.2'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
@@ -79,13 +87,6 @@ group :development, :test do
 
   # Use Factory Girl to build, create or stub test-objects
   gem 'factory_girl_rails', '~> 4.7'
-
-  # Using the sitemap generator gem to generate a new sitemap
-  # according to the config in config/sitemap.rb
-  gem 'sitemap_generator', '~> 5.1'
-  # This gem is required by the sitemap generator to upload the generated
-  # sitemap to S3
-  gem 'fog-aws', '~> 0.9.2'
 end
 
 group :test do
