@@ -87,6 +87,15 @@ group :development, :test do
 
   # Use Factory Girl to build, create or stub test-objects
   gem 'factory_girl_rails', '~> 4.7'
+
+  # Use brakeman to analyse the code for security vulnerabilities.
+  #
+  # Run
+  #
+  # $ brakeman
+  #
+  # in the root directory to start the analysis.
+  gem "brakeman", require: false
 end
 
 group :test do
