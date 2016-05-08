@@ -1,0 +1,35 @@
+de:  
+  statements:
+    new:
+      title: "Gebe ein neues Statement ab und stoße damit eine Debatte an"
+      body: "Dein Statement"
+      submit_html: "Statement<br />abgeben"
+      pro_argument_headline: "Neues Pro-Argument für"
+      contra_argument_headline: "Neues Kontra-Argument für"
+    show:
+      title_html: "Öffentliche Debatte/Diskussion zu '%{body}'"
+      by: "Von %{username}"
+      no_pro_arguments: "Bisher wurden keine Pro-Argumente angeführt."
+      no_contra_arguments: "Bisher wurden keine Kontra-Argumente angeführt."
+      links:
+        new_contra_argument: "Neues Kontra-Argument"
+        new_pro_argument: "Neues Pro-Argument"
+      score_label: "Score"
+      headlines:
+        pro_arguments: "Pro-Argumente"
+        contra_arguments: "Kontra-Argumente"
+      buttons:
+        vote_up: "Zustimmen"
+        vote_down: "Ablehnen"
+        destroy_upvote: "Zustimmung zurückziehen"
+        destroy_downvote: "Ablehnung zurückziehen"
+      creator_attitudes:
+        agreeing: "Stimmt der Aussage zu"
+        disagreeing: "Stimmt der Aussage selbst NICHT zu"
+        undecided: "Hat sich noch nicht entschieden, ob sie/er der Aussage zustimmt oder nicht"
+        creator_destroyed: ""
+    score:
+      not_available: "N/A"
+      unit: "%"
+    index:
+      headline: "Aktuell diskutierte Statements"

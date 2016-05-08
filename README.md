@@ -76,6 +76,8 @@ Right now, it only logs an info message if a comment failed to save. But current
 
 * Validate length of new comments and statements live with JS
 
+* Check for security vulnerabilities [link 1](https://blog.codeship.com/preproduction-checklist-for-a-rails-app/) [link 2](http://brakemanscanner.org/docs/introduction/)
+
 ## Conventions
 
 Don't use :scope in translations. Always write the path in the first argument of a translation. For example
