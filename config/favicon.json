@@ -1,0 +1,42 @@
+{
+  "master_picture": "app/assets/images/favicon_master.png",
+  "favicon_design": {
+    "ios": {
+      "picture_aspect": "background_and_margin",
+      "background_color": "#fcfcfc",
+      "margin": "14%",
+      "app_name": "debae"
+    },
+    "desktop_browser": [
+
+    ],
+    "windows": {
+      "picture_aspect": "no_change",
+      "background_color": "#603cba",
+      "on_conflict": "override",
+      "app_name": "debae"
+    },
+    "android_chrome": {
+      "picture_aspect": "background_and_margin",
+      "margin": "17%",
+      "background_color": "#fcfcfc",
+      "theme_color": "#fcfcfc",
+      "manifest": {
+        "name": "debae",
+        "display": "browser",
+        "orientation": "not_set",
+        "on_conflict": "override",
+        "declared": true
+      }
+    },
+    "safari_pinned_tab": {
+      "picture_aspect": "silhouette",
+      "theme_color": "#5bbad5"
+    }
+  },
+  "settings": {
+    "compression": 2,
+    "scaling_algorithm": "Mitchell",
+    "error_on_image_too_small": false
+  }
+}
