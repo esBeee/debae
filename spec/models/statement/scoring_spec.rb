@@ -138,7 +138,7 @@ RSpec.describe Statement::Scoring, type: :model do
 
       it "should fill in the score for all statements if sufficient information is available" do
         # First, make sure no score is assigned by now
-        expect(Statement.where.not(score: nil).count) == 0
+        expect(Statement.where.not(score: nil).count).to eq 0
 
         Statement::Scoring.update_scores()
 

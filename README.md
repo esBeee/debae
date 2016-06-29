@@ -1,6 +1,6 @@
 # debae rails
 
-debae is a rails 5 (beta) app which allows users to debate given statements. It is deployed to [https://debae.io/](https://debae.io/).
+debae is a rails 5 (beta) app that allows users to debate and rate given statements. It is deployed to [https://debae.io/](https://debae.io/).
 
 Ruby 2.3.0 is being used.
 
@@ -83,6 +83,8 @@ Right now, it only logs an info message if a comment failed to save. But current
 * Optimize bootstrap (load only CSS and scripts that is really needed)
 
 * Make statement URLs more readable. Maybe with [this](https://github.com/norman/friendly_id).
+
+* Validate avatar file size
 
 ## Conventions
 

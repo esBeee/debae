@@ -21,7 +21,7 @@ RSpec.describe StatementsHelper, type: :helper do
     # statement should support as a pro argument.
     context "when called with only the first argument" do
       it "returns a hash containing all necessary information" do
-        expect(helper.argument_hash(statement_to_support_id, nil)).to eq ([statement_to_support_id, true])
+        expect(helper.argument_hash(statement_to_support_id, nil)).to eq([statement_to_support_id, true])
       end
     end
 
@@ -30,7 +30,7 @@ RSpec.describe StatementsHelper, type: :helper do
     # statement should support as a contra argument.
     context "when called with only the second argument" do
       it "returns a hash containing all necessary information" do
-        expect(helper.argument_hash(nil, statement_to_support_id)).to eq ([statement_to_support_id, false])
+        expect(helper.argument_hash(nil, statement_to_support_id)).to eq([statement_to_support_id, false])
       end
     end
   end
