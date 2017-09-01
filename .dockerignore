@@ -1,0 +1,14 @@
+# See https://docs.docker.com/engine/reference/builder/#/dockerignore-file for
+# more about ignoring files.
+
+# Ignore bundler config.
+.bundle
+
+# Ignore all logfiles and tempfiles.
+log/*
+tmp/*
+!log/.keep
+!tmp/.keep
+
+# Ignore Byebug command history file.
+.byebug_history
