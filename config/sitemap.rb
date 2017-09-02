@@ -17,7 +17,7 @@
 # That's why the gem is only available in development.
 
 # Set the host name for URL creation.
-SitemapGenerator::Sitemap.default_host = "https://debae.io"
+SitemapGenerator::Sitemap.default_host = "https://debae.org"
 
 # Configure upload to S3.
 #

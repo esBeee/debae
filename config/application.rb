@@ -23,6 +23,6 @@ module Debae
     # -- all .rb files in that directory are automatically loaded.
 
     # Configure default url for mailers
-    config.action_mailer.default_url_options = { protocol: "https", host: "debae.io" }
+    config.action_mailer.default_url_options = { protocol: "https", host: "debae.org" }
   end
 end

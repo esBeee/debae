@@ -16,7 +16,7 @@ RSpec.describe Devise::Mailer, type: :mailer do
     end
 
     it "renders the sender email" do
-      expect(mail.from).to eq(["info@debae.io"])
+      expect(mail.from).to eq(["info@debae.org"])
     end
 
     it "displays link to debae" do
@@ -45,7 +45,7 @@ RSpec.describe Devise::Mailer, type: :mailer do
     end
 
     it "renders the sender email" do
-      expect(mail.from).to eq(["info@debae.io"])
+      expect(mail.from).to eq(["info@debae.org"])
     end
 
     it "displays link to debae" do
@@ -68,7 +68,7 @@ RSpec.describe Devise::Mailer, type: :mailer do
     end
 
     it "renders the sender email" do
-      expect(mail.from).to eq(["info@debae.io"])
+      expect(mail.from).to eq(["info@debae.org"])
     end
 
     it "displays link to debae" do
@@ -98,7 +98,7 @@ RSpec.describe Devise::Mailer, type: :mailer do
     end
 
     it "renders the sender email" do
-      expect(mail.from).to eq(["info@debae.io"])
+      expect(mail.from).to eq(["info@debae.org"])
     end
 
     it "displays link to debae" do

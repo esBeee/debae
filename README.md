@@ -1,6 +1,6 @@
 # debae rails
 
-debae is a rails 5 (beta) app that allows users to debate and rate given statements. It is deployed to [https://debae.io/](https://debae.io/).
+debae is a rails 5 (beta) app that allows users to debate and rate given statements. It is deployed to [https://debae.org/](https://debae.org/).
 
 ## Dependencies
 

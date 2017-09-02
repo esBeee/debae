@@ -14,7 +14,7 @@ RSpec.describe StatementMailer, type: :mailer, statements_helper: true do
     end
 
     it "renders the sender email" do
-      expect(mail.from).to eq(["info@debae.io"])
+      expect(mail.from).to eq(["info@debae.org"])
     end
 
     it "displays body of the new argument" do
