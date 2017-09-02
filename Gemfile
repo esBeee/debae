@@ -85,7 +85,7 @@ group :development, :test do
   gem 'byebug'
 
   # Use RSpec for testing
-  gem 'rspec-rails', '~> 3.5', '>= 3.5.2'
+  gem 'rspec-rails', '~> 3.6', '>= 3.6.1'
 
   # Use Factory Girl to build, create or stub test-objects
   gem 'factory_girl_rails', '~> 4.7'
