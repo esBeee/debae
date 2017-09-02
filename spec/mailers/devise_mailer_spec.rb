@@ -20,7 +20,7 @@ RSpec.describe Devise::Mailer, type: :mailer do
     end
 
     it "displays link to debae" do
-      expect(mail.body.encoded).to have_link("debae", root_url)
+      expect(mail.body.encoded).to have_link("debae", href: root_url)
     end
 
     it "displays link to confirm the email" do
@@ -49,7 +49,7 @@ RSpec.describe Devise::Mailer, type: :mailer do
     end
 
     it "displays link to debae" do
-      expect(mail.body.encoded).to have_link("debae", root_url)
+      expect(mail.body.encoded).to have_link("debae", href: root_url)
     end
   end
 
@@ -72,7 +72,7 @@ RSpec.describe Devise::Mailer, type: :mailer do
     end
 
     it "displays link to debae" do
-      expect(mail.body.encoded).to have_link("debae", root_url)
+      expect(mail.body.encoded).to have_link("debae", href: root_url)
     end
 
     it "displays link to reset password" do
@@ -102,7 +102,7 @@ RSpec.describe Devise::Mailer, type: :mailer do
     end
 
     it "displays link to debae" do
-      expect(mail.body.encoded).to have_link("debae", root_url)
+      expect(mail.body.encoded).to have_link("debae", href: root_url)
     end
 
     it "displays link to unlock" do

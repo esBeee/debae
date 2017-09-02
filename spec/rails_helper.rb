@@ -59,8 +59,8 @@ RSpec.configure do |config|
   # config.filter_gems_from_backtrace("gem name")
 
   # Provide devise helper methods like #sign_in in controller and view specs.
-  config.include Devise::TestHelpers, type: :controller
-  config.include Devise::TestHelpers, type: :view
+  config.include Devise::Test::ControllerHelpers, type: :controller
+  config.include Devise::Test::ControllerHelpers, type: :view
 
   # Provide user authentication helpers for all specs with "session_helpers: true".
   config.include SessionHelpers, session_helpers: true

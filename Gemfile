@@ -5,7 +5,7 @@ source 'https://rubygems.org'
 ruby '2.3.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '>= 5.0.0.beta4', '< 5.1'
+gem 'rails', '~> 5.0'
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 0.18'
 # Use Puma as the app server
@@ -13,7 +13,7 @@ gem 'puma'
 # Use HAML to write HTML
 gem 'haml-rails', '~> 1.0'
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 5.0'
+gem 'sass-rails', '~> 5.0', '>= 5.0.6'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
@@ -114,7 +114,7 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
 
   # Use this gem to automatically generate favicons for all sizes and devices
-  gem 'rails_real_favicon', '~> 0.0.3'
+  gem 'rails_real_favicon', '~> 0.0.7'
 end
 
 group :production do
