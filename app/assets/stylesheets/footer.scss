@@ -34,7 +34,7 @@ footer {
 
 // Make sure the footer always has a certain distance to the top
 // ("Sticky footer" as found here http://www.cssstickyfooter.com/using-sticky-footer-code.html)
-$footer-height: 40px;
+$footer-height: 25px;
 
 html, body {
   height: 100%;
@@ -50,7 +50,7 @@ footer {
   margin-top: $footer-height * -1; /* negative value of footer height */
   height: $footer-height;
   clear: both;
-} 
+}
 
 /*Opera Fix*/
 body:before {

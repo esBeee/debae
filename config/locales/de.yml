@@ -52,7 +52,7 @@ de:
         new_statement: "Statement abgeben"
         about: "Über debae"
       dropdowns:
-        join: "Mitmachen"
+        join: "Login"
     edit_user_registration:
       title: "Einstellungen bearbeiten"
       description: "Bearbeite hier dein öffentliches Profil und verwalte deine Account- und Benachrichtigungs-Einstellungen."
