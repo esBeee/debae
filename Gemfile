@@ -7,7 +7,7 @@ ruby '2.3.0'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0'
 # Use postgresql as the database for Active Record
-gem 'pg', '~> 0.18'
+gem 'pg', '~> 0.21.0'
 # Use Puma as the app server
 gem 'puma'
 # Use HAML to write HTML
@@ -15,14 +15,14 @@ gem 'haml-rails', '~> 1.0'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0', '>= 5.0.6'
 # Use Uglifier as compressor for JavaScript assets
-gem 'uglifier', '>= 1.3.0'
+gem 'uglifier', '~> 3.2'
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.1.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # I only installed it because the bootstrap gem requires it.
 gem 'therubyracer', platforms: :ruby
 # I only installed it because the bootstrap gem requires it.
-gem 'less-rails', '~> 2.7', '>= 2.7.1'
+gem 'less-rails', '~> 2.8'
 # Use twitter bootstrap for quick styling
 gem 'twitter-bootstrap-rails', '~> 3.2', '>= 3.2.2'
 # Use font awesome icons
@@ -31,9 +31,9 @@ gem 'font-awesome-rails'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
-gem 'turbolinks', '~> 5.x'
+gem 'turbolinks', '~> 5.0', '>= 5.0.1'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-gem 'jbuilder', '~> 2.0'
+gem 'jbuilder', '~> 2.7'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
@@ -56,13 +56,13 @@ gem 'omniauth-google-oauth2', '~> 0.3.1'
 
 # Use the will_paginate gem for pagination. Provides the #page method
 # used in controllers for pagination
-gem 'will_paginate', '~> 3.1'
+gem 'will_paginate', '~> 3.1', '>= 3.1.6'
 
 # Use Kazus for a convenient logging method
 gem 'kazus', git: 'git://github.com/esBeee/kazus.git' #, path: "../_gems/kazus"
 
 # Add some basic translations
-gem 'rails-i18n', '~> 5.0.0.beta3'
+gem 'rails-i18n', '~> 5.0', '>= 5.0.4'
 
 # The paperclip gem manages user avatars.
 # Using a version from git because of some error messages I received
@@ -85,7 +85,7 @@ group :development, :test do
   gem 'byebug'
 
   # Use RSpec for testing
-  gem 'rspec-rails', '~> 3.5.0.beta3'
+  gem 'rspec-rails', '~> 3.5', '>= 3.5.2'
 
   # Use Factory Girl to build, create or stub test-objects
   gem 'factory_girl_rails', '~> 4.7'
