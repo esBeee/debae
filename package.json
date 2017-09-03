@@ -1,0 +1,9 @@
+{
+  "name": "debae",
+  "private": true,
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/esBeee/debae.git",
+  "author": "esBeee",
+  "license": "MIT"
+}
