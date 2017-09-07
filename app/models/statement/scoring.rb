@@ -48,7 +48,7 @@ class Statement::Scoring
     def calculate_score statement
       # The score consists of the score from the votes of a statement
       # and the score from its arguments.
-      vote_score = vote_score(statement)
+      vote_score, amount_of_votes = vote_score(statement)
       argument_score = argument_score(statement)
 
       # If both the vote score and the argument score could be
@@ -70,7 +70,7 @@ class Statement::Scoring
         return 1
       end
 
-      score
+      [score, argument_score, vote_score, amount_of_votes]
     end
 
 
@@ -86,9 +86,9 @@ class Statement::Scoring
       total_amount_of_votes = amount_of_pro_votes + amount_of_contra_votes
 
       # If no it has not been voted yet, return nil.
-      return nil if total_amount_of_votes == 0
+      return [nil, total_amount_of_votes] if total_amount_of_votes == 0
 
-      amount_of_pro_votes / total_amount_of_votes.to_f
+      [amount_of_pro_votes / total_amount_of_votes.to_f, total_amount_of_votes]
     end
 
     # Calculates the score a statement receives from its arguments.
@@ -148,10 +148,17 @@ class Statement::Scoring
 
     # Recalculates and updates the score of the given statement
     def update_score statement
-      new_score = calculate_score(statement)
+      score, argument_score, vote_score, amount_of_votes = calculate_score(statement)
 
-      unless statement.update(score: new_score)
-        Kazus.log(:fatal, "Updating score failed unexpectedly", statement: statement, score: new_score)
+      new_scores = {
+        score: score,
+        argument_score: argument_score,
+        vote_score: vote_score,
+        amount_of_votes: amount_of_votes
+      }
+
+      unless statement.update(new_scores)
+        Kazus.log(:fatal, "Updating score failed unexpectedly", statement: statement, new_scores: new_scores)
       end
     end
 
@@ -185,7 +192,7 @@ class Statement::Scoring
       # If there's more than one occurence, assume there's a loop.
       if occurences > 1
         Kazus.log(:warn, "A loop was detected in the statement tree.", last_entry, occurences, history)
-        return true 
+        return true
       end
 
       false

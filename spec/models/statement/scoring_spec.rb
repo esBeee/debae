@@ -6,25 +6,25 @@ RSpec.describe Statement::Scoring, type: :model do
 
     context "when neither votes nor arguments exist for the given statement" do
       it "returns nil" do
-        expect(Statement::Scoring.calculate_score(statement)).to eq nil
+        expect(Statement::Scoring.calculate_score(statement)).to eq [nil, nil, nil, 0]
       end
     end
 
     context "when only votes exist" do
       it "returns 1 if only up-votes exist" do
         FactoryGirl.create(:vote, :up, voteable: statement)
-        expect(Statement::Scoring.calculate_score(statement)).to eq 1
+        expect(Statement::Scoring.calculate_score(statement)).to eq [1.0, nil, 1.0, 1]
       end
 
       it "returns 0 if only down-votes exist" do
         FactoryGirl.create(:vote, :down, voteable: statement)
-        expect(Statement::Scoring.calculate_score(statement)).to eq 0
+        expect(Statement::Scoring.calculate_score(statement)).to eq [0.0, nil, 0.0, 1]
       end
 
       it "returns 0.5 if an equally amount of down- and up-votes exist" do
         FactoryGirl.create(:vote, :down, voteable: statement)
         FactoryGirl.create(:vote, :up, voteable: statement)
-        expect(Statement::Scoring.calculate_score(statement)).to eq 0.5
+        expect(Statement::Scoring.calculate_score(statement)).to eq [0.5, nil, 0.5, 2]
       end
     end
 
@@ -32,13 +32,13 @@ RSpec.describe Statement::Scoring, type: :model do
       it "returns some number if a pro argument with a score of 1.0 exists" do
         argument = FactoryGirl.create(:statement, score: 1.0)
         FactoryGirl.create(:statement_argument_link, :pro, statement: statement, argument: argument)
-        expect(Statement::Scoring.calculate_score(statement)).to eq 0.8354035060960472
+        expect(Statement::Scoring.calculate_score(statement)).to eq [0.8354035060960472, 0.8354035060960472, nil, 0]
       end
 
       it "returns 1 - x, where x is the score for the pro argument if a contra argument with a score of 1.0 exists" do
         argument = FactoryGirl.create(:statement, score: 1.0)
         FactoryGirl.create(:statement_argument_link, :contra, statement: statement, argument: argument)
-        expect(Statement::Scoring.calculate_score(statement)).to eq 1 - 0.8354035060960472
+        expect(Statement::Scoring.calculate_score(statement)).to eq [1 - 0.8354035060960472, 1 - 0.8354035060960472, nil, 0]
       end
 
       it "returns some number if two pro arguments and one contra argument exist" do
@@ -51,19 +51,19 @@ RSpec.describe Statement::Scoring, type: :model do
         argument = FactoryGirl.create(:statement, score: 0.9)
         FactoryGirl.create(:statement_argument_link, :contra, statement: statement, argument: argument)
 
-        expect(Statement::Scoring.calculate_score(statement)).to eq 0.557663582872025
+        expect(Statement::Scoring.calculate_score(statement)).to eq [0.557663582872025, 0.557663582872025, nil, 0]
       end
 
       it "returns nil if a contra argument with a score of 0.0 exists" do
         argument = FactoryGirl.create(:statement, score: 0.0)
         FactoryGirl.create(:statement_argument_link, :contra, statement: statement, argument: argument)
-        expect(Statement::Scoring.calculate_score(statement)).to eq nil
+        expect(Statement::Scoring.calculate_score(statement)).to eq [nil, nil, nil, 0]
       end
 
       it "returns nil if a pro argument with a score of 0.0 exists" do
         argument = FactoryGirl.create(:statement, score: 0.0)
         FactoryGirl.create(:statement_argument_link, :pro, statement: statement, argument: argument)
-        expect(Statement::Scoring.calculate_score(statement)).to eq nil
+        expect(Statement::Scoring.calculate_score(statement)).to eq [nil, nil, nil, 0]
       end
     end
 
@@ -81,7 +81,7 @@ RSpec.describe Statement::Scoring, type: :model do
         argument = FactoryGirl.create(:statement, score: 0.9)
         FactoryGirl.create(:statement_argument_link, :contra, statement: statement, argument: argument)
 
-        expect(Statement::Scoring.calculate_score(statement)).to eq 0.5884684682399424
+        expect(Statement::Scoring.calculate_score(statement)).to eq [0.5884684682399424, 0.3951187546617029, 0.7818181818181819, 55]
       end
     end
   end
