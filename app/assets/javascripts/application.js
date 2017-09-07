@@ -10,9 +10,13 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require jquery
-//= require jquery_ujs
-//= require twitter/bootstrap
+//= require rails-ujs
 //= require turbolinks
-//= require vendor/ProgressBar.min.js
+
+// NODE MODULES
+//= require jquery
+//= require progressbar.js/dist/progressbar.js
+//= require popper.js/dist/umd/popper.js
+//= require bootstrap/dist/js/bootstrap.js
+
 //= require_tree .

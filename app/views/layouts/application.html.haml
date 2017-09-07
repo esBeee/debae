@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+%html{ lang: I18n.locale }
+  %head
+    %meta{ charset: 'utf-8' }
+    %meta{ 'http-equiv' => 'X-UA-Compatible', content: 'IE=edge' }
+    %meta{ name: 'viewport', content: 'width=device-width, initial-scale=1' }
+    %meta{ name: 'description', content: page_description(yield(:description)) }
+    %title= page_title(yield(:title))
+    = csrf_meta_tags
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    = render "favicon"
+  %body
+    = render 'layouts/header'
+    = render 'layouts/statement_chain'
+    .container.main
+      = render 'layouts/flash'
+      = yield

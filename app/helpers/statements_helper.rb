@@ -53,7 +53,7 @@ module StatementsHelper
       :h1
     else
       :h2
-    end 
+    end
   end
 
   # Returns a string representing whether the creator of the given statement
@@ -71,6 +71,17 @@ module StatementsHelper
       vote.is_pro_vote ? "agreeing" : "disagreeing"
     else
       "undecided"
+    end
+  end
+
+  def creator_attitude_icon statement
+    creator = statement.user
+    return "" if creator.nil?
+
+    if (vote=statement.votes.find_by(user: creator))
+      vote.is_pro_vote ? fa_icon("check-circle", class: "agree") : fa_icon("times-circle", class: "disagree")
+    else
+      fa_icon("minus-circle", class: "neutral")
     end
   end
 

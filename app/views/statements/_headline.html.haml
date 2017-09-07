@@ -1,0 +1,27 @@
+.card.statement
+  %blockquote.blockquote.mb-0.card-body
+    %p
+      = body(statement)
+    .row.d-flex.flex-row.author
+      .d-flex.align-items-center.quote-dash
+      .d-flex.align-items-center.avatar-container
+        = image_tag statement.user_or_mock.avatar.url(:thumb), class: "rounded-circle avatar"
+      .d-flex.flex-column
+        %a{ href: '#' }
+          = statement.user_or_mock.name
+        %small
+          = creator_attitude_icon(statement)
+          = t("statements.show.creator_attitudes.#{creator_attitude(statement)}", default: "") + '.'
+    -# .row.meta
+      .col.text-right
+        %small
+          = l(statement.created_at)
+
+  .card-footer
+    .statement-actions
+      .left
+        = render 'vote_button', statement: statement, is_pro_vote: true, existing_vote: has_voted?(true, current_user, statement)
+      .middle
+        = render 'score_circle', id: statement.id, score: statement.score
+      .right
+        = render 'vote_button', statement: statement, is_pro_vote: false, existing_vote: has_voted?(false, current_user, statement)

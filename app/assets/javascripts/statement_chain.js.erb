@@ -1,0 +1,109 @@
+// Adds the current path along with a given name to the chain.
+addToChain = function (name) {
+  // Return if browser doesn't support HTML storage (as read
+  // here http://www.w3schools.com/html/html5_webstorage.asp).
+  if (typeof(Storage) === "undefined")
+    return console.log("Statement chain disabled since HTML storage is not supported.");
+
+  // Get chain from local storage.
+  var statementChain = getChain();
+
+  // Create a chain entry consisting of the path
+  // and a name of a route.
+  var entry = {
+    path: currentPath(),
+    name: shortened(name)
+  }
+
+  if (entry.path.match(/^(<%= Rails.application.routes.url_helpers.root_path.gsub("/", "\\/") %>|<%= Rails.application.routes.url_helpers.statements_path.gsub("/", "\\/") %>)(\?|$)/)) {
+    // If current path is either root path or the statements index (it's
+    // the same page right now), reset the chain.
+    statementChain = [];
+  } else {
+    // If the user has visited this path before, interpret this
+    // as "go back to" by removing all paths he visited after
+    // he visited this path.
+    for (var i = statementChain.length - 1; i >= 0; i--) {
+      if (statementChain[i].path === entry.path) {
+        // Remove all entries made after the user lastly
+        // visited this current path.
+        statementChain = statementChain.slice(0, i);
+        break;
+      }
+    }
+  }
+
+  // Append this entry to the chain.
+  statementChain.push(entry);
+
+  // Refresh html with the new chain.
+  refreshDisplayedChain(statementChain);
+
+  // Store new chain in local storage.
+  setHistory(statementChain);
+}
+
+var shortened = function (name) {
+  if (name.length < 33) return name;
+  return name.slice(0, 30) + '...';
+}
+
+// Reads in current chain from browser storage.
+var getChain = function () {
+  var string = localStorage.statementChain;
+
+  // Initialize chain if necessary.
+  if (!string || string == '""' || string === '[object Object]') return [];
+
+  return JSON.parse(string);
+}
+
+// Saves the given object as new chain.
+var setHistory = function (statementChain) {
+  var string = JSON.stringify(statementChain);
+  localStorage.statementChain = string;
+}
+
+// Displays the entries of statementChain on the page.
+refreshDisplayedChain = function (statementChain) {
+  if (!statementChain)
+    statementChain = getChain();
+
+  if (statementChain.length < 2)
+    return displayHistory('');
+
+  displayHistory(chainHtml(statementChain));
+
+  // Make sure the scroll container is at the right.
+  $('.statement-chain').scrollLeft(99999);
+}
+
+// Hides the container of the chain on the page.
+var displayHistory = function (content) {
+  $('#statement-chain-container').html(content);
+}
+
+var currentPath = function () {
+  return window.location.pathname + window.location.search;
+}
+
+// Takes an array of chain entries and returns html
+// including links to the given paths named according
+// to the given names.
+var chainHtml = function (chainArray) {
+  var result = '<div class="statement-chain">';
+
+  for (var i = 0; i < chainArray.length; i++) {
+    var entry = chainArray[i];
+
+    // Hide the entry if it's the last entry and we're
+    // on this page right now.
+    if (i === chainArray.length - 1 && entry.path === currentPath())
+      break;
+
+    result += '<div class="statement-chain-link"># ' + '<a href="' + entry.path +
+      '"><span class="link-expander"></span>' + entry.name + '</a></div> > ';
+  }
+
+  return result.slice(0, -3) + '</div>';
+}

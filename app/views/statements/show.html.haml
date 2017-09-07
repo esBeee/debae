@@ -1,0 +1,21 @@
+- provide(:title, t(".title_html", body: body(@statement), default: "Discuss '%{body}'"))
+- provide(:description, t(".description_html", body: body(@statement), default: "On this page the statement '%{body}' is being discussed. You can join the debate by adding arguments or comments, or by voting the statement up (in agreement) or down (in disagreement)."))
+
+= render 'add_to_history', name: body(@statement)
+
+.row.d-flex.justify-content-center
+  = render 'headline', statement: @statement
+
+.row
+  .col-xs-12.col-sm
+    = render 'arguments_container', pro_or_contra: :pro
+  .col-xs-12.col-sm
+    = render 'arguments_container', pro_or_contra: :contra
+
+.row.d-flex.justify-content-center
+  .col-xs-8.comments-container
+    %h1
+      = t("comments.headline")
+    .comments-form-container
+      = render 'comments/form', commentable: @statement
+    = render 'comments/list', comments: @statement.newest_comments

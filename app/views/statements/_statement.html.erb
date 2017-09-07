@@ -2,15 +2,15 @@
   <div class="panel panel-default statement-summary">
     <%= link_to %q{<span class="link-expander"></span>}.html_safe, statement_path(statement) %>
     <div class="panel-body content">
+      <div class="statement">
+        <%= body(statement) %>
+      </div>
       <div class="author">
         <%= image_tag statement.user_or_mock.avatar.url(:thumb), class: "img-circle avatar" %>
         <%= statement.user_or_mock.name %>
       </div>
-      <div class="statement">
-        <%= body(statement) %>
-      </div>
       <div class="score secondary">
-        <%= score(statement.score) %>
+        <%= t("statements.show.score_label", default: "Score") %>: <%= score(statement.score) %>
       </div>
     </div>
   </div>

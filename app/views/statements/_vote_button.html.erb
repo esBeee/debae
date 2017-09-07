@@ -1,21 +1,21 @@
 <% if existing_vote.nil? %>
   <%# Render the create/update vote button if the user hasn't voted yet. %>
-  <% 
+  <%
     if is_pro_vote
-      submit_value = fa_icon("thumbs-up") + "   " + t("statements.show.buttons.vote_up", default: "Agree")
+      submit_value = fa_icon("check-circle") + "   " + t("statements.show.buttons.vote_up", default: "Agree")
     else
-      submit_value = (t("statements.show.buttons.vote_down", default: "Disagree") + "   " + fa_icon("thumbs-down")).html_safe
+      submit_value = (t("statements.show.buttons.vote_down", default: "Disagree") + "   " + fa_icon("times-circle")).html_safe
     end
   %>
   <% css_class = is_pro_vote ? "btn btn-success" : "btn btn-danger" %>
   <%= render 'votes/create_or_update_button', voteable: statement, is_pro_vote: is_pro_vote, submit_value: submit_value, options: {css_class: css_class} %>
 <% else %>
   <%# Render the destroy vote button if the user has already voted. %>
-  <% 
+  <%
     if is_pro_vote
-      submit_value = fa_icon("thumbs-up") + "   " + t("statements.show.buttons.destroy_upvote", default: "Withdraw agreement")
+      submit_value = fa_icon("check-circle") + "   " + t("statements.show.buttons.destroy_upvote", default: "Withdraw agreement")
     else
-      submit_value = (t("statements.show.buttons.destroy_downvote", default: "Withdraw disagreement") + "   " + fa_icon("thumbs-down")).html_safe
+      submit_value = (t("statements.show.buttons.destroy_downvote", default: "Withdraw disagreement") + "   " + fa_icon("times-circle")).html_safe
     end
   %>
   <% css_class = is_pro_vote ? "btn btn-success pressed" : "btn btn-danger pressed" %>

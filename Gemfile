@@ -1,7 +1,5 @@
+ruby '2.4.1' # Specify ruby version for heroku
 source 'https://rubygems.org'
-
-# Specify ruby version for heroku
-ruby '2.4.1'
 
 git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
@@ -20,7 +18,7 @@ gem 'sass-rails', '~> 5.0', '>= 5.0.6'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '~> 3.2'
 # See https://github.com/rails/execjs#readme for more supported runtimes
-gem 'therubyracer', platforms: :ruby
+# gem 'therubyracer', platforms: :ruby
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2', '>= 4.2.2'
@@ -36,52 +34,35 @@ gem 'jbuilder', '~> 2.7'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-# I only installed it because the bootstrap gem requires it.
-gem 'less-rails', '~> 2.8'
-# Use twitter bootstrap for quick styling
-gem 'twitter-bootstrap-rails', '~> 3.2', '>= 3.2.2'
-# Use font awesome icons
-gem 'font-awesome-rails'
 # Use HAML to write HTML
 gem 'haml-rails', '~> 1.0'
-
-# Use jquery as the JavaScript library
-gem 'jquery-rails'
+# Use font awesome icons
+gem 'font-awesome-rails', '~> 4.7', '>= 4.7.0.2'
 
 # Use devise for user authentication
 gem 'devise', '~> 4.0'
-
 # Provide OAuth with facebook
 gem 'omniauth-facebook', '~> 3.0'
-
 # Provide OAuth with twitter
 gem 'omniauth-twitter', '~> 1.2', '>= 1.2.1'
-
 # Provide OAuth with google
 gem 'omniauth-google-oauth2', '~> 0.3.1'
-
 # Use the will_paginate gem for pagination. Provides the #page method
 # used in controllers for pagination
 gem 'will_paginate', '~> 3.1', '>= 3.1.6'
-
 # Use Kazus for a convenient logging method
 gem 'kazus', git: 'git://github.com/esBeee/kazus.git' #, path: "../_gems/kazus"
-
 # Add some basic translations
 gem 'rails-i18n', '~> 5.0', '>= 5.0.4'
-
 # The paperclip gem manages user avatars.
 # Using a version from git because of some error messages I received
 # while I didn't.
 gem 'paperclip', git: 'https://github.com/thoughtbot/paperclip', ref: '523bd46c768226893f23889079a7aa9c73b57d68'
-
 # Helper to store user avatars on S3
 gem 'aws-sdk', '~> 2.2', '>= 2.2.37'
-
 # Using the sitemap generator gem to generate a new sitemap
 # according to the config in config/sitemap.rb
 gem 'sitemap_generator', '~> 5.1'
-
 # This gem is required by the sitemap generator to upload the generated
 # sitemap to S3.
 gem 'fog-aws', '~> 0.9.2'

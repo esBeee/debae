@@ -1,0 +1,49 @@
+%nav.navbar.fixed-top.navbar-expand-sm.navbar-light.header
+  .container
+    %a.navbar-brand{ href: root_path }
+      debae
+    %button.navbar-toggler{ type: 'button', data: { toggle: 'collapse', target: '#navbarNav' }, aria: { controls: 'navbarNav', expanded: 'false', label: 'Toggle navigation' } }
+      %span.navbar-toggler-icon
+    .collapse.navbar-collapse#navbarNav
+      %ul.navbar-nav
+        = render 'layouts/nav_link', target_path: about_path, label: t("layouts.header.links.about", default: "About")
+      %ul.navbar-nav.ml-auto
+        = render 'layouts/nav_link', target_path: new_statement_path, label: t("layouts.header.links.new_statement", default: 'Make a statement')
+        - if user_signed_in?
+          %li.nav-item.dropdown
+            %a.nav-link.dropdown-toggle#navbarDropdownMenuLink{ href: '#', data: { toggle: 'dropdown' }, aria: { haspopup: 'true', expanded: 'false' } }
+              = image_tag current_user.avatar.url(:thumb), class: "img-circle avatar"
+              = current_user.name
+              %b.caret
+            .dropdown-menu.dropdown-menu-right{ aria: { labelledby: 'navbarDropdownMenuLink' } }
+              %a.dropdown-item{ href: edit_user_profile_path }
+                = fa_icon("cog")
+                = t("layouts.header.links.account_settings", default: "Account settings")
+              .dropdown-divider
+              %h6.dropdown-header
+                One-Click
+              = link_to destroy_user_session_path, method: :delete, class: 'dropdown-item' do
+                = fa_icon("sign-out")
+                = t("layouts.header.links.sign_out", default: "Sign out")
+        - else
+          %li.nav-item.dropdown
+            %a.nav-link.dropdown-toggle#navbarDropdownMenuLink{ href: '#', data: { toggle: 'dropdown' }, aria: { haspopup: 'true', expanded: 'false' } }
+              = t("layouts.header.dropdowns.join", default: "Join")
+              = fa_icon("envelope") + " " + fa_icon("facebook-square", class: "brand-related facebook") + " " + fa_icon("google", class: "brand-related google") + " " + fa_icon("twitter", class: "brand-related twitter")
+              %b.caret
+            .dropdown-menu.dropdown-menu-right{ aria: { labelledby: 'navbarDropdownMenuLink' } }
+              %a.dropdown-item{ href: new_user_session_path }
+                = fa_icon("envelope")
+                = t("layouts.header.links.sign_in", auth_type: "Email", default: "Sign in with %{auth_type}")
+              .dropdown-divider
+              %h6.dropdown-header
+                One-Click
+              %a.dropdown-item{ href: user_facebook_omniauth_authorize_path }
+                = fa_icon("facebook-square", class: "facebook")
+                = t("layouts.header.links.sign_in", auth_type: "Facebook", default: "Sign in with %{auth_type}")
+              %a.dropdown-item{ href: user_google_oauth2_omniauth_authorize_path }
+                = fa_icon("google", class: "google")
+                = t("layouts.header.links.sign_in", auth_type: "Google", default: "Sign in with %{auth_type}")
+              %a.dropdown-item{ href: user_twitter_omniauth_authorize_path }
+                = fa_icon("twitter", class: "twitter")
+                = t("layouts.header.links.sign_in", auth_type: "Twitter", default: "Sign in with %{auth_type}")

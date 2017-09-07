@@ -1,5 +1,3 @@
-@import "./_mixins_and_variables";
-
 .comment {
   .author {
     @include flex(row);
@@ -10,7 +8,7 @@
     }
 
     .right {
-      
+
       @include flex(row);
 
       // background-color: red;
@@ -30,6 +28,8 @@
   border: 1px solid #DCE0DD;
   border-radius: 5px;
   padding: 30px;
+
+  width: 100%;
 
   & > *:not(:last-child) {
     margin-bottom: 15px;

@@ -9,13 +9,13 @@ end
 RSpec.describe "layouts/_header", type: :view do
   let(:user) {  FactoryGirl.create(:user) }
   let(:sign_out_link_xpath) { "//a[@href='#{destroy_user_session_path}'][@data-method='delete']" +
-    "[text()='#{I18n.t("layouts.header.links.sign_out")}']" }
+    "[contains(text(),'#{I18n.t("layouts.header.links.sign_out")}')]" }
 
   let(:sign_in_with_email) { I18n.t("layouts.header.links.sign_in", auth_type: "Email") }
   let(:sign_in_with_facebook) { I18n.t("layouts.header.links.sign_in", auth_type: "Facebook") }
   let(:sign_in_with_google) { I18n.t("layouts.header.links.sign_in", auth_type: "Google") }
   let(:sign_in_with_twitter) { I18n.t("layouts.header.links.sign_in", auth_type: "Twitter") }
-  
+
   context "when user is signed in" do
     before do
       sign_in user

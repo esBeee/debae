@@ -1,0 +1,64 @@
+#statement-chain-container {
+  top: $navbar-height;
+  z-index: 1029;
+}
+
+.statement-chain {
+  display: flex;
+  flex-direction: row;
+
+  height: $statement-chain-height;
+  align-items: center;
+
+  background-color: rgba(#EBF5DC, .999);
+  color: #383838;
+  // border-bottom: 1px solid black;
+  // box-shadow: 0px 2px 2px rgba(black, 0.5);
+  // padding: 3px;
+  position: relative;
+  overflow-y: hidden;
+}
+
+.statement-chain-link {
+  // display: flex;
+  // flex-direction: row;
+
+  position: relative;
+  white-space: nowrap;
+  margin: 0px 5px;
+  background-color: white;
+  padding: 0px 5px;
+  // height: 100%;
+  border-radius: 3px;
+  color: $honey-dew;
+  a {
+    color: #383838;
+
+    &:hover {
+      color: #383838;
+      text-decoration: none;
+    }
+  }
+}
+
+.inline {
+  display: inline-block;
+border: 1px solid red;
+margin:10px;
+    }
+
+.avatar {
+  height: 40px;
+}
+
+.agree {
+  color: $green;
+}
+
+.disagree {
+  color: $red;
+}
+
+.neutral {
+  color: $yellow;
+}

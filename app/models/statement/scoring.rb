@@ -22,7 +22,7 @@ class Statement::Scoring
         # this round.
         history << statements.pluck(:id)
 
-        # Check for loops to prevent superflous calculations.
+        # Check for loops to prevent superfluous calculations.
         break if any_loops?(total_amount_of_statements, history)
 
         # #update_score_for_set returns all parents of the updated statements.
@@ -33,7 +33,7 @@ class Statement::Scoring
       duration = Time.now - strt # in seconds
       log_level = duration > 0.5 ? :warn : :info
 
-      # 540 seconds are 9 minutes. Currently, I plan on running this function every 
+      # 540 seconds are 9 minutes. Currently, I plan on running this function every
       # 10 minutes in the background. So...
       log_level = :fatal if duration > 540
 
