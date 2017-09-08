@@ -10,7 +10,7 @@
     <div class="row">
       <h2><%= t(".#{is_pro_argument ? "pro" : "contra"}_argument_headline") %></h2>
     </div>
-    <%= render 'headline', statement: statement_to_be_backed %>
+    <%= render 'headline', statement: statement_to_be_backed, headline_only: true %>
   <% else %>
     <div class="row">
       Formuliere eine Aussage, die sich mit Pro- und Kontra-Argumenten diskutieren lässt.
@@ -26,7 +26,7 @@
 
   <div class="row">
     <%= form_for @statement do |f| %>
-      
+
       <%= hidden_field :argument, :argument_for, value: argument_for %>
       <%= hidden_field :argument, :is_pro_argument, value: is_pro_argument %>
       <%= hidden_field :statement, "[body][original_locale]", value: I18n.locale %>

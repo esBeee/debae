@@ -35,6 +35,20 @@ RSpec.describe StatementsHelper, type: :helper do
     end
   end
 
+  describe "#percent" do
+    context "when called with nil" do
+      it "returns a not available string" do
+        expect(helper.percent(nil)).to eq I18n.t("statements.score.not_available")
+      end
+    end
+
+    context "when called with a decimal" do
+      it "returns a formatted percent string with a rounded decimal" do
+        expect(helper.percent(0.223)).to eq "22 " + I18n.t("statements.score.unit")
+      end
+    end
+  end
+
   describe "#score" do
     context "when called with nil" do
       it "returns a not available string" do
@@ -44,7 +58,7 @@ RSpec.describe StatementsHelper, type: :helper do
 
     context "when called with a decimal" do
       it "returns a formatted score string with a rounded decimal" do
-        expect(helper.score(0.223)).to eq "22 " + I18n.t("statements.score.unit")
+        expect(helper.score(0.223)).to eq "2.2"
       end
     end
   end

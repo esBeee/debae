@@ -46,7 +46,7 @@ ActiveRecord::Schema.define(version: 20170907140845) do
     t.boolean "top_level", default: false, null: false
     t.decimal "argument_score"
     t.decimal "vote_score"
-    t.integer "amount_of_votes"
+    t.integer "amount_of_votes", default: 0
     t.index ["user_id"], name: "index_statements_on_user_id"
   end
 

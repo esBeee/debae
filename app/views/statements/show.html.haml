@@ -4,7 +4,7 @@
 = render 'add_to_history', name: body(@statement)
 
 .row.d-flex.justify-content-center
-  = render 'headline', statement: @statement
+  = render 'headline', statement: @statement, headline_only: false
 
 .row
   .col-xs-12.col-sm

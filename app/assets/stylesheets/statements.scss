@@ -38,56 +38,56 @@
 //   text-align: center;
 // }
 
-.statement-actions {
-  display: flex;
-  flex-direction: row;
-  // background-color: red;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-
-  .left {
-    flex: 1;
-    text-align: right;
-    // flex-basis: 100%;
-    // background-color: red;
-    // min-width: 100px;
-    // flex-grow: 0;
-    // flex-shrink: 1;
-    // order: 1;
-    // margin: 10px 0px;
-  }
-
-  .middle {
-    // order: 2;
-    // flex-basis: 200px;
-    // flex-grow: 0;
-    // flex-shrink: 1;
-  }
-
-  .right {
-    // background-color: green;
-    flex: 1;
-    // flex-basis: 0%;
-    // order: 3;
-    // flex-grow: 1;
-    // flex-shrink: 1;
-    // min-width: 100px;
-    // margin: 10px 0px;
-  }
-
-  & > * {
-    margin: 10px 10px;
-  }
-
-  .score-circle-container {
-    $side_length: 90px;
-    width: $side_length;
-    height: $side_length;
-    font-size: 14px;
-  }
-
-}
+// .statement-actions {
+//   display: flex;
+//   flex-direction: row;
+//   // background-color: red;
+//   align-items: center;
+//   justify-content: center;
+//   flex-wrap: wrap;
+//
+//   .left {
+//     flex: 1;
+//     text-align: right;
+//     // flex-basis: 100%;
+//     // background-color: red;
+//     // min-width: 100px;
+//     // flex-grow: 0;
+//     // flex-shrink: 1;
+//     // order: 1;
+//     // margin: 10px 0px;
+//   }
+//
+//   .middle {
+//     // order: 2;
+//     // flex-basis: 200px;
+//     // flex-grow: 0;
+//     // flex-shrink: 1;
+//   }
+//
+//   .right {
+//     // background-color: green;
+//     flex: 1;
+//     // flex-basis: 0%;
+//     // order: 3;
+//     // flex-grow: 1;
+//     // flex-shrink: 1;
+//     // min-width: 100px;
+//     // margin: 10px 0px;
+//   }
+//
+//   & > * {
+//     margin: 10px 10px;
+//   }
+//
+//   .score-circle-container {
+//     $side_length: 90px;
+//     width: $side_length;
+//     height: $side_length;
+//     font-size: 14px;
+//   }
+//
+// }
 
 .arguments-container {
   background-color: white;
@@ -162,5 +162,13 @@
   .meta {
     font-size: 80%;
     color: #868e96;
+  }
+
+  .cta-section {
+    padding: 10px;
+
+    div {
+      margin: 3px;
+    }
   }
 }

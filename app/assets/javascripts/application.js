@@ -15,6 +15,8 @@
 
 // NODE MODULES
 //= require jquery
+//= require tinycolor2
+//= require tinygradient
 //= require progressbar.js/dist/progressbar.js
 //= require popper.js/dist/umd/popper.js
 //= require bootstrap/dist/js/bootstrap.js

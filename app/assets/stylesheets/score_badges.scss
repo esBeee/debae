@@ -1,0 +1,43 @@
+.score-container {
+  background-color: $gray-100;
+  // border-bottom: 1px solid $gray-300;
+  margin-bottom: -1px;
+  margin-left: -1px;
+  margin-right: -1px;
+
+  border-top-left-radius: 0.25rem !important;
+  border-bottom-right-radius: 0.25rem !important;
+
+  .score-badge {
+    border-bottom-right-radius: 0.25rem !important;
+    width: auto;
+    padding: 5px;
+
+    .score {
+      font-size: 2rem;
+      font-weight: 900;
+
+
+    // font-family: 'Anton', sans-serif;
+
+    // font-family: 'Teko', sans-serif;
+
+
+    }
+
+    .label {
+      font-size: 0.9rem;
+      // color:
+    }
+
+    .big {
+
+    }
+  }
+
+  .score-components {
+    font-size: 0.9rem;
+    padding: 10px;
+    color: $gray-800;
+  }
+}

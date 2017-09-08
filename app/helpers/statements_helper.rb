@@ -37,11 +37,18 @@ module StatementsHelper
   end
 
   # Returns a rounded decimal in a formatted percent string
-  def score decimal
+  def percent decimal
     return t("statements.score.not_available", default: "N/A") if decimal.nil?
 
     rounded = (decimal * 100).round
     return "#{rounded} " + t("statements.score.unit", default: "%")
+  end
+
+  def score decimal
+    return t("statements.score.not_available", default: "N/A") if decimal.nil?
+
+    rounded = (decimal * 10).round(1)
+    return rounded.to_s
   end
 
   # Decides how big a headline will be depending on the length
