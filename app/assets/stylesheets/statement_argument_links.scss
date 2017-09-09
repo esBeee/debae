@@ -1,33 +1,22 @@
-@import "./_mixins_and_variables";
-
 .statement-argument-link {
-  @include flex(row);
-  align-items: center;
-  
   background-color: #fbfcfa;
-  border-radius: 3px;
-  padding: 10px;
-  text-align: left;
+  margin: 10px;
 
-  .actions {
-    @include flex(column);
-    align-items: center;
-    width: 40px;
+  .argument-showcase-section {
+    width: 100%;
+    position: relative;
   }
 
-  .body {
-    flex: 1;
-    position: relative; // Required to make the whole div a link. Learn more at .link-expander
-    padding: 5px;
+  .argument-body {
+    padding: 3px;
   }
 
-  .score {
-    @include flex(column);
-    align-items: center;
-    justify-content: center;
+  .total-score {
+    font-size: 0.7em;
 
-    .amount {
-      font-size: 20px;
+    .label {
+      padding-left: 3px;
+      padding-right: 3px;
     }
   }
 }

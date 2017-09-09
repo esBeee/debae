@@ -1,17 +1,10 @@
 .comment {
   .author {
-    @include flex(row);
-
     .left {
-      // background-color: yellow;
       flex: 1;
     }
 
     .right {
-
-      @include flex(row);
-
-      // background-color: red;
       align-items: flex-end;
       justify-content: flex-end;
     }
@@ -19,7 +12,6 @@
 }
 
 .comments-form-container {
-  // background-color:red;
   margin-bottom: 20px;
 }
 
@@ -28,8 +20,6 @@
   border: 1px solid #DCE0DD;
   border-radius: 5px;
   padding: 30px;
-
-  width: 100%;
 
   & > *:not(:last-child) {
     margin-bottom: 15px;

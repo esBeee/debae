@@ -10,7 +10,7 @@
     <div class="row">
       <h2><%= t(".#{is_pro_argument ? "pro" : "contra"}_argument_headline") %></h2>
     </div>
-    <%= render 'headline', statement: statement_to_be_backed, headline_only: true %>
+    <%= render 'statement_detailed', statement: statement_to_be_backed, headline_only: true %>
   <% else %>
     <div class="row">
       Formuliere eine Aussage, die sich mit Pro- und Kontra-Argumenten diskutieren lässt.

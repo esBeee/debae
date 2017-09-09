@@ -4,16 +4,16 @@
 = render 'add_to_history', name: body(@statement)
 
 .row.d-flex.justify-content-center
-  = render 'headline', statement: @statement, headline_only: false
+  = render 'statement_detailed', statement: @statement
 
 .row
-  .col-xs-12.col-sm
+  .col-12.col-lg-6
     = render 'arguments_container', pro_or_contra: :pro
-  .col-xs-12.col-sm
+  .col-12.col-lg-6
     = render 'arguments_container', pro_or_contra: :contra
 
 .row.d-flex.justify-content-center
-  .col-xs-8.comments-container
+  .col-12.col-lg-8.comments-container
     %h1
       = t("comments.headline")
     .comments-form-container

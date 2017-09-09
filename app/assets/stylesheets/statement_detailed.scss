@@ -1,0 +1,49 @@
+.statement-detailed {
+  .author {
+    font-size: 80%;
+    color: #868e96;
+
+    .avatar {
+      height: 35px;
+    }
+
+    .quote-dash {
+      &::before {
+        content: "\2014 \00A0";
+      }
+
+      margin-left: 20px;
+    }
+
+    .avatar-container {
+      margin-left: 2px;
+      margin-right: 7px;
+    }
+  }
+
+  .meta {
+    font-size: 80%;
+    color: #868e96;
+  }
+
+  .cta-section {
+    padding: 10px;
+
+    div {
+      margin: 3px;
+    }
+  }
+
+  .score-container {
+    background-color: $gray-100;
+    margin-bottom: -1px;
+    margin-left: -1px;
+    margin-right: -1px;
+
+    .score-components {
+      font-size: 0.9em;
+      padding: 10px;
+      color: $gray-800;
+    }
+  }
+}

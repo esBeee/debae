@@ -1,4 +1,4 @@
-.card.statement
+.statement-detailed.card
   %blockquote.blockquote.mb-0.card-body
     %p
       = body(statement)
@@ -17,7 +17,7 @@
         %small
           = l(statement.created_at)
 
-  - unless headline_only
+  - if !defined?(headline_only) || !headline_only
     %div.d-flex.flex-column-reverse.flex-md-row.justify-content-end
       .cta-section.mr-auto.d-flex.flex-row.align-items-end
         %div
@@ -25,9 +25,9 @@
         %div
           = render 'vote_button', statement: statement, is_pro_vote: false, existing_vote: has_voted?(false, current_user, statement)
       .score-section
-        .score-container.d-flex.flex-row-reverse
+        .score-container.d-flex.flex-row-reverse.rounded-top-left-bottom-right
           .total-score
-            .score-badge.text-center{ data: { bg_color_by_score: statement.score } }
+            .score-badge.rounded-bottom-right.text-center{ data: { bg_color_by_score: statement.score } }
               .score
                 = score(statement.score)
               .label
@@ -42,30 +42,3 @@
               = "(#{statement.amount_of_votes} #{t("statements.show.scores.amount_of_votes", default: "votes", count: statement.amount_of_votes)})" + ':'
               %span.badge.badge-light{ data: { bg_color_by_score: statement.vote_score } }
                 = percent(statement.vote_score)
-
-  -# .card-footer
-
-    -# .statement-actions
-      -# .left
-      -#   = render 'vote_button', statement: statement, is_pro_vote: true, existing_vote: has_voted?(true, current_user, statement)
-      -# .middle
-      -#   .row.d-flex.flex-column
-      -#     .argument-score
-      -#       %span.badge.badge-primary{ data: { bg_color_by_score: statement.argument_score } }
-      -#         = t("statements.show.scores.argument", default: "Argument score")
-      -#         = score(statement.argument_score)
-      -#     .vote-score
-      -#       %span.badge.badge-primary{ data: { bg_color_by_score: statement.vote_score } }
-      -#         = t("statements.show.scores.vote", default: "Voting score")
-      -#         = percent(statement.vote_score)
-      -#         = "(#{statement.amount_of_votes} #{t("statements.show.scores.amount_of_votes", default: "votes")})"
-      -#     .total-score
-      -#       .score-badge.rounded.text-center.big{ data: { bg_color_by_score: statement.score } }
-      -#         .score
-      -#           = score(statement.score)
-      -#         .label
-      -#           = t("statements.show.scores.total", default: "Total score")
-        -# = render 'score_circle', id: statement.id, score: statement.score
-
-      -# .right
-      -#   = render 'vote_button', statement: statement, is_pro_vote: false, existing_vote: has_voted?(false, current_user, statement)

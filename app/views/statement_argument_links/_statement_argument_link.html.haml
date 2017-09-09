@@ -1,0 +1,19 @@
+- argument = statement_argument_link.argument
+
+.d-flex.flex-row.rounded.statement-argument-link
+  .voting-section.d-flex.flex-column.justify-content-between
+    = render 'statement_argument_links/vote_button', link: statement_argument_link, is_pro_vote: true, existing_vote: has_voted?(true, current_user, statement_argument_link)
+    %span
+      = statement_argument_link.pro_votes.count - statement_argument_link.contra_votes.count
+    = render 'statement_argument_links/vote_button', link: statement_argument_link, is_pro_vote: false, existing_vote: has_voted?(false, current_user, statement_argument_link)
+  .argument-showcase-section.d-flex.flex-column.justify-content-start
+    .d-flex.flex-column.justify-content-center.argument-body
+      %a{ href: statement_path(argument) }
+        %span.link-expander
+      = body(argument)
+    .total-score.d-flex.flex-row-reverse.mt-auto
+      .score-badge.d-flex.flex-row.align-items-center.justify-content-center.rounded-top-left-bottom-right{ data: { bg_color_by_score: argument.score } }
+        .score
+          = score(argument.score)
+        .label
+          = t("statements.show.scores.total", default: "Total score")

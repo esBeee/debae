@@ -3,7 +3,7 @@
 <div class="arguments-container <%= pro_or_contra %>">
   <h3><%= t("statements.show.headlines.#{pro_or_contra}_arguments", default: "#{pro_or_contra.to_s.capitalize} arguments") %></h3>
 
-  <ul>
+  <div>
     <% if arguments.any? %>
       <%= render 'statement_argument_links/list', statement_argument_links: arguments %>
     <% else %>
@@ -11,7 +11,7 @@
         <%= t("statements.show.no_#{pro_or_contra}_arguments", default: "There are no #{pro_or_contra} arguments yet.") %>
       </div>
     <% end %>
-  </ul>
+  </div>
 
   <%= link_to new_statement_path(pro_or_contra => @statement.id), class: "btn btn-#{pro_or_contra == :pro ? "success" : "danger"}" do %>
     <%= fa_icon("plus-square") %>

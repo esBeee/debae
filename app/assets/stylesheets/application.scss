@@ -14,6 +14,7 @@
  */
 @import "variables";
 @import "typography";
+@import "utilities";
 @import "header";
 @import "statement_chain";
 @import "statements";
@@ -29,3 +30,4 @@
 // @import "bootstrap/scss/bootstrap-reboot";
 
 @import "score_badges";
+@import "statement_detailed";
