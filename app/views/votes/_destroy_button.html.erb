@@ -1,10 +1,11 @@
-<% 
+<%
   button_attributes = {
     type: "submit",
     class: "btn #{options[:css_class]}"
   }
 
   button_attributes[:title] = options[:title] if options[:title]
+  button_attributes[:aria] = options[:aria] if options[:aria]
 %>
 
 <%= form_for vote, method: :delete do %>
