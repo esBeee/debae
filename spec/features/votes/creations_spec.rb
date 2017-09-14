@@ -21,8 +21,8 @@ RSpec.shared_examples "A successful vote for a statement" do |up_or_down|
   it_behaves_like "A successful vote", up_or_down
 
   it "disables the #{up_or_down}-vote-button" do
-    # expect(page).to have_css(vote_button_css(up_or_down) + ".pressed")
-    expect(page).to have_css(".pressed", text: I18n.t("statements.show.buttons.destroy_#{up_or_down}vote"))
+    # expect(page).to have_css(vote_button_css(up_or_down) + ".active")
+    expect(page).to have_css(".active", text: I18n.t("statements.show.buttons.destroy_#{up_or_down}vote"))
   end
 end
 
@@ -30,7 +30,7 @@ RSpec.shared_examples "A successful vote for an argument" do |up_or_down|
   it_behaves_like "A successful vote", up_or_down
 
   it "disables the #{up_or_down}-vote-button" do
-    expect(page).to have_css(".pressed[title='#{I18n.t("statement_argument_links.buttons.destroy_#{up_or_down}vote")}']")
+    expect(page).to have_css(".active[title='#{I18n.t("statement_argument_links.buttons.destroy_#{up_or_down}vote")}']")
   end
 end
 

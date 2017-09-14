@@ -1,0 +1,30 @@
+%h2
+  = t("users.registrations.headline")
+
+= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+  = devise_error_messages!
+
+  .form-group
+    = f.label :email, t("users.registrations.labels.email", default: "Email")
+    = f.email_field :email, class: "form-control", autofocus: true
+
+  .form-group
+    = f.label :name, t("users.editings.labels.name", default: "Name")
+    = f.text_field :name, class: "form-control"
+    %small#user_name.form-text.text-muted
+      = t("users.editings.about_name_attribute", default: "we prefer your real name, but you are free to choose whatever you want")
+
+  .form-group
+    = f.label :password, t("users.registrations.labels.password", default: "Password")
+    = f.password_field :password, autocomplete: "off", class: "form-control"
+    - if @minimum_password_length
+      %small#user_password.form-text.text-muted
+        = t("users.registrations.minimum_password_length", default: "%{minimum_password_length} characters minimum", minimum_password_length: @minimum_password_length)
+
+  .form-group
+    = f.label :password_confirmation, t("users.registrations.labels.password_confirmation", default: "Password confirmation")
+    = f.password_field :password_confirmation, autocomplete: "off", class: "form-control"
+
+  = f.submit t("users.registrations.buttons.submit", default: "Sign up"), class: "btn btn-primary"
+
+= render "devise/shared/links"

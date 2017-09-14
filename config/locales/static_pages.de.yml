@@ -1,6 +1,9 @@
 de:
   static_pages:
-    about:
-      title: Über debae
-      headline: "Diskutiere was dich beschäftigt."
-      description: "Auf dieser Seite kannst du mehr darüber erfahren, wie debae funktioniert."
+    onboarding:
+      title: debae - Demokratie 2.0
+      headline_discuss: Diskutieren
+      paragraph_discuss: <b>debae</b> ist eine Diskussionsplattform, auf der du politische Aussagen mithilfe von <b>Pro- und Kontra-Argumenten</b> diskutieren kannst.
+      headline_vote: Abstimmen
+      paragraph_vote: Du kannst Aussagen befürworten oder ablehnen. Aus dem Verhältnis zwischen Pro- und Kontra-Argumenten und der Zustimmung der Nutzer ergibt sich dann eine <b>Bewertung der Aussage</b>.
+      headline_discussed_statements: Heiß diskutierte Statements

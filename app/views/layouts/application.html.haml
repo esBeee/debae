@@ -15,4 +15,4 @@
     = render 'layouts/statement_chain'
     .container.main
       = render 'layouts/flash'
-      = yield
+      = content_for?(:content) ? yield(:content) : yield

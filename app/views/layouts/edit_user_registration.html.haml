@@ -1,0 +1,19 @@
+- provide(:title, t("layouts.edit_user_registration.title", default: "Edit your settings"))
+- provide(:description, t("layouts.edit_user_registration.description", default: "Edit your public profile, your account settings and your notification settings."))
+
+- profile_tab_active = request.path == edit_user_profile_path
+- account_tab_active = request.path == edit_user_registration_path
+
+- content_for :content do
+  .row
+    .col-12.col-lg-6.ml-lg-auto.mr-lg-auto
+      %ul.nav.nav-tabs
+        %li.nav-item
+          %a.nav-link{ href: edit_user_profile_path, class: profile_tab_active ? "active" : nil }
+            = t("layouts.edit_user_registration.tabs.profile")
+        %li.nav-item
+          %a.nav-link{ href: edit_user_registration_path, class: account_tab_active ? "active" : nil }
+            = t("layouts.edit_user_registration.tabs.account")
+      = yield
+
+= render template: "layouts/application"

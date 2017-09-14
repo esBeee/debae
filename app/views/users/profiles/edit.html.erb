@@ -4,43 +4,48 @@
   <%= render 'shared/active_record_errors', resource: @user %>
 
   <div class="form-group">
-    <%= f.label :name, t("users.editings.labels.name", default: "Name") %><br />
+    <%= f.label :name, t("users.editings.labels.name", default: "Name") %>
     <%= f.text_field :name, class: "form-control" %>
-    <span id="helpBlock" class="help-block"><%= t("users.editings.about_name_attribute", default: "we prefer your real name, but you are free to choose whatever you want") %></span>
+    <small id="user_name" class="form-text text-muted">
+      <%= t("users.editings.about_name_attribute", default: "we prefer your real name, but you are free to choose whatever you want") %>
+    </small>
   </div>
 
   <hr />
 
   <div class="form-group">
     <%= f.label :avatar, t("users.editings.labels.avatar", default: "Your avatar") %>
-    <%= f.file_field :avatar %>
-    <p class="help-block"><%= t("users.editings.about_avatar", default: "Choose an image of you to be used as your avatar") %></p>
+    <%= f.file_field :avatar, class: "form-control-file" %>
+    <small id="user_avatar" class="form-text text-muted">
+      <%= t("users.editings.about_avatar", default: "Choose an image of you to be used as your avatar") %>
+    </small>
   </div>
 
   <hr />
 
   <div class="form-group">
-    <%= f.label :link_to_facebook, t("users.editings.labels.link_to_facebook", default: "Link to facebook") %><br />
+    <%= f.label :link_to_facebook, t("users.editings.labels.link_to_facebook", default: "Link to facebook") %>
     <%= f.text_field :link_to_facebook, class: "form-control" %>
   </div>
 
   <div class="form-group">
-    <%= f.label :link_to_twitter, t("users.editings.labels.link_to_twitter", default: "Link to twitter") %><br />
+    <%= f.label :link_to_twitter, t("users.editings.labels.link_to_twitter", default: "Link to twitter") %>
     <%= f.text_field :link_to_twitter, class: "form-control" %>
   </div>
 
   <div class="form-group">
-    <%= f.label :link_to_google_plus, t("users.editings.labels.link_to_google_plus", default: "Link to google+") %><br />
+    <%= f.label :link_to_google_plus, t("users.editings.labels.link_to_google_plus", default: "Link to google+") %>
     <%= f.text_field :link_to_google_plus, class: "form-control" %>
   </div>
 
   <hr />
 
-  <div class="checkbox">
-    <label>
-    <%= f.check_box :email_if_new_argument %> <%= t("users.editings.labels.email_if_new_argument", default: "Inform me about new arguments for my submitted statements") %>
+  <div class="form-check">
+    <label class="form-check-label">
+      <%= f.check_box :email_if_new_argument, class: "form-check-input" %>
+      <%= t("users.editings.labels.email_if_new_argument", default: "Inform me about new arguments for my submitted statements") %>
     </label>
   </div>
 
-  <%= f.submit t("users.editings.buttons.submit", default: "Save"), class: "btn btn-default" %>
+  <%= f.submit t("users.editings.buttons.submit", default: "Save"), class: "btn btn-primary" %>
 <% end %>

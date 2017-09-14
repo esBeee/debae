@@ -1,37 +1,23 @@
-debae soll bei der Entscheidungsfindung helfen
-
-
-%h1 Aus falschem folgt beliebiges
-
-Die Idee hinter debae ist eine möglichst sachliche Diskussion zu führen.
-
-Entscheidungs
-
-Nutze debae um fundierte Entscheidungen zu treffen.
-
-%h1 So funktioniert's
-
-Führe Argumente an, die
-
-
-debae soll
-
-debae wurde gegründet, um
-
-Mit debae suchen wir einen Weg, die Entscheidungsfindung zu politischen Fragestellungen zu versachlichen, sodass selbst
-
-
-Mit debae sind wir auf der Suche nach einem Weg, die Entscheidungsfindung zu politischen Fragestellungen zu versachlichen
-
-
-%h1 Diskutieren und abstimmen
-
-Bei debae kannst du sachlich diskutieren, was dich bewegt. We
-
-Jedes Statement erhält eine Bewertung, die sich aus dem Verhältnis zwischen Zustimmung und Ablehnung und der Aussagekraft der Argumente zusammensetzt.
-
-Wirf' doch zu Beginn mal einen Blick auf die Diskussionen zu den Thesen aus dem
-= link_to('Wahl-O-Mat zur Bundestagswahl 2017', 'https://www.wahl-o-mat.de/bundestagswahl2017/') + '.'
-Bleibst du bei deiner Entscheidung?
-
-Klicke auf ein Statement, dass dich besonders interessiert.
+.row
+  .col-12.col-lg-6
+    %h1
+      = fa_icon('comments')
+      = t(".headline_discuss", default: "Discuss")
+    %p
+      != t(".paragraph_discuss", default: "On debae you can discuss political statements using pro and contra arguments.")
+  .col-12.col-lg-6
+    %h1
+      = fa_icon('pie-chart')
+      = t(".headline_vote", default: "Vote")
+    %p
+      != t(".paragraph_vote")
+.row
+  .col-12
+    .row
+      %h4
+        %u
+          = t(".headline_discussed_statements") + ':'
+    .row
+      .card-columns
+        - @statements.each do |statement|
+          = render 'statements/statement_link', statement: statement

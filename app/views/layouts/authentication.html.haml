@@ -1,0 +1,19 @@
+- provide(:title, t("layouts.authentication.title", default: "Join"))
+- provide(:description, t("layouts.authentication.description", default: "Sign in/sign up with your email address or your account with facebook, twitter or google."))
+
+- sign_in_tab_active = request.path == new_user_session_path
+- sign_up_tab_active = request.path == new_user_registration_path
+
+- content_for :content do
+  .row
+    .col-12.col-lg-6.ml-lg-auto.mr-lg-auto
+      %ul.nav.nav-tabs
+        %li.nav-item
+          %a.nav-link{ href: new_user_session_path, class: sign_in_tab_active ? "active" : nil }
+            = t("layouts.authentication.tabs.sign_in")
+        %li.nav-item
+          %a.nav-link{ href: new_user_registration_path, class: sign_up_tab_active ? "active" : nil }
+            = t("layouts.authentication.tabs.sign_up")
+      = yield
+
+= render template: "layouts/application"

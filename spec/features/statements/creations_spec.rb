@@ -8,7 +8,7 @@ RSpec.shared_examples "A successful statement creation" do
 end
 
 # Here, the direction parameter should be either
-#           pro       or       contra 
+#           pro       or       contra
 RSpec.shared_examples "A successful argument creation" do |direction|
   it_behaves_like "A successful statement creation"
 
@@ -43,7 +43,7 @@ RSpec.feature "StatementCreations", type: :feature, session_helpers: true do
   # A helper to fill in the form and submit it.
   def fill_form_and_submit body
     # Fill in my statement
-    fill_in I18n.t("statements.new.body"), with: body
+    fill_in "statement_body_thesis_#{I18n.locale}", with: body
 
     # Submit
     click_button "new-statement"

@@ -1,4 +1,6 @@
-.statement-detailed.card
+.statement-detailed.card.elevate
+  %a{ href: statement_path(statement) }
+    %span.link-expander
   %blockquote.blockquote.mb-0.card-body
     %p
       = body(statement)
@@ -12,18 +14,19 @@
         %small
           = creator_attitude_icon(statement)
           = t("statements.show.creator_attitudes.#{creator_attitude(statement)}", default: "") + '.'
-    .created_at.text-right
-      = l(statement.created_at)
+    -# %div
+      %small
+        = l(statement.created_at)
 
   - if !defined?(headline_only) || !headline_only
-    %div.d-flex.flex-column-reverse.flex-md-row.justify-content-end
-      .cta-section.mr-auto.d-flex.flex-row.align-items-end
+    %div.d-flex.flex-column-reverse.justify-content-end
+      -# .cta-section.mr-auto.d-flex.flex-row.align-items-end
         %div
           = render 'statements/vote_button', statement: statement, is_pro_vote: true, existing_vote: has_voted?(true, current_user, statement)
         %div
           = render 'statements/vote_button', statement: statement, is_pro_vote: false, existing_vote: has_voted?(false, current_user, statement)
       .score-section
-        .score-container.d-flex.flex-row-reverse.rounded-top-left-bottom-right
+        .score-container.d-flex.flex-row-reverse.rounded-bottom
           .total-score
             .score-badge.rounded-bottom-right.text-center{ data: { bg_color_by_score: statement.score } }
               .score
@@ -39,4 +42,3 @@
               != t("statements.show.scores.vote", default: "Voting score") + ':'
               %span.badge.badge-light{ data: { bg_color_by_score: statement.vote_score } }
                 = percent(statement.vote_score)
-              = t("statements.show.scores.amount_of_votes", default: "votes", count: statement.amount_of_votes)

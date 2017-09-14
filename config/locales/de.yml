@@ -78,8 +78,8 @@ de:
     placeholders:
       body: "Schreib' einen Kommentar"
     buttons:
-      submit: "Kommentar Abschicken"
-      submit_html: "Kommentar<br />Abschicken"
+      submit: "Kommentar abschicken"
+      submit_html: "Kommentar<br />abschicken"
     links:
       sign_in: "Logg' dich ein"
     # link_to_sign_in is a html link with the text you find under comments.links.sign_in

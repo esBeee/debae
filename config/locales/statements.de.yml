@@ -4,9 +4,13 @@ de:
       title: "Gebe ein neues Statement ab und erfahre, wieviel Zustimmung du dafür erzielst"
       description: "Hier kannst du ein neues Statement abgeben um eine Debatte darüber anzustoßen und um zu erfahren, wie viel Zustimmung deine Aussage erzielen wird."
       body: "Dein Statement"
-      submit_html: "Statement<br />abgeben"
+      submit_html: "Statement abgeben"
       pro_argument_headline: "Neues Pro-Argument für"
       contra_argument_headline: "Neues Kontra-Argument für"
+      input_label_new_statement: "Dein Statement"
+      input_label_new_argument: "Dein Argument"
+      explain_headline: "Formuliere eine Aussage, die sich mit Pro- und Kontra-Argumenten diskutieren lässt."
+      explain_example: Willst du z.B. die Frage diskutieren, ob sich das Internet langfristig durchsetzen wird, könnte dein Statement lauten <i>"Das Internet wird sich langfristig nicht durchsetzen"</i>.<br />Du hast später die Möglichkeit, auch deinen eigenen Aussagen zuzustimmen oder sie abzulehnen.
     show:
       title_html: "Debatte/Diskussion zu '%{body}'"
       description_html: "Auf dieser Seite wird das Statement '%{body}' debattiert bzw. diskutiert. Du kannst dich daran beteiligen, indem du Argumente oder Kommentare hinzufügst, oder indem du über das Statement abstimmst."
@@ -36,8 +40,9 @@ de:
         vote: Zustimmung im <u>Voting</u>
         total: Gesamtwertung
         amount_of_votes:
-          one: Stimme
-          other: Stimmen
+          zero: "(noch keine Stimmabgaben)"
+          one: "von %{count} Stimme"
+          other: "von %{count} Stimmen"
     score:
       not_available: "N/A"
       unit: "%"

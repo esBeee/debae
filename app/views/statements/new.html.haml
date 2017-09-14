@@ -1,0 +1,40 @@
+- provide(:title, t(".title", default: "Make a new statement"))
+- provide(:description, t(".description", default: ""))
+
+- argument_for, is_pro_argument = argument_hash(params[:pro], params[:contra])
+- statement_to_be_backed = argument_for ? Statement.find_by(id: argument_for) : nil
+
+.col-12.col-lg-6.ml-lg-auto.mr-lg-auto
+  - if statement_to_be_backed
+    .row
+      .col-12
+        %h2
+          = t(".#{is_pro_argument ? "pro" : "contra"}_argument_headline")
+    .row
+      .col-12
+        = render 'statement_detailed', statement: statement_to_be_backed, headline_only: true
+  - else
+    .row
+      .col-12
+        = t(".explain_headline")
+        %small.form-text.text-muted
+          != t(".explain_example")
+
+  .row
+    .col-12
+      = render 'shared/active_record_errors', resource: @statement
+
+  .row
+    .col-12
+      = form_for @statement do |f|
+        = hidden_field :argument, :argument_for, value: argument_for
+        = hidden_field :argument, :is_pro_argument, value: is_pro_argument
+        = hidden_field :statement, "[body][original_locale]", value: I18n.locale
+
+        .form-group
+          = label_tag "statement_body_thesis_de", (statement_to_be_backed ? t(".input_label_new_argument", default: "Your argument") : t(".input_label_new_statement", default: "Your statement"))
+          = fa_icon("comment-o")
+          = text_area_tag "statement[body][thesis][#{I18n.locale}]", @statement.body == "{}" ? nil : body(@statement), class: "form-control"
+
+        = button_tag(type: "submit", class: "btn btn-primary", id: "new-statement") do
+          = t(".submit_html", default: "Submit")

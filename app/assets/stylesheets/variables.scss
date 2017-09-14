@@ -1,8 +1,8 @@
-$navbar-height: 60px;
-$statement-chain-height: 40px;
+$navbar-height: 71px; // NOTE: You can't change the header height by changing this.
+$statement-chain-height: 33px;
 $header-height: $navbar-height + $statement-chain-height;
 
-$content-gap: 20px;
+$content-gap: 30px;
 
 $honey-dew: #AAFF00;
 $green: #00FF33;

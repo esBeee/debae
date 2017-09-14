@@ -4,7 +4,7 @@
   <%= devise_error_messages! %>
 
   <div class="form-group">
-    <%= f.label :email, t("users.editings.labels.email", default: "Email") %><br />
+    <%= f.label :email, t("users.editings.labels.email", default: "Email") %>
     <%= f.email_field :email, class: "form-control" %>
   </div>
 
@@ -15,27 +15,27 @@
   <hr />
 
   <div class="form-group">
-    <%= f.label :password, t("users.editings.labels.password", default: "Password") %><br />
+    <%= f.label :password, t("users.editings.labels.password", default: "Password") %>
     <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
-    <p class="help-block"><%= t("users.editings.may_leave_blank", default: "leave blank if you don't want to change it") %></p>
+    <small id="user_password" class="form-text text-muted">
+      <%= t("users.editings.may_leave_blank", default: "leave blank if you don't want to change it") %>
+    </small>
   </div>
 
   <div class="form-group">
-    <%= f.label :password_confirmation, t("users.editings.labels.password_confirmation", default: "Password confirmation") %><br />
+    <%= f.label :password_confirmation, t("users.editings.labels.password_confirmation", default: "Password confirmation") %>
     <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control" %>
   </div>
 
   <hr />
 
   <div class="form-group">
-    <%= f.label :current_password, t("users.editings.labels.current_password", default: "Current password") %><br />
+    <%= f.label :current_password, t("users.editings.labels.current_password", default: "Current password") %>
     <%= f.password_field :current_password, autocomplete: "off", class: "form-control" %>
-    <p class="help-block"><%= t("users.editings.current_password_required", default: "we need your current password to confirm your changes") %></p>
+    <small id="user_current_password" class="form-text text-muted">
+      <%= t("users.editings.current_password_required", default: "we need your current password to confirm your changes") %>
+    </small>
   </div>
 
-  <%= f.submit t("users.editings.buttons.submit", default: "Save"), class: "btn btn-default" %>
+  <%= f.submit t("users.editings.buttons.submit", default: "Save"), class: "btn btn-primary" %>
 <% end %>
-
-<h3><%#= t("users.editings.cancel_account_header", default: "Cancel my account") %></h3>
-
-<p><%#= t("users.editings.why_delete_account", default: "Unhappy?") %> <%#= button_to t("users.editings.buttons.destroy_account", default: "Cancel my account"), registration_path(resource_name), data: { confirm: t("users.editings.confirm_delete_account", default: "Are you sure?") }, method: :delete, class: "btn btn-danger" %></p>

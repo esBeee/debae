@@ -1,4 +1,7 @@
-- if flash.any?
-  .row.flash
-    - flash.each do |name, msg|
-      = content_tag :div, msg, class: "alert alert-info"
+- flash.each do |name, msg|
+  .alert.alert-secondary.alert-dismissible.fade.show{ role: "alert" }
+    %button.close{ type: "button", data: { dismiss: "alert" }, aria: { label: "Close" } }
+      %span{ aria: { hidden: "true" } }
+        &times;
+    = "NAME: #{name}"
+    = msg

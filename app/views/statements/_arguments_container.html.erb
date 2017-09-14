@@ -14,7 +14,7 @@
   </div>
 
   <%= link_to new_statement_path(pro_or_contra => @statement.id), class: "btn btn-outline-#{pro_or_contra == :pro ? "success" : "danger"}" do %>
-    <%= fa_icon("plus-square") %>
+    <%= fa_icon("plus") %>
     <%= t("statements.show.links.new_#{pro_or_contra}_argument", default: "New #{pro_or_contra} argument") %>
   <% end %>
 </div>

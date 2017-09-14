@@ -84,7 +84,7 @@ RSpec.feature "StatementIndexVisitings", type: :feature, statements_helper: true
 
     context "when more than one page of statements is available" do
       let!(:statements) { FactoryGirl.create_list(:statement, statements_per_page + 1, :top_level) }
-      let(:path_to_next_page) { "/?page=2" }
+      let(:path_to_next_page) { "/statements?page=2" }
 
       before { visit statements_path }
 

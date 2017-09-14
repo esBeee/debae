@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   # Serve websocket cable requests in-process
   # mount ActionCable.server => '/cable'
 
-  root "statements#index"
+  root "static_pages#onboarding"
 
   # Let devise take care of the routes for the user resource.
   devise_for :users, controllers: {
@@ -24,7 +24,4 @@ Rails.application.routes.draw do
   # Updating a users profile has a separate controller action and, thus,
   # needs a separate route.
   put '/users/profile', to: 'users/profiles#update', as: :user_profile
-
-  # Routes for the static pages controller
-  get '/about', to: 'static_pages#about', as: :about
 end
