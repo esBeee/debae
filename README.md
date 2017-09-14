@@ -1,12 +1,26 @@
-# debae rails
+# debae
 
-debae is a rails 5 (beta) app that allows users to debate and rate given statements. It is deployed to [https://debae.org/](https://debae.org/).
+_debae_ is a Rails 5.1 app that allows users to make, debate and vote for statements. It is deployed to [https://debae.org/](https://debae.org/).
 
 ## Dependencies
 
+### Ruby
+
+Version `2.4.1` is currently used in production.
+
 ### ImageMagick
 
-File upload is handeled by the [Paperclip](https://github.com/thoughtbot/paperclip) gem, which depends on [ImageMagick](http://www.imagemagick.org/script/index.php). If you're on a mac, simply run `brew install imagemagick`.
+File upload is handeled by the [Paperclip](https://github.com/thoughtbot/paperclip) gem, which depends on [ImageMagick](http://www.imagemagick.org/script/index.php).
+
+### yarn
+
+To run this app, the node modules specified in `yarn.lock` must be present. Install them by running
+
+```sh
+$ yarn
+```
+
+after making sure you have [yarn](https://yarnpkg.com/lang/en/) installed.
 
 ## Conventions
 
@@ -21,35 +35,3 @@ And not
 ```ruby
 I18n.t("there", scope: "something.there.and")
 ```
-
-Also always hand default messages to translations:
-
-```ruby
-I18n.t("something.there.and.there", default: "There")
-```
-
-## Models
-
-### User
-
-* Devise model with corresponding attributes.
-
-* Attribute `email`: The users primary email address. Required, if a user signs up with email, but might be nil, if the user used OAuth.
-
-* Attribute `name`: The users name. May be a full name or a username or whatever, but can't be blank. Limited to 70 characters on database level. Can't be nil (on database level).
-
-* Attribute `avatar`: This is a virtual attribute, dependent on four database columns (`avatar_file_name`, `avatar_content_type`, `avatar_file_size`, `avatar_updated_at`). They are managed by the gem paperclip. Read the [docs](https://github.com/thoughtbot/paperclip) for usage information. It stores 4 sizes of each uploaded image: `:thumb`, `:square`, `:medium` and `:original`. They can be used in views like `image_tag @user.avatar.url(:original)`.
-
-* Attribute `email_if_new_argument`: A boolean that is true if the user wants to receive email notifications each time a new argument was added to one of his statements, or false otherwise. Defaults to true.
-
-* Attributes `link_to_facebook`, `link_to_twitter`, `link_to_google_plus`: A string (limited to 100 characters on database level) containing the link to the user's social network page.
-
-### Statement
-
-* Belongs to a `User`. Might be nil if the user has deleted his account.
-
-* Attribute `body`: Is stored as JSON with the following structure `{thesis: {de: "Ja", en: "Yes"}, counter_thesis: {de: "Nein"}}`.
-
-* Attribute `score`: Holds a decimal number within (including) 0 and 1, that represents the strength of the `Statement`.
-
-* Attribute `top_level`: A boolean remembering whether the statement was created as an argument for another statement (false) or not (true). Defaults to false.
