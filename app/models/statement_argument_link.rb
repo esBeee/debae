@@ -1,5 +1,5 @@
 # This class is a linking table that links a statement (which
-# is an instance of the class Statement) with arguments for that 
+# is an instance of the class Statement) with arguments for that
 # statement (which are also instances of the class Statement).
 #
 # Additionally it contains the information whether the argument is
@@ -13,6 +13,13 @@ class StatementArgumentLink < ApplicationRecord
   has_many :pro_votes, -> { where(is_pro_vote: true) }, class_name: "Vote", as: :voteable
   # Has many contra votes.
   has_many :contra_votes, -> { where(is_pro_vote: false) }, class_name: "Vote", as: :voteable
+
+  scope :ordered_by_voting, -> {
+    select("statement_argument_links.*, SUM(CASE WHEN votes.is_pro_vote=TRUE THEN 1 WHEN votes.is_pro_vote=FALSE THEN -1 ELSE 0 END) voting_score")
+    .joins("LEFT OUTER JOIN votes ON votes.voteable_type = 'StatementArgumentLink' AND votes.voteable_id = statement_argument_links.id")
+    .group("statement_argument_links.id")
+    .order("voting_score DESC")
+  }
 
   validates_uniqueness_of :statement, scope: :argument # Make sure a statement-argument-pair is unique
   validates :is_pro_argument, inclusion: { in: [true, false] } # Make sure it's a boolean

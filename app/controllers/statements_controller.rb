@@ -12,8 +12,8 @@ class StatementsController < ApplicationController
 
     return not_found if @statement.nil?
 
-    @pro_arguments = @statement.links_to_pro_arguments
-    @contra_arguments = @statement.links_to_contra_arguments
+    @pro_arguments = @statement.links_to_pro_arguments.ordered_by_voting
+    @contra_arguments = @statement.links_to_contra_arguments.ordered_by_voting
   end
 
   # GET /statements/new
