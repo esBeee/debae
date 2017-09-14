@@ -8,9 +8,12 @@ class StatementsController < ApplicationController
 
   # GET /statements/:id
   def show
-    # Query the requested statement and provide it in the view
-    # or handle not found.
-    @statement = Statement.includes(:user).includes(:comments).find_by(id: params[:id]) || not_found
+    @statement = Statement.includes(:user).includes(:comments).find_by(id: params[:id])
+
+    return not_found if @statement.nil?
+
+    @pro_arguments = @statement.links_to_pro_arguments
+    @contra_arguments = @statement.links_to_contra_arguments
   end
 
   # GET /statements/new

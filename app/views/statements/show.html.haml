@@ -12,9 +12,31 @@
 
 .row
   .col-12.col-lg-6
-    = render 'arguments_container', pro_or_contra: :pro
+    .arguments-container.pro
+      %h3
+        = t("statements.show.headlines.pro_arguments", default: "Pro arguments")
+      %div
+        - if @pro_arguments.any?
+          = render 'statement_argument_links/list', statement_argument_links: @pro_arguments
+        - else
+          .empty-message.secondary
+            = t("statements.show.no_pro_arguments", default: "There are no pro arguments yet.")
+      = link_to new_statement_path(pro: @statement.id), class: "btn btn-outline-success" do
+        = fa_icon("plus")
+        = t("statements.show.links.new_pro_argument", default: "New pro argument")
   .col-12.col-lg-6
-    = render 'arguments_container', pro_or_contra: :contra
+    .arguments-container.contra
+      %h3
+        = t("statements.show.headlines.contra_arguments", default: "Contra arguments")
+      %div
+        - if @contra_arguments.any?
+          = render 'statement_argument_links/list', statement_argument_links: @contra_arguments
+        - else
+          .empty-message.secondary
+            = t("statements.show.no_contra_arguments", default: "There are no contra arguments yet.")
+      = link_to new_statement_path(contra: @statement.id), class: "btn btn-outline-danger" do
+        = fa_icon("plus")
+        = t("statements.show.links.new_contra_argument", default: "New contra argument")
 
 .row.d-flex.justify-content-center
   .col-12.col-lg-8.comments-container
