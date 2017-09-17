@@ -16,5 +16,8 @@
 # Ignore Byebug command history file.
 .byebug_history
 
+# Ignore production compose configuration.
+docker-compose.production.yml
+
 # Ignore node_modules.
 /node_modules

@@ -1,6 +1,9 @@
 # See https://docs.docker.com/engine/reference/builder/#/dockerignore-file for
 # more about ignoring files.
 
+# Ignore production configuration for Docker Compose.
+docker-compose.production.yml
+
 # Ignore bundler config.
 .bundle
 
@@ -12,3 +15,7 @@ tmp/*
 
 # Ignore Byebug command history file.
 .byebug_history
+
+# Ignore node modules (they will be downloaded before precompiling assets
+# automatically).
+node_modules
