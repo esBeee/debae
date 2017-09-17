@@ -7,7 +7,7 @@ class RecalculateStatementScoresJob < ApplicationJob
     Kazus.log :info, "RecalculateStatementScoresJob performs now!"
 
     # Updates all statements scores.
-    Statement::Scoring.update_scores
+    StatementTreeScoreUpdater.update_all
 
     Kazus.log :info, "RecalculateStatementScoresJob performed!"
   end

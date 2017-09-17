@@ -15,7 +15,7 @@ RSpec.describe RecalculateStatementScoresJob, type: :job do
   end
 
   it "executes perform" do
-    expect(Statement::Scoring).to receive(:update_scores)
+    expect(StatementTreeScoreUpdater).to receive(:update_all)
     perform_enqueued_jobs { job }
   end
 

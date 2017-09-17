@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170907140845) do
+ActiveRecord::Schema.define(version: 20170915205716) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(version: 20170907140845) do
     t.boolean "is_pro_argument", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.decimal "score"
     t.index ["argument_id"], name: "index_statement_argument_links_on_argument_id"
     t.index ["statement_id", "argument_id"], name: "index_statement_argument_links_on_statement_id_and_argument_id", unique: true
     t.index ["statement_id"], name: "index_statement_argument_links_on_statement_id"
