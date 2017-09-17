@@ -54,12 +54,10 @@ gem 'will_paginate', '~> 3.1', '>= 3.1.6'
 gem 'kazus', git: 'git://github.com/esBeee/kazus.git' #, path: "../_gems/kazus"
 # Add some basic translations
 gem 'rails-i18n', '~> 5.0', '>= 5.0.4'
-# The paperclip gem manages user avatars.
-# Using a version from git because of some error messages I received
-# while I didn't.
-gem 'paperclip', git: 'https://github.com/thoughtbot/paperclip', ref: '523bd46c768226893f23889079a7aa9c73b57d68'
+# The paperclip gem manages user avatars
+gem 'paperclip', '~> 5.1'
 # Helper to store user avatars on S3
-gem 'aws-sdk', '~> 2.2', '>= 2.2.37'
+gem 'aws-sdk', '~> 2.5', '>= 2.5.3'
 # Using the sitemap generator gem to generate a new sitemap
 # according to the config in config/sitemap.rb
 gem 'sitemap_generator', '~> 5.1'

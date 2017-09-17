@@ -126,4 +126,8 @@ module StatementsHelper
 
     bod
   end
+
+  def author_thumb_img statement, options={}
+    thumb_img(statement.user_or_mock, options)
+  end
 end

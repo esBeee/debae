@@ -7,7 +7,7 @@
     .row.d-flex.flex-row.author
       .d-flex.align-items-center.quote-dash
       .d-flex.align-items-center.avatar-container
-        = image_tag statement.user_or_mock.avatar.url(:thumb), class: "rounded-circle avatar"
+        = author_thumb_img(statement, class: "rounded-circle avatar")
       .d-flex.flex-column
         %a{ href: '#' }
           = statement.user_or_mock.name

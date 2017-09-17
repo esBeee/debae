@@ -1,7 +1,7 @@
 .comment.card
   .card-body
     %h5.card-title
-      = image_tag @statement.user_or_mock.avatar.url(:thumb), class: "rounded-circle"
+      = author_thumb_img(@statement, class: "rounded-circle avatar")
       = comment.user_or_mock.name
     %h6.card-subtitle.mb-2.text-muted
       = l(comment.created_at)

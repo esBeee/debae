@@ -6,7 +6,7 @@
         <%= body(statement) %>
       </div>
       <div class="author">
-        <%= image_tag statement.user_or_mock.avatar.url(:thumb), class: "img-circle avatar" %>
+        <%= author_thumb_img(statement, class: "rounded-circle avatar") %>
         <%= statement.user_or_mock.name %>
       </div>
       <div class="score secondary">

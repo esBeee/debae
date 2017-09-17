@@ -11,7 +11,7 @@
         - if user_signed_in?
           %li.nav-item.dropdown
             %a.nav-link.dropdown-toggle#navbarDropdownMenuLink{ href: '#', data: { toggle: 'dropdown' }, aria: { haspopup: 'true', expanded: 'false' } }
-              = image_tag current_user.avatar.url(:thumb), class: "rounded-circle avatar"
+              = thumb_img(current_user, class: "rounded-circle avatar")
               = current_user.name
               %b.caret
             .dropdown-menu.dropdown-menu-right{ aria: { labelledby: 'navbarDropdownMenuLink' } }

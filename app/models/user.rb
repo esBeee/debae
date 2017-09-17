@@ -26,9 +26,8 @@ class User < ApplicationRecord
   # Format :original is always available.
   # => Formats ending on '#' always make sure that the image is a square.
   has_attached_file :avatar, default_url: "default_avatars/:style.png", styles: {
-    thumb: '100x100#',
-    square: '200x200#',
-    medium: '300x300>'
+    original: '500x500#',
+    thumb: '100x100#'
   }
 
   validates :name, presence: true, length: { in: 2..70 }
