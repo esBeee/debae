@@ -1,0 +1,18 @@
+version: '3'
+services:
+  app:
+    volumes:
+      - .:/app
+    ports:
+      - "3000:3000"
+    environment:
+      - DATABASE_HOST=psql
+      - DATABASE_USERNAME=me
+      - DATABASE_PASSWORD=its_really_me
+      - S3_BUCKET_NAME=debae
+  psql:
+    environment:
+      - POSTGRES_USER=me
+      - POSTGRES_PASSWORD=its_really_me
+    ports:
+      - "5432:5432"
