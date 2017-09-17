@@ -6,7 +6,11 @@ _debae_ is a Rails 5.1 app that allows users to make, debate and vote for statem
 
 ### Ruby
 
-Version `2.4.1` is currently used in production.
+[Ruby](https://www.ruby-lang.org/en/) version `2.4.1` is used in production.
+
+### PostgreSQL
+
+[PostgreSQL](https://www.postgresql.org/) version `9.4.9` is used as database in production.
 
 ### ImageMagick
 
@@ -14,13 +18,13 @@ File upload is handeled by the [Paperclip](https://github.com/thoughtbot/papercl
 
 ### yarn
 
-To run this app, the node modules specified in `yarn.lock` must be present. Install them by running
+To run this app, the node modules specified in `yarn.lock` must be present. You can install them by running
 
 ```sh
 $ yarn
 ```
 
-after making sure you have [yarn](https://yarnpkg.com/lang/en/) installed.
+, after making sure you have [yarn](https://yarnpkg.com/lang/en/) installed.
 
 ## Conventions
 
