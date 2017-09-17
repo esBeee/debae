@@ -103,7 +103,7 @@ de:
         password_confirmation: "Wiederhole das gewünschte Passwort"
       buttons:
         submit: "Registrierung abschicken"
-      minimum_password_length: "Mindestens %{minimum_password_length} Zeichen oder mehr"
+      minimum_password_length: "Mindestens %{minimum_password_length} Zeichen"
       headline: "Einen neuen Account anlegen"
     sessions:
       new:
@@ -129,7 +129,7 @@ de:
       headlines:
         edit_profile: "Profil bearbeiten"
         edit_account: "Account bearbeiten"
-      minimum_password_length: "Mindestens %{minimum_password_length} Zeichen oder mehr"
+      minimum_password_length: "Mindestens %{minimum_password_length} Zeichen"
       may_leave_blank: "Lasse das Feld einfach leer, falls du dein Passwort jetzt nicht ändern willst"
       current_password_required: "Dein aktuelles Passwort ist, zum Schutz deines Accounts, erforderlich, um Änderungen vorzunehmen"
       cancel_account_header: "Account löschen"
