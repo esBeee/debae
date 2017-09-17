@@ -40,13 +40,13 @@ gem 'haml-rails', '~> 1.0'
 gem 'font-awesome-rails', '~> 4.7', '>= 4.7.0.2'
 
 # Use devise for user authentication
-gem 'devise', '~> 4.0'
+gem 'devise', '~> 4.3'
 # Provide OAuth with facebook
-gem 'omniauth-facebook', '~> 3.0'
+gem 'omniauth-facebook', '~> 4.0'
 # Provide OAuth with twitter
-gem 'omniauth-twitter', '~> 1.2', '>= 1.2.1'
+gem 'omniauth-twitter', '~> 1.4'
 # Provide OAuth with google
-gem 'omniauth-google-oauth2', '~> 0.3.1'
+gem 'omniauth-google-oauth2', '~> 0.5.2'
 # Use the will_paginate gem for pagination. Provides the #page method
 # used in controllers for pagination
 gem 'will_paginate', '~> 3.1', '>= 3.1.6'
