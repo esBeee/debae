@@ -125,7 +125,7 @@ de:
         submit: "Einstellungen speichern"
         destroy_account: "Lösche meinen Account"
       flashes:
-        success: "Dein Eingaben wurden erfolgreich gespeichert"
+        success: "Deine Eingaben wurden erfolgreich gespeichert"
       headlines:
         edit_profile: "Profil bearbeiten"
         edit_account: "Account bearbeiten"
