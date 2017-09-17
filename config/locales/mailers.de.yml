@@ -18,7 +18,7 @@ de:
     devise:
       confirmation_instructions:
         headline: "Hallo %{username}!"
-        body_html: "Diese Email-Adresse wurde für einen Account bei %{root_link} verwendet. Du kannst die Zugehörigkeit bestätigen, indem du auf untenstehenden Link klickst:"
+        body_html: "Deine Email-Adresse wurde verwendet, um einen Account bei %{root_link} zu registrieren. Du kannst die Registrierung abschließen, indem du auf untenstehenden Link klickst."
         confirmation_link: "Email-Adresse bestätigen"
       password_change:
         headline: "Hallo %{username}!"
