@@ -26,7 +26,7 @@
           %li.nav-item.dropdown
             %a.nav-link.dropdown-toggle#navbarDropdownMenuLink{ href: '#', data: { toggle: 'dropdown' }, aria: { haspopup: 'true', expanded: 'false' } }
               = t("layouts.header.dropdowns.join", default: "Join")
-              = fa_icon("envelope") + " " + fa_icon("facebook-square", class: "brand-related facebook") + " " + fa_icon("google", class: "brand-related google") + " " + fa_icon("twitter", class: "brand-related twitter")
+              = fa_icon("envelope") + " " + fa_icon("facebook-square", class: "brand-related facebook") + " " + fa_icon("twitter", class: "brand-related twitter") + " " + fa_icon("google", class: "brand-related google")
               %b.caret
             .dropdown-menu.dropdown-menu-right{ aria: { labelledby: 'navbarDropdownMenuLink' } }
               %a.dropdown-item{ href: new_user_session_path }
@@ -36,9 +36,9 @@
               %a.dropdown-item{ href: user_facebook_omniauth_authorize_path }
                 = fa_icon("facebook-square", class: "facebook")
                 = t("layouts.header.links.sign_in", auth_type: "Facebook", default: "Sign in with %{auth_type}")
-              %a.dropdown-item{ href: user_google_oauth2_omniauth_authorize_path }
-                = fa_icon("google", class: "google")
-                = t("layouts.header.links.sign_in", auth_type: "Google", default: "Sign in with %{auth_type}")
               %a.dropdown-item{ href: user_twitter_omniauth_authorize_path }
                 = fa_icon("twitter", class: "twitter")
                 = t("layouts.header.links.sign_in", auth_type: "Twitter", default: "Sign in with %{auth_type}")
+              %a.dropdown-item{ href: user_google_oauth2_omniauth_authorize_path }
+                = fa_icon("google", class: "google")
+                = t("layouts.header.links.sign_in", auth_type: "Google", default: "Sign in with %{auth_type}")
