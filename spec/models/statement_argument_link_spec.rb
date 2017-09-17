@@ -164,24 +164,17 @@ RSpec.describe StatementArgumentLink, type: :model do
     end
   end
 
-  describe "#ordered_by_voting" do
-    let!(:link1) { FactoryGirl.create(:statement_argument_link) }
-    let!(:vote1A) { FactoryGirl.create(:vote, :up, voteable: link1) }
-    let!(:vote1B) { FactoryGirl.create(:vote, :up, voteable: link1) }
-    let!(:vote1C) { FactoryGirl.create(:vote, :down, voteable: link1) }
-    let!(:vote1D) { FactoryGirl.create(:vote, :down, voteable: link1) }
-    let!(:vote1E) { FactoryGirl.create(:vote, :down, voteable: link1) }
+  describe "#ordered_by_score" do
+    let(:link1) { FactoryGirl.create(:statement_argument_link, score: 0.7) }
+    let(:link2) { FactoryGirl.create(:statement_argument_link, score: 0.9) }
+    let(:link3) { FactoryGirl.create(:statement_argument_link, score: 0) }
+    let(:link4) { FactoryGirl.create(:statement_argument_link, score: nil) }
 
-    let!(:link2) { FactoryGirl.create(:statement_argument_link) }
-    let!(:vote2A) { FactoryGirl.create(:vote, :up, voteable: link2) }
-
-    let!(:link3) { FactoryGirl.create(:statement_argument_link) }
-
-    let(:links) { described_class.where(id: [link1.id, link2.id, link3.id]) }
+    let(:links) { described_class.where(id: [link1.id, link2.id, link3.id, link4.id]) }
 
     it "returns the links ordered by voting score" do
-      expect(links.ordered_by_voting.to_a).to eq(
-        [link2, link3, link1]
+      expect(links.ordered_by_score.to_a).to eq(
+        [link2, link1, link4, link3]
       )
     end
   end
