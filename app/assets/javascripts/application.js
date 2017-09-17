@@ -13,7 +13,7 @@
 //= require rails-ujs
 //= require turbolinks
 
-// NODE MODULES
+// NODE modules
 //= require jquery
 //= require tinycolor2
 //= require tinygradient
