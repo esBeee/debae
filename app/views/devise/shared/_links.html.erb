@@ -14,7 +14,7 @@
   <%- if devise_mapping.omniauthable? %>
     <hr>
     <div class="link"><%= link_to fa_icon("facebook-square", class: "brand-related facebook") + " " + t("layouts.header.links.sign_in", auth_type: "Facebook", default: "Sign in with %{auth_type}"), user_facebook_omniauth_authorize_path %></div>
-    <div class="link"><%= link_to fa_icon("google", class: "brand-related google") + " " + t("layouts.header.links.sign_in", auth_type: "Google", default: "Sign in with %{auth_type}"), user_google_oauth2_omniauth_authorize_path %></div>
     <div class="link"><%= link_to fa_icon("twitter", class: "brand-related twitter") + " " + t("layouts.header.links.sign_in", auth_type: "Twitter", default: "Sign in with %{auth_type}"), user_twitter_omniauth_authorize_path %></div>
+    <div class="link"><%= link_to fa_icon("google", class: "brand-related google") + " " + t("layouts.header.links.sign_in", auth_type: "Google", default: "Sign in with %{auth_type}"), user_google_oauth2_omniauth_authorize_path %></div>
   <% end -%>
 </div>
