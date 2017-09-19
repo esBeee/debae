@@ -4,6 +4,10 @@ RSpec.shared_examples "Basic header content" do
   it "displays logo" do
     expect(rendered).to have_content("debae")
   end
+
+  it "displays a link to the contact page" do
+    expect(rendered).to have_link(contact_page, href: contact_path)
+  end
 end
 
 RSpec.describe "layouts/_header", type: :view do
@@ -11,6 +15,7 @@ RSpec.describe "layouts/_header", type: :view do
   let(:sign_out_link_xpath) { "//a[@href='#{destroy_user_session_path}'][@data-method='delete']" +
     "[contains(text(),'#{I18n.t("layouts.header.links.sign_out")}')]" }
 
+  let(:contact_page) { I18n.t("layouts.header.links.contact") }
   let(:sign_in_with_email) { I18n.t("layouts.header.links.sign_in", auth_type: "Email") }
   let(:sign_in_with_facebook) { I18n.t("layouts.header.links.sign_in", auth_type: "Facebook") }
   let(:sign_in_with_google) { I18n.t("layouts.header.links.sign_in", auth_type: "Google") }

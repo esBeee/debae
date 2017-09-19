@@ -24,4 +24,6 @@ Rails.application.routes.draw do
   # Updating a users profile has a separate controller action and, thus,
   # needs a separate route.
   put '/users/profile', to: 'users/profiles#update', as: :user_profile
+
+  get '/contact', to: 'static_pages#contact', as: :contact
 end

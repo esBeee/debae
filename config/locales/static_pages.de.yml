@@ -7,3 +7,6 @@ de:
       headline_vote: Abstimmen
       paragraph_vote: Du kannst Aussagen befürworten oder ablehnen. Aus dem Verhältnis zwischen Pro- und Kontra-Argumenten und der Zustimmung der Nutzer ergibt sich dann eine <b>Bewertung der Aussage</b>.
       headline_discussed_statements: Heiß diskutierte Statements
+    contact:
+      headline: Kontakt
+      invitation: Du kannst uns jederzeit unter %{email_address} erreichen.

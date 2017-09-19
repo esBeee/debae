@@ -1,7 +1,7 @@
 - active = current_page?(target_path)
 %li.nav-item{ class: active ? 'active' : '' }
   %a.nav-link{ href: target_path }
-    = label
+    != label
     - if active
       %span.sr-only
         (current)

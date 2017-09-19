@@ -51,6 +51,7 @@ de:
         account_settings: "Einstellungen"
         new_statement: "Statement abgeben"
         about: "Über debae"
+        contact: Kontakt
       dropdowns:
         join: "Login"
     edit_user_registration:
