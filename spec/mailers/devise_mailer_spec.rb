@@ -82,34 +82,4 @@ RSpec.describe Devise::Mailer, type: :mailer do
       )
     end
   end
-
-  describe "Unlock instructions email" do
-    let(:user) { FactoryGirl.build(:user) }
-    let(:token) { "iorwfe459okladwgre" }
-    let(:options) { {} }
-    let(:mail) { described_class.unlock_instructions(user, token, options).deliver_now }
-
-    it "renders the subject" do
-      expect(mail.subject).to eq(I18n.t("devise.mailer.unlock_instructions.subject"))
-    end
-
-    it "renders the receiver email" do
-      expect(mail.to).to eq([user.email])
-    end
-
-    it "renders the sender email" do
-      expect(mail.from).to eq(["info@debae.org"])
-    end
-
-    it "displays link to debae" do
-      expect(mail.body.encoded).to have_link("debae", href: root_url)
-    end
-
-    it "displays link to unlock" do
-      expect(mail.body.encoded).to have_link(
-        I18n.t("mailers.devise.unlock_instructions.unlock_link"),
-        href: user_unlock_url(unlock_token: token)
-      )
-    end
-  end
 end

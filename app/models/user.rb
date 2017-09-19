@@ -2,12 +2,12 @@
 # Right now, every registered user is a User. (i.e. only one authenticatable resource exists)
 class User < ApplicationRecord
   # Invoke devise modules. Others available are:
-  # :timeoutable
+  # :timeoutable, :lockable
   #
   # Read about what each module does at https://github.com/plataformatec/devise.
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
-         :confirmable, :lockable, :omniauthable,
+         :confirmable, :omniauthable,
          omniauth_providers: [:facebook, :twitter, :google_oauth2]
 
   has_many :statements
