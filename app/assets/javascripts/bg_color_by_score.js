@@ -4,7 +4,7 @@ var gradient = tinygradient(redHEX, greenHEX);
 var hsvGradient = gradient.hsv(100);
 
 var colorForScore = function (score) {
-  if (!score && score !== 0) return '#aaa';
+  if (!score && score !== 0) return '#e9ecef';
 
   var colorNumber = Math.round(score * 99);
   var hexColor = hsvGradient[colorNumber].toHexString();

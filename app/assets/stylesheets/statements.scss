@@ -1,13 +1,7 @@
 .arguments-container {
-  background-color: white;
-  border: 1px solid #DCE0DD;
+  background-color: $white;
   border-radius: 5px;
-  padding: 20px;
+  padding: 10px 0px;
   text-align: center;
-
-  ul > * {
-    margin: 30px 0px;
-  }
-
   margin-bottom: 10px;
 }

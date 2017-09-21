@@ -1,5 +1,5 @@
 .statement-argument-link {
-  background-color: #fbfcfa;
+  background-color: $gray-100;
   margin: 10px;
 
   .argument-showcase-section {
@@ -8,7 +8,7 @@
   }
 
   .argument-body {
-    padding: 3px;
+    padding: 8px 3px;
   }
 
   .total-score {

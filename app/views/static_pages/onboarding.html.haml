@@ -14,9 +14,10 @@
 .row
   .col-12
     .row
-      %h4
-        %u
-          = t(".headline_discussed_statements") + ':'
+      .col-12
+        %h4
+          %u
+            = t(".headline_discussed_statements") + ':'
     .row
       .card-columns
         - @statements.each do |statement|
