@@ -69,7 +69,9 @@ var getChain = function () {
   var string = localStorage.statementChain;
 
   // Initialize chain if necessary.
-  if (!string || string == '""' || string === '[object Object]') return [];
+  if (!string || string === '""' || string === 'null' || string === '[object Object]') {
+    return [];
+  }
 
   return JSON.parse(string);
 }
