@@ -5,4 +5,9 @@ RSpec.describe StaticPagesController, type: :controller do
     before { get :onboarding }
     include_examples "Successful request"
   end
+
+  describe "GET #about" do
+    before { get :about }
+    include_examples "Successful request"
+  end
 end

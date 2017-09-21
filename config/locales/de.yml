@@ -50,8 +50,7 @@ de:
         sign_out: "Ausloggen"
         account_settings: "Einstellungen"
         new_statement: "Statement abgeben"
-        about: "Über debae"
-        contact: Kontakt
+        about: Über debae
       dropdowns:
         join: "Login"
     edit_user_registration:

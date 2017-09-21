@@ -25,5 +25,5 @@ Rails.application.routes.draw do
   # needs a separate route.
   put '/users/profile', to: 'users/profiles#update', as: :user_profile
 
-  get '/contact', to: 'static_pages#contact', as: :contact
+  get '/about', to: 'static_pages#about', as: :about
 end

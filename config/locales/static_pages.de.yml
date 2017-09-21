@@ -7,6 +7,28 @@ de:
       headline_vote: Abstimmen
       paragraph_vote: Du kannst Aussagen befürworten oder ablehnen. Aus dem Verhältnis zwischen Pro- und Kontra-Argumenten und der Zustimmung der Nutzer ergibt sich dann eine <b>Bewertung der Aussage</b>.
       headline_discussed_statements: Heiß diskutierte Statements
-    contact:
-      headline: Kontakt
-      invitation: Für Fragen, Kritik und alles weitere, schreib' uns an %{email_address}.
+    about:
+      headline_about: Über debae
+      about: >
+        Das Ziel von <b>debae</b> ist es, einen Weg zu finden, Aussagen sachlich
+        und ausführlich zu diskutieren und danach, unter Berücksichtigung
+        möglichst aller wichtigen Argumente, demokratisch zu einer Bewertung zu
+        kommen.
+      headline_score: "Wie die Wertungen berechnet werden"
+      score: >
+        Diese Thema hat ganz klar eine eigene Seite verdient. Bis dahin können
+        die Formeln aber auch
+        <a href="https://github.com/esBeee/debae/blob/master/app/scoring/formulary.rb" target="_blank">im Code</a>
+        eingesehen werden.
+      headline_contribute: An <b>debae</b> mitarbeiten
+      contribute: >
+        Hast du Vorschläge, wie man die Formeln verbessern kann? Willst du
+        helfen, <b>debae</b> technisch oder optisch zu verbessern? Neue Features
+        implementieren? Der gesamte App Code ist <b>Open Source</b> und <i>jeder
+        ist herzlich eingeladen, daran mitzuarbeiten</i>. Das Repository findest
+        du auf
+        <a href="https://github.com/esBeee/debae" target="_blank">GitHub</a>.
+      headline_contact: Kontakt
+      contact: >
+        Für Fragen, Kritik und alles weitere, schreib' uns an
+        <a href="mailto:info@debae.org">info@debae.org</a>.

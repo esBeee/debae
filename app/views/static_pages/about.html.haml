@@ -1,0 +1,16 @@
+.row
+  .col-12.col-lg-8
+    %h2= t("static_pages.about.headline_about")
+    %p!= t("static_pages.about.about")
+    %h2
+      = fa_icon("calculator")
+      = t("static_pages.about.headline_score")
+    %p!= t("static_pages.about.score")
+    %h2
+      = fa_icon("github")
+      != t("static_pages.about.headline_contribute")
+    %p!= t("static_pages.about.contribute")
+    %h2
+      = fa_icon("envelope")
+      = t("static_pages.about.headline_contact")
+    %p!= t("static_pages.about.contact")

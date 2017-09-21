@@ -7,7 +7,7 @@
     .collapse.navbar-collapse#navbarNav
       %ul.navbar-nav
         = render 'layouts/nav_link', target_path: new_statement_path, label: t("layouts.header.links.new_statement", default: 'Make a statement') + " " + fa_icon("comment")
-        = render 'layouts/nav_link', target_path: contact_path, label: t("layouts.header.links.contact", default: 'Contact') + " " + fa_icon("envelope")
+        = render 'layouts/nav_link', target_path: about_path, label: t("layouts.header.links.about", default: 'Contact')
       %ul.navbar-nav.ml-auto
         - if user_signed_in?
           %li.nav-item.dropdown
