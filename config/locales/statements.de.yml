@@ -36,9 +36,10 @@ de:
         undecided: "Unentschlossen, ob sie/er der Aussage zustimmt"
         creator_destroyed: ""
       scores:
-        argument: Auswertung der <u>Argumente</u>
-        vote: Zustimmung im <u>Voting</u>
+        statement_argument: Auswertung der <u>Argumente</u>
+        statement_vote: Zustimmung im <u>Voting</u>
         total: Gesamtwertung
+        argument: Wertung als Argument
         amount_of_votes:
           zero: "(noch keine Stimmabgaben)"
           one: "von %{count} Stimme"

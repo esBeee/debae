@@ -35,10 +35,10 @@
                 = t("statements.show.scores.total", default: "Total score")
           .score-components.d-flex.flex-column.justify-content-center
             .argument-score
-              != t("statements.show.scores.argument", default: "Argument score") + ':'
+              != t("statements.show.scores.statement_argument", default: "Argument score") + ':'
               %span.badge.badge-light{ data: { bg_color_by_score: statement.argument_score } }
                 = argument_score(statement.argument_score)
             .vote-score
-              != t("statements.show.scores.vote", default: "Voting score") + ':'
+              != t("statements.show.scores.statement_vote", default: "Voting score") + ':'
               %span.badge.badge-light{ data: { bg_color_by_score: statement.vote_score } }
                 = percent(statement.vote_score)

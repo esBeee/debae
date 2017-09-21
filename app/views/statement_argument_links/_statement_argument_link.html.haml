@@ -12,8 +12,8 @@
         %span.link-expander
       = body(argument)
     .total-score.d-flex.flex-row-reverse.mt-auto
-      .score-badge.d-flex.flex-row.align-items-center.justify-content-center.rounded-top-left-bottom-right{ data: { bg_color_by_score: argument.score } }
-        .score
-          = score(argument.score)
+      .score-badge.d-flex.flex-row.align-items-center.justify-content-center.rounded-top-left-bottom-right{ data: { bg_color_by_score: statement_argument_link.score } }
         .label
-          = t("statements.show.scores.total", default: "Total score")
+          = t("statements.show.scores.argument", default: "Argument score")
+        .score
+          = score(statement_argument_link.score)
