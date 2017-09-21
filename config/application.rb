@@ -28,8 +28,11 @@ module Debae
     # Don't generate system test files.
     config.generators.system_tests = nil
 
-    # Configure default url for mailers
+    # Configure default url for mailers.
     config.action_mailer.default_url_options = { protocol: "https", host: "debae.org" }
+
+    # Set time zone.
+    config.time_zone = "Berlin"
 
     # We're using the paperclip gem to allow upload avatars to S3.
     # Hence it needs proper configuration.
