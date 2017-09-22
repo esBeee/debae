@@ -1,0 +1,6 @@
+de:
+  guide:
+    score: Die Bewertung des Statements gibt an, ob die Pro-Argumente überwiegen und ob die Nutzer der Aussage mehrheitlich zustimmen oder nicht.
+    voting: Werfe einen Blick auf die angeführten Pro- und Kontra-Argumente, um dir selbst eine Meinung zu bilden. Wenn du meinst, dass ein Argument nicht allzu viel mit dem Statement zu tun hat, vote es down. Bist du hingegen der Meinung, ein Argument ist besonders wichtig, um das Statement zu bewerten, benutze den Upvote button.
+    arguments: Argumente sind übrigens selbst Statements, deren Bewertung du, genau wie für dieses Statement, beeinflussen kannst. Hat ein Argument eine sehr geringe Bewertung, solltest du es also eher ignorieren, da die Aussage wiederlegt wurde und als falsch gewertet wird.
+    new_argument: Du denkst, es fehlt noch ein wichtiges Argument? Füge es selbst hinzu. Auch die URL zu einer externen Quelle kann ein hilfreiches Argument sein, um eine Aussage zu belegen.
