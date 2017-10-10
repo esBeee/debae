@@ -8,11 +8,11 @@ class Statement < ApplicationRecord
   belongs_to :user
   # Has many links to arguments (which are also objects of type Statement).
   # Is only used inside this class to help define has_many :arguments.
-  has_many :links_to_arguments, class_name: "StatementArgumentLink"
+  has_many :links_to_arguments, class_name: "StatementArgumentLink", dependent: :destroy
   # Has many links to statements.
   # Is only used inside this class to help define the scope :top_level, and the has_many
   # relation :statements.
-  has_many :links_to_statements, class_name: "StatementArgumentLink", foreign_key: "argument_id"
+  has_many :links_to_statements, class_name: "StatementArgumentLink", foreign_key: "argument_id", dependent: :destroy
   # Has many links to PRO arguments.
   # Is only used inside this class to help define has_many :pro_arguments.
   has_many :links_to_pro_arguments, -> { where(is_pro_argument: true) }, class_name: "StatementArgumentLink"
