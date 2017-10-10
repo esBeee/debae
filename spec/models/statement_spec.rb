@@ -46,8 +46,8 @@ RSpec.describe Statement, type: :model do
         it { should_not be_valid }
       end
 
-      context "has defined a counter_thesis that is too long (more than 260 characters)" do
-        before { @statement.body = a_body(counter_thesis: {en: "a" * 261}) }
+      context "has defined a counter_thesis that is too long (more than 1000 characters)" do
+        before { @statement.body = a_body(counter_thesis: {en: "a" * 1001}) }
         it { should_not be_valid }
       end
 
@@ -298,7 +298,7 @@ RSpec.describe Statement, type: :model do
         oldest_statement = FactoryGirl.create(:statement, created_at: Time.now - 2.hour)
         newest_statement = FactoryGirl.create(:statement)
         middle_old_statement = FactoryGirl.create(:statement, created_at: Time.now - 1.hour)
-        
+
         expect(Statement.top_level[0]).to eq(newest_statement)
         expect(Statement.top_level[1]).to eq(middle_old_statement)
         expect(Statement.top_level[2]).to eq(oldest_statement)

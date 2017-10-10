@@ -98,16 +98,15 @@ class Statement < ApplicationRecord
     end
 
     body["thesis"].each do |locale, thesis|
-      if thesis.blank? || thesis.length < 2 || thesis.length > 260 || !I18n.available_locales.include?(locale.to_sym)
-        errors.add(:body, "thesis in locale '#{locale}' must be between 2 and 260 characters long")
+      if thesis.blank? || thesis.length < 2 || thesis.length > 1000 || !I18n.available_locales.include?(locale.to_sym)
+        errors.add(:body, "thesis in locale '#{locale}' must be between 2 and 1000 characters long")
       end
     end
 
     if body["counter_thesis"]
       body["counter_thesis"].each do |locale, thesis|
-        Kazus.log locale
-        if thesis.blank? || thesis.length < 2 || thesis.length > 260 || !I18n.available_locales.include?(locale.to_sym)
-          errors.add(:body, "thesis in locale '#{locale}' must be between 2 and 260 characters long")
+        if thesis.blank? || thesis.length < 2 || thesis.length > 1000 || !I18n.available_locales.include?(locale.to_sym)
+          errors.add(:body, "thesis in locale '#{locale}' must be between 2 and 1000 characters long")
         end
       end
     end
