@@ -55,7 +55,7 @@ gem 'kazus', git: 'git://github.com/esBeee/kazus.git' #, path: "../_gems/kazus"
 # Add some basic translations
 gem 'rails-i18n', '~> 5.0', '>= 5.0.4'
 # The paperclip gem manages user avatars
-gem 'paperclip', '~> 5.1'
+gem 'paperclip', '~> 5.2', '>= 5.2.1'
 # Helper to store user avatars on S3
 gem 'aws-sdk', '~> 2.5', '>= 2.5.3'
 # Using the sitemap generator gem to generate a new sitemap
