@@ -19,7 +19,7 @@ RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \
 # time we rebuild the image.
 # NOTE: this only works if the specified versions are matching the version
 # specified in the Gemfile.lock.
-RUN gem install nokogiri -v '1.8.0'
+RUN gem install nokogiri -v '1.8.2'
 RUN gem install pg -v '0.21.0'
 
 # Prepare working directory.

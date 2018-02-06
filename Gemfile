@@ -17,6 +17,9 @@ gem 'puma', '~> 3.10'
 gem 'sass-rails', '~> 5.0', '>= 5.0.6'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '~> 3.2'
+# Specify nokogiri to make sure a version bigger than 1.8.1 is being used. Lower
+# versions suffer from known critical severity security vulnerabilities.
+gem 'nokogiri', '~> 1.8', '>= 1.8.1'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
